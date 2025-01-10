@@ -1,0 +1,1 @@
+I'm Selena Zeng, a third year CS major. I'm excited to create the clothes app to allow people to choose outfits without having to try them on. I want to figure out an efficient way for people to be able to add their clothes from their closet to the app.
