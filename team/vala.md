@@ -1,1 +1,0 @@
-I am a third year cs student. My idea for this project is to make a tool that people can use to easily keep track of all the clothes they have in their closet, and see what matches at a glance.
