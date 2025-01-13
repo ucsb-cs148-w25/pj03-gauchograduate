@@ -10,7 +10,7 @@ UCSB course planner for graduation.
 | John Kim        | JohnKim04       | 
 | Jaren Lowe      | JLowe32         |
 | Kade Williams   | kadew           |
-| Chiran Arumugam | Chiran Arumugam | 
+| Chiran Arumugam | ChiranArumugam  | 
 | Selena Zeng     | selenazeng1     |
 | Tadeon Reth     | taedonreth      |
 | Vala Bahrami    | Va1a            | 
