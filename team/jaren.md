@@ -1,1 +1,1 @@
-Hi I'm Jaren. My idea for this project is be able to track clothes and like if it's been worn recently. Also creating outfits based on personal style.
+Hi I'm Jaren. My idea for this project is to make it user friendly. Make easy implemenentation for adding courses.
