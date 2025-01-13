@@ -1,8 +1,8 @@
 # Project
-Clothing Tracker
+Gaucho Graduate 
 
 ## Description
-An app that keeps track of all the clothes you have and allows you to create outfits.
+UCSB course planner for graduation.
 
 ### Group Members
 | Name            | GitHub ID       |
