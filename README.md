@@ -1,6 +1,9 @@
 # Project
 Gaucho Graduate 
 
+## Deployment
+View the current state of the app at https://gauchograduate.vercel.app
+
 ## Description
 UCSB course planner for graduation.
 
