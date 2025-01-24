@@ -5,6 +5,8 @@ import React, { useState } from 'react';
 export default function CourseCatalog() {
 
     const [searchQuery, setSearchQuery] = useState('');
+    const [selectedDepartment, setSelectedDepartment] = useState('');
+    const [selectedTerm, setSelectedTerm] = useState('');
 
     // a couple testing courses for now, need other members to facilitate back-end logic
     const courses = [
@@ -17,18 +19,20 @@ export default function CourseCatalog() {
             generalEd: "Core",
             prerequisites: [],
             unlocks: ["CMPSC 24"],
-            department: "CMPSC"
+            department: "CMPSC",
+            term: ["Fall", "Winter"]
         },
         {
-        course_id: "ASAM 1",
-        title: "Introduction to Asian American History, 1850-Present",
-        description: "Historical survey of Asian Americans in the United States from 1850 to the present. Topics include: Immigration patterns, settlement and employment, race and gender relations, community development, and transnational connections.",
-        subjectArea: "Asian American Studies",
-        units: 4,
-        generalEd: "Gen Ed",
-        prerequisites: [],
-        unlocks: [],
-        department: "ASAM"
+            course_id: "ASAM 1",
+            title: "Introduction to Asian American History, 1850-Present",
+            description: "Historical survey of Asian Americans in the United States from 1850 to the present. Topics include: Immigration patterns, settlement and employment, race and gender relations, community development, and transnational connections.",
+            subjectArea: "Asian American Studies",
+            units: 4,
+            generalEd: "Gen Ed",
+            prerequisites: [],
+            unlocks: [],
+            department: "ASAM",
+            term: ["Spring"],
         },
         {
             course_id: "CMPSC 24",
@@ -39,14 +43,23 @@ export default function CourseCatalog() {
             generalEd: "Core",
             prerequisites: ["CMPSC 16 (grade C or better)", "Mathematics 3B or 2B (grade C or better, may be taken concurrently)"],
             unlocks: [],
-            department: "CMPSC"
+            department: "CMPSC",
+            term: ["Winter", "Spring"]
         } 
     ];
+
+    const departments = [...new Set(courses.map((course) => course.department))];
+    const terms = [...new Set(courses.flatMap((course) => course.term))];
 
     // filters courses by title using searchQuery
     // if the user doesn't input one, searchQuery is '' which returns all the courses
     const filteredCourses = courses.filter(course =>
-        course.title.toLowerCase().includes(searchQuery.toLowerCase())
+    {
+        const searchMatches = course.title.toLowerCase().includes(searchQuery.toLowerCase());
+        const deptMatches = selectedDepartment === '' || course.department === selectedDepartment;
+        const termMatches = selectedTerm === '' || course.term.includes(selectedTerm);
+        return searchMatches && deptMatches && termMatches;
+    }
     );
 
     return (
@@ -62,7 +75,37 @@ export default function CourseCatalog() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
         />
+        <div className = "flex flex-row space-x-2">
+            {/* Department Selector */}
+            <select
+            className="p-2 border border-gray-300 rounded-lg mb-4"
+            value={selectedDepartment}
+            onChange={(e) => setSelectedDepartment(e.target.value)}
+            >
+            <option value="">Department</option>
+            {departments.map((dept) => (
+                <option key={dept} value={dept}>
+                {dept}
+                </option>
+            ))}
+            </select>
 
+            {/* Term Selector */}
+            <select
+            className="p-2 border border-gray-300 rounded-lg mb-4"
+            value={selectedTerm}
+            onChange={(e) => setSelectedTerm(e.target.value)}
+            >
+            <option value="">Term</option>
+            {terms.map((term) => (
+                <option key={term} value={term}>
+                {term}
+                </option>
+            ))}
+            </select>
+        </div>
+        
+        
         {/* Course Cards */}
         <div className="space-y-4">
             {/* uses filtered courses from the search query */}
