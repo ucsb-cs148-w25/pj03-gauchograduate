@@ -14,13 +14,19 @@ Start:
 - getting started on your tasks earlier
 - working with each other between subgroups
 
-Stop:
-- waiting until the deadlines to submit PR's
-- showing up late to class
+Experiment/Change:
+- Stop waiting until the deadlines to submit PR's (have things done by Wednesday)
+- Stop showing up late to class
 
 Continue:
 - working in pairs/mobs and together
 - planning all of the tasks the week before
+
+  ## Retro Assessment
+
+* I had everyone individually reflect on what we as a team want to start, stop, and continue doing for about 10 minutes. Then we had a team discussion and decided on a few action items we want to focus on, and identify what was the change we wanted to see for next week.
+* It was productive and the team correctly identified our shortcomings and things we were doing good at. 
+* Encourage everyone to speak!
 
 ## Experiment/Change
 - experiment: have items done by Wednesday (in class) for tasks due Friday
