@@ -1,6 +1,7 @@
 'use client';
 
 import CourseCatalog from "../components/CourseCatalog";
+import FourYearPlan from "../components/four-year-plan";
 
 export default function HomePage() {
   return (
@@ -17,7 +18,7 @@ export default function HomePage() {
 
         {/* 4-year calendar */}
         <div className="w-2/4 bg-white p-4 rounded-md shadow">
-          <h2 className="text-xl font-semibold">Four Year Calendar</h2>
+          <FourYearPlan />
         </div>
 
         {/* Graduation Progress */}
