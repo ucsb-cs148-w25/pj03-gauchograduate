@@ -1,7 +1,19 @@
-import NextAuth, { NextAuthOptions } from "next-auth";
+import { PrismaAdapter } from "@auth/prisma-adapter";
+import NextAuth, { NextAuthOptions, DefaultSession } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import { prisma } from "@/lib/prisma";
+
+declare module "next-auth" {
+  interface Session extends DefaultSession {
+    user?: DefaultSession["user"] & {
+      id: string;
+      major: string | null;
+    }
+  }
+}
 
 export const authOptions: NextAuthOptions = {
+  adapter: PrismaAdapter(prisma),
   secret: process.env.NEXTAUTH_SECRET,
   providers: [
     GoogleProvider({
@@ -10,13 +22,66 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    async session({ session, token }) {
+    async session({ session, user }) {
       if (session.user) {
-        (session.user as { id?: string; accessToken?: string }).id = token.sub;
-        (session.user as { id?: string; accessToken?: string }).accessToken =
-          token.accessToken as string;
+        session.user.id = user.id;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        session.user.major = (user as any).major;
       }
       return session;
+    },
+    async signIn({ user, account }) {
+      if (account?.provider === "google") {
+        try {
+          // Check if user exists by email
+          const existingUser = await prisma.user.findUnique({
+            where: { email: user.email! },
+            include: { accounts: true },
+          });
+
+          if (!existingUser) {
+            // Create new user and account
+            await prisma.user.create({
+              data: {
+                email: user.email!,
+                name: user.name,
+                image: user.image,
+                dateJoined: new Date(),
+                accounts: {
+                  create: {
+                    type: account.type,
+                    provider: account.provider,
+                    providerAccountId: account.providerAccountId,
+                    access_token: account.access_token,
+                    token_type: account.token_type,
+                    scope: account.scope,
+                    id_token: account.id_token,
+                  },
+                },
+              },
+            });
+          } else if (existingUser.accounts.length === 0) {
+            // Link account to existing user
+            await prisma.account.create({
+              data: {
+                userId: existingUser.id,
+                type: account.type,
+                provider: account.provider,
+                providerAccountId: account.providerAccountId,
+                access_token: account.access_token,
+                token_type: account.token_type,
+                scope: account.scope,
+                id_token: account.id_token,
+              },
+            });
+          }
+          return true;
+        } catch (error) {
+          console.error("Error during sign in:", error);
+          return false;
+        }
+      }
+      return true;
     },
   },
 };
