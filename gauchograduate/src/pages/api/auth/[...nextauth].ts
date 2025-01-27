@@ -1,9 +1,16 @@
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import { PrismaClient } from "@prisma/client";
-import NextAuth, { NextAuthOptions } from "next-auth";
+import NextAuth, { NextAuthOptions, DefaultSession } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import { prisma } from "@/lib/prisma";
 
-const prisma = new PrismaClient();
+declare module "next-auth" {
+  interface Session extends DefaultSession {
+    user?: DefaultSession["user"] & {
+      id: string;
+      major: string | null;
+    }
+  }
+}
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -15,6 +22,14 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
+    async session({ session, user }) {
+      if (session.user) {
+        session.user.id = user.id;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        session.user.major = (user as any).major;
+      }
+      return session;
+    },
     async signIn({ user, account }) {
       if (account?.provider === "google") {
         try {
@@ -67,11 +82,6 @@ export const authOptions: NextAuthOptions = {
         }
       }
       return true;
-    },
-    async session({ session, user }) {
-      // Add user ID to session
-      session.user.id = user.id;
-      return session;
     },
   },
 };
