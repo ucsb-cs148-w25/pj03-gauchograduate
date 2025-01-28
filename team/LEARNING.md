@@ -16,5 +16,6 @@
 
 # Lab03: Team Slack Posts/Comments
 
+- Kade asked in git_help about the correct convention for including other c++ library/repos in our project.
 - Vala commented to clarify a bug we ran into regarding usage of Supabase and Prisma.
 - Taedon posted a youtube tutorial we used to integrate Google Oauth with Next.js
