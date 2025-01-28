@@ -12,3 +12,9 @@
 - UCSB API
   - needed for extracting course data
   - going through the official documentation, doing some testing/ examples with the endpoints
+ 
+
+# Lab03: Team Slack Posts/Comments
+
+- Vala commented to clarify a bug we ran into regarding usage of Supabase and Prisma.
+- Taedon posted a youtube tutorial we used to integrate Google Oauth with Next.js
