@@ -1,5 +1,9 @@
-export type Term = 'Fall' | 'Winter' | 'Spring' | 'Summer';
-export type YearType = 'Year 1' | 'Year 2' | 'Year 3' | 'Year 4';
+
+export const Terms = ['Fall', 'Winter', 'Spring', 'Summer'];
+export const Years = ['Year 1', 'Year 2', 'Year 3', 'Year 4'];
+
+export type Term = typeof Terms[number];
+export type YearType = typeof Years[number];
 
 // each course information
 export interface Course {

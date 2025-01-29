@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 import DeleteIcon from '@mui/icons-material/Delete'
 
-import { Course, ScheduleType, YearType, Term } from "./coursetypes";
+import { Terms, Years, Course, ScheduleType, YearType, Term } from "./coursetypes";
 
 interface FourYearPlanProps {
   selectedYear: YearType;
@@ -14,12 +14,18 @@ interface FourYearPlanProps {
   removeCourse: (course: Course, term: Term) => void;
 }
 
+
 export default function FourYearPlan({ selectedYear, setSelectedYear, studentSchedule, addCourse, removeCourse}: FourYearPlanProps) { 
-
-
-  const terms: Term[] = ['Fall', 'Winter', 'Spring', 'Summer'];
-  const yearLabels: YearType[] = ['Year 1', 'Year 2', 'Year 3', 'Year 4'];
-
+  
+  function handleDrop(e: React.DragEvent<HTMLDivElement>, term: Term) {
+    e.preventDefault();
+    // gets the course thats dropped
+    const json = e.dataTransfer.getData("application/json");
+    if (!json) return;
+    const droppedCourse = JSON.parse(json);
+    // now we just update the schedule
+    addCourse(droppedCourse, term as Term);
+  }
 
   return (
     <div className="h-full w-full p-4 bg-white rounded-lg shadow-lg flex flex-col">
@@ -31,7 +37,7 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
         value={selectedYear}
         onChange={(e) => setSelectedYear(e.target.value as YearType)}
         >
-          {yearLabels.map((year, index) => (
+          {Years.map((year, index) => (
             <option key={index} value={year}>
               {year}
             </option>
@@ -41,19 +47,11 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
 
       {/* Plan Table */}
       <div className="grid grid-cols-4 gap-1 flex-grow">
-        {terms.map((term) => (
+        {Terms.map((term) => (
           <div
             key={term}
             onDragOver={(e) => e.preventDefault()}
-            onDrop={(e) => {
-              e.preventDefault();
-              // gets the course thats dropped
-              const json = e.dataTransfer.getData("application/json");
-              if (!json) return;
-              const droppedCourse = JSON.parse(json);
-              // now we just update the schedule
-              addCourse(droppedCourse, term as Term);
-            }}
+            onDrop={(e) => handleDrop(e, term)}
             className="flex flex-col justify-start p-4 border border-gray-300 rounded-lg bg-[var(--off-white)]"
           >
             <h3 className="text-lg font-semibold text-center mb-4">{term}</h3>
