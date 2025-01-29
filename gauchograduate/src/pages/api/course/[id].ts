@@ -11,8 +11,11 @@ type ResponseData = {
     description: string
     subject_area: string
     units: number | null
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     general_ed: any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     prerequisites: any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     unlocks: any
   }
 }

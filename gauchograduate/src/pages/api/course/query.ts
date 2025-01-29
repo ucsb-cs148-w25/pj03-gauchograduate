@@ -11,8 +11,11 @@ type ResponseData = {
     description: string
     subject_area: string
     units: number | null
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     general_ed: any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     prerequisites: any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     unlocks: any
   }[]
 }
@@ -27,11 +30,13 @@ export default async function handler(
 
   const { quarter, subject } = req.query
 
+  // We want to prevent large blank queries that will slow down the database
   if (!quarter && !subject) {
     return res.status(400).json({ error: 'At least one of quarter or subject is required' })
   }
 
   // Build where clause based on provided parameters
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const whereClause: any = {}
   
   if (quarter && typeof quarter === 'string') {
