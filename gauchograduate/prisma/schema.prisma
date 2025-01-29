@@ -45,6 +45,7 @@ model User {
   image         String?
   major         String    @default("")
   dateJoined    DateTime  @default(now())
+  courses       Json      @default("[]")
   accounts      Account[]
   sessions      Session[]
 }
