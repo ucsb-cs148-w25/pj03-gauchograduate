@@ -1,8 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 
-export default function FourYearPlan() {
+export default function FourYearPlan({selectedYear, setSelectedYear}) { 
+
+
   const terms = ['Fall', 'Winter', 'Spring', 'Summer'];
   const yearLabels = ['Year 1', 'Year 2', 'Year 3', 'Year 4'];
 
@@ -11,7 +13,11 @@ export default function FourYearPlan() {
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-2xl font-bold">Four-Year Plan</h2>
         {/* Year Selector */}
-        <select className="p-2 border border-gray-300 rounded-lg">
+        <select 
+        className="p-2 border border-gray-300 rounded-lg" 
+        value={selectedYear}
+        onChange={(e) => setSelectedYear(e.target.value)}
+        >
           {yearLabels.map((year, index) => (
             <option key={index} value={year}>
               {year}
