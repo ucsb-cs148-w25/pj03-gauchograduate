@@ -70,6 +70,16 @@ export default function TestPage() {
         }));
     };
 
+    const removeCourse = (course: Course, term: Term) => {
+        setStudentSchedule((prevSchedule) => ({
+            ...prevSchedule,
+            [selectedYear]: {
+                ...prevSchedule[selectedYear],
+                [term]: prevSchedule[selectedYear][term].filter((c) => c.course_id !== course.course_id),
+            },
+        }));
+    };
+
     return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -84,6 +94,7 @@ export default function TestPage() {
           setSelectedYear={setSelectedYear} 
           studentSchedule={studentSchedule} 
           addCourse={addCourse}
+          removeCourse={removeCourse}
           />
         </div>
 

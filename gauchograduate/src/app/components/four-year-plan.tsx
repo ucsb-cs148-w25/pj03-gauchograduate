@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 
+import DeleteIcon from '@mui/icons-material/Delete'
+
 import { Course, ScheduleType, YearType, Term } from "./coursetypes";
 
 interface FourYearPlanProps {
@@ -9,9 +11,10 @@ interface FourYearPlanProps {
   setSelectedYear: React.Dispatch<React.SetStateAction<YearType>>;
   studentSchedule: ScheduleType;
   addCourse: (course: Course, term: Term) => void;
+  removeCourse: (course: Course, term: Term) => void;
 }
 
-export default function FourYearPlan({ selectedYear, setSelectedYear, studentSchedule, addCourse, }: FourYearPlanProps) { 
+export default function FourYearPlan({ selectedYear, setSelectedYear, studentSchedule, addCourse, removeCourse}: FourYearPlanProps) { 
 
 
   const terms: Term[] = ['Fall', 'Winter', 'Spring', 'Summer'];
@@ -55,13 +58,27 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
           >
             <h3 className="text-lg font-semibold text-center mb-4">{term}</h3>
             <div className="flex flex-col gap-4">
-              {/* Example Course Cards */}
+              {/* Course cards */}
               {studentSchedule[selectedYear][term].length > 0 ? (
                 studentSchedule[selectedYear][term].map((course) => (
-                  <div key={course.course_id} className="p-4 bg-[var(--pale-orange)] rounded-lg">
+                  <div 
+                    key={course.course_id} 
+                    className="relative p-4 bg-[var(--pale-orange)] rounded-lg group"
+                  >
+          
+                    {/* course details */}
                     <p className="font-bold text-sm">{course.course_id}</p>
                     <p className="text-xs">{course.title}</p>
                     <p className="text-xs text-gray-500">{course.units} credits</p>
+
+                    {/* hover to click on delete button */}
+                    <button
+                      className="bg-red-500 text-white p-1 rounded-full opacity-0 group-hover:opacity-100"
+                      onClick={() => removeCourse(course, term)}
+                    >
+                      <DeleteIcon fontSize="small" />
+                    </button>
+
                   </div>
                 ))
               ) : (
