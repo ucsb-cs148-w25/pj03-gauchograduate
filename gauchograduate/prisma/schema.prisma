@@ -45,6 +45,7 @@ model User {
   image         String?
   major         String    @default("")
   dateJoined    DateTime  @default(now())
+  courses       Json      @default("[]")
   accounts      Account[]
   sessions      Session[]
 }
@@ -58,13 +59,13 @@ model VerificationToken {
 }
 
 model Course {
-  id            String @id @default(cuid())
-  quarter       Int
+  id            Int @id @default(autoincrement())
+  quarter       String
   course_id     String
   title         String
   description   String
   subject_area  String
-  units         Int
+  units         Float?
   general_ed    Json
   prerequisites Json
   unlocks       Json

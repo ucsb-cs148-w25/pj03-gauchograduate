@@ -4,10 +4,16 @@ import GoogleProvider from "next-auth/providers/google";
 import { prisma } from "@/lib/prisma";
 
 declare module "next-auth" {
+  interface UserCourse {
+    id: string;
+    quarter: string;
+  }
+
   interface Session extends DefaultSession {
     user?: DefaultSession["user"] & {
       id: string;
-      major: string | null;
+      major: string;
+      courses: UserCourse[];
     }
   }
 }
@@ -30,6 +36,8 @@ export const authOptions: NextAuthOptions = {
     async session({ session, user }) {
       if (session.user) {
         session.user.id = user.id;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        session.user.courses = (user as any).courses;
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         session.user.major = (user as any).major;
       }
