@@ -2,51 +2,17 @@
 
 import React, { useState } from 'react';
 
-export default function CourseCatalog() {
+import { Course, Term } from "./coursetypes";
+
+interface CourseCatalogProps {
+    courses: Course[];
+}
+
+export default function CourseCatalog({courses}: CourseCatalogProps) {
 
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedDepartment, setSelectedDepartment] = useState('');
     const [selectedTerm, setSelectedTerm] = useState('');
-
-    // a couple testing courses for now, need other members to facilitate back-end logic
-    const courses = [
-        {
-            course_id: "CMPSC 16",
-            title: "Problem Solving with Computers I",
-            description: "Fundamental building blocks for solving problems using computers. Topics include basic computer organization and programming constructs: memory CPU, binary arithmetic, variables, expressions, statements, conditionals, iteration, functions, parameters, recursion, primitive and composite data types, and basic operating system and debugging tools.",
-            subjectArea: "Computer Science",
-            units: 4,
-            generalEd: "Core",
-            prerequisites: [],
-            unlocks: ["CMPSC 24"],
-            department: "CMPSC",
-            term: ["Fall", "Winter"]
-        },
-        {
-            course_id: "ASAM 1",
-            title: "Introduction to Asian American History, 1850-Present",
-            description: "Historical survey of Asian Americans in the United States from 1850 to the present. Topics include: Immigration patterns, settlement and employment, race and gender relations, community development, and transnational connections.",
-            subjectArea: "Asian American Studies",
-            units: 4,
-            generalEd: "Gen Ed",
-            prerequisites: [],
-            unlocks: [],
-            department: "ASAM",
-            term: ["Spring"],
-        },
-        {
-            course_id: "CMPSC 24",
-            title: "Problem Solving with Computers II",
-            description: "Intermediate building blocks for solving problems using computers. Topics include intermediate object-oriented programming, data structures, object-oriented design, algorithms for manipulating these data structures, and their run-time analyses. Data structures introduced include stacks, queues, lists, trees, and sets.",
-            subjectArea: "Computer Science",
-            units: 4,
-            generalEd: "Core",
-            prerequisites: ["CMPSC 16 (grade C or better)", "Mathematics 3B or 2B (grade C or better, may be taken concurrently)"],
-            unlocks: [],
-            department: "CMPSC",
-            term: ["Winter", "Spring"]
-        } 
-    ];
 
     const departments = [...new Set(courses.map((course) => course.department))];
     const terms = [...new Set(courses.flatMap((course) => course.term))];
@@ -57,7 +23,7 @@ export default function CourseCatalog() {
     {
         const searchMatches = course.title.toLowerCase().includes(searchQuery.toLowerCase());
         const deptMatches = selectedDepartment === '' || course.department === selectedDepartment;
-        const termMatches = selectedTerm === '' || course.term.includes(selectedTerm);
+        const termMatches = selectedTerm === '' || course.term.includes(selectedTerm as Term);
         return searchMatches && deptMatches && termMatches;
     }
     );
@@ -113,6 +79,12 @@ export default function CourseCatalog() {
             <div
                 key={course.course_id}
                 className="p-4 border border-gray-300 rounded-xl bg-white flex flex-col gap-5"
+                draggable={true}
+                onDragStart={(e) => {
+                    // using this link: https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer
+                    // basically converts to JSON string to compare in four-year-plan
+                    e.dataTransfer.setData("application/json", JSON.stringify(course));
+                  }}
             >
                 <div>
                     <h3 className="text-lg font-bold">{course.course_id}</h3>
