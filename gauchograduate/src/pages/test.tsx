@@ -5,10 +5,13 @@ import CourseCatalog from "../app/components/CourseCatalog";
 import FourYearPlan from "../app/components/four-year-plan";
 import Navbar from "../app/components/Navbar";
 
+import { Course, ScheduleType, YearType, Term } from "../app/components/coursetypes";
+
+
 export default function TestPage() {
 
     // a couple testing courses for now, need other members to facilitate back-end logic
-    const courses = [
+    const courses: Course[] = [
         {
             course_id: "CMPSC 16",
             title: "Problem Solving with Computers I",
@@ -47,17 +50,17 @@ export default function TestPage() {
         } 
     ];
 
-    const defaultSchedule = {
+    const defaultSchedule: ScheduleType = {
         "Year 1": { Fall: [courses[0]], Winter: [], Spring: [courses[1]], Summer: [] },
         "Year 2": { Fall: [], Winter: [courses[2]], Spring: [], Summer: [] },
         "Year 3": { Fall: [], Winter: [], Spring: [], Summer: [courses[0]] },
         "Year 4": { Fall: [], Winter: [], Spring: [courses[0]], Summer: [] },
     };
 
-    const [studentSchedule, setStudentSchedule] = useState(defaultSchedule);
-    const [selectedYear, setSelectedYear] = useState("Year 1");
+    const [studentSchedule, setStudentSchedule] = useState<ScheduleType>(defaultSchedule);
+    const [selectedYear, setSelectedYear] = useState<YearType>("Year 1");
 
-    const addCourse = (course, term) => {
+    const addCourse = (course: Course, term: Term) => {
         setStudentSchedule((prevSchedule) => ({
             ...prevSchedule,
             [selectedYear]: {

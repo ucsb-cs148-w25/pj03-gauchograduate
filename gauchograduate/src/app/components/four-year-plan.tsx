@@ -2,11 +2,21 @@
 
 import React, { useState } from 'react';
 
-export default function FourYearPlan({ selectedYear, setSelectedYear, studentSchedule, addCourse, }) { 
+import { Course, ScheduleType, YearType, Term } from "./coursetypes";
+
+interface FourYearPlanProps {
+  selectedYear: YearType;
+  setSelectedYear: React.Dispatch<React.SetStateAction<YearType>>;
+  studentSchedule: ScheduleType;
+  addCourse: (course: Course, term: Term) => void;
+}
+
+export default function FourYearPlan({ selectedYear, setSelectedYear, studentSchedule, addCourse, }: FourYearPlanProps) { 
 
 
-  const terms = ['Fall', 'Winter', 'Spring', 'Summer'];
-  const yearLabels = ['Year 1', 'Year 2', 'Year 3', 'Year 4'];
+  const terms: Term[] = ['Fall', 'Winter', 'Spring', 'Summer'];
+  const yearLabels: YearType[] = ['Year 1', 'Year 2', 'Year 3', 'Year 4'];
+
 
   return (
     <div className="h-full w-full p-4 bg-white rounded-lg shadow-lg flex flex-col">
@@ -16,7 +26,7 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
         <select 
         className="p-2 border border-gray-300 rounded-lg" 
         value={selectedYear}
-        onChange={(e) => setSelectedYear(e.target.value)}
+        onChange={(e) => setSelectedYear(e.target.value as YearType)}
         >
           {yearLabels.map((year, index) => (
             <option key={index} value={year}>
@@ -39,7 +49,7 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
               if (!json) return;
               const droppedCourse = JSON.parse(json);
               // now we just update the schedule
-              addCourse(droppedCourse, term);
+              addCourse(droppedCourse, term as Term);
             }}
             className="flex flex-col justify-start p-4 border border-gray-300 rounded-lg bg-[var(--off-white)]"
           >

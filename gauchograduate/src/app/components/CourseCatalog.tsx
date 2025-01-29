@@ -2,7 +2,13 @@
 
 import React, { useState } from 'react';
 
-export default function CourseCatalog({courses}) {
+import { Course, Term } from "./coursetypes";
+
+interface CourseCatalogProps {
+    courses: Course[];
+}
+
+export default function CourseCatalog({courses}: CourseCatalogProps) {
 
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedDepartment, setSelectedDepartment] = useState('');
@@ -17,7 +23,7 @@ export default function CourseCatalog({courses}) {
     {
         const searchMatches = course.title.toLowerCase().includes(searchQuery.toLowerCase());
         const deptMatches = selectedDepartment === '' || course.department === selectedDepartment;
-        const termMatches = selectedTerm === '' || course.term.includes(selectedTerm);
+        const termMatches = selectedTerm === '' || course.term.includes(selectedTerm as Term);
         return searchMatches && deptMatches && termMatches;
     }
     );
