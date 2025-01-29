@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 
-export default function FourYearPlan({ selectedYear, setSelectedYear, studentSchedule }) { 
+export default function FourYearPlan({ selectedYear, setSelectedYear, studentSchedule, addCourse, }) { 
 
 
   const terms = ['Fall', 'Winter', 'Spring', 'Summer'];
@@ -31,6 +31,16 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
         {terms.map((term) => (
           <div
             key={term}
+            onDragOver={(e) => e.preventDefault()}
+            onDrop={(e) => {
+              e.preventDefault();
+              // gets the course thats dropped
+              const json = e.dataTransfer.getData("application/json");
+              if (!json) return;
+              const droppedCourse = JSON.parse(json);
+              // now we just update the schedule
+              addCourse(droppedCourse, term);
+            }}
             className="flex flex-col justify-start p-4 border border-gray-300 rounded-lg bg-[var(--off-white)]"
           >
             <h3 className="text-lg font-semibold text-center mb-4">{term}</h3>

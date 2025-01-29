@@ -73,6 +73,12 @@ export default function CourseCatalog({courses}) {
             <div
                 key={course.course_id}
                 className="p-4 border border-gray-300 rounded-xl bg-white flex flex-col gap-5"
+                draggable={true}
+                onDragStart={(e) => {
+                    // using this link: https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer
+                    // basically converts to JSON string to compare in four-year-plan
+                    e.dataTransfer.setData("application/json", JSON.stringify(course));
+                  }}
             >
                 <div>
                     <h3 className="text-lg font-bold">{course.course_id}</h3>

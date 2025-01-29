@@ -58,11 +58,11 @@ export default function TestPage() {
     const [selectedYear, setSelectedYear] = useState("Year 1");
 
     const addCourse = (course, term) => {
-        setStudentSchedule((prevPlan) => ({
-            ...prevPlan,
+        setStudentSchedule((prevSchedule) => ({
+            ...prevSchedule,
             [selectedYear]: {
-              ...prevPlan[selectedYear],
-              [term]: [...prevPlan[selectedYear][term], course]
+              ...prevSchedule[selectedYear],
+              [term]: [...prevSchedule[selectedYear][term], course]
             }
         }));
     };
@@ -80,6 +80,7 @@ export default function TestPage() {
           selectedYear={selectedYear} 
           setSelectedYear={setSelectedYear} 
           studentSchedule={studentSchedule} 
+          addCourse={addCourse}
           />
         </div>
 
