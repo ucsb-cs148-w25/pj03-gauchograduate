@@ -30,3 +30,6 @@ Continue:
 
 ## Experiment/Change
 - experiment: have items done by Wednesday (in class) for tasks due Friday
+- Result: We have more features than we needed to for the MVP, we are all on the same page for Wednesday and have more things to discuss + help each other with.
+- Decision: keep the change because it has been productive for us so far
+
