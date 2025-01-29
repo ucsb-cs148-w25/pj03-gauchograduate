@@ -11,12 +11,9 @@ type ResponseData = {
     description: string
     subject_area: string
     units: number | null
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    general_ed: any
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    prerequisites: any
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    unlocks: any
+    general_ed: string[]
+    prerequisites: number[]
+    unlocks: number[]
   }
 }
 
@@ -40,12 +37,19 @@ export default async function handler(
       return res.status(400).json({ error: 'Course ID must be a number' })
     }
 
-    const course = await prisma.course.findUnique({
+    const data = await prisma.course.findUnique({
       where: { id: courseId }
     })
 
-    if (!course) {
+    if (!data) {
       return res.status(404).json({ error: 'Course not found' })
+    }
+
+    const course = {
+      ...data,
+      general_ed: Array.isArray(data.general_ed) ? data.general_ed as string[] : [],
+      prerequisites: Array.isArray(data.prerequisites) ? data.prerequisites as number[] : [],
+      unlocks: Array.isArray(data.unlocks) ? data.unlocks as number[] : [],
     }
 
     res.json({ course })

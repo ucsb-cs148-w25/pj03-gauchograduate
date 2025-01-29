@@ -11,12 +11,9 @@ type ResponseData = {
     description: string
     subject_area: string
     units: number | null
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    general_ed: any
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    prerequisites: any
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    unlocks: any
+    general_ed: string[]
+    prerequisites: number[]
+    unlocks: number[]
   }[]
 }
 
@@ -48,12 +45,19 @@ export default async function handler(
   }
 
   try {
-    const courses = await prisma.course.findMany({
+    const data = await prisma.course.findMany({
       where: whereClause,
       orderBy: {
         course_id: 'asc'
       }
     })
+
+    const courses = data.map(course => ({
+      ...course,
+      general_ed: Array.isArray(course.general_ed) ? course.general_ed as string[] : [],
+      prerequisites: Array.isArray(course.prerequisites) ? course.prerequisites as number[] : [],
+      unlocks: Array.isArray(course.unlocks) ? course.unlocks as number[] : [],
+    }));
 
     res.json({ courses })
   } catch (error) {
