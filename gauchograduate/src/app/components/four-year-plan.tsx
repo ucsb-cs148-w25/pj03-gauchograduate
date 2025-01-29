@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 
-export default function FourYearPlan({selectedYear, setSelectedYear}) { 
+export default function FourYearPlan({ selectedYear, setSelectedYear, studentSchedule }) { 
 
 
   const terms = ['Fall', 'Winter', 'Spring', 'Summer'];
@@ -36,16 +36,17 @@ export default function FourYearPlan({selectedYear, setSelectedYear}) {
             <h3 className="text-lg font-semibold text-center mb-4">{term}</h3>
             <div className="flex flex-col gap-4">
               {/* Example Course Cards */}
-              <div className="p-4 bg-[var(--pale-orange)] rounded-lg">
-                <p className="font-bold text-sm">CMPSC16</p>
-                <p className="text-xs">Problem Solving with Computers I</p>
-                <p className="text-xs text-gray-500">4 credits</p>
-              </div>
-              <div className="p-4 bg-[var(--pale-pink)] rounded-lg">
-                <p className="font-bold text-sm">ASAM1</p>
-                <p className="text-xs">Intro to Asian American Studies</p>
-                <p className="text-xs text-gray-500">4 credits</p>
-              </div>
+              {studentSchedule[selectedYear][term].length > 0 ? (
+                studentSchedule[selectedYear][term].map((course) => (
+                  <div key={course.course_id} className="p-4 bg-[var(--pale-orange)] rounded-lg">
+                    <p className="font-bold text-sm">{course.course_id}</p>
+                    <p className="text-xs">{course.title}</p>
+                    <p className="text-xs text-gray-500">{course.units} credits</p>
+                  </div>
+                ))
+              ) : (
+                <p className="text-xs text-gray-500 text-center">No courses</p>
+              )}
             </div>
             {term === 'Summer' && (
               <div className="mt-4 p-4 border-dashed border-2 border-gray-300 rounded-lg text-center text-sm text-gray-400">
