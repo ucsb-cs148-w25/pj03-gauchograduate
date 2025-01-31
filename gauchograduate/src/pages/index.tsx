@@ -101,15 +101,16 @@ export default function HomePage() {
     };
 
     return (
-    <div className="min-h-screen flex flex-col">
+    <div className="h-screen flex flex-col">
       <Navbar />
-      <div className="flex flex-1 flex-col md:flex-row">
+      <div className="flex flex-1 flex-col md:flex-row overflow-hidden">
         {/* Course Catalog */}
-        <div className="w-full md:w-1/5 bg-[var(--off-white)] p-4">
+        <div className="w-full md:w-1/5 bg-[var(--off-white)] p-4 overflow-y-scroll">
         <CourseCatalog courses={courses}/>
         </div>
+
         {/* 4-year calendar */}
-        <div className="w-full md:w-3/5 bg-white p-4 rounded-md shadow">
+        <div className="w-full md:w-3/5 bg-white p-4 rounded-md shadow overflow-y-scroll">
           <FourYearPlan 
           selectedYear={selectedYear} 
           setSelectedYear={setSelectedYear} 
@@ -120,7 +121,7 @@ export default function HomePage() {
         </div>
 
         {/* Graduation Progress */}
-        <div className="w-full md:w-1/5 bg-[var(--off-white)] p-4">
+        <div className="w-full md:w-1/5 bg-[var(--off-white)] p-4 overflow-y-scroll">
           <h2 className="text-xl font-semibold">Progress Tracker</h2>
         </div>
       </div>

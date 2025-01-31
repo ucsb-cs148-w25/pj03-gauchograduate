@@ -43,7 +43,7 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
       </div>
 
       {/* Plan Table */}
-      <div className="grid grid-cols-4 gap-2 flex-grow border border-gray-300 rounded-md p-2 bg-gray-50">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-2 flex-grow border border-gray-300 rounded-md p-2 bg-gray-50">
         {Terms.map((term) => (
           <div
             key={term}
@@ -86,8 +86,8 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
             </div>
             </div>
             <div className="mt-6 text-right">
-              <p className="font-semibold">
-                Total units: <span className="font-normal"> {studentSchedule[selectedYear][term].reduce((sum, course) => sum + course.units, 0)}</span>
+              <p className="font-light">
+                Total units: <span className="font-light"> {studentSchedule[selectedYear][term].reduce((sum, course) => sum + course.units, 0)}</span>
               </p>
             </div>
           </div>
