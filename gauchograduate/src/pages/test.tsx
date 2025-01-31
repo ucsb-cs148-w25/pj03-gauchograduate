@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState } from "react";
 import CourseCatalog from "../app/components/CourseCatalog";
 import FourYearPlan from "../app/components/four-year-plan";
@@ -51,10 +52,10 @@ export default function TestPage() {
     ];
 
     const defaultSchedule: ScheduleType = {
-        "Year 1": { Fall: [courses[0]], Winter: [], Spring: [courses[1]], Summer: [] },
-        "Year 2": { Fall: [], Winter: [courses[2]], Spring: [], Summer: [] },
-        "Year 3": { Fall: [], Winter: [], Spring: [], Summer: [courses[0]] },
-        "Year 4": { Fall: [], Winter: [], Spring: [courses[0]], Summer: [] },
+        "Year 1": { Fall: [], Winter: [], Spring: [], Summer: [] },
+        "Year 2": { Fall: [], Winter: [], Spring: [], Summer: [] },
+        "Year 3": { Fall: [], Winter: [], Spring: [], Summer: [] },
+        "Year 4": { Fall: [], Winter: [], Spring: [], Summer: [] },
     };
 
     const [studentSchedule, setStudentSchedule] = useState<ScheduleType>(defaultSchedule);
@@ -81,14 +82,16 @@ export default function TestPage() {
     };
 
     return (
-    <div className="min-h-screen flex flex-col">
+    <div className="h-screen flex flex-col">
       <Navbar />
-      <div className="flex flex-1">
+      <div className="flex flex-1 flex-col md:flex-row overflow-hidden">
         {/* Course Catalog */}
+        <div className="w-full md:w-1/5 bg-[var(--off-white)] p-4 overflow-y-scroll">
         <CourseCatalog courses={courses}/>
+        </div>
 
         {/* 4-year calendar */}
-        <div className="w-2/4 bg-white p-4 rounded-md shadow">
+        <div className="w-full md:w-3/5 bg-white p-4 rounded-md shadow overflow-y-scroll">
           <FourYearPlan 
           selectedYear={selectedYear} 
           setSelectedYear={setSelectedYear} 
@@ -99,8 +102,8 @@ export default function TestPage() {
         </div>
 
         {/* Graduation Progress */}
-        <div className="w-1/4 bg-[var(--off-white)] p-4">
-          <h2 className="text-xl font-semibold">Progress Tracker</h2>
+        <div className="w-full md:w-1/5 bg-[var(--off-white)] p-4 overflow-y-scroll">
+          {/* add the progress bar here */}
         </div>
       </div>
     </div>
