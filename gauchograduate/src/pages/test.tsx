@@ -4,6 +4,8 @@ import { useState } from "react";
 import CourseCatalog from "../app/components/CourseCatalog";
 import FourYearPlan from "../app/components/four-year-plan";
 import Navbar from "../app/components/Navbar";
+import ProgressTracker from "../app/components/ProgressTracker";
+
 
 import { Course, ScheduleType, YearType, Term } from "../app/components/coursetypes";
 
@@ -51,10 +53,10 @@ export default function TestPage() {
     ];
 
     const defaultSchedule: ScheduleType = {
-        "Year 1": { Fall: [courses[0]], Winter: [], Spring: [courses[1]], Summer: [] },
-        "Year 2": { Fall: [], Winter: [courses[2]], Spring: [], Summer: [] },
-        "Year 3": { Fall: [], Winter: [], Spring: [], Summer: [courses[0]] },
-        "Year 4": { Fall: [], Winter: [], Spring: [courses[0]], Summer: [] },
+        "Year 1": { Fall: [], Winter: [], Spring: [], Summer: [] },
+        "Year 2": { Fall: [], Winter: [], Spring: [], Summer: [] },
+        "Year 3": { Fall: [], Winter: [], Spring: [], Summer: [] },
+        "Year 4": { Fall: [], Winter: [], Spring: [], Summer: [] },
     };
 
     const [studentSchedule, setStudentSchedule] = useState<ScheduleType>(defaultSchedule);
@@ -100,7 +102,7 @@ export default function TestPage() {
 
         {/* Graduation Progress */}
         <div className="w-1/4 bg-[var(--off-white)] p-4">
-          <h2 className="text-xl font-semibold">Progress Tracker</h2>
+          <ProgressTracker studentSchedule={studentSchedule} courses={courses} />
         </div>
       </div>
     </div>
