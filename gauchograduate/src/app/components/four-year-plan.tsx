@@ -56,10 +56,12 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
             <div className="flex flex-col gap-4">
               {/* Course cards */}
               {studentSchedule[selectedYear][term].length > 0 ? (
-                studentSchedule[selectedYear][term].map((course) => (
+                studentSchedule[selectedYear][term].map((course) => {
+                  const bgColorClass = course.generalEd === "Core" ? "bg-[var(--pale-orange)]" : "bg-[var(--pale-pink)]"; 
+                  return (
                   <div 
                     key={course.course_id} 
-                    className="relative p-4 bg-[var(--pale-orange)] rounded-lg group whitespace-normal break-words"
+                    className={`relative p-4 ${bgColorClass} rounded-lg group whitespace-normal break-words`}
                   >
           
                     {/* course details */}
@@ -76,7 +78,7 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
                     </button>
 
                   </div>
-                ))
+                );})
               ) : (
                 <p className="text-xs text-gray-500 text-center">No courses</p>
               )}
