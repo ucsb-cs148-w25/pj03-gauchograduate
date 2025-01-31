@@ -29,7 +29,7 @@ export default function CourseCatalog({courses}: CourseCatalogProps) {
     );
 
     return (
-        <div className="w-1/4 bg-[var(--off-white)] p-4">
+        <div className="h-full w-full flex flex-col">
         <h2 className="text-xl font-semibold mb-4">Course Catalog</h2>
 
         {/* Search Bar */}
@@ -41,7 +41,7 @@ export default function CourseCatalog({courses}: CourseCatalogProps) {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <div className = "flex flex-row space-x-2">
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-0 mb-2">
             {/* Department Selector */}
             <select
             className="p-2 border border-gray-300 rounded-lg mb-4"
@@ -75,7 +75,9 @@ export default function CourseCatalog({courses}: CourseCatalogProps) {
         {/* Course Cards */}
         <div className="space-y-4">
             {/* uses filtered courses from the search query */}
-            {filteredCourses.map((course) => (
+            {filteredCourses.map((course) => {
+            const bgColorClass = course.generalEd === "Core" ? "bg-[var(--pale-orange)]" : "bg-[var(--pale-pink)]";
+            return (
             <div
                 key={course.course_id}
                 className="p-4 border border-gray-300 rounded-xl bg-white flex flex-col gap-5"
@@ -91,14 +93,14 @@ export default function CourseCatalog({courses}: CourseCatalogProps) {
                     <p className="text-sm">{course.title}</p>
                 </div>
                             
-                <div className= "flex gap-10 justify-between items-center">
+                <div className= "flex flex-wrap gap-2 justify-between items-center">
                     <p className="text-sm text-gray-500">{course.units} units</p>
-                    <div className="p-1.5 border border-[var(--pale-pink)] rounded-lg bg-[var(--pale-pink)]">
+                    <div className={`p-1.5 border border-[var(--pale-pink)] rounded-lg ${bgColorClass}`}>
                     <p className="text-xs text-gray-500">{course.generalEd}</p>
                     </div>
                 </div>
             </div>
-            ))}
+            );})}
             {/* equivalent to an if then statement*/}
             {filteredCourses.length === 0 && (
             <p className="text-sm text-gray-500">No courses found.</p>
