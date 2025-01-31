@@ -5,6 +5,8 @@ import { useState } from "react";
 import CourseCatalog from "../app/components/CourseCatalog";
 import FourYearPlan from "../app/components/four-year-plan";
 import Navbar from "../app/components/Navbar";
+import ProgressTracker from "../app/components/ProgressTracker";
+
 
 import { Course, ScheduleType, YearType, Term } from "../app/components/coursetypes";
 
@@ -102,8 +104,8 @@ export default function TestPage() {
         </div>
 
         {/* Graduation Progress */}
-        <div className="w-full md:w-1/5 bg-[var(--off-white)] p-4 overflow-y-scroll">
-          {/* add the progress bar here */}
+        <div className="w-1/4 bg-[var(--off-white)] p-4">
+          <ProgressTracker studentSchedule={studentSchedule} courses={courses} />
         </div>
       </div>
     </div>
