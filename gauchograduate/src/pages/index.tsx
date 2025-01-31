@@ -122,7 +122,7 @@ export default function HomePage() {
 
         {/* Graduation Progress */}
         <div className="w-full md:w-1/5 bg-[var(--off-white)] p-4 overflow-y-scroll">
-          <h2 className="text-xl font-semibold">Progress Tracker</h2>
+          {/* add the progress bar here */}
         </div>
       </div>
     </div>

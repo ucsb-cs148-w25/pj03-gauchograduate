@@ -27,7 +27,7 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
   return (
     <div className="h-full w-full p-4 bg-white rounded-lg shadow-lg flex flex-col">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-2xl font-bold">Four-Year Plan</h2>
+        <h2 className="text-xl font-semibold">Four-Year Plan</h2>
         {/* Year Selector */}
         <select 
         className="p-2 border border-gray-300 rounded-lg" 
