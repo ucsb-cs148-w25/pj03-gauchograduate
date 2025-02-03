@@ -5,8 +5,7 @@ type ResponseData = {
   error?: string
   course?: {
     id: number
-    quarter: string
-    course_id: string
+    gold_id: string
     title: string
     description: string
     subject_area: string
