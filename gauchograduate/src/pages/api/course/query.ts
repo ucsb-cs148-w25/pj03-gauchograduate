@@ -5,8 +5,7 @@ type ResponseData = {
   error?: string
   courses?: {
     id: number
-    quarter: string
-    course_id: string
+    gold_id: string
     title: string
     description: string
     subject_area: string
@@ -29,7 +28,7 @@ export default async function handler(
 
   // We want to prevent large blank queries that will slow down the database
   if (!quarter && !subject) {
-    return res.status(400).json({ error: 'At least one of quarter or subject is required' })
+    return res.status(400).json({ error: 'At least one of quarter or subject is a required query parameter' })
   }
 
   // Build where clause based on provided parameters
@@ -37,6 +36,8 @@ export default async function handler(
   const whereClause: any = {}
   
   if (quarter && typeof quarter === 'string') {
+    res.status(500).json({ error: 'Quarter querying not implemented yet' })
+    return
     whereClause.quarter = quarter
   }
   
@@ -48,7 +49,7 @@ export default async function handler(
     const data = await prisma.course.findMany({
       where: whereClause,
       orderBy: {
-        course_id: 'asc'
+        id: 'asc'
       }
     })
 
