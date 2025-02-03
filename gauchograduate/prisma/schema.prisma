@@ -69,7 +69,7 @@ model Course {
   prerequisites Json
   unlocks       Json
 
-  offerings Offering[]
+  offerings     Offering[]
 }
 
 model Offering {
