@@ -60,8 +60,7 @@ model VerificationToken {
 
 model Course {
   id            Int @id @default(autoincrement())
-  quarter       String
-  course_id     String
+  gold_id       String
   title         String
   description   String
   subject_area  String
@@ -69,4 +68,15 @@ model Course {
   general_ed    Json
   prerequisites Json
   unlocks       Json
+
+  offerings Offering[]
+}
+
+model Offering {
+  id            Int @id @default(autoincrement())
+  quarter       String
+  year          String
+  courseId      Int
+
+  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
 }
