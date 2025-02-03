@@ -12,5 +12,6 @@
 | Mon 01/27 | Taedon Reth       | Led 1/17 Stand-up. Checked-in and assigned tasks       |
 | Wed 01/29 | Kade Williams     | Led daily stand up on 1/29.                            |
 | Fri 01/31 | Chiran Arumugam   | Ensured daily stand up on 1/31 went smoothly.          |
-| Fri 01/31 | Taedon Reth       | Will lead second retro                                 | 
+| Fri 01/31 | Taedon Reth       | Will lead second retro                                 |
+| Mon 02/03 | Vala Bahrami      | Led 2/3 Stand-up. Checked-in and reviewed tasks.       | 
 ```
