@@ -36,9 +36,40 @@ export default async function handler(
   const whereClause: any = {}
   
   if (quarter && typeof quarter === 'string') {
-    res.status(500).json({ error: 'Quarter querying not implemented yet' })
-    return
-    whereClause.quarter = quarter
+    // Quarter format is YYYYQ where Q is the quarter number
+    if (quarter.length !== 5) {
+      return res.status(400).json({ error: 'Quarter must be in YYYYQ format (e.g. 20241)' });
+    }
+
+    const year = quarter.slice(0, 4);
+    const quarterNum = quarter.slice(4);
+
+    // Find courses that have offerings in the specified quarter and year
+    return await prisma.course.findMany({
+      where: {
+        offerings: {
+          some: {
+            quarter: quarterNum,
+            year: year
+          }
+        },
+        ...(subject && typeof subject === 'string' ? { subject_area: subject } : {})
+      },
+      orderBy: {
+        id: 'asc'
+      }
+    }).then(data => {
+      const courses = data.map(course => ({
+        ...course,
+        general_ed: Array.isArray(course.general_ed) ? course.general_ed as string[] : [],
+        prerequisites: Array.isArray(course.prerequisites) ? course.prerequisites as number[] : [],
+        unlocks: Array.isArray(course.unlocks) ? course.unlocks as number[] : [],
+      }));
+      res.json({ courses });
+    }).catch(error => {
+      console.error('Error querying courses:', error);
+      res.status(500).json({ error: 'Failed to query courses' });
+    });
   }
   
   if (subject && typeof subject === 'string') {
