@@ -42,7 +42,7 @@ export default async function handler(
     })
     res.json({ user: updatedUser })
   } catch (error) {
-    console.error('Error updating user major:', error)
-    res.status(500).json({ error: "Failed to update user major" })
+    console.error('Error updating user profile:', error)
+    res.status(500).json({ error: "Failed to update user profile" })
   }
 }

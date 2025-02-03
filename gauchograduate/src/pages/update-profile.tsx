@@ -27,7 +27,7 @@ export default function UpdateMajor() {
     setMessage('');
 
     try {
-      const response = await fetch('/api/user/update-major', {
+      const response = await fetch('/api/user/update-profile', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ major }),
@@ -41,7 +41,7 @@ export default function UpdateMajor() {
       setMessage('Major updated successfully!');
     } catch (error) {
       console.log(error);
-      setMessage('Failed to update major. Please try again.');
+      setMessage('Failed to update profile. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -58,7 +58,7 @@ export default function UpdateMajor() {
       
       <div className="flex-1 flex items-center justify-center">
         <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md mx-4">
-          <h1 className="text-2xl font-bold text-center mb-6">Update Your Major</h1>
+          <h1 className="text-2xl font-bold text-center mb-6">Update Your Profile</h1>
           
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
