@@ -37,7 +37,10 @@ export default async function handler(
     }
 
     const data = await prisma.course.findUnique({
-      where: { id: courseId }
+      where: { id: courseId },
+      include: {
+        offerings: true
+      }
     })
 
     if (!data) {
@@ -49,6 +52,7 @@ export default async function handler(
       general_ed: Array.isArray(data.general_ed) ? data.general_ed as string[] : [],
       prerequisites: Array.isArray(data.prerequisites) ? data.prerequisites as number[] : [],
       unlocks: Array.isArray(data.unlocks) ? data.unlocks as number[] : [],
+      offerings: data.offerings
     }
 
     res.json({ course })
