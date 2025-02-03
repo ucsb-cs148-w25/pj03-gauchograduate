@@ -1,113 +1,150 @@
 'use client';
 
 
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import CourseCatalog from "../app/components/CourseCatalog";
 import FourYearPlan from "../app/components/four-year-plan";
 import Navbar from "../app/components/Navbar";
 import ProgressTracker from "../app/components/ProgressTracker";
 
 
+
+
 import { Course, ScheduleType, YearType, Term } from "../app/components/coursetypes";
+
+
+const termToQuarter: { [key in Term]: string } = {
+Fall: "20241",
+Winter: "20242",
+Spring: "20243",
+Summer: "20244",
+};
+
+
+async function fetchAndSetCourses(quarter: string, setCourses: (courses: Course[]) => void) {
+try {
+const response = await fetch(`https://thingproxy.freeboard.io/fetch/https://gauchograduate.vercel.app/api/course/query?quarter=${quarter}`);
+
+
+if (!response.ok) {
+throw new Error(`Failed to fetch courses. Status: ${response.status}`);
+}
+
+
+const data = await response.json();
+console.log(`API Response for quarter ${quarter}:`, data);
+
+
+if (!data || !data.courses || !Array.isArray(data.courses)) {
+console.error("Unexpected API structure", data);
+return;
+}
+
+
+const formattedCourses: Course[] = data.courses.map((course: any) => ({
+course_id: course.gold_id.trim(),
+title: course.title,
+description: course.description,
+subjectArea: course.subject_area,
+department: course.subject_area,
+units: course.units,
+generalEd: course.general_ed || [],
+prerequisites: course.prerequisites || [],
+unlocks: course.unlocks || [],
+term: []
+}));
+
+
+const sortedCourses = formattedCourses.sort((a, b) => a.course_id.localeCompare(b.course_id));
+
+
+console.log(`Formatted and Sorted Courses for quarter ${quarter}:`, sortedCourses);
+
+
+setCourses(sortedCourses);
+} catch (error) {
+console.error("Error fetching courses:", error);
+}
+}
+
+
 
 
 export default function TestPage() {
 
-    // a couple testing courses for now, need other members to facilitate back-end logic
-    const courses: Course[] = [
-        {
-            course_id: "CMPSC 16",
-            title: "Problem Solving with Computers I",
-            description: "Fundamental building blocks for solving problems using computers. Topics include basic computer organization and programming constructs: memory CPU, binary arithmetic, variables, expressions, statements, conditionals, iteration, functions, parameters, recursion, primitive and composite data types, and basic operating system and debugging tools.",
-            subjectArea: "Computer Science",
-            units: 4,
-            generalEd: "Core",
-            prerequisites: [],
-            unlocks: ["CMPSC 24"],
-            department: "CMPSC",
-            term: ["Fall", "Winter"]
-        },
-        {
-            course_id: "ASAM 1",
-            title: "Introduction to Asian American History, 1850-Present",
-            description: "Historical survey of Asian Americans in the United States from 1850 to the present. Topics include: Immigration patterns, settlement and employment, race and gender relations, community development, and transnational connections.",
-            subjectArea: "Asian American Studies",
-            units: 4,
-            generalEd: "Gen Ed",
-            prerequisites: [],
-            unlocks: [],
-            department: "ASAM",
-            term: ["Spring"],
-        },
-        {
-            course_id: "CMPSC 24",
-            title: "Problem Solving with Computers II",
-            description: "Intermediate building blocks for solving problems using computers. Topics include intermediate object-oriented programming, data structures, object-oriented design, algorithms for manipulating these data structures, and their run-time analyses. Data structures introduced include stacks, queues, lists, trees, and sets.",
-            subjectArea: "Computer Science",
-            units: 4,
-            generalEd: "Core",
-            prerequisites: ["CMPSC 16 (grade C or better)", "Mathematics 3B or 2B (grade C or better, may be taken concurrently)"],
-            unlocks: [],
-            department: "CMPSC",
-            term: ["Winter", "Spring"]
-        } 
-    ];
 
-    const defaultSchedule: ScheduleType = {
-        "Year 1": { Fall: [], Winter: [], Spring: [], Summer: [] },
-        "Year 2": { Fall: [], Winter: [], Spring: [], Summer: [] },
-        "Year 3": { Fall: [], Winter: [], Spring: [], Summer: [] },
-        "Year 4": { Fall: [], Winter: [], Spring: [], Summer: [] },
-    };
+const [courses, setCourses] = useState<Course[]>([]);
+const [selectedTerm, setSelectedTerm] = useState<Term>("Fall"); // Default to Fall
 
-    const [studentSchedule, setStudentSchedule] = useState<ScheduleType>(defaultSchedule);
-    const [selectedYear, setSelectedYear] = useState<YearType>("Year 1");
 
-    const addCourse = (course: Course, term: Term) => {
-        setStudentSchedule((prevSchedule) => ({
-            ...prevSchedule,
-            [selectedYear]: {
-              ...prevSchedule[selectedYear],
-              [term]: [...prevSchedule[selectedYear][term], course]
-            }
-        }));
-    };
+useEffect(() => {
+console.log(`Fetching courses for selected term: ${selectedTerm}`);
+fetchAndSetCourses(termToQuarter[selectedTerm], setCourses);
+}, [selectedTerm]);
 
-    const removeCourse = (course: Course, term: Term) => {
-        setStudentSchedule((prevSchedule) => ({
-            ...prevSchedule,
-            [selectedYear]: {
-                ...prevSchedule[selectedYear],
-                [term]: prevSchedule[selectedYear][term].filter((c) => c.course_id !== course.course_id),
-            },
-        }));
-    };
 
-    return (
-    <div className="h-screen flex flex-col">
-      <Navbar />
-      <div className="flex flex-1 flex-col md:flex-row overflow-hidden">
-        {/* Course Catalog */}
-        <div className="w-full md:w-1/5 bg-[var(--off-white)] p-4 overflow-y-scroll">
-        <CourseCatalog courses={courses}/>
-        </div>
+const defaultSchedule: ScheduleType = {
+"Year 1": { Fall: [], Winter: [], Spring: [], Summer: [] },
+"Year 2": { Fall: [], Winter: [], Spring: [], Summer: [] },
+"Year 3": { Fall: [], Winter: [], Spring: [], Summer: [] },
+"Year 4": { Fall: [], Winter: [], Spring: [], Summer: [] },
+};
 
-        {/* 4-year calendar */}
-        <div className="w-full md:w-3/5 bg-white p-4 rounded-md shadow overflow-y-scroll">
-          <FourYearPlan 
-          selectedYear={selectedYear} 
-          setSelectedYear={setSelectedYear} 
-          studentSchedule={studentSchedule} 
-          addCourse={addCourse}
-          removeCourse={removeCourse}
-          />
-        </div>
 
-        {/* Graduation Progress */}
-        <div className="w-1/4 bg-[var(--off-white)] p-4">
-          <ProgressTracker studentSchedule={studentSchedule} courses={courses} />
-        </div>
-      </div>
-    </div>
-  );
+const [studentSchedule, setStudentSchedule] = useState<ScheduleType>(defaultSchedule);
+const [selectedYear, setSelectedYear] = useState<YearType>("Year 1");
+
+
+const addCourse = (course: Course, term: Term) => {
+setStudentSchedule((prevSchedule) => ({
+...prevSchedule,
+[selectedYear]: {
+...prevSchedule[selectedYear],
+[term]: [...prevSchedule[selectedYear][term], course]
+}
+}));
+};
+
+
+const removeCourse = (course: Course, term: Term) => {
+setStudentSchedule((prevSchedule) => ({
+...prevSchedule,
+[selectedYear]: {
+...prevSchedule[selectedYear],
+[term]: prevSchedule[selectedYear][term].filter((c) => c.course_id !== course.course_id),
+},
+}));
+};
+
+
+return (
+<div className="h-screen flex flex-col">
+<Navbar />
+<div className="flex flex-1 flex-col md:flex-row overflow-hidden">
+{/* Course Catalog */}
+<div className="w-full md:w-1/5 bg-[var(--off-white)] p-4 overflow-y-scroll">
+<CourseCatalog courses={courses} selectedTerm={selectedTerm} setSelectedTerm={setSelectedTerm}/>
+</div>
+
+
+{/* 4-year calendar */}
+<div className="w-full md:w-3/5 bg-white p-4 rounded-md shadow overflow-y-scroll">
+<FourYearPlan
+selectedYear={selectedYear}
+setSelectedYear={setSelectedYear}
+studentSchedule={studentSchedule}
+addCourse={addCourse}
+removeCourse={removeCourse}
+/>
+</div>
+
+
+{/* Graduation Progress */}
+<div className="w-1/4 bg-[var(--off-white)] p-4">
+<ProgressTracker studentSchedule={studentSchedule} courses={courses} />
+</div>
+</div>
+</div>
+);
 }
