@@ -12,7 +12,7 @@ export interface Course {
   description: string;
   subjectArea: string;
   units: number;
-  generalEd: string;
+  generalEd: string[];
   prerequisites: string[];
   unlocks: string[];
   department: string;

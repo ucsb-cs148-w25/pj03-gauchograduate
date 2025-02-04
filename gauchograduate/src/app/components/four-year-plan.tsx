@@ -20,8 +20,12 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
     const json = e.dataTransfer.getData("application/json");
     if (!json) return;
     const droppedCourse = JSON.parse(json);
+    const { originTerm, ...course } = droppedCourse;
+    if (originTerm && originTerm !== term) {
+      removeCourse(course, originTerm);
+    }
     // now we just update the schedule
-    addCourse(droppedCourse, term as Term);
+    addCourse(course, term as Term);
   }
 
   return (
@@ -57,10 +61,15 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
               {/* Course cards */}
               {studentSchedule[selectedYear][term].length > 0 ? (
                 studentSchedule[selectedYear][term].map((course) => {
-                  const bgColorClass = course.generalEd === "Core" ? "bg-[var(--pale-orange)]" : "bg-[var(--pale-pink)]"; 
+                  const bgColorClass = course.generalEd.length === 0  ? "bg-[var(--pale-orange)]" : "bg-[var(--pale-pink)]"; 
                   return (
                   <div 
-                    key={course.course_id} 
+                    key={course.course_id}
+                    draggable = {true}
+                    onDragStart={(e) => {
+                      const courseData = { ...course, originTerm: term };
+                      e.dataTransfer.setData("application/json", JSON.stringify(courseData));
+                    }}
                     className={`relative p-4 ${bgColorClass} rounded-lg group whitespace-normal break-words`}
                   >
           

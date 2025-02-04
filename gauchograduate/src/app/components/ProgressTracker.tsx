@@ -82,7 +82,7 @@ const ProgressTracker = ({ studentSchedule, courses }: ProgressTrackerProps) => 
   );
 
   return (
-    <div className="p-4 bg-white rounded-md shadow-md">
+    <div className="h-full p-4 bg-white rounded-md shadow-md">
       <h2 className="text-xl font-semibold mb-4">Graduation Progress</h2>
 
       {/* Circular Progress Bar for Overall Progress */}
@@ -142,10 +142,3 @@ const ProgressTracker = ({ studentSchedule, courses }: ProgressTrackerProps) => 
 };
 
 export default ProgressTracker;
-
-
-
-
-
-
-
