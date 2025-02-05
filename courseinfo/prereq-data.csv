@@ -1,0 +1,2457 @@
+gold_id,prerequisites,unlocks
+CHEM 1A,No Prerequisites,"CHEM 1B, CHEM 2AL, CHEM CS 110, CHEM 6AL, CHEM 193, CHEM CS 11B"
+CHEM 1BL,CHEM 1A or 2A or 3A with a minimum grade of C-; CHEM 1B or 2B or 3B (may betaken concurrently).,None
+CHEM 1AL,Chemistry 1A or 2A or 3A (may be taken concurrently).,None
+CHEM 1B,"CHEM 1A, CHEM 2A or CHEM 3A with a minimum grade of C-.","CHEM CS 11C, CHEM 1C, CHEM CS 110, CHEM 2BL, CHEM 3C, CHEM 6AL"
+CHEM 1C,"CHEM 1B, CHEM 2B or CHEM 3B with a minimum grade of C-.","CHEM CS 110, CHEM 6AL, CHEM 109A, CHEM 193, EARTH 124I, EARTH 163"
+CHEM 1CL,Chemistry 1B or 2B or 3B with a minimum grade of C-; Chemistry 1C or 2C or 3C (may be taken concurrently).,None
+CHEM 6AL,"Chemistry 1AL or 2AC, 1BL or 2BC, and 1CL or 2CC, or Chemistry 2AL and 2BL; 109A or 109AH or 130A with a minimum grade of a C-; and Chemistry 109B or 109BH or 130B (may be taken concurrently).",None
+CHEM 6BL,Chemistry 6AL and 109A or 109AH or 130A with a minimum grade of C-; and Chemistry 109B or 109BH or 130B.,None
+CHEM 99,Consent of instructor.,None
+CHEM 109B,"Chemistry 130A, 109A or 109AH with a minimum grade of C-.","CHEM 6AL, CHEM 6BH, CHEM 6BL, CHEM 6CH, CHEM 6CL, CHEM 109C"
+CHEM 109C,Chemistry 130B or 109B or 109BH with a minimum grade of C-.,"CHEM 6CH, CHEM 6CL, CHEM 127, CHEM 132, CHEM 129, CHEM 142A"
+CHEM 123,Chemistry 1A-B.,None
+CHEM 150,Chemistry 1A-B-C or 2A-B-C.,"CHEM 118, CHEM 116AL, CHEM 153"
+ECON 1,No Prerequisites,"ECON 2, ECON 10A, ECON 96"
+ECON 3A,No Prerequisites,ECON 3B
+ECON 3AH,Concurrent with Econ 3A.,None
+ECON 3B,Economics 3A.,"ECON 136A, ECON 137A, ECON 138A, ECON 185, ECON 189"
+ECON 3BH,Concurrent with Econ 3B.,None
+ECON 5,"Math 34A-B or Math 2A-B or 3A-B; Math 34B or 2B or 3B can be taken simultaneously. Course cannot be used to satisfy any Actuarial Science, Financial Math & Statistics or Statistical Science major or minor requirements.","ECON 100B, ECON 101, ECON 136A, ECON 137A, ECON 138A, ECON 140A"
+ECON 9,No Prerequisites,None
+ECON 2,Economics 1,"ECON 10A, ECON 96"
+ECON 10A,"Economics 1 and 2; Mathematics 34A-B, 2A-B, or 3A-B.","ECON 114B, ECON 191VC, ECON 100B, ECON 101, ECON 107B, ECON 136A"
+ECON 100B,"Economics 10A or 100A; and, Economics 5 or PSTAT 109 or PSTAT 120A.","ECON 106, ECON 134A, ECON 135, ECON 157, ECON 171, ECON 187"
+ECON 101,"Economics 10A or 100A; and, Economics 5 or PSTAT 109 or PSTAT 120A.","ECON 135, ECON 130, ECON 180, ECON 181"
+ECON 106,Economics 100B or 104B.,None
+ECON 107B,Economics 10A.,None
+ECON 112A,Economics 10A,None
+ECON 114A,Economics 10A or 104A.,None
+ECON 118,Economics 136C,ECON 118H
+ECON 93,No Prerequisites,None
+ECON 96,Approval by the Department based on performance in Economics 1 and 2.,None
+ECON 107A,Economics 10A,None
+ECON 116A,Economics 100B or 104B and 140A.,None
+ECON 114B,Economics 10A or 104A,None
+ECON 134A,"Economics 100B or 104B, and 140A.",ECON 134C
+ECON 135,Economics 100B and 101.,None
+ECON 136A,"Economics 3B; and, Economics 10A or 100A; and, Economics 5 or PSTAT 109 or PSTAT 120A.","ECON 136AH, ECON 136B, ECON 136C, ECON 139, WRIT 107A"
+ECON 136C,Economics 136A-B.,"ECON 118, ECON 136CH"
+ECON 137A,"Economics 3B; and, Economics 10A or 100A; and, Economics 5 or PSTAT 109 or PSTAT 120A.","ECON 137AH, ECON 137B"
+ECON 140A,"Economics 10A or 100A; and, Economics 5 or PSTAT 109 or PSTAT 120A.","ECON 134A, ECON 140B, ECON 116A, ECON 170, ECON 117A, ECON 174"
+ECON 140B,Economics 140A.,ECON 196B
+ECON 150A,Economics 10A.,None
+ECON 193,No Prerequisites,None
+BMSE 199,Upper-division standing; consent of instructor and department.,None
+ECON 199,Upper-division standing in the major; 3.0 UD major GPA and 3.0 GPA in preceding 3 quarters; completion of 2 upper-division courses in Economics; consent of department and instructor.,None
+ECON 298,Masters level standing in Department of Economics.,None
+ECON 596,Graduate standing and consent of instructor.,None
+PHYS 5,Physics 4 with a grade of C- or better.,"ECE 136C, PHYS 5L, PHYS 13CL, PHYS 110A, PHYS 129L, PHYS 133"
+PHYS 6A,Mathematics 2A or 3A or 34A (may be taken concurrently) or AP Math AB Exam score of 3 or better.,"EARTH 100, CHEM 112A, CHEM 113A, EARTH 113, EARTH 135, EARTH 133"
+PHYS 6AL,Concurrent enrollment in Physics 6A.,None
+PHYS 4,Physics 3 with a grade of C- or better.,"CHEM 112A, CHEM 113A, PHYS 4L, PHYS 5L, ECE 132, PHYS 5"
+PHYS 4L,Physics 4 or 24 (may be taken concurrently).,"CHEM 112A, CHEM 113A"
+PHYS 5L,"Physics 4 or 24; and, Physics 5 or 25 (may be taken concurrently).","ECE 136C, ECE 136A, ECE 136B"
+PHYS CS 5,Consent of Instructor,None
+PHYS 6B,Physics 6A with a minimum grade of C-.,"EARTH 100, CHEM 112A, CHEM 113A, EARTH 135, EARTH 136, MCDB 108C"
+PHYS 6BL,Concurrent enrollment in Physics 6B.,None
+PHYS 3,Physics 2 with a grade of C- or better; Mathematics 2A-B or 3A-B (AP Math BC Exam score of 3 or better) and 4A.,"EARTH 100, BIOE 120A, BIOE 220A, CHEM 112A, CHEM 113A, PHYS 4"
+PHYS 3L,Physics 3 or 23 (may be taken concurrently).,"CHEM 112A, CHEM 113A, ME 6"
+PHYS 6C,Physics 6B with a minimum grade of C-.,"EARTH 100, CHEM 112A, CHEM 113A, EARTH 135, EARTH 136, MCDB 108C"
+PHYS 6CL,Concurrent enrollment in Physics 6C.,None
+MATH 2A,Qualifying score on the Mathematics Placement Exam.,"CH E 10, CHEM 112A, CHEM 113A, ENV S 30, EEMB 146, PHYS 3"
+MATH 3A,Qualifying score on the Mathematics Placement Exam.,"CH E 10, CHEM 112A, CHEM 113A, EARTH 113, EARTH 124IG, EARTH 135"
+MATH 3B,Mathematics 3A with a minimum grade of C.,"CH E 10, CHEM 112A, CHEM 113A, EARTH 113, EARTH 124IG, EARTH 135"
+MATH 4A,Math 2B or 3B or 3BI with a minimum grade of C.,"PSTATW 120A, PSTATW 160A, CH E 10, EARTH 135, EARTH 133, EARTH 136"
+MATH 4B,Math 4A or Math 4AI with a minimum grade of C.,"CH E 120A, CH E 132B, CHEM 115A, EARTH 135, EARTH 133, EARTH 136"
+MATH 6A,Mathematics 4A (or 4AI) with a letter grade of C or better.,"PSTATW 120A, CH E 120A, CH E 132B, CHEM 112A, CHEM 113A, EARTH 135"
+MATH 6B,"Mathematics 4B (or 4BI) and Mathematics 6A, each with a minimum grade of C.","BIOE 120A, BIOE 220A, CH E 120A, CH E 132B, CH E 154, ECE 134"
+MATH 8,Mathematics 4A or 4AI or 4B or 4BI or 6A or 6B with a grade of B or better.,"PSTATW 160A, MATH 102A, MATH 113, MATH 119A"
+MATH 34A,No Prerequisites,"EARTH 113, ENV S 30, ENV S 113, EEMB 146"
+MATH 34B,Mathematics 2A or 3A or 34A with a grade of C or better.,"EARTH 113, ENV S 113, EEMB 146"
+MATH 101B,Math 101A with a minimum grade of C.,None
+MATH 2B,Mathematics 2A with a minimum grade of C.,"CH E 10, CHEM 112A, CHEM 113A, EARTH 168, ENV S 168, EEMB 146"
+MATH 104A,"Mathematics 4B or 4BI, 6A, and 6B; and, Math 8 or PSTAT 8, and Math 117 and, Computer Science 5AA-ZZ or 10 or 8 or 16 or Engineering 3, each with a grade of C or above.",None
+MATH 104B,Math 104A with a minimum grade of C.,None
+PSY 1,Students are required to be subjects in low-risk psychological experiments or completion of a short paper.,"ANTH 151T, PSY 10A, PSY 102, PSY 106, PSY 108, PSY 183"
+PSY 10A,"Psychology 1 with a minimum grade of C-; Psychology 5, PSTAT 5A, PSTAT 5LS, or COMM 87 with a minimum grade of C-; Math 3A, Math 34A, or Math 2A with a minimum grade of C-; Chem 1A-B or 2A-B; Students are required to be subjects in low-risk psychological experiments or completion of a short paper.",PSY 10B
+PSY 10B,Psychology 10A with a minimum grade of C-; Students are required to be subjects in low-risk psychological experiments or completion of a short paper.,None
+PSY 99,Consent of department and instructor; completion of at least one quarter of Psychology 99P.,None
+PSY 99P,Consent of department and instuctor.,"PSY 99, PSY 190L, PSY 199"
+PSY 102,PSY 1 or upper-division standing.,"PSY 120L, PSY 150L, PSY 153, PSY 139"
+PSY 105,PSY 1 or upper-division standing.,"PSY 120L, PSY 145, PSY 156L, PSY 142, PSY 151"
+PSY 106,PSY 1 or upper-division standing.,"PSY 111, PSY 120L, PSY 122, PSY 137, PSY 153, PSY 163TS"
+PSY 108,PSY 1 or upper-division standing.,"PSY 126, PSY 120L, PSY 117L, PSY 118L, PSY 120"
+PSY 109,No Prerequisites,None
+PSY 111,"PSY 3 or PSY 106; open to Psychological & Brain Sciences, Biopsychology andInterdisciplinary Studies majors only.","PSY 126, PSY 162, PSY 132, PSY 134, PSY 137, PSY 138L"
+PSY 111L,"PSY 111; open to Psychological & Brain Sciences, Biopsychology, and Interdisciplinary Studies majors only.",None
+PSY 116,"Open to Psychological & Brain Sciences, Biopsychology, and Interdisciplinary Studies majors only.",None
+PSY 117,"Open to Psychological & Brain Sciences, Biopsychology, and Interdisciplinary Studies majors only.",PSY 117L
+PSY 117L,"PSY 108 or 117; open to Psychological & Brain Sciences, Biopsychology, and Interdisciplinary Studies majors only.",None
+PSY 118L,"PSY 108, 123, 129, or 130; open to Psychological & Brain Sciences, Biopsychology, and Interdisciplinary Studies majors only.",None
+PSY 120L,"PSY 102, 105, 106, or 108; open to Psychological & Brain Sciences, Biopsychology, and Interdisciplinary Studies majors only.",None
+PSY 124,"Open to Psychological & Brain Sciences, Biopsychology, and Interdisciplinary Studies majors only.",None
+PSY 136,"PSY 106 or PSY 111; open to Psychological & Brain Sciences, Biopsychology, and Interdisciplinary Studies majors only.",None
+PSY 143,"Open to Psychological & Brain Sciences, Biopsychology, and Interdisciplinary Studies majors only.",PSY 155L
+PSY 152,"Open to Psychological & Brain Sciences, Biopsychology, and Interdisciplinary Studies majors only.",None
+PSY 115,"PSY 111; open to Psychological & Brain Sciences, Biopsychology, Pharmacology, and Interdisciplinary Studies majors only.",None
+PSY 121,"Open to Psychological & Brain Sciences, Biopsychology, and Interdisciplinary Studies majors only.",None
+PSY 125,"Open to Psychological & Brain Sciences, Biopsychology, and Interdisciplinary Studies majors only.",None
+PSY 126,"PSY 108 and 111 (or MCDB 151); open to Psychological & Brain Sciences, Biopsychology, Pharmacology, and Interdisciplinary Studies majors only.",None
+PSY 129L,"PSY 129 or 110A or 130 or 110B or 131 or 132; open to Psychological & Brain Sciences, Biopsychology, and Interdisciplinary Studies majors only",None
+PSY 131,"Open to Psychological & Brain Sciences, Biopsychology, and Interdisciplinary Studies majors only.",PSY 129L
+PSY 137,"PSY 106 or PSY 111; open to Psychological & Brain Sciences, Biopsychology, Pharmacology and Interdisciplinary Studies majors only.",None
+PSY 138L,"PSY 111; open to Psychological & Brain Sciences, Biopsychology, and Interdisciplinary Studies majors only.",None
+PSY 145,"PSY 105 or 142; open to Psychological & Brain Sciences, Biopsychology, and Interdisciplinary Studies majors only.",None
+PSY 148,"Open to Psychological & Brain Sciences, Biopsychology, and Interdisciplinary Studies majors only.",None
+PSY 151,"PSY 105; open to Psychological & Brain Sciences, Biopsychology, Pharmacology, and Interdisciplinary Studies majors only.",None
+PSY 113L,"Open to Psychological & Brain Sciences, Biopsychology, and Interdisciplinary Studies majors only.",None
+PSY 122,"PSY 106; Open to Psychological & Brain Sciences, Biopsychology, and Interdisciplinary Studies majors only.",None
+PSY 133,"PSY 106 or PSY 111 or MCDB 126A or MCDB 126B or MCDB 126C; open to Psychological & Brain Sciences, Biopsychology, Pharmacology, and Interdisciplinary Studies majors only.",None
+PSY 142,"PSY 105; open to Psychological & Brain Sciences, Biopsychology, and Interdisciplinary Studies majors only.",PSY 145
+PSY 150L,"PSY 102; open to Psychological & Brain Sciences, Biopsychology, and Interdisciplinary Studies majors only.",None
+PSY 153,"PSY 102; PSY 106 or 111; open to Psychological & Brain Sciences, Biopsychology, and Interdisciplinary Studies majors only.",None
+PSY 154,"Open to Psychological & Brain Sciences, Biopsychology, and Interdisciplinary Studies majors only.",None
+PSY 155L,"PSY 143, 146, 155, or Anthropology 5; open to Psychological & Brain Sciences, Biopsychology, and Interdisciplinary Studies majors only.",None
+PSY 160MH,"Open to Psychological & Brain Sciences, Biopsychology, and Interdisciplinar",None
+PSY W 1,Students are required to be subjects in low-risk psychological experiments or completion of a short paper.,None
+PSY 98,Consent of department and instructor.,None
+PSY 160DW,"Open to Psychological & Brain Sciences, Biopsychology, and Interdisciplinary Studies majors only.",None
+PSY 160SK,"Open to Psychological & Brain Sciences, Biopsychology, and Interdisciplinar",None
+PSY 183,PSY 1 or upper-division standing.,None
+PSY 197A,"Full major status, at least 3 finalized UD PSY courses (12 units) on record, at least a 3.5 UD PSY GPA, and an agreement with a faculty mentor to supervise a research project.",PSY 197B
+PSTAT 5A,No Prerequisites,"EEMB W 146, ENV S 163A, EEMB 146, PSY 10A, SOC 205B, PSTAT 5H"
+PSTAT 5H,"Concurrent enrollment in PSTAT 5A, 5LS, 8, or 10",None
+PSTAT 5LS,No Prerequisites,None
+PSTAT 8,Mathematics 3C or 3CI or 4A or 4AI or 4B or 4BI or 5A or 5AI or 5B or 5BI or 5C or 6A or 6AI or 6B with a grade of B or better. Not open to students who have completed Math 8.,"PSTATW 160A, MATH 117, PSTAT 5H, PSTAT 160A, MATH 104A"
+PSTAT 10,Math 2B or 3B with a minimum grade of C or better.,"PSTAT 123, PSTAT 5H, PSTAT 122, PSTAT 126, PSTATW 174, PSTAT 175"
+PSTAT 100,"PSTAT 120A; CS 9 or CS 16; and Math 4A, all with letter grade C or better.",None
+PSTAT 115,PSTAT 126 with a minimum grade of C.,None
+PSTAT 120A,Math 3C or Math 4A or Math 4AI or Math 6A or Math 6AI completed with a minimum grade of C or better.,"CMPSC 130A, PSTATW 160A, ECON 100B, ECON 101, ECON 136A, ECON 137A"
+PSTAT 120B,PSTAT 120A with a grade of C or better.,"CMPSC 225, PSTAT 262DS, ECE 205, PSTAT 123, PSTAT 120C, PSTAT 122"
+PSTAT 120C,PSTAT 120B with a grade C or better.,"PSTAT 262DS, PSTAT 207A, PSTAT 220A, PSTAT 232, PSTAT 262FM, PSTAT 262MC"
+PSTAT 122,PSTAT 10 and PSTAT 120B both with a minimum grade of C or better.,PSTAT 220A
+PSTAT 126,PSTAT 10 and PSTAT 120B both with a minimum grade of C or better.,"PSTAT 115, PSTAT 131, PSTAT 177, PSTAT 127, PSTAT 197A, PSTAT 220A"
+PSTAT 127,PSTAT 126 with a minimum grade of C or better.,None
+PSTAT 130,"One upper division course in PSTAT, MATH, Computer Science or ECE.",None
+PSTAT 131,PSTAT 120A-B and PSTAT 126 with a minimum grade of C or better.,"PSTAT 134, PSTAT 135, PSTAT 234, PSTAT 235"
+PSTAT 99,No Prerequisites,None
+PSTAT 123,PSTAT 10 and PSTAT 120B both with a minimum grade of C or better.,None
+PSTAT 134,PSTAT 131 or PSTAT 231 or Computer Science 165B; and Computer Science 9 (preferred) or Computer Science16. A minimum letter grade of C or better must be earned in each course.,None
+PSTAT 135,PSTAT 131 or PSTAT 231 or Computer Science 165B; and Computer Science 9 (preferred) or Computer Science 16. A minimum letter grade of C or better must be earned in each course.,None
+PSTAT 160A,"Mathematics 4A or 4AI or 5A, Mathematics 8 or PSTAT 8, and PSTAT 120A. A minimum letter grade of C or better must be earned in each course.","PSTAT 170, PSTAT 176, PSTAT 276"
+PSTATW 120A,Math 3C or Math 4A or Math 4AI or Math 6A or Math 6AI completed with a minimum grade of C or better.,None
+PSTATW 160A,"Mathematics 4A or 4AI or 5A, Mathematics 8 or PSTAT 8, and PSTAT 120A. A minimum letter grade of C or better must be earned in each course.",None
+PSTAT 170,"PSTAT 120A-B and 160A, all completed with a minimum grade of C or better.","PSTAT 176, PSTAT 276"
+PSTAT 171,Mathematics 2B or 3B with a minimum grade of C,"PSTAT 177, PSTAT 183, PSTAT 172A"
+PSTAT 193,Upper-division standing and consent of instructor.,None
+PSTAT 194CS,Upper-division standing; consent of instructor.,None
+PSTAT 194TR,Upper-division standing; consent of instructor.,None
+CMPSC 1,Open to computer science majors only.,None
+CMPSC 5A,No Prerequisites,"CMPSC 5B, MATH 104A"
+CMPSC 5B,Computer Science 5A or Computer Science 8 or ECE 3 with a grade of C or better.,None
+CMPSC 8,No Prerequisites,"CMPSC 9, MAT 189, CMPSC 5B, GEOG 186, GEOG 286, LING 208"
+CMPSC 9,CMPSC 8 or CMPSC W8 or ENGR 3 or ENGR W3 or ECE 3 with a grade of C or better.,"PSTAT 134, PSTAT 135, PSTAT 234, PSTAT 235"
+CMPSC 16,"Mathematics 3A or 2A with a grade of C or better (may be taken concurrently), CS 8 or Engineering 3 or ECE 3 with a grade of C or better, or significant prior programming experience.","CMPSC 24, CMPSC 40, CMPSC 64, PSTAT 134, PSTAT 135, MATH 104A"
+CMPSC 24,Computer Science 16 with a grade of C or better; and Mathematics 3B or 2B with a grade of C or better (may be taken concurrently).,"CMPSC 32, CMPSC 111, CMPSC 156, CMPSC 178"
+CMPSC 32,Computer Science 24 with a grade of C or better,"CMPSC 130A, CMPSC 154, CMPSC 156, CMPSC 110, CMPSC 148, CMPSC 176A"
+CMPSC 40,Computer Science 16 with a grade of C or better and Mathematics 4A with a grade of C or better.,"CMPSC 130A, CMPSC 138, CMPSC 110, CMPSC 178"
+CMPSC 99,No Prerequisites,None
+CMPSC 110,Computer Science 40 and Computer Science 32; consent of instructor.,None
+CMPSC 111,Mathematics 4B with a grade of C or better; Mathematics 6A with a grade of C or better; Computer Science 24 with a grade of C or better.,None
+CMPSC 130A,"Computer Science 40 with a grade of C or better; Computer Science 32 with a grade of C or better; PSTAT 120A or ECE 139; open to computer science, computer engineering, and electrical engineering majors only.","CMPSC 130B, CMPSC 160, CMPSC 165A, CMPSC 165B, CMPSC 170, CMPSC 174A"
+CMPSC 130B,Computer Science 130A.,"CMPSC 134, CMPSC 174B, CMPSC 230, CMPSC 180, CMPSC 231, CMPSC 267"
+CMPSC 138,Computer Science 40 with a grade of C or better; open to Computer Science and Computer Engineering majors only.,"CMPSC 160, CMPSC 162, CMPSC 267"
+CMPSCW 8,No Prerequisites,None
+CMPSC 64,Computer Science 16 with a grade of C or better; and Mathematics 3C or 4A with a grade of C or better.,"CMPSC 154, CMPSC 160, ECE 152A"
+CMPSC 154,Computer Science 32 with a grade of C or better; Computer Science 64 with a grade of C or better.,"CMPSC 170, CMPSC 254, CMPSC 263"
+CMPSC 156,Computer Science 24 and 32 with a grade of C or better; open to Computer Science and Computer Engineering majors only.,"CMPSC 184, CMPSC 189A"
+CMPSC 160,Computer Science 64 or Electrical Engineering 154 or Electrical Engineering 154A; Computer Science 130A; and Computer Science 138; open to computer science and computer engineering majors only.,CMPSC 263
+CMPSC 165A,Computer Science 130A,None
+CMPSC 165B,Computer Science 130A.,"PSTAT 134, PSTAT 135, PSTAT 234, PSTAT 235"
+CMPSC 170,"Computer Science 130A; and, Computer Science 154 or ECE 154A (may be taken concurrently); open to computer science, computer engineering or electrical engineering majors only.","CMPSC 177, CMPSC 270, CMPSC 271"
+CMPSC 140,Mathematics 4B with a grade of C or better; Mathematics 6A with a grade of C or better; Computer Science 130A.,None
+CMPSC 148,Computer Science 32 with a grade of C or better; open to Computer Science majors only.,CMPSC 189A
+CMPSC 162,Computer Science 130A and 138; open to computer science and computer engineering majors only.,CMPSC 263
+CMPSC 176A,"CMPSC 32 with a grade of C or better; PSTAT 120A or ECE 139; open to computer science, electrical engineering, and computer engineering majors only.",CMPSC 176C
+CMPSC 178,Computer Science 24 with a grade of C or better; Computer Science 40 with a grade of C or better; and PSTAT 120A or 121A or ECE 139 or permission of instructor.,None
+CMPSC 192,Consent of instructor.,None
+CMPSC 193,Consent of instructor and department chair.,None
+CMPSC 196,"Students must: (1) have attained upper-division standing (2) have a minimum3.0 grade-point average for preceding three quarters, (3) have consent of instructor.",CMPSC 196B
+CMPSC 199,Upper-division standing; students must have completed at least two upper- division courses in computer science. May be repeated with consent of chair.,None
+SOC 1,No Prerequisites,"SOC 10, SOC 125P"
+SOC 91,Prior approval of faculty.,None
+SOC 98,Consent of instructor and department.,None
+SOC 99,Consent of instructor and department.,None
+SOC 105E,Upper-division standing.,None
+SOC 108,No Prerequisites,None
+SOC 108C,No Prerequisites,None
+SOC 108ST,No Prerequisites,None
+SOC 118C,Upper-division standing.,None
+SOC 122,Upper-division standing.,None
+SOC 126,No Prerequisites,None
+SOC 128,No Prerequisites,None
+SOC 130GR,Upper-division standing.,None
+SOC 130SG,Upper-division standing.,None
+SOC 130ST,Upper-division standing.,None
+SOC W 130SG,Upper-division standing.,None
+SOC 134,Upper-division standing.,None
+SOC 136A,Upper-division standing.,None
+SOC 142,Upper-division standing.,None
+SOC 145,Upper-division standing.,None
+SOC 146,Upper-division standing.,None
+SOC 147,Upper-division standing.,None
+SOC 149,UPPER-DIVISION STANDING.,None
+SOC 108A,Upper-division standing.,None
+SOC 108F,No Prerequisites,None
+SOC 124,Upper-division standing.,None
+SOC 130SD,Upper-division standing.,None
+SOC 131,Upper-division standing.,None
+SOC 152A,No Prerequisites,SOC 152B
+SOC 152B,Sociology 152A and consent of instructor.,None
+SOC 154A,Upper-division standing.,None
+SOC 118CW,Upper-division standing.,None
+SOC 134G,Upper-division standing.,None
+SOC 144S,Upper-division standing.,None
+SOC 10,SOC 1,None
+SOC W 155,Upper-division standing.,None
+SOC 164,No Prerequisites,None
+SOC 170,Upper-division standing.,None
+SOC 185E,Upper-division standing.,None
+SOC 185G,Upper-division standing.,None
+SOC 190A,Minimum 3.0 GPA required. Course may be repeated for a maximum of no more than 12 units.,None
+SOC 191CA,Upper-division standing; consent of instructor and department.,None
+SOC 198,Upper-division standing; completion of two prior upper-division courses in sociology.,None
+SOC 199,Upper-division standing; completion of two prior upper-division courses in sociology.,None
+SOC 199RA,Upper-division standing; completion of two prior upper-division courses in sociology; consent of instructor and department.,None
+ANTH 3,No Prerequisites,"ANTH 194, ANTH 182M, ANTH 186, ANTH 100"
+ANTH 5,No Prerequisites,"ANTH 9, ANTH 171, ANTH 103, ANTH 151T, ANTH 153T, ANTH 170"
+ANTH 99,Consent of instructor.,None
+ANTH 103,Anthropology 5.,None
+ANTH 113,"ANTH 2 or CH ST 1A, 1B, or 1C.",None
+ANTH 116A,Anthropology 2.,None
+ANTH 125,ANTH 2,None
+ANTH 126,Not open to Freshmen.,None
+ANTH 129,Upper division standing,None
+ANTH 133,No Prerequisites,None
+ANTH 147,Environmental Studies 1 or 3 or Anthropology 2,None
+ANTH 153T,Anthropology 5 or 7; not open to freshmen.,None
+ANTH 159,ANTH 2: Intro to Cultural Anth; not open to Freshmen.,None
+ANTH 170,Anthropology 5,None
+ANTH 174,Anthropology 2.,None
+ANTH 178,Consent of instructor.,None
+ANTH 182M,Anthropology 3 or 3SS or 100.,None
+ANTH 183,Consent of instructor.,None
+ANTH 190,Consent of instructor.,None
+ANTH 194,"Anthropology 3 or 3SS; and, Anthropology 100.",None
+ANTH 194P,Anthropology 100; consent of instructor.,None
+ANTH 195B,Admission to Anthropology Honors Program; consent of instructor; ANTH 195A,None
+ANTH 195C,No Prerequisites,None
+ANTH 198,Upper-division standing; completion of 2 upper-division courses in Anthropology.,None
+ANTH 2,No Prerequisites,"ANTH 102, ANTH 113, ANTH 117, ANTH 132, ANTH 115, ANTH 135"
+ANTH 106,No Prerequisites,None
+ANTH 130,Upper-division standing.,None
+ANTH 135,ANTH 2,None
+ANTH 139CH,No Prerequisites,None
+ANTH 151T,Anthropology 5 or Psychology 1.,None
+ANTH 171,"Anth 5 with a minimum grade of C; or, EEMB 2 and EEMB 3; or, MCDB 1 and MCDB 2.",None
+ANTH 176TS,Upper-division standing.,None
+ANTH 186,Anth 3,None
+ANTH 195A,Admission to Anthropology honors program; consent of instructor.,ANTH 195B
+ANTH 197DL,Upper-division standing.,None
+ANTH 197ES,Upper-division standing.,None
+ANTH 100,Anthropology 3 or 3SS.,"ANTH 194, ANTH 194P, ANTH 182M"
+ANTH 102,ANTH 2,None
+ANTH 123MG,Anthropology 9 or equivalent.,None
+ANTH 150,"ANTH 5 or ANTH 7, ANTH 9 or equivalent.",None
+ANTH 193,Juniors and Seniors only; limited to Anthropology Majors/Minors,None
+ANTH 199,Upper-division standing; completion of 2 upper-division courses in Anthropology.,None
+ANTH 3SS,No Prerequisites,None
+ANTH 109,No Prerequisites,None
+ANTH 111,Upper-division standing.,None
+ANTH 117,Anthropology 2.,None
+ANTH 138TS,Upper-division standing.,None
+ANTH 199RA,Upper-division standing; completion of 2 upper-division courses in Anthropology.,None
+ANTH 596,No Prerequisites,None
+ART 1A,No Prerequisites,"ART 100, ART 101, ART 105TD, ART 117, ART 118, ART 105PP"
+ART 1C,No Prerequisites,None
+ART 7B,No Prerequisites,"ART 100, ART 101, ART 117, ART 111PP, ART 112, ART 110"
+ART 10,No Prerequisites,ART 100
+ART 14,No Prerequisites,"ART 112, ART 110"
+ART CS 15,Consent of instructor.,None
+ART 18,No Prerequisites,"ART 117, ART 118, ART 110"
+ART 22,No Prerequisites,"ART 122PC, ART 102MM"
+ART 100,Art 10; Art 1A or 7B or Upper Division standing or Instructor Approval,None
+ART CS 101,Consent of instructor.,None
+ART 105PP,Art 12; 1A or 7C or Upper Division or Instructor Approval,None
+ART CS 112,Consent of instructor.,None
+ART 117,Art 18; 1A or 7B or Upper Division or Instructor Approval,ART 118
+ART CS 120,Consent of instructor.,None
+ART 122PC,"Art 22, 7D; 1A or Upper Division or Instructor Approval",None
+ART CS 125,Consent of instructor.,None
+ART 126,Art 1A or Upper Division,None
+ART 130,Upper-division standing.,None
+ART 136,Upper-division standing; consent of instructor.,None
+ART 189A,Art 7D and Instructor Approval.,None
+ART 192ES,Upper-division standing; consent of department.,None
+ART 196,L&S and CCS Art majors only; upper-division standing; acceptance into department honors program.,None
+ART 199,Upper-division standing; completion of two upper-division courses in Art; consent of instructor and department required.,None
+ART 199RA,Upper-division students only; consent of instructor and department.,None
+ART 7A,No Prerequisites,ART 132
+ART 12,No Prerequisites,"ART 105TD, ART 105PP, ART 106W"
+ART CS 102,Consent of instructor.,None
+ART 105TD,Art 12; 1A or 7C or Upper Division or Instructor Approval,None
+ART CS 107,Consent of instructor.,None
+ART 111PP,"Art 7B, Upper Division; Instructor Approval",None
+ART 112,Art 14; 1A or 7B or Instructor Approval,None
+ART 118,"Art 18, 117; 1A or Upper Division or Instructor Approval",None
+ART 137,Upper Division or Instructor Approval,None
+ART 177,Upper-division standing.,None
+ART 185LJ,Upper-division standing or instructor approval,None
+ART 189C,Art 7D and Instructor Approval.,None
+ART 7C,No Prerequisites,"ART 105TD, ART 105PP, ART 106W"
+ART 7D,No Prerequisites,"ART 189A, ART 189C, ART 122PC, ART 102MM"
+ART 102MM,"Art 22, 7D; 1A or Upper Division or Instructor Approval",None
+ART CS 104,Consent of instructor.,None
+ART 106W,Art 12; 1A or 7C or Upper Division or Instructor Approval,None
+ART 110,"Art 14, 18; 1A or 7B or Upper Division or Instructor Approval",None
+ART 132,Art 32; 1A or 7A or Upper Division,None
+ART 133M,Upper Division or add code.,None
+ART 189B,7D and Instructor Approval,None
+ART 192IA,Upper-division standing; consent of department.,None
+ART 125,No Prerequisites,None
+ARTHI 6F,No Prerequisites,None
+ARTHI 6K,No Prerequisites,None
+ARTHI 6L,No Prerequisites,None
+ARTHIW 6R,No Prerequisites,None
+ARTHI 109B,Not open to freshman.,None
+ARTHI 113B,Not open to freshmen.,None
+ARTHI 127A,Not open to freshmen.,None
+ARTHI 130D,Not open to freshmen.,None
+ARTHI 132J,Not open to freshmen.,None
+ARTHI 136O,Not open to freshmen.,None
+ARTHI 148C,No Prerequisites,None
+ARTHI 186P,Upper-division standing.,None
+ARTHI 187A,Upper-division standing.,None
+ARTHI 192A,Consent of instructor.,None
+ARTHI 192B,Consent of instructor.,None
+ARTHI 192C,Consent of instructor.,None
+ARTHI 192D,Consent of instructor.,None
+ARTHI 192E,Consent of instructor.,None
+ARTHI 199,Upper-division standing; two upper-division courses in art history; consent of instructor and department.,None
+ARTHI 199RA,Upper-division standing; two upper-division courses in art history; consent of instructor and department.,None
+ARTHI 265,Graduate standing.,None
+ARTHI 282A,Graduate standing.,None
+ARTHI 295,Graduate standing; consent of instructor; department approval.,None
+ARTHI 500,Graduate standing; consent of instructor; department approval.,None
+ARTHI 5A,No Prerequisites,None
+ARTHI 6C,No Prerequisites,None
+ARTHI 132E,Not open to freshmen.,None
+ARTHI 134K,Not open to freshmen.,None
+ARTHI 136C,Not open to freshmen.,None
+ARTHI 136Y,Not open to freshmen.,None
+ARTHI 141MH,No Prerequisites,None
+ARTHI 163,Upper division standing.,None
+ARTHI 187Z,Upper-division standing; art history majors only.,None
+ARTHI 200A,Graduate standing. Art History majors only.,None
+ARTHI 275B,Graduate standing.,None
+ARTHI 596,Graduate standing; consent of instructor; department approval.,None
+ARTHI 6B,No Prerequisites,None
+ARTHI 6E,No Prerequisites,None
+ARTHI 6J,No Prerequisites,None
+ARTHI 103D,Upper-division standing.,None
+ARTHI 105P,No Prerequisites,None
+ARTHI 105Q,Not open to freshmen.,None
+ARTHI 107B,Not open to freshman.,None
+ARTHI 132A,Not open to freshmen.,None
+ARTHI 136B,Not open to freshmen.,None
+ARTHI 136W,Upper-division standing; open to majors only.,None
+ARTHI 141G,No Prerequisites,None
+ARTHI 142C,Not open to freshmen.,None
+ARTHI 186SR,Upper-division standing.,None
+ARTHI 186SV,Upper-division standing.,None
+ARTHI 5B,No Prerequisites,None
+ARTHI 136I,Not open to freshmen.,None
+AS AM 2,No Prerequisites,"AS AM 199, AS AM 160, AS AM 2H, POL S 160"
+AS AM 2H,Concurrent enrollment in AS AM 2; consent of instructor.,None
+AS AM 5,No Prerequisites,None
+AS AM 100CC,No Prerequisites,None
+AS AM 100HH,No Prerequisites,None
+AS AM 118,Sophomore standing or higher.,None
+AS AM 127,Sophomore standing or higher.,None
+AS AM 128,Sophomore standing or higher.,None
+AS AM 130,Sophomore standing or higher.,None
+AS AM 186,A prior Upper Division course in Asian American Studies.,None
+AS AM 194A,"At least one course in one of these departments: Asian American Studies, Black Studies, Chicana/o Studies, Feminist Studies.",None
+AS AM 199,A lower-division Asian American Studies course and 2 upper-division courses; upper-division standing.,None
+AS AM 199RA,No Prerequisites,None
+AS AM 200,Graduate standing in the social sciences or humanities or instructor consent.,None
+AS AM 500,Appointment as a teaching assistant in an Asian American Studies course.,None
+AS AM 596,Graduate standing and consent of instructor.,None
+AS AM 7,No Prerequisites,None
+AS AM 8,No Prerequisites,None
+AS AM 9,None,None
+AS AM 71,None,None
+AS AM 100AA,No Prerequisites,None
+AS AM 111,Sophomore standing or higher.,None
+AS AM 133,Sophomore standing or higher.,None
+AS AM 136,Sophomore standing or higher.,None
+AS AM 144,Sophomore standing or higher.,None
+AS AM 151,Sophomore standing or higher.,None
+AS AM 157,Sophomore standing or higher.,None
+AS AM 160,Political Science 12 or Asian American Studies 1 or Asian American Studies 2.,None
+AS AM 184,Sophomore standing or higher.,None
+AS AM 194C,"At least one course in one of these departments: Asian American Studies, Black Studies, Chicana/o Studies, Feminist Studies.",None
+AS AM 595,No Prerequisites,None
+AS AM 1,No Prerequisites,"AS AM 1H, AS AM 160, POL S 160"
+AS AM 122,Sophomore standing or higher.,None
+AS AM 141,Upper-division standing.,None
+AS AM 154,Sophomore standing or higher.,None
+AS AM 158,Sophomore standing or higher.,None
+AS AM 165,Sophomore standing or higher.,None
+AS AM 194B,"At least one course in one of these departments: Asian American Studies, Black Studies, Chicana/o Studies, Feminist Studies.",None
+AS AM 197,"Open to students who 1) have attained upper-division standing, 2) have at least a 3.0 grade-point average for the preceding three quarters, 3) have completed at least two upper-division course in Asian American Studies.",None
+AS AMW 1,No Prerequisites,None
+AS AM 137,Sophomore standing or higher.,None
+ASTRO 1,No Prerequisites,"ASTRO 1H, ASTRO 2"
+ASTRO 1H,Honors standing. Concurrent enrollment in ASTRO 1.,None
+ASTRO 2,Astronomy 1.,None
+ASTROW 1,No Prerequisites,None
+ENGL 15,No Prerequisites,None
+BIOE 120A,"Chemistry 1B, Chemistry 1BL, Mathematics 6B, and Physics 3",BIOE 120B
+BIOE 210,"General biology, general chemistry, and differential equations",BIOE 212
+BIOE 211,"At least one undergraduate course in biochemistry/cell biology and differential equations, or consent of the instructor.",BIOE 212
+BIOE 220A,"Chem 1B/2B, Math 6B, Physics 3",None
+BIOE 225,No Prerequisites,None
+BIOE 230,No Prerequisites,None
+BIOE 230A,No Prerequisites,None
+BIOE 242,Consent of instructor.,None
+BIOE 243,"General chemistry (CHEM 1A-C or equivalent), organic chemistry (CHEM 109A oor equivalent), and introductory biology (MCDB 1A or equivalent), and, for undergraduates, consent of the instructor.",None
+BIOE 250AA,Consent of instructor.,None
+BIOE 250AB,Consent of instructor.,None
+BIOE 250AE,Consent of instructor.,None
+BIOE 299,Prior departmental approval needed.,None
+BIOE 493,Prior departmental approval.,None
+BIOE 201,No Prerequisites,None
+BIOE 241,Consent of instructor.,None
+BIOE 250AC,Consent of instructor.,None
+BIOE 258,"The course assumes an engineering background but is structured to be accessible to graduate students in life sciences who have a strong physics math background, and to engineering graduate students with basic biology knowledge.",None
+BIOE 272,No Prerequisites,None
+BIOE 274,No Prerequisites,None
+BIOE 120B,"BIOE 120A, or ENGR 120A, or consent of Instructor",None
+BIOL CS 10,Consent of instructor.,None
+BIOL CS 12,No Prerequisites,None
+CHEM 193,"Chem 1AL, 1BL, 1CL, and consent of Chem instructor.",None
+CHEM 198,"Upper-division standing in a physical science, life science, or engineering major",None
+CHEM 199,Upper-division standing in the major; completion of two upper division courses in chemistry.,None
+BIOL CS 5,No Prerequisites,None
+BIOL CS 25,None,None
+BIOL CS 30,None,None
+CHEM 196,Consent of instructor.,None
+BIOL CS 199,Consent of instructor.,None
+CHEM CS 199,Consent of instructor.,None
+BL ST 1,No Prerequisites,"BL ST 169AR, BL ST 169CR"
+BL ST 2,No Prerequisites,None
+BL ST 7,No Prerequisites,None
+BL ST 49A,No Prerequisites,None
+BL ST 99,Consent of instructor.,None
+BL ST 99RA,Consent of instructor.,None
+BL ST 100,Upper-division standing.,None
+BL ST 102,Upper-division standing.,None
+BL ST 106,Upper-division standing.,None
+BL ST 129,Upper-division standing.,None
+BL ST 143,No Prerequisites,None
+BL ST 147PL,Upper-Division Standing.,None
+BL ST 151,Upper-division standing.,None
+BL ST 154,Upper-division standing.,None
+BL ST 155,Upper-division standing.,None
+BL ST 162,Upper-division standing.,None
+BL ST 190A,Open to senior Black Studies majors who have completed most of the degree requirements.,None
+BL ST 190AH,By Department invitation only. Open to senior Black Studies majors who have completed most of the degree requirements.,None
+BL ST 191A,Upper-division standing.,None
+BL ST 197,Consent of instructor.,None
+BL ST 199,Upper-division standing and consent of instructor.,None
+BL ST 199RA,Upper-division standing and consent of instructor.,None
+BL ST 208,Graduate standing.,None
+BL ST 501,Appointment as teaching assistant in Black Studies.,None
+BL ST 49C,No Prerequisites,None
+BL ST 104,upper-division standing.,None
+BL ST 127,Upper-division standing.,None
+BL ST 137E,Upper-division standing.,None
+BL ST 152,Upper-division standing.,None
+BL ST 169CR,Black Studies 1 or 5 or History 17A or 17B or 17C or upper-division standing.,None
+BL ST 179,Upper Division Only.,None
+BL ST 180,"Upper-division standing. Two courses from BLST 1, 2, 3, 7 must be completed before enrolling in BLST 180.",None
+BL ST 190C,Open to senior Black Studies majors who have completed most of the degree requirements.,None
+BL ST 190CH,By Department invitation only. Open to senior Black Studies majors who have completed most of the degree requirements.,None
+BL ST 596,No Prerequisites,None
+BL ST 598,Consent of instructor.,None
+BL ST 3,No Prerequisites,None
+BL ST 14,No Prerequisites,None
+BL ST 49B,No Prerequisites,None
+BL ST 109,Upper-division standing.,None
+BL ST 117,Upper-division standing.,None
+BL ST 122,Upper-division standing.,None
+BL ST 125,Upper-division standing.,None
+BL ST 131,Upper-division standing.,None
+BL ST 136,Upper-division standing.,None
+BL ST 146,Upper-division standing.,None
+BL ST 153,Upper-division standing.,None
+BL ST 171,Upper-division standing.,None
+BL ST 174,Upper-division standing.,None
+BL ST 190B,Open to senior Black Studies majors who have completed most of the degree requirements.,None
+BL ST 190BH,By Department invitation only. Open to senior Black Studies majors who have completed most of the degree requirements.,None
+BL ST 126,Upper-division standing.,None
+CHIN 201,Ability to read Chinese at graduate level; consent of instructor.,None
+BMSE 210,Graduate standing; consent of instructor.,None
+BMSE 218A,No Prerequisites,None
+BMSE 222A,Consent of instructor.,None
+BMSE 224,"For first-year BMSE graduate students only. Grad students from other programs will be considered but they should seek for the approval of the teaching coordinators. Number of participants will be limited to 12 or the number of first-year BMSE students, whichever is smaller.",None
+BMSE 229,Graduate standing.,None
+BMSE 265,No Prerequisites,None
+BMSE 276A,No Prerequisites,None
+BMSE 290A,Consent of instructor.,None
+BMSE 290B,Consent of instructor.,None
+BMSE 290HW,Consent of instructor.,None
+BMSE 592,Enrollment in the BMSE Ph.D. program; open to first year graduate students only.,None
+CHIN 596,Graduate standing.,None
+BMSE 204,MCDB 108A or 218A or equivalent.,None
+BMSE 206,Consent of instructor.,None
+CHIN 220,CHIN 101B or instructor's permission,None
+BMSE 226,Graduate standing.,None
+BMSE 258,"The course assumes an engineering background but is structured to be accessible to graduate students in life sciences who have a strong physics and math background, and to engineering graduate students with basic biology knowledge.",None
+BMSE 259,Consent of instructor.,None
+CHIN 266F,No Prerequisites,None
+C LIT 30A,No Prerequisites,None
+C LIT 32,No Prerequisites,None
+C LIT 35,No Prerequisites,None
+C LIT 50A,Writing 2.,None
+C LIT 60,No prerequisites,None
+C LIT 101,Upper division standing.,None
+C LIT 102B,Spanish 25 OR Spanish 16B (may be taken concurrently).,None
+C LIT 122C,Upper Division Standing,None
+C LIT 128A,Upper-division standing.,None
+C LIT 154,Upper-division standing.,None
+C LIT 179B,Upper-division standing.,None
+C LIT 179C,Upper-division standing.,None
+C LIT 189,Upper-division standing.,None
+C LIT 191,No Prerequisites,None
+C LIT 193,Comparative Literature 170.,None
+C LIT 194I,Upper-division standing; Comparative Literature majors only; consent of department.,None
+C LIT 196H,Comparative Literature majors only.,None
+C LIT 197,Upper-division standing.,None
+C LIT 197H,Consent of instructor; honors standing.,None
+C LIT 199,Upper-division standing; completion of 2 upper-division courses in Comparative Literature.,None
+C LIT 199RA,"Upper-division standing; completion of two upper-division courses in Comparative Literature; and, consent of instructor.",None
+C LIT 200,Graduate standing.,None
+C LIT 210,No Prerequisites,None
+C LIT 591,No Prerequisites,None
+C LIT 30B,No Prerequisites,None
+C LIT 30C,No Prerequisites,None
+C LIT 30H,Honors standing.,None
+C LIT 82,No Prerequisites,None
+C LIT 102C,Upper-division standing.,None
+C LIT 108,Upper-division standing or consent of instructor.,None
+C LIT 113,Upper-division standing.,None
+C LIT 114,Upper division standing or instructor approval required,None
+C LIT 162I,"Upper Division standing and one course from the following: RGST 19, 20, 140D, 158C, 159 G-H-J-K-L-M-N-O, 160A, 161D, 169 or equivalent; or instructor approval.",None
+C LIT 163,Upper division standing.,None
+C LIT 171,No Prerequisites,None
+C LIT 186CC,Upper-division standing.,None
+C LIT 186E,Upper-division standing.,None
+C LIT 186WL,Upper-division standing.,None
+C LIT 36,No Prerequisites,None
+C LIT 50B,Writing 2.,None
+C LIT 50C,Writing 2.,None
+C LIT 134,Upper-division standing or instructor approval required,None
+C LIT 152,Upper division standing.,None
+C LIT 155,Upper division standing.,None
+C LIT 170,Upper-division standing; and completion of quarter 5 or equivalent of the language of study.,None
+C LIT 181C,No Prerequisites,None
+C LIT 186B,Upper-division standing.,None
+C LIT 186JJ,Upper-division standing.,None
+C LIT 31,No Prerequisites,None
+C LIT 33,No Prerequisites,None
+C LIT 34,Same course as French 34.,None
+C LIT 99,8 units from any Comparative Literature courses numbered 30 to 36; minimum 3.0 cumulative GPA; consent of instructor and department.,None
+C LIT 187,Upper Division Standing,None
+C LIT 190A,Writing 2 or instructor consent.,None
+CH E 5,No Prerequisites,"CH E 110A, CH E 10"
+CMPTGCS 5,Consent of Instructor,None
+CH E 10,"Chemical Engineering 5 (may be taken concurrently); Chemistry 1A-B-C or 2A-B-C; Mathematics 2A or 3A, Mathematics 2B or 3B and Mathematics 4A or 4AI","CH E 120C, CH E 140A, CH E 174, CH E 274, CH E 107, CH E 110A"
+CH E 99,Consent of instructor and undergraduate advisor.,None
+CH E 120A,Chemical Engineering 10 with a minimum grade of C- (may be taken concurrently); Mathematics 4B or 4BI; Mathematics 6A or 6AI and Mathematics 6B.,"CH E 140A, CH E 180A, CH E 120B, CH E 184A, CH E 140B, CH E 152A"
+CH E 126,Chemical Engineering 120C (may be taken concurrently).,None
+CH E 128,"Chemical Engineering 10, and 110A-B; open to Engineering majors only.","CH E 180B, CH E 184A"
+CH E 132B,Mathematics 4B or 4BI; Mathematics 6A or 6AI; Mathematics 6B and Engineering 3.,CH E 184A
+CH E 140B,"Chemical Engineering 110A-B, 120A-B and 140A.",CH E 184A
+CH E 141,Chemical Engineering 110A and 140A or consent of instructor.,None
+CH E 152A,Chemical Engineering 120A-B-C and 140A.,"CH E 152B, CH E 180B, CH E 184A"
+CH E 193,Consent of Department.,None
+CH E 196,"Upper-division standing, completion of 2 upper-division courses in Chemical Engineering; consent of the instructor.",None
+CH E 198,Consent of instructor; upper-division standing; completion of 2 upper-division courses in Chemical Engineering.,None
+CH E 210A,No Prerequisites,None
+CH E 211A,Consent of instructor.,None
+CH E 211D,Consent of instructor.,None
+CH E 222A,Consent of instructor.,None
+CH E 228,No Prerequisites,None
+CH E 230A,Consent of instructor.,CH E 230B
+CH E 241,No Prerequisites,None
+CH E 110B,Chemical Engineering 110A with a minimum grade of C-; Mathematics 4B or 4BI.,"CH E 120C, CH E 140A, CH E 184A, CH E 128, CH E 140B, CHEM 113B"
+CH E 118,Chemical Engineering 110A,None
+CH E 120C,Chemical Engineering 10 with a minimum grade of C-; Chemical Engineering 110A with minimum grade of C-; Chemical Engineering 110B (may be taken concurrently) and Chemical Engineering 120B.,"CH E 180B, CH E 184A, CH E 126, CH E 152A"
+CH E 132A,Mathematics 4B or 4BI; Mathematics 6A or 6AI.,None
+CH E 140A,Chemical Engineering 10 with minimum grade of C-; Chemical Engineering 110A with a minimum grade of C-; Chemical Engineering 110B (may be taken concurrently). Chemical Engineering 120A-B.,"CH E 146, CH E 180B, CH E 184A, CH E 140B, CH E 141, CH E 152A"
+CH E 160,Chemical Engineering 110A or Chemistry 113A or equivalent.,None
+CH E 166,"Engineering 3 and Chemical Engineering 110A and B, or consent of instructor",None
+CH E 173,Chemical Engineering 170 or Chemical Engineering 107 or MCDB 1A and consentinstructor.,None
+CH E 174,"Chemical Engineering 10, Chemical Engineering 107 or equivalent or consent of instructor.",None
+CH E 180A,Chemical Engineering 110A and 120A-B.,None
+CH E 184B,Chemical Engineering 184A.,None
+CH E 202,Consent of instructor.,None
+CH E 211C,Consent of instructor.,"CH E 226, CMPSC 216, ECE 226, ME 216"
+CH E 216B,Consent of instructor.,None
+CH E 220D,Chemical Engineering 220A-B,None
+CH E 240B,Consent of instructor.,None
+CH E 260,No Prerequisites,None
+CH E 107,Chemical Engineering 10,"CH E 174, CH E 274, CH E 173, CH E 154"
+CH E 110A,Chemical Engineering 5; Chemical Engineering 10; Mathematics 4B or 4BI.,"CH E 110B, CH E 118, CH E 120C, CH E 140A, CH E 160, CH E 180A"
+CH E 120B,Chemical Engineering 10 with minimum grade of C-; Chemical Engineering 110A with minimum grade of C- (may be taken concurrently); Chemical Engineering 120A.,"CH E 120C, CH E 140A, CH E 180A, CH E 184A, CH E 140B, CH E 152A"
+CH E 121,No Prerequisites,None
+CH E 132C,Mathematics 4B or 4BI; Mathematics 6A or 6AI and Mathematics 6B.,None
+CH E 152B,Chemical Engineering 152A.,None
+CH E 154,Chemical Engineering 170 or Chemical Engineering 107; Mathematics 4B or 4BI; Mathematics 6A or 6AI and Mathematics 6B.,None
+CH E 180B,"Chemical Engineering 120C, 128, 140A and 152A.",None
+CH E 184A,"Chemical Engineering 110A-B, 120A-B-C, 128, 132B, 140A-B, and 152A.",CH E 184B
+CH E 493,Prior departmental approval needed.,None
+CH ST 1A,No Prerequisites,"ANTH 113, CH ST 148, CH ST 110, CH ST 118, CH ST 124, CH ST 188C"
+CH ST 99,No Prerequisites,None
+CH ST 109,"CHST 1A, OR CHST 1B, OR CHST 1C, OR ANTH 2",None
+CH ST 110,Chicano Studies 1A or 1B or 1C or upper-division standing.,None
+CH ST 113,Upper-division standing.,None
+CH ST 128,Upper-division standing.,None
+CH ST 151,Department approval required to finalize registration.,None
+CH ST 180,No Prerequisites,None
+CH ST 193,Two courses in Chicana/o Studies; consent of instructor; and senior standing.,None
+CH ST 197HA,Acceptance into the Chicana and Chicano Studies honors program; senior standing; consent of department; open to Chicana and Chicano Studies majors only.,None
+CH ST 199,Upper-division standing; completion of two upper-division courses in Chicana/o Studies.,None
+CH ST 199RA,Upper-division standing; completion of 2 upper-division courses in Chicana/o Studies; consent of instructor and department.,None
+CH ST 220,No Prerequisites,None
+CH ST 251,No Prerequisites,None
+CH ST 501,No Prerequisites,None
+CH ST 502,No Prerequisites,None
+CH ST 1C,No Prerequisites,"ANTH 113, CH ST 148, CH ST 110, CH ST 118, CH ST 124, CH ST 188C"
+CH ST 101C,"Upper-division standing. At least one course in any of the these departments: Asian American Studies, Black Studies, Chicana/o Studies, or Feminist Studies",None
+CH ST 125A,Chicano Studies 1A or 1B or 1C or upper-division standing.,None
+CH ST 143,None,None
+CH ST 148,Chicano Studies 1A or 1B or 1C or upper-division standing.,None
+CH ST 178A,Upper-division standing.,None
+CH ST 191SV,No Prerequisites,None
+CH ST 192,Chicana/o Studies 1A or 1B or 1C or upper-division standing.,None
+CH ST 197HC,Chicana/o Studies 197HB; acceptance into Chicana and Chicano Studies honors program; senior standing; consent of department; open to Chicana and Chicano Studies majors only.,None
+CH ST 210,No Prerequisites,None
+CH ST 1B,No Prerequisites,"ANTH 113, CH ST 148, CH ST 110, CH ST 118, CH ST 124, CH ST 188C"
+CH ST 127,Chicano Studies 1A or 1B or 1C or upper-division standing. Concurrent enrollment in Chicano Studies 127L required.,None
+CH ST 168E,Chicano Studies 1A or 1B or 1C or upper-division standing.,None
+CH ST 181,No Prerequisites,None
+CH ST 183,Upper-division standing.,None
+CH ST 184A,Department approval required to finalize registration.,None
+CH ST 189,Upper-division standing.,None
+CH ST 191SD,No Prerequisites,None
+CH ST 191UI,No Prerequisites,None
+CH ST 197HB,Chicana/o Studies 197HA; acceptance into the Chicana and Chicano Studies honors program; senior standing; consent of department; open to Chicana and Chicano Studies majors only.,None
+CH STW 1B,No Prerequisites,None
+CH ST 161,Departmental approval required to finalize registration.,None
+CH STW 184A,Department approval required to finalize registration.,None
+CHEM CS 11A,Consent of instructor required for non-majors.,None
+CHEM CS 11C,"Consent of instructor for non-majors. CHEM 1B or CHEM 2B, or a Pass with a minimum of 3.0 units earned in CHEM CS 11B.",None
+CHEM CS 110,"Chem 1A, 1B, or 2A, 2B.  Concurrent enrollment in Chem 1C or 2C. Consent of instructor; creative studies majors only.",None
+CHEM CS 11B,"Consent of instructor for non-majors. CHEM 1A or CHEM 2A, or a Pass with a minimum of 3.0 units earned in CHEM CS 11A.",None
+CHIN 1,No Prerequisites,None
+CHIN 4,No Prerequisites,None
+CHIN 99,Minimum 3.0 cumulative GPA,None
+CHIN 101A,Upper-division standing.,CHIN 101B
+CHIN 122A,Chinese 6 or 5NH or equivalent,CHIN 122B
+CHIN 127A,Chinese 122C or equivalent.,CHIN 127B
+CHIN 138A,Upper-division standing.,None
+CHIN 146,Upper-division standing.,None
+CHIN 152,Upper division standing.,None
+CHIN 198,Upper-division standing; completion of 2 upper-division courses in Chinese.,None
+CHIN 199,Upper-division standing; completion of 2 upper-division courses in Chinese major; Minimum major GPA of 3.5 or higher,None
+CHIN 246,No Prerequisites,None
+CHIN 260,No Prerequisites,None
+BMSE 262,No Prerequisites,None
+BMSE 290BP,Consent of instructor.,None
+BMSE 290CE,Consent of instructor.,None
+BMSE 290DN,Consent of instructor.,None
+BMSE 595,Consent of instructor; graduate standing.,None
+CHIN 597,Consent of graduate adviser.,None
+CHIN 598,Graduate standing and consent of instructor.,None
+CHIN 3,No Prerequisites,None
+CHIN 3NH,Chinese 2NH,None
+CHIN 6,No Prerequisites,"CHIN 122A, CHIN 125"
+CHIN 82,No Prerequisites,None
+CHIN 99RA,Minimum 3.0 cumulative GPA,None
+CHIN 122C,Chinese 122B or equivalent,CHIN 127A
+CHIN 125,Chinese 6 or instructor approval,None
+CHIN 134K,Not open to freshmen.,None
+CHIN 140,Upper division standing.,None
+CHIN 176,upper division standing or instructor approval,None
+BMSE 201B,"MCDB 108A-B-C; and, Chemistry 113A or 142A or 142B or 142C.",None
+BMSE 202,Consent of instructor.,None
+CHIN 2,No Prerequisites,None
+CHIN 2NH,Chinese 1NH,None
+CHIN 5,No Prerequisites,None
+CHIN 122B,Chinese 122A or equivalent,CHIN 122C
+CHIN 180CM,Upper Division standing,None
+CHIN 183B,Upper-division standing or instructor approval,None
+CHIN 40,No Prerequisites,None
+CHIN W 80,No Prerequisites,None
+CHIN 103,No Prerequisites,None
+CLASS 20A,No Prerequisites,None
+CLASS 40,No Prerequisites,CLASS 40H
+CLASS 40H,Concurrent enrollment in Classics 40 and consent of instructor.,None
+CLASS 50,No Prerequisites,None
+CLASS 99,Consent of instructor and department chair.,None
+CLASS 165,No Prerequisites,None
+CLASS 195B,Must have been in residence as a Classics major for at least two full quarters. Must have a grade point average of 3.6 or better in the major. Approval of the department's chair.,None
+CLASS 198,Consent of instructor and department chair; upper-division standing; completion of 2 upper-division courses in Classics.,None
+CLASS 199,Consent of instructor and department chair; upper-division standing; completion of 2 upper-division courses in Classics.,None
+CLASS 199RA,Upper-division standing; completion of 2 upper-division courses in Classicsconsent of instructor and department.,None
+CLASS 211,Graduate standing.,None
+CLASS 231,Graduate standing.,None
+CLASS 292,Consent of instructor.,None
+CLASS 500,No Prerequisites,None
+CLASS 501,No Prerequisites,None
+CLASS 596,Written proposal approved by department chair and graduate advisor.,None
+CLASS 597,Consent of graduate advisor and chair.,None
+CLASS 598,Graduate standing and consent of instructor and graduate advisor.,None
+CLASS 20B,No Prerequisites,None
+CLASS 109,Not open to Freshmen,None
+CLASS 155,No Prerequisites,None
+CLASS 171,No Prerequisites,None
+CLASS 185,Consent of instructor and upper-division standing.,None
+CLASS 195A,Must have been in residence as a Classics major for at least one full quarter. Must have a grade point average of 3.6 or better in the major. Approval of the department's chair.,None
+CLASS 232,Graduate standing.,None
+CLASS 55,No Prerequisites,None
+CLASS 101,No Prerequisites,None
+CLASS 180B,Not open to freshmen.,None
+CLASS 36,No Prerequisites,None
+CLASS 106,No Prerequisites,None
+CLASS 196,Upper Division Standing and consent of department.,None
+CMPTGCS 1A,Consent of instructor.,None
+CMPTGCS 1L,Consent of instructor. Concurrent enrollment in Creative Studies-Computer Science 1A or 1B.,None
+CMPTGCS 20,Consent of instructor.,None
+CMPTGCS 130G,Consent of instructor.,None
+CMPTGCS 130H,Consent of instructor.,None
+CMPTGCS 1B,Consent of instructor.,None
+CMPTGCS 2,Consent of instructor.,None
+CMPTGCS 10,Consent of instructor.,None
+CNCSP 97,No Prerequisites,None
+CNCSP 99,No Prerequisites,None
+CNCSP 99RA,No Prerequisites,None
+CNCSP 101,Consent of instructor.,None
+CNCSP 102,Consent of instructor.,None
+CNCSP 114,No Prerequisites,None
+CNCSP 197,Consent of instructor.,None
+CNCSP 199,Consent of instructor.,None
+CNCSP 199RA,Consent of instructor.,None
+CNCSP 201,No Prerequisites,None
+CNCSP 209A,Consent of instructor.,None
+CNCSP 200,Consent of instructor.,None
+CNCSP 217,No Prerequisites,None
+CNCSP 225,Consent of instructor.,None
+CNCSP 112,Consent of instructor.,None
+CNCSP 132,No Prerequisites,None
+CNCSP 110,Consent of instructor.,None
+CNCSP 271A,Limited to CCSP students only; consent of instructor.,None
+COMM 1,No Prerequisites,None
+COMM 87,No Prerequisites,"PSY 10A, GEOG 172"
+COMM 88,No Prerequisites,None
+COMM 89,No Prerequisites,None
+COMM 99RA,"Open to Communication and Pre-Communication Majors only, or other majors by exception based on faculty member request.",None
+COMM 104,Not open to freshmen.,None
+COMM 106,Not open to Freshmen.,None
+COMM 111,Not open to Freshmen.,None
+COMM 121,Not open to freshmen.,None
+COMM 122,Not open to Freshmen.,None
+COMM 123,Not open to freshmen.,None
+COMM 127,Not Open to Freshman,None
+COMM 128,Not open to freshmen.,None
+COMM 129,open to communication and interdisciplinary studies majors only.,None
+COMM 130,Not open to freshmen.,None
+COMM 136,Not open to Freshmen.,None
+COMM 137,Not open to freshmen.,None
+COMM 142,No Prerequisites,None
+COMM W 146,No Prerequisites,None
+COMM 154,Not open to freshmen.,None
+COMM 155,Not open to Freshmen.,None
+COMM 160JG,Not open to freshmen.,None
+COMM 101,Not open to Freshmen.,None
+COMM 102,Not open to freshmen.,None
+COMM W 107,Not open to Freshmen.,None
+COMM 108,Not open to freshmen.,None
+COMM 114,Not open to Freshmen.,None
+COMM 144,Not open to freshmen.,None
+COMM 152,Not open to Freshmen,None
+COMM 153,Not open to Freshmen.,None
+COMM 160DM,Not open to freshmen.,None
+COMM 160OD,Not open to freshmen.,None
+COMM 168,Not open to freshmen.,None
+COMM 175SX,Senior-standing; Communication and interdisciplinary studies majors only.,None
+COMM 117,Not open to Freshmen.,None
+COMM 118,Not open to Freshmen.,None
+COMM 124,Not open to freshmen.,None
+COMM 132,Not open to freshmen.,None
+COMM 138,Not open to Freshmen.,None
+COMM 139,Not open to freshmen.,None
+COMM 148,Not Open to Freshman,None
+COMM 150,Not open to freshmen.,None
+COMM 160OH,Not open to freshmen.,None
+COMM 160WB,Not open to freshmen.,None
+COMM 169,Not open to Freshmen.,None
+COMM 175GW,Senior-standing; Communication and interdisciplinary studies majors only.,None
+COMM 175PF,Senior-standing; consent of instructor; communication and interdisciplinary studies majors only.,None
+COMM W 113,Not open to Freshmen.,None
+COMM 133,Not open to freshmen.,None
+COMM 151,Not open to freshmen.,None
+DANCE 42D,No Prerequisites,None
+DANCE 43B,No Prerequisites,None
+DANCE 45,No Prerequisites,None
+DANCE 47A,Audition.,None
+DANCE 47D,Dance 47C.,None
+DANCE 51,Dance 56C; dance majors only.,"DANCE 163, DANCE 167B, DANCE 151A, DANCE 50, DANCE 167A"
+DANCE 56A,Audition.,None
+DANCE 56D,Dance 56C.,None
+DANCE 82BX,No Prerequisites,None
+DANCE 82C,No Prerequisites,None
+DANCE 82JZ,No Prerequisites,None
+DANCE 82MX,No Prerequisites,None
+DANCE 99,Consent of instructor and department; completion of lower-division dance history course.,None
+DANCE 143A,Permission of instructor.,None
+DANCE 145C,Upper-division standing.,None
+DANCE 147A,Dance 47F.,None
+DANCE 147D,Dance 147C.,DANCE 147E
+DANCE 149,Audition.,None
+DANCE 151A,Dance 50 and Dance 51,"DANCE 167B, DANCE 151B, DANCE 167A"
+DANCE 156A,Dance 56F.,None
+DANCE 156D,Dance 156C.,None
+DANCE 165,Upper-division or permission of instructor.,None
+DANCE 182BX,Upper-division standing.,None
+DANCE 182C,Upper-division standing.,None
+DANCE 36,No Prerequisites,None
+DANCE 47C,Audition.,"DANCE 47F, DANCE 47D, DANCE 47E"
+DANCE 47F,Dance 47C.,"DANCE 147C, DANCE 164, DANCE 147A, DANCE 147B"
+DANCE 53,No Prerequisites,None
+DANCE 56C,Audition.,"DANCE 56F, DANCE 51, DANCE 56D, DANCE 56E"
+DANCE 56F,Dance 56C.,"DANCE 156C, DANCE 164, DANCE 156A, DANCE 156B"
+DANCE 82TP,No Prerequisites,None
+DANCE 142M,Upper-division standing.,None
+DANCE 147C,Dance 47F.,DANCE 147D
+DANCE 147F,Dance 147E.,None
+DANCE 151C,Thtr 23D,"DANCE 191, DANCE 186"
+DANCE 156C,Dance 56F.,"DANCE 156F, DANCE 156D, DANCE 156E"
+DANCE 156F,Dance 156C.,None
+DANCE 167B,"DANCE 50, DANCE 51, DANCE 151A, DANCE 167A",None
+DANCE 182JZ,Upper-division standing.,None
+DANCE 182MX,Upper-division standing.,None
+DANCE 182TP,Upper-division standing.,None
+DANCE 42E,No Prerequisites,None
+DANCE 46,No Prerequisites,None
+DANCE 47B,Audition.,None
+DANCE 47E,Dance 47C.,None
+DANCE 50,Dance 51,"DANCE 167B, DANCE 151A, DANCE 167A"
+DANCE 56B,Audition.,None
+DANCE 56E,Dance 56C.,None
+DANCE 82AR,No Prerequisites,None
+DANCE 82FL,No Prerequisites,None
+DANCE 94,Lower-division standing.,None
+DANCE 145W,Upper-division standing.,None
+DANCE 147B,Dance 47F.,None
+DANCE 147E,Dance 147D.,DANCE 147F
+DANCE 151B,Dance 151A,None
+DANCE 156B,Dance 56F.,None
+DANCE 156E,Dance 156C.,None
+DANCE 163,Dance 51 or permission of instructor.,None
+DANCEW 36,No Prerequisites,None
+DANCE 82Y,No Prerequisites,None
+DANCE 147S,Upper-division standing or instructor approval.,None
+DANCE 182Y,Upper-division standing.,None
+DANCE 194,Upper-division standing.,None
+DANCE 199,Consent of instructor and department; upper-division standing; completion of 2 upper-division courses in Dance.,None
+DYNS 592,Only students in the Dynamical Neuroscience Program may register for this course. Other students interested in registering must have prior approval of the chair.,None
+EACS 4A,No Prerequisites,HIST 185T
+EACS 5,No Prerequisites,None
+EACS 99RA,minimum 3.0 cumulative GPA,None
+EACS 103A,Upper-division standing.,None
+EACS 132,Upper-division standing.,None
+EACS 196,Consent of instructor.,None
+EACS 199,Upper division standing; completion of 2 upper division EACS courses; at least one of those two courses taken with the instructor for EACS 199; GPA for those two courses 3.5 or higher.,None
+EACS 296,No Prerequisites,None
+EACS 596,No Prerequisites,None
+EACS 597,No Prerequisites,None
+EACS 598,No Prerequisites,None
+EACS 4B,No Prerequisites,HIST 185T
+EACS 99,minimum 3.0 cumulative GPA,None
+EACS 109B,Upper-division standing.,None
+EACS 3,No Prerequisites,None
+EACS 147T,Upper Division Only,None
+EACS 179,Upper-division standing.,None
+EARTH 2,No Prerequisites,None
+EARTH 4,No Prerequisites,None
+EARTH 7,No Prerequisites,None
+EARTH 10,No Prerequisites,None
+EARTH 18,No Prerequisites,None
+EARTH 20,No Prerequisites,None
+EARTH 98,Consent of instructor.,None
+EARTH 99,Consent of instructor.,None
+EARTH 104A,Earth 2; consent of department.,None
+EARTH 105,Earth 1 or 2 or 3 or 4.,None
+EARTH 106,No Prerequisites,None
+EARTH 111,Upper-division standing.,None
+EARTH 111L,Earth 111 (may be taken concurrently).,None
+EARTH 113,"Mathematics 3A-B or 34A-B; and, Physics 1 or 6A or 21; upper-division standing.",None
+EARTH 114,Earth 2; Chemistry 1A-1AL (may be taken concurrently).,None
+EARTH 124G,"Chemistry 1A; and, Geology 2, or 3, or 4, or 4S.",None
+EARTH 124IG,"Earth 2 or 4; and, Earth 114; and, Chemistry 1A; and, Math 3A-B",None
+EARTH 135,"Mathematics 3A-B-C or 3A-B and 4A-B; and Mathematics 5A or 5C or 6A (may be taken concurrently); and, Physics 1 and 2, or Physics 6A-B-C.",None
+EARTH 143,MCDB 1A & MCDB 1B & EEMB 2 & EEMB 3 (all with a minimum grade of C- or better) or Earth 3 or 30 or 111,None
+EARTH 160,No Prerequisites,None
+EARTH 160W,Earth 2,None
+EARTH 175,No Prerequisites,None
+EARTH 185,"Earth 104A, 114, and 115 (or Instructor Approval).",None
+EARTH 3,Earth 2 or 4 or 7 or 20.,None
+EARTH 11,No Prerequisites,None
+EARTH 102A,"Mathematics 3A; and, Earth 114 and 115 with a grade of C or better.",None
+EARTH 104B,Earth 114 and 103. All with a C- or better.,None
+EARTH 117,Earth 1 or 2 or Geography 3B.,None
+EARTH 122,Earth 2; and Earth 104A; and Earth 114. Field trip required.,None
+EARTH 124I,"Chemistry 1C; Mathematics 3A, Earth 2 or 3 or 4 or 4S.",None
+EARTH 133,"Earth 2; Mathematics 3A-B-C or 3A-B and 4A-B; Mathematics 5A or 5C or 6A (may be taken concurrently); Physics 1 and 2, or Physics 6AB- C. Participants should have upper-division standing or consent of instructor.",None
+EARTH 136,"Mathematics 3A-B-C or 3A-B and 4A-B; and, Mathematics 5A or 5C or 6A (may be taken concurrently); and, Physics 6A-B-C, or Physics 1 and 2.",None
+EARTH 137,Geography 3B or 4; or Earth 2,None
+EARTH 163,CHEM 1C,None
+EARTH 168,Mathematics 2B or 3B and Chemistry 1A-B-C.,None
+EARTH 187,Upper-division standing and consent of instructor.,None
+EARTH 103,Earth 104A or Earth 104G with a grade of C or better; Math 2B or 3B (may be taken concurrently); Physics 6A or 1,None
+EARTH 115,Earth 114 with a grade of C or better,None
+EARTH 121,"MCDB 1A, MCDB 1B, EEMB 2 and EEMB 3 or EARTH 2 and 3; Completion of all listed prerequisites with a grade of C- or better.",None
+EARTH 131,"Mathematics 3A-B and 4A-B; and Mathematics 6A (may be taken concurrently); and Physics 6A-B-C, or Physics 1 and 2.",None
+EARTH 134,Mathematics 2A-B or 3A-B; and Mathematics 4A-B.,None
+EARTH 158,Earth 103.,None
+EARTH 173,GEOG 3B or 4 or EARTH 2; or consent of instructor.,None
+EARTH 189,Consent of instructor.,None
+EARTH 190,Consent of instructor.,None
+EARTH 192,Proposal form must be submitted by the end of the 2nd week of the quarter. Applicant must have a minimum overall GPA of 2.70. Student that does not meet this requirement may submit a GPA waiver.,None
+EARTH 194GC,Upper-division standing; consent of instructor.,None
+EARTHW 20,N/A,None
+EARTH 123,Sophomore standing or higher,None
+EARTH 196HA,Earth Science majors only; consent of instructor; honors standing (minimum overall and major GPA of 3.2).,None
+EARTH 196HB,Earth Science majors only; consent of instructor; honors standing (minimum overall and major GPA of 3.2).,None
+EARTH 196HC,Earth Science majors only; consent of instructor.,None
+EARTH 198,Upper-division standing; consent of the instructor and the department chair,None
+EARTH 199,Upper-division standing in the major; consent of department and instructor.,None
+EARTH 199RA,Upper-division standing; consent of instructor.,None
+EARTH 503,Concurrent research assistant appointment.,None
+ECE 3,Open to EE and CMPEN majors only.,"CMPSC 9, CMPSC 5B"
+ECE 5,Open only to Electrical Engineering and Computer Engineering majors.,None
+ECE 10A,"Mathematics 2A-B or 3A-B or Mathematics 3AH-BH, and Mathematics 4A or 4AI or 3C, all with a minimum grade of C; and, Math 4B or 4BI or 5A with a minimum grade of C (may be taken concurrently); Physics 3, 7B or 23 (may betaken concurrently); open only to electrical engineering and computer engineering majors.","ECE 10B, ECE 152A, ECE 10AL, ECE 137A"
+ECE 10AL,ECE 10A (may be taken concurrently) with a C- or better grade.,None
+ECE 10C,ECE 10B with a C- or better grade.,"ECE 10CL, ECE 137B, ECE 137A"
+ECE 10CL,ECE 10C (may be taken concurrently) with a C- grade or better.,None
+ECE 15A,"Open to electrical engineering, computer engineering, and pre-computer engineering majors only.",ECE 152A
+ECE 92,Consent of instructor.,None
+ECE 94CC,Consent of instructor.,None
+ECE 96,Consent of instructor. Must have a 3.00 GPA. May be repeated for up to 12 units.,None
+ECE 122A,ECE 152A with a minimum grade of C-.,ECE 122B
+ECE 1B,Open to pre-computer engineering and computer engineering majors only.,None
+ECE 6,Open to Electrical Engineering majors only.,None
+ECE 10B,ECE 10A with a C- or better grade.,"ECE 10BL, ECE 10C, ECE 137A"
+ECE 10BL,ECE 10B (may be taken concurrently) with a C- or better grade.,None
+ECE 120B,Either ECE 120A or ECE 124B with a minimum grade of C- or better in each of the courses.,None
+ECE 122B,ECE 124A or ECE 123 or ECE 122A with a minimum grade of C-.,None
+ECE 130B,ECE 130A with a minimum grade of C- or better; open to EE and computer engineering majors only.,"ECE 148, ECE 158, ECE 146A, ECE 147A, ECE 162A, ECE 146B"
+ECE 130C,Math 4B or Math 5A recommended. Open to EE and CE majors only.,"ECE 179P, ME 179P, ECE 277"
+ECE 135,ECE 132 and 134 with a minimum grade of C- in both.,ECE 228A
+ECE 136C,"PHYS 5 and PHYS 5L, or equivalent.",None
+ECE 1A,Open to computer engineering majors only.,None
+ECE 120A,ECE 132 with a minimum grade of C-.,ECE 120B
+ECE 130A,Mathematics 4B or 5A with a minimum of grade of C; open to EE and computer engineering majors only.,"ECE 130B, ECE 148, ECE 158, ECE 146A, ECE 147A, ECE 137A"
+ECE 136B,PHYS 5/PHYS 5L or PHYS 7D/PHYS 7L or PHYS 25 or equivalent.,None
+ECE 137A,"ECE 10A-B-C and 10AL-BL-CL or 2A-B-C, 130A and 132 all with a minimum grade of C-; open to EE majors only.","ECE 137B, ECE 145A, ECE 141A, ECE 142, ECE 188A, ECE 218A"
+ECE 141A,"ME 16 & 17, ME 152A, ME 151A (may be concurrent); or, ECE 130A and 137A with a minimum grade of C- in both.","ECE 141B, ME 141B"
+ECE 144,ECE 134 with a minimum grade of C-.,"ECE 201A, ECE 228A, ECE 227A, MATRL 268A"
+ECE 192,Consent of instructor.,None
+ECE 193,Consent of department.,None
+ECE 196,"Students must: (1) have attained upper division standing, (2) have a minimu3.0 grade-point average for preceding three quarters, (3) consent of instructor.",None
+ECE 199,Consent of instructor; upper-division standing; completion of 2 upper-diviscourse in Electrical and Computer Engineering.,None
+ED 99,No Prerequisites,None
+ED 111,Consent of instructor; upper-division standing.,None
+ED 118,Consent of instructor; must be a new transfer student.,None
+ED W 119,Upper division standing.,None
+ED 122,No Prerequisites,None
+ED 123,Consent of instructor; upper-division standing.,None
+ED 124,Consent of instructor; upper-division standing.,None
+ED 125,Consent of instructor; upper-division standing.,None
+ED 130,No Prerequisites,None
+ED 139,No Prerequisites,None
+ED 150,No Prerequisites,None
+ED 173,Upper-division standing.,None
+ED 176B,Upper-division standing; consent of instructor.,None
+ED 191W,No Prerequisites,None
+ED 199,Upper-division standing; completion of 2 upper-division courses in Education; and/or consent of department.,None
+ED 199RA,Upper-division standing; completion of 2 upper-division courses in Education; and/or consent of department.,None
+ED 200A,No Prerequisites,ED 200B
+ED 201F,Consent of instructor.,None
+ED 210,No Prerequisites,None
+ED 210E,Consent of instructor.,None
+ED 212,No Prerequisites,None
+ED 214A,No Prerequisites,"ED 216A, ED 214B"
+ED 216A,"Education 214A, 214B, 214C.",None
+ED 216G,ED 216B and ED 216F.,None
+ED 20,Lower division standing.,None
+ED 120,Upper-division standing; consent of instructor.,None
+ED 126,No Prerequisites,None
+ED 128,No Prerequisites,None
+ED 131,No Prerequisites,None
+ED 135,Math 181A or ED 134 with a minimum grade of C.,None
+ED 136,Consent of instructor.,None
+ED 145,No Prerequisites,None
+ED 197,Consent of instructor.,None
+ED 200B,ED 200A,None
+ED 210D,Consent of instructor.,None
+ED 121,Upper-division standing.,None
+ED 129,No Prerequisites,None
+ED 134,Mathematics 8 with a minimum grade of C.,ED 135
+ED W 125,Consent of instructor; upper-division standing.,None
+ED 222B,Consent of instructor.,None
+ED 228A,Consent of instructor.,None
+ED 228B,Consent of instructor.,None
+ED 228L,No Prerequisites,None
+ED 229D,Concurrent enrollment in Education 229C or Education E392; consent of instructor.,None
+ED 261,Graduate Standing and enrollment in the Multiple or Single Subject Credential Program.,None
+ED 263,Admission to Single Subject Teaching Credential Program; and consent of instructor.,None
+ED 264,Graduate Standing and enrollment in the Multiple or Single Subject Credential Program.,None
+ED 268,Graduate Standing and enrollment in the Multiple or Single Subject Credential Program.,None
+EDS 220,No Prerequisites,None
+EDS 222,No Prerequisites,None
+EDS 223,No Prerequisites,None
+EDS 242,No Prerequisites,None
+EDS 296,No Prerequisites,None
+EDS 213,No Prerequisites,None
+EDS 230,No Prerequisites,None
+EDS 231,No Prerequisites,None
+EDS 411B,EDS 411A,None
+EDS 212,No Prerequisites,None
+EDS 214,No Prerequisites,None
+EDS 217,None required,None
+EDS 221,No Prerequisites,None
+EEMB 2LL,Grade of C- or better in EEMB 2 (maybe taken concurrently).,None
+EEMB 3,MCDB 1A-B and EEMB 2 with a grade of C- or better.,"ANTH 171, EEMB 159, EEMB 170, EARTH 144, EEMB 102, EEMB 103A"
+EEMB 3Z,Consent of department.,None
+EEMB 10,Consent of Instructor,None
+EEMB 11,Concurrent enrollment in Chemistry 1A or Chemistry 2A.,None
+EEMB 2,MCDB 1A with a grade of C- or better.,"ANTH 171, EEMB 159, EEMB 170, MCDB W 111, EARTH 144, EEMB 3"
+EEMB 2Z,Consent of department.,None
+EEMB 7,MCDB 6 or MCDB 1A all with a grade of C- or better,None
+EEMB 84,Lower-division standing; instructor and departmental approval required.,None
+EEMB 90A,No Prerequisites,None
+EEMB 92,No Prerequisites,None
+EEMB 96,No Prerequisites,None
+EEMB 98,Consent of instructor and department.,None
+EEMB 99,Consent of instructor and department.,None
+EEMB 111,"MCDB 1A, MCDB 1B, EEMB 2 and EEMB 3. Completion of all listed prerequisites with a grade of C- or better.",EEMB 111H
+EEMB 111H,Concurrent enrollment in EEMB 111; consent of instructor,None
+EEMB 113L,Concurrent enrollment in EEMB 113.,None
+EEMB 127,"MCDB 1A, MCDB 1B, EEMB 2 and EEMB 3. Completion of all listed prerequisites with a grade of C- or better.",EEMB 127L
+EEMB 129,"MCDB 1A, and EEMB 2 and MCDB 1B, and EEMB 3 with a grade of C or better.","MCDB 153, MCDB 118, MCDB 253, MCDB 172, MCDB 101L, MCDB 112"
+EEMB 131,"MCDB 1A, MCDB 1B, EEMB 2 and EEMB 3 or EARTH 2 and 3; Completion of all listed prerequisites with a grade of C- or better.",None
+EEMB 140,"MCDB 1A, EEMB 2 and MCDB 1B, and EEMB 3; completion of all listed prerequisites with a grade of C- or better.",EEMB 140L
+EEMB 142B,"MCDB 1A, and EEMB 2 and MCDB 1B, and EEMB 3; Completion of all listed prerequisites with a grade of C- or better.","EEMB 185, EEMB 253, EEMB 142BL, EEMB 144L, EEMB 153"
+EEMB 142BL,EEMB 142B (may be taken concurrently); Completion of all listed prerequisites with a grade of C- or better.,None
+EEMB W 22,No Prerequisites,None
+EEMB 40,No Prerequisites,None
+EEMB 120,"MCDB 1A, and EEMB 2 and MCDB 1B, and EEMB 3; Completion of all listed prerequisites with a grade of C- or better.","EEMB 253, EEMB 153"
+EEMB W 146,Mathematics 2A-B or 3A-B or 34A-B; and PSTAT 5A or PSTAT 5LS or PSTAT 109 or Math 4A or Psy 5; Completion of all listed prerequisites with a grade of C- or better.,None
+EEMB 159,MCDB 1A and MCDB 1B and EEMB 2 and EEMB 3; Completion of all listed prerequisites with a grade of C- or better.,None
+EEMB 170,"MCDB 1A, and EEMB 2 and MCDB 1B, and EEMB 3; Completion of all listed prerequisites with a grade of C- or better.",None
+EEMB 183,Upper-division standing and consent of instructor.,None
+EEMB 185,EEMB 142B or 142C; consent of instructor.,None
+EEMB 199,EEMB majors only; consent of instructor and department; upper-division standing; two upper-division courses in MCDB or EEMB.,None
+ENGL 10,Writing 2.,"ENGL 103B, ENGL 124, ENGL 184, ENGL 10S, ENGL 99, ENGL 103A"
+ENGL 10S,Concurrent enrollment in English 10; consent of instructor.,None
+ENGL 15SH,No Prerequisites,None
+ENGL 22,No Prerequisites,ENGL 22S
+ENGL 22S,Concurrent enrollment in English 22; consent of instructor.,None
+ENGL 37,No Prerequisites,None
+ENGL 40BA,No Prerequisites,None
+ENGL 99,ENGLISH 10 OR 10AC OR 10EM OR 10LC; MINIMUM 3.0 CUMULATIVE GRADE-POINT AVERAGE; AND CONSENT OF INSTRUCTOR AND DEPARTMENT.,None
+ENGL 101MM,Writing 2 or 50 or 109 or English 10 or upper-division standing.,None
+ENGL 102BA,Writing 2 or 50 or 109 or English 10 or upper-division standing.,None
+ENGL 103WT,Writing 2 or 50 or 109 or English 10 or upper-division standing.,None
+ENGL 106CW,Upper-division standing; consent of instructor.,None
+ENGL 109,Writing 2 or 50 or 109 or English 10 or upper-division standing,None
+ENGL 115,Writing 2 or 50 or 109 or English 10; upper-division standing.,None
+ENGL 122CS,Writing 2 upper-division standing.,None
+ENGL 122NE,Writing 2 upper-division standing.,None
+ENGL 131AW,Writing 2 or 50 or 109 or English 10 or upper-division standing.,None
+ENGL 134CT,Writing 2 or upper-division standing.,None
+ENGL 160,"Environmental Studies 1 or 2 or 3 or English 10; and Writing 2 or 2E or 2LKor one course from Writing 105A-Z, 107A-Z, or 109AA-ZZ.",None
+ENGL 170TL,Writing 2 or upper-division standing.,None
+ENGL 10AC,Writing 2.,None
+ENGL 10EM,Writing 2.,None
+ENGL 11,No Prerequisites,None
+ENGL 24,No Prerequisites,ENGL 24S
+ENGL 24S,Concurrent enrollment in English 24; consent of instructor.,None
+ENGL 50,No Prerequisites,ENGL 50S
+ENGL 50S,Concurrent enrollment in English 50; consent of instructor.,None
+ENGL 101ML,Writing 2 or 50 or 109 or English 10 or upper-division standing.,None
+ENGL 103A,Writing 2 or 50 or 109 or English 10 or upper-division standing.,None
+ENGL 103AS,Writing 2 or 50 or 109 or English 10 or upper-division standing.,None
+ENGL 105A,Writing 2 or upper-division standing.,None
+ENGL 128GN,Writing 2 or 50 or 109 or English 10 or upper-division standing.,None
+ENGL 134RJ,Writing 2 or upper-division standing.,None
+ENGL 150,Writing 2 or 50 or 109 or English 10 or upper-division standing.,ENGL 150S
+ENGL 150S,Writing 2 or 50 or equivalents; concurrent enrollment in English 150; upper-division standing; consent of instructor.,None
+ENGL 152B,Writing 2 or 50 or 109 or English 10 or upper-division standing.,None
+ENGL 159,"Writing 2, or 50, or 109, or English 10 or upper-division standing",None
+ENGL 165NJ,Writing 2 or upper-division standing.,None
+ENGL 192DF,Writing 2 or 50 or 109 or English 10 or upper-division standing.,None
+ENGL 23,No Prerequisites,None
+ENGL 23S,No Prerequisites,None
+ENGL 103LL,Writing 2 or 50 or 109 or English 10 or upper-division standing.,None
+ENGL 104LC,Writing 2 or 50 or 109 or English 10 or upper-division standing.,None
+ENGL 106A,Consent of instructor.,None
+ENGL 133TL,Writing 2 or upper-division standing.,None
+ENGL 134BL,Writing 2 or upper-division standing.,None
+ENGL 134NA,Writing 2 or upper-division standing.,None
+ENGL 136,Writing 2 or 50 or 109 or English 10 or upper-division standing.,None
+ENGL 146PB,Writing 2 or upper-division standing.,None
+ENGL 147VN,Writing 2 or upper-division standing.,None
+ENGL 171NH,"Writing 2, or 50, or 109, or English 10 or upper-division standing",None
+ENGL 176BC,Writing 2 or 50 or 109 or English 10 or upper-division standing.,None
+ENGL 179,Writing 2 or 50 or 109 or equivalents.,None
+ENGL 195I,Upper-division standing; English majors only; consent of department.,None
+ENGL 196,Writing 2 or upper-division standing; consent of department; successful completion of English 198H.,None
+ENGL 65AL,Writing 2 or upper-division standing.,None
+ENGL 103B,Writing 2 or 50 or 109 or English 10 or upper-division standing.,None
+ENGL 104A,Writing 2 or 50 or 109 or English 10 or upper-division standing.,None
+ENGL 122UE,Writing 2 or upper-division standing.,None
+ENGL 124,Writing 2 or 50 or 109 or English 10 or upper-division standing.,None
+ENGR 3,No Prerequisites,"CMPSC 9, CH E 132B, ECE 179P, CH E 166, ME 179P, ME 17"
+ENGR 13A,Participation in the College of Engineering INSPIRE freshmen program.,ENGR 13B
+ENGR 99,Consent of instructor.,None
+ENGR 101,Senior standing in engineering.,None
+ENGR 195A,No Prerequisites,ENGR 195B
+ENGR 199,Upper-division standing; consent of instructor.,None
+ENGR 195C,Engineering 195B,None
+ENGR 195B,Engineering 195A.,ENGR 195C
+ENGR W 3,No Prerequisites,None
+ENV S 1,No Prerequisites,"ANTH 147, ENV S 154, ENV S 1H, ENV S 101, ENV S 130A, ENV S 138"
+ENV S 1H,Concurrent enrollment in ENV S 1; consent of instructor.,None
+ENV S 30,Mathematics 34A or 3A or 2A.,None
+ENV S 40,Environmental Studies 1 or 2 or 3.,"ENV S 117, ENV S 153, ENV SW 125B, ENV S 40H, ENV S 116"
+ENV S 40H,Concurrent enrollment in Environmental Studies 40 and active member of a College Honors Program; or consent of instructor.,None
+ENV S 60,No Prerequisites,"ENV S 153, ENV S 101, ENV S 111, ENV S 130C, GEOG 149"
+ENV S 95,No Prerequisites,None
+ENV S 99,Consent of department and instructor.,None
+ENV S 101,Environmental Studies 1 or 3 and either Environmental Studies 60 or EEMB 2.,None
+ENV S 102,Not Open to Freshmen.,None
+ENV S 108O,Upper division standing.,None
+ENV S 113,"Mathematics 3A-B or 34A-B; and, Physics 1 or 6A or 21; upper-division standing.",None
+ENV S 114A,Environmental Studies 15A and 15B or Chemistry 1A-B; and Geography 3 or 4 oEarth Science 2 or 4 or 20,None
+ENV S 116,Environmental Studies 40.,None
+ENV S 129,Environmental Studies 1 or 2 or 3.,None
+ENV S 130A,Environmental Studies 1 or 3 or Anthropology 2.,None
+ENV S 133,"MCDB 1A, MCDB 1B, EEMB 2, and EEMB 3; or ENVS 1, 2, 3 and 60 or 100, and either Chem 1A, 1AL, 1B, or ENVS 15A, 15B, and 15BL. Completion of all listed prerequisites with a grade of C- or better.",None
+ENV S 136O,Not open to freshmen.,None
+ENV S 138,Environmental Studies 1 or 3 or Anthropology 2,None
+ENV S 3,No Prerequisites,"ANTH 147, ENV S 154, ENV S 163A, ENV S 101, ENV S 130A, ENV S 138"
+ENV S 3H,Concurrent enrollment in ENV S 3; Consent of instructor.,None
+ENV S 15B,Environmental Studies 15A.,"ENV S 15BL, ENV S 114A, GEOG 114A"
+ENV S 15BL,Environmental Studies 15A and 15B (Env. St. 15BL may be taken concurrently with Env. St. 15B),None
+ENV S 25,No Prerequisites,"ENV S 105, ENV S 115"
+ENV S 96,No Prerequisites,None
+ENV S 103A,"MCDB 1A, MCDB 1B, EEMB 2 and EEMB 3. Completion of all listed prerequisites with a grade of C- or better.",None
+ENV S 105,"Upper-division standing; Mathematics 2B, or 3B, or 34B, or Mathematics 34A and Environmental Studies 25.",None
+ENV S 111,MCDB 1A-1AL and EEMB 2; or MCDB 20 or EEMB 22 or Environmental Studies 2 or 60 or Geography 3 or 4 or Earth Science 2.,None
+ENV S 114B,Environmental Studies or Geography 114A.,None
+ENV S 117,Environmental Studies 40 and upper-division standing.,None
+ENV SW 125B,Environmental Studies 1 or 2 or 3; and Environmental Studies 40.,None
+ENV S 127B,Environmental Studies 127A.,None
+ENV S 2,No Prerequisites,"ENV S 2H, ENV S 153, ENV S 154, ENV S 167, GEOG 167, ENV S 160"
+ENV S 2H,Concurrent enrollment in ENV S 2; consent of instructor.,None
+ENV S 15A,No Prerequisites,"ENV S 15B, ENV S 15BL, ENV S 114A, GEOG 114A"
+ENV S 70,No Prerequisites,None
+ENV S 115,"Upper-division standing; Environmental Studies 2; and Mathematics 2B, or 3B, or 34B, or Mathematics 34A and Environmental Studies 25.",None
+ENV S 118,Upper-division standing.,None
+ENV S 122NE,Writing 2 or 50 or 109 (one course from 109 series) or English 10 or upper-division standing.,None
+ENV S 125A,Environmental Studies 1 or 2 or 3; and upper-division standing.,None
+ENV S 127A,Sophomore standing or higher.,ENV S 127B
+ENV S 130B,Environmental Studies 1 or 3 or Anthropology 2.,None
+ENV S 130C,Environmental Studies 60 or 100 or MCDB 1A and EEMB 2.,None
+ENV S 134CJ,Upper division standing.,None
+ENV S 135A,At least sophomore standing.,ENV S 135B
+ENV S 144,Mathematics 2A-2B or 3A-3B or 34A-B.,None
+ENV S 146,Upper-division standing.,None
+ENV S 149,Upper-division standing.,None
+ENV S 108W,Upper-division standing.,None
+ENV S 159,Upper-division Standing is required.,None
+ENV S 193TK,Upper-division standing.,None
+ENV S 196,Upper-division standing; consent of instructor and department.,None
+ENV S 199RA,Upper-division standing; completion of two upper-division courses in environmental studies; consent of instructor and department.,None
+ES 1- 11,Consent of coach.,None
+ES 1- 14,Consent of coach.,None
+ES 1- 15A,No Prerequisites,None
+ES 1- 15B,No Prerequisites,None
+ES 1- 15C,No Prerequisites,None
+ES 1- 17,No Prerequisites,None
+ES 1- 2,Consent of coach.,None
+ES 1- 22,Consent of coach.,None
+ES 1- 32,Consent of coach.,None
+ES 1- 33,Consent of coach.,None
+ES 1- 37,Consent of coach.,None
+ES 1- 42,Consent of coach.,None
+ES 1- 43D,No Prerequisites,None
+ES 1- 45,Consent of coach.,None
+ES 1- 47,Consent of coach.,None
+ESM 203,Geography 3 or equivalent; graduate standing in ESM.,None
+ESM 206,No Prerequisites,None
+ESM 210,No Prerequisites,None
+ESM 214,No Prerequisites,None
+ESM 216,No Prerequisites,None
+ESM 224,ESM 202 and 203.,None
+ESM 226,No Prerequisites,None
+ESM 242,ESM 204 or equivalent.,None
+ESM 245,ESM 204.,None
+ESM 257,No Prerequisites,None
+ESM 270,Environmental Science and Management 201 and 263.,None
+ESM 270P,ESM 263; Concurrent enrollment in ESM 270,None
+ESM 271,None,None
+ESM 288,No Prerequisites,None
+ESM 296,No Prerequisites,None
+ESM 298,No Prerequisites,None
+ESM 401B,ESM401A - MESM students only.,None
+ESM 204,No Prerequisites,None
+ESM 207,GRADUATE STANDING IN ESM OR CONSENT OF INSTRUCTOR.,None
+ESM 212,ESM 201.,None
+ESM 222,ESM 202.,None
+ESM 230,No Prerequisites,None
+ESM 232,Mathematics 3A-B-C or equivalent. ESM 262.,None
+ESM 239,ESM 203,None
+ESM 243,ESM 204 and ESM 241.,None
+ESM 254,"ESM 201, 203, and 202 (may be concurrent).",None
+ESM 269,No Prerequisites,None
+ESM 278,No Prerequisites,None
+ESM 279,No Prerequisites,None
+ESM 280,ESM 210,None
+ESM 282,None,None
+ESM 295B,ESM 295A: Equity & the Environment,None
+ESM 401A,Graduate standing. MESM students only.,None
+ESM 410,Completion of a Summer internship.,None
+ESS W 2,No Prerequisites,None
+ESS 3H,No Prerequisites,None
+ESS 9,No Prerequisites,None
+ESS 100,No Prerequisites,None
+ESS 106,Upper-division standing.,None
+ESS 129,No Prerequisites,None
+ESS 130,Upper-division standing.,None
+ESS 132,Upper-division standing.,None
+ESS 140,No Prerequisites,None
+ESS 160,Upper-division standing.,None
+ESS 193,Upper-division standing; consent of instructor.,None
+ESS 199,Upper-division standing; consent of instructor; completion of 2 upper- division courses in Exercise Studies.,None
+ESS 96,Consent of instructor.,None
+ESS 98,Consent of instructor.,None
+ESS 150,Upper-division standing.,None
+ESS 185,Upper-division standing; consent of instructor.,None
+ESS W 3,No Prerequisites,None
+FAMST 46,No Prerequisites,None
+FAMST 46MS,Concurrent enrollment in Film and Media Studies 46.,None
+FAMST 95,Film and Media Studies majors only.,None
+FAMST 96,Film and Media Studies 46 and 70 with a minimum grade of C.,None
+FAMST 99,Consent of instructor and department.,None
+FAMST 101B,Film and Media Studies 46 and 70 with a minimum grade of C; open to Film and Media Studies majors only.,None
+FAMST 104,Film and Media Studies 46; open to film and media majors only.,None
+FAMST 106A,"Film Studies 46; and, 102 or 104 or 107; and consent of instructor.",None
+FAMST 112,Film and Media Studies 46 or consent of instructor.,None
+FAMST 115,Film Studies 104 or 105; consent of instructor.,None
+FAMST 127,Film Studies 46 or upper-division standing.,None
+FAMST 129,Upper-division standing,None
+FAMST 151ND,Film Studies 46 or upper-division standing.,None
+FAMST 155BK,Film Studies 46.,None
+FAMST 169,Film Studies 46 or upper-division standing.,None
+FAMST 187PH,"Film studies 46 or upper-division standing, and consent of instructor.",None
+FAMST 187SD,"Film studies 46 or upper-division standing, and consent of instructor.",None
+FAMST 187ZZ,"Film studies 46 or upper-division standing, and consent of instructor.",None
+FAMST 188A,"Consent of instructor, writing sample, upper-division standing.",None
+FAMST 188TV,Upper-division standing; consent of instructor.,None
+FAMST 188WR,FAMST 188A; Upper-division standing.,None
+FAMST 189OM,Film and Media Studies 46 or 70,None
+FAMST 192DT,Film and Media 96 with a grade of C or better.,None
+FAMST 56AI,No Prerequisites.,None
+FAMST 56MR,No Prerequisites.,None
+FAMST 101C,Film and Media Studies 46 and 70 with a minimum grade of C; open to Film and Media Studies majors only.,None
+FAMST 107,Film and Media Studies 46; open to film and media majors only.,None
+FAMST 109EA,"Film Studies 46; and, consent of instructor.",None
+FAMST 118GS,Instructor Approval Required,None
+FAMST 122IT,Film and Media Studies 46 or upper-division standing.,None
+FAMST 150FT,Film Studies 46 or upper-division standing.,None
+FAMST 154PG,FAMST 46 or 70 or junior status or consent of instructor.,None
+FAMST 165EF,Film Studies 46 or upper-division standing; consent of department.,None
+FAMST 165LY,Film Studies 46 or upper-division standing; consent of department.,None
+FAMST 187DJ,"Film studies 46 or upper-division standing, and consent of instructor.",None
+FAMST 187LA,"Film studies 46 or upper-division standing, and consent of instructor.",None
+FAMST 187OC,"Film studies 46 or upper-division standing, and consent of instructor.",None
+FAMST 187SC,"Film studies 46 or upper-division standing, and consent of instructor.",None
+FAMST 188B,Film Studies 188A.,None
+FAMST 189AR,Film and Media Studies 46 or 70,None
+FAMST 189MP,Film and Media Studies 46 or 70,None
+FAMST 70,No Prerequisites,None
+FAMST 101D,Film and Media Studies 46 and 70 with a grade of C or better.,None
+FAMST 101F,FAMST 96 with a grade of C or better.,None
+FAMST 106B,"Film Studies 46; and, 102 or 104 or 107; and consent of instructor.",None
+FAMST 118LP,Upper-division standing.,None
+FAMST 125DT,No Prerequisites,None
+FAMST 155CC,Film Studies 46.,None
+FAMST 166GG,Film Studies 46.,None
+FAMST 166QH,FAMST 46.,None
+FAMST 184,Film Studies 46 or upper-division standing.,None
+FAMST 187CN,"Film studies 46 or upper-division standing, and consent of instructor.",None
+FAMST 187RW,"Film studies 46 or upper-division standing, and consent of instructor.",None
+FAMST 190PC,"Film Studies 46 or upper-division standing, and consent of instructor.",None
+FAMST 192FT,Film and Media 96 with a grade of C or better.,None
+FAMST 195I,Upper-division standing; open to film studies majors only; consent of department.,None
+FAMST 55CY,No prerequisites.,None
+FAMST 101A,Film and Media Studies 46 and 70 with a minimum grade of C; open to Film and Media Studies majors only.,None
+FAMST 109EM,"Film Studies 46; and, consent of instructor.",None
+FAMST 109EP,"Film Studies 46; and, consent of instructor.",None
+FAMST 110,No Prerequisites,None
+FAMSTW 151FA,FAMST 46,None
+FAMST 182,No Prerequisites,None
+FAMST 188SS,"Consent of instructor, writing sample, upper-division standing.",None
+FAMST 188WS,"Consent of instructor, writing sample, upper-division standing.",None
+FAMST 196,Admission to senior honors program.,None
+FAMST 199,Upper-division standing; completion of 2 upper-division courses in film studies; consent of instructor and department.,None
+FAMST 501,No Prerequisites,None
+FAMST 596,Graduate standing; consent of instructor.,None
+FEMST 20,No Prerequisites,None
+FEMST 40,No Prerequisites,None
+FEMST 60,No Prerequisites,None
+FEMST 99,One 1-4 unit Feminist Studies lower division course; consent of instructor and department chair.,None
+FEMST 121,"Feminist Studies 20, 30, 40, 50, 60, or 80.",None
+FEMST 130,Upper-division standing.,None
+FEMST 133,"Feminist Studies 20, 30, 40, 50, 60, or 80.",None
+FEMST 161,No Prerequisites,None
+FEMST 165,Feminist Studies 20 or 30 or 40 or 50 or 60 or 80.,None
+FEMST 180,Upper-division standing; open to Feminist Studies majors and minors only.,None
+FEMST 182,Upper-division standing; open to Feminist Studies majors only.,None
+FEMST 185EC,Upper-division standing.,None
+FEMST 198,Upper-division standing; completion of 2 upper-division courses in Feminist Studies.,None
+FEMST 199,Upper-division standing; completion of 2 upper-division courses in Feminist Studies.,None
+FEMST 199RA,No Prerequisites,None
+FEMST 280A,No Prerequisites,None
+FEMST 501,Teaching assistant.,None
+FEMST 594WD,No Prerequisites,None
+FEMST 596,Instructor approval; current graduate enrollment.,None
+FEMST 50,No Prerequisites,None
+FEMST 120,No Prerequisites,None
+FEMST 128,Upper-division standing.,None
+FEMST 142,No Prerequisites,None
+FEMST 144,Upper-division standing.,None
+FEMST 150,No Prerequisites,None
+FEMST 151AA,Upper-division standing.,None
+FEMST 163,Feminist Studies 80,None
+FEMST 181,Upper-division standing; open to Feminist Studies majors and minors only.,None
+FEMST 183,Upper-division standing; open to Feminist Studies majors and minors and LGBTQ Studies Minors only.,None
+FEMST 186EG,Upper-division standing.,None
+FEMST 186MF,Upper-division standing.,None
+FEMST 195HC,Feminist Studies 195HA or 195HB; upper-division standing.,None
+FEMST 220,Graduate standing.,None
+FEMST 250AI,Graduate standing.,None
+FEMST 280B,No Prerequisites,None
+FEMST 30,No Prerequisites,None
+FEMST 80,No Prerequisites,None
+FEMST 195HB,Feminist Studies 195HA; upper-division standing.,None
+FEMSTW 20,No Prerequisites,None
+FEMSTW 80,No Prerequisites,None
+FEMSTW 150,No Prerequisites,None
+FR 1,No Prerequisites,"BL ST 180, FR 2"
+FR 2,French 1.,"BL ST 180, FR 3"
+FR 3,French 2.,"BL ST 180, FR 4, FR 99"
+FR 4,French 3.,FR 5
+FR 5,French 4.,"FR 6, FR 6GS"
+FR 6,French 5.,"FR 100, FR 106, FR 116A"
+FR 50AX,Writing 2.,None
+FR 99,French 3 with a minimum grade of B.,None
+FR 100,French 6; or French 6GS; or equivalent.,"FR 101B, FR 104F, FR 111, FR 101A, FR 104E, FR 151B"
+FR 101C,French 100 or French 26 or equivalent.,"FR 147C, FR 149F, FR 149E, FR 147B"
+FR 104C,French 100 or French 26 or equivalent.,"FR 147C, FR 149F, FR 149E, FR 147B"
+FR 111,French 100.,None
+FR 147B,One course from French 101A-B-C and one course from 104A-B-C-D.,None
+FR 153D,No Prerequisites,None
+FR 189,Upper-division standing.,None
+FR 195H,Upper-division standing; 24 upper-division units in French.,None
+FR 197,Senior standing or 6 upper division courses in French.,FR 197H
+FR 197H,Concurrent enrollment in French 197; honors standing,None
+FR 6GS,French 5 or equivalent.,None
+FR 11B,French 11A or consent of instructor.,None
+FR 101B,French 100 or French 26 or equivalent.,"FR 147C, FR 149F, FR 149E, FR 147B"
+FR 104F,French 100 or French 26.,None
+FR 106,FR 6 or equivalent,None
+FR 116A,FR 6 or equivalent,None
+FR 149F,One course from French 101A-B-C and one course from 104A-B-C-D.,None
+FR 153A,Writing 2 or upper-division standing.,None
+FR 154G,No Prerequisites,None
+FR 11A,No Prerequisites,FR 11B
+FR 50BX,Writing 2.,None
+FR 50CX,Writing 2.,None
+FR 104E,French 100 or French 26.,None
+FR 149E,One course from French 101A-B-C and one course from 104A-B-C-D.,None
+FR 154J,Upper division standing.,None
+FR 154F,No Prerequisites,None
+FR 155C,No Prerequisites,None
+FR 199,Upper-division standing; completion of 2 upper-division courses in French.,None
+FR 597,Consent of graduate advisor.,None
+GEOG 3,No Prerequisites,"ENV S 167, GEOG 158, GEOG 163, GEOG 167, GEOG 175, GEOG 115A"
+GEOG 4,No Prerequisites,"EARTH 137, ENV S 167, GEOG 137, GEOG 158, GEOG 167, GEOG 175"
+GEOG 5,No Prerequisites,"GEOG 152, GEOG 153C, GEOG 185D, GEOG 117, GEOG 192, GEOG 108"
+GEOG W 12,No Prerequisites,None
+GEOG 20,No Prerequisites,GEOG 20H
+GEOG 20H,Concurrent enrollment in Geography 20.,None
+GEOG 104,Upper-division standing or consent of instructor.,GEOG 249
+GEOG 108,Geography 5.,"GEOG 185D, GEOG 192"
+GEOG 111A,Upper Division Unit Standing or Consent of Instructor.,GEOG 111B
+GEOG 114A,Environmental Studies 15A and 15B or Chemistry 1A-B; and Geography 3 or 4 oEarth Science 2 or 4 or 20,"ENV S 114B, GEOG 114B"
+GEOG 115A,Upper-division standing.,GEOG 115B
+GEOG 131,Geography 3 or 3A or 3B or 4; or consent of instructor.,None
+GEOG 133,MATH 2A or 3A with grade of C or better.,None
+GEOG 140,Upper-division standing; or consent of instructor.,None
+GEOG 142,"Geography 3 or 3A or 3B or 4; or, Environmental Studies 2; or, Earth Science 1; or, Chemistry 1A.",None
+GEOG 172,"Statistics and Applied Probability 5AA-ZZ or Ecology, Evolution & Marine Biology 30 or Psychology 5 or Communication 87.","GEOG 276, GEOG 210A"
+GEOG 176A,Upper Division Unit Standing,"GEOG 186, GEOG 286"
+GEOG 193,Upper-division standing in geography; consent of department.,None
+GEOG 194,Consent of instructor.,None
+GEOG 195IW,Upper-division standing.,None
+GEOG 198,Upper-division standing; completion of two upper-division courses in geography; consent of instructor.,None
+GEOG 199,Upper-division standing; completion of two upper-division courses in geography; consent of instructor.,None
+GEOG 199RA,Upper-division standing; completion of two upper-division courses in geography; consent of instructor.,None
+GEOG 200A,No Prerequisites,"GEOG 200C, GEOG 200B"
+GEOG 6,No Prerequisites,GEOG 152
+GEOG 114B,Environmental Studies or Geography 114A.,None
+GEOG 115C,Geography 115B with a minimum grade of C.,None
+GEOG 117,"Geography 5; and, Geography 3 or 3A or 3B or 4.",None
+GEOG 119,Geography 3 or 3A or Geography 8 or Earth Science 2 or Earth Science 3 or Earth Science 4 or consent of instructor.,None
+GEOG 136,"GEOG 3B or equivalent, plus one or more upper division course(s) in the area(s) of atmospheric science, hydrology, ecology, or geological science.",None
+GEOG 137,Geography 3B or 4; or Earth 2,None
+GEOG 149,MCDB 1A-1AL and EEMB 2; or MCDB 20 or EEMB 22 or Environmental Studies 2 or 60 or Geography 3 or 3A or 3B or 4 or Earth Science 2.,None
+GEOG 162,Upper-division standing.,None
+GEOG 166,Chemistry 1A; and Geography 3 or Earth Science 4,None
+GEOG 176C,Geography 176B with a minimum grade of C.,None
+GEOG 185D,Geography 3 or 3A or 3B or 4 or 5 or 108 or 109.,None
+GEOG 192,Geography 3 or 3A or 3B or 4 or 5 or 108 or 109.,None
+GEOG 200C,"Geography 200A or approval of graduate committee, and Geography 200B. Required of all geography graduate students.",None
+GEOG 201,No Prerequisites,None
+GEOG 210C,Geography 210B.,None
+GEOG 237,No Prerequisites,None
+GEOG 8,No Prerequisites,GEOG 119
+GEOG 109,upper-division standing only,"GEOG 185D, GEOG 192"
+GEOG 110,GEOG 3 or 3A or ENVS 3 or EARTH 2 or 4; and Math 2A-B or 3A-B; and PHYS 1 or 6A; and upper division standing,GEOG 249
+GEOG 115B,Geography 115A with a minimum grade of C.,GEOG 115C
+GEOG 116,GEOG 3B or 4 or EARTH 2; or consent of instructor.,None
+GEOG 130,Geography 3B or 4 or Environmental Studies 2 or permission of the instructor.,None
+GEOG 132,GEOG 3A,None
+GEOG 134,Geography 3 or 3A or 3B or 4 or equivalent course.,None
+GEOG 144,Mathematics 2A-2B or 3A-3B or 34A-B.,None
+GEOG 152,Geography 5 or 6,None
+GEOG 161,Upper-division standing.,None
+GEOG 176B,A minimum grade of C in Geography 176A.,"GEOG 176C, GEOG 186, GEOG 286"
+GEOG 596,Consent of instructor and graduate advisor.,None
+GER 1,Not open for credit to students who have completed more advanced work in German.,GER 106
+GER 1G,Graduate standing in any field.,None
+GER 3,Grade of P or grade of C or better in German 2. Not open for credit to students who have completed more advanced work in German.,None
+GER 4,Grade of P or grade of C or better in German 3. Not open for credit to students who have completed more advanced work in German.,"GER 114, GER 105C"
+GER 35,No Prerequisites,None
+GER 101A,German 6.,"GER 113, GER 190, GER 117"
+GER 106,German 1-6 or equivalent,None
+GER 117,German 6 and 101A-B-C.,None
+GER 179B,Upper-division standing.,None
+GER 179C,Upper-division standing.,None
+GER 197,Open to senior majors only; consent of instructor.,None
+GER 199,Upper-division standing; completion of 2 upper-division courses in German.,None
+GER 199RA,Upper-division standing; completion of 2 courses in upper-division German; consent of instructor and department.,None
+GER 500,No Prerequisites,None
+GER 596,"German 210A-B or equivalent. Graduate standing; consent of instructor, graduate adviser and department chair.",None
+GER 598,Consent of instructor.,None
+GER 599,German 201A-B or equivalent. Advancement to candidacy; consent of graduate adviser.,None
+GER 2,Grade of P or grade of C or better in German 1. Not open for credit to students who have completed more advanced work in German.,GER 8C
+GER 6,Grade of P or grade of C or better in German 5. Not open for credit to students who have completed more advanced work in German.,"GER 101C, GER 108, GER 101B, GER 107A, GER 113, GER 190"
+GER 8C,German 2.,None
+GER 101C,German 6.,"GER 113, GER 190, GER 117"
+GER 108,German 6 or equivalent.,None
+GER 114,German 4 or equivalent,None
+GER 163,Upper division standing.,None
+GER 190,German 6 and German 101A-B-C,None
+GER 210,Consent of instructor.,None
+GER 2G,Graduate standing.,None
+GER 5,Grade of P or grade of C or better in German 4. Not open for credit to students who have completed more advanced work in German.,GER 105C
+GER 101B,German 6.,"GER 113, GER 190, GER 117"
+GER 105C,German 4; GER 5 (may be taken concurrently with 105C).,None
+GER 107A,German 6.,None
+GER 113,German 6 and 101A-B-C.,None
+GER 152,Upper division standing.,None
+GER 155,Upper division standing.,None
+GER 164H,Upper-division standing.,None
+GER 55A,No Prerequisites,None
+GER 116A,Upper-division standing.,None
+GER 187,Upper-division standing.,None
+GLOBL 1,No Prerequisites,"GLOBL 110, GLOBL 140, GLOBL 130"
+GLOBL 2,No Prerequisites,"POL S 186, GLOBL 110, GLOBL 123, GLOBL 140, GLOBL 130, POL S 140"
+GLOBL 12,No Prerequisites,None
+GLOBL 99,Consent of department and instructor.,None
+GLOBL 104,Upper-division standing.,None
+GLOBL 110,Global Studies 1 and 2; upper-division standing.,None
+GLOBL 120,Global Stuies 1 and 2; upper-division standing.,None
+GLOBL 124,Upper-division standing.,None
+GLOBL 130,Global Studies 1 and 2; upper-division standing.,None
+GLOBL 132,Upper-division standing.,None
+GLOBL 140,Global Studies 1 and 2; upper-division standing.,None
+GLOBL 172,Upper Division standing.,None
+GLOBL 174,Upper-division standing.,None
+GLOBL 190AH,Consent of instructor and admission to Global Studies departmental Honors program,None
+GLOBL 196A,"Consent of instructor; student will need to apply to the course and be actively preparing to attend an EAP (Education Abroad Program) for a portion ofthe year following the 3-part research seminar series (GLOBL 196A, B, and C). More information about the course and program can be found at https://global.ucsb.edu/undergrad/abroad.","GLOBL 196C, GLOBL 196B, GLOBL 196A"
+GLOBL 196SJ,HIST 74. Consent of Instructor.,None
+GLOBL 197E,Upper-division standing.,None
+GLOBL 197G,Upper-division standing.,None
+GLOBL 197H,Upper-division standing.,None
+GLOBL 199,Upper-division standing; consent of program (department) and instructor.,None
+GLOBL 201,For graduate students doing the Ph.D. emphasis in Global Studies.,None
+GLOBL 210,No Prerequisites,None
+GLOBL 220,No Prerequisites,None
+GLOBL 224,Graduate standing; consent of department.,None
+GLOBL 123,Political Science 7 or Global Studies 2; Upper-division standing.,None
+GLOBL 136,Global 130,None
+GLOBL 148,No Prerequisites,None
+GLOBL 163,No Prerequisites,None
+GLOBL 176,Upper division standing.,None
+GLOBL 193,Consent of instructor.,None
+GLOBL 196C,"Completion of GLOBL 196A and GLOBL 196B and consent of instructor (student s who have not completed GLOBL 196A and 196B may be granted permission to enroll on a case-by-case basis); Student needs to be actively preparing to attend an EAP (Education Abroad Program) for a portion of the year followi ng the 3-part research seminar series (GLOBL 196A, B, and C).",None
+GLOBL 221,Graduate standing; consent of department.,None
+GLOBL 222,Graduate standing; consent of department.,None
+GLOBL 229,Graduate Standing; consent of department.,None
+GLOBL 232A,Graduate standing; consent of instructor.,None
+GLOBL 236,Graduate standing.,None
+GLOBL 264,Graduate standing,None
+GLOBL 501,Appointment as teaching assistant in Global and International Studies.,None
+GLOBL 131,Upper-division standing.,None
+GLOBL 142,Upper division standing.,None
+GLOBL 146,No Prerequisites,None
+GLOBL 161,No Prerequisites,None
+GLOBL 196B,"Completion of GLOBL 196A and consent of instructor (students who have not GLOBL 196A may be granted permission to enroll on a case-by-case basis); Student needs to be actively preparing to attend an EAP (Education Abroad Program) for a portion of the year following the 3-part research seminar (GLOBL 196A, B, and C).",GLOBL 196C
+GLOBL 197D,Upper-division standing.,None
+GLOBL 197F,Upper-division standing.,None
+GLOBL 118,Upper-division standing.,None
+GREEK 1,No Prerequisites,GREEK 2
+GREEK 100,Greek 3 with a grade of C or better.,GREEK 101
+GREEK 163,Greek 102 or equivalent.,None
+GREEK 199,Consent of instructor and department chair; upper-division standing; completion of 2 upper-division courses in Greek.,None
+GREEK 263,Graduate standing.,None
+GREEK 596,Written proposal approved by department chair and graduate advisor.,None
+GREEK 598,Graduate standing and consent of instructor and graduate advisor.,None
+GREEK 3,Greek 2 with a grade of C or better.,GREEK 100
+GREEK 173,Greek 102.,None
+GREEK 273,Graduate standing.,None
+GREEK 2,Greek 1 with a grade of C or better.,GREEK 3
+GREEK 101,Greek 100 with a grade of C or better.,None
+GREEK 151,Greek 102.,None
+HEB 1,No Prerequisites,HEB 2
+HEB 3,Hebrew 2 or equivalent.,None
+HEB 2,Hebrew 1 or equivalent.,HEB 3
+HIST 4A,No Prerequisites,"HIST 184E, HIST 111C, HIST 112C, HIST 111B, HIST 112A, HIST 138FM"
+HIST 5,No Prerequisites,None
+HIST 8A,No Prerequisites,None
+HIST 9,No Prerequisites,"HIST 187C, HIST 101SR, HIST 105R, HIST 187A, HIST 121D, HIST 136M"
+HIST 17A,No Prerequisites,"HIST 179A, BL ST 169AR, BL ST 169CR, CH ST 168B, HIST 167CA, HIST 161R"
+HIST 46A,No Prerequisites,"HIST 146, HIST 145C"
+HIST 49A,No Prerequisites,None
+HIST 74,No Prerequisites,"GLOBL 196SJ, HIST 196SJ"
+HIST 80,No Prerequisites,"HIST 184E, HIST 185T, JAPAN 164, HIST 184A, HIST 187S"
+HIST 88,No Prerequisites,None
+HIST 99,Consent of department and instructor.,None
+HIST 100,No Prerequisites,None
+HIST 104G,History 4B or Upper Division Standing.,None
+HIST 106R,History 106A or 106B or 106C or 109 or or 110 or 110D or upper division standing.,HIST 104SS
+HIST 112A,History 2A or 4A or upper division standing,None
+HIST 121D,History 4B or 9 or upper-division standing.,HIST 121R
+HIST 121F,Upper division standing or Hist 4B or Hist 2B or Hist 9 or Hist 121C,None
+HIST 125,HIST 2A or HIST 2B or HIST 4B,HIST 115R
+HIST 133C,History 2C or 4C.,None
+HIST 136M,History 9 or 8 or 17A or 168B,None
+HIST 138FM,History 4A or 4B or 2B or upper division standing.,None
+HIST 2C,No Prerequisites,"HIST 141B, HIST 123C, HIST 184E, HIST 185T, HIST 187C, HIST 133B"
+HIST 4C,No Prerequisites,"HIST 141B, HIST 123C, HIST 184E, HIST 133B, HIST 133D, HIST 135C"
+HIST 8B,No Prerequisites,None
+HIST 17C,No Prerequisites,"BL ST 169AR, BL ST 169CR, CH ST 168B, HIST 170B, HIST 107C, HIST 167CB"
+HIST 22,No Prerequisites,None
+HIST 49C,No Prerequisites,None
+HIST 101SR,HIST 101G AND either HIST 9 or Upper Division Standing,None
+HIST 111C,History 2A or 4A or upper-division standing.,None
+HIST 112C,History 2A or 4A or upper division standing.,None
+HIST 146,History 46 or 46A or 46B or upper-division standing.,None
+HIST 146R,Upper Division Standing.,None
+HIST 147R,Upper Division standing.,None
+HIST 156A,History 8 or upper-division standing.,None
+HIST 161R,History 17A or HIST 161B or 161NE or upper division standing.,None
+HIST 164C,History 17B or upper-division standing.,None
+HIST 167Q,Upper division standing,None
+HIST 169B,"ANY LOWER-DIVISION COURSE IN HISTORY OR BLACK STUDIES, OR UPPER-DIVISION STANDING.",HIST 169R
+HIST 170B,History 7 or 17A or 17B or 17C or upper-division standing.,None
+HIST 174C,"History 17A, B, or C, or upper-division standing.",None
+HIST 2B,No Prerequisites,"HIST 122, HIST 115A, HIST 184E, HIST 185T, HIST 187C, HIST 115B"
+HIST 4B,No Prerequisites,"HIST 122, HIST 115A, HIST 184E, HIST 107C, HIST 115B, HIST 135C"
+HIST 17B,No Prerequisites,"BL ST 169AR, BL ST 169CR, CH ST 168B, HIST 164C, HIST 167CA, HIST 170B"
+HIST 20,No Prerequisites,HIST 107C
+HIST 46B,No Prerequisites,"HIST 146, HIST 145C"
+HIST 46MI,No Prerequisites,None
+HIST 49B,No Prerequisites,None
+HIST 101QA,Upper division standing,None
+HIST 106T,Upper division standing,None
+HIST 107C,Concurrent enrollment or completion of one of the following: History 4B or 17B or 17C or 20; or upper division standing.,None
+HIST 111B,History 2A or 4A or upper-division standing.,None
+HIST 115B,History 2B or 4B or upper division standing.,None
+HIST 115R,"Any one of the following: History 115, 115X, 118A, 118B, 125 or 130 or upper division standing or consent of instructor.",None
+HIST 133B,History 2C or 4C.,None
+HIST 141B,History 2C or 4C or upper-division standing.,HIST 141R
+HIST 141R,History 141A or 141B or upper division standing.,None
+HIST 142AL,A previous course in History or upper division standing.,None
+HIST 142R,Upper division standing,None
+HIST W 2A,No Prerequisites,None
+HIST W 4B,No Prerequisites,None
+HIST W 17B,No Prerequisites,None
+HIST 56,No Prerequisites,None
+HIST W 56,No Prerequisites,None
+HIST W 80,No Prerequisites,None
+HIST W 121A,Upper-division standing.,None
+HIST 122,History 2B or 4B or Rg St 80B or Upper Division Standing,HIST 121R
+HIST 133D,History 2C or 4C.,None
+HIST 179A,History 17A or upper-division standing.,None
+HIST 189E,A prior course in History,None
+HIST 189M,Upper-division standing.,None
+HIST 196,Upper-division standing; consent of department.,None
+INT 10,None,None
+INT 84AA,Enrollment in Letters and Science Honors Program.,None
+INT 84AC,Enrollment in Letters and Science Honors Program.,None
+INT 84BA,Enrollment in Letters and Science Honors Program.,None
+INT 84BC,Enrollment in Letters and Science Honors Program.,None
+INT 84BD,Enrollment in Letters and Science Honors Program.,None
+INT 84BK,Enrollment in Letters and Science Honors Program.,None
+INT 84BL,Enrollment in Letters and Science Honors Program.,None
+INT 84BU,Enrollment in Letters and Science Honors Program.,None
+INT 84BY,Enrollment in Letters and Science Honors Program.,None
+INT 84CE,Enrollment in Letters and Science Honors Program.,None
+INT 84ZL,Enrollment in Letters and Science Honors Program.,None
+INT 84ZW,Enrollment in Letters and Science Honors Program.,None
+INT 86BJ,Freshman standing.,None
+INT 86EI,Freshman standing.,None
+INT 86GG,Freshman standing.,None
+INT 86HZ,Freshman standing.,None
+INT 86IT,Freshman standing.,None
+INT 86UL,Freshman standing.,None
+INT 86VC,Freshman standing.,None
+INT 86VN,Freshman standing.,None
+INT 86VW,Freshman standing.,None
+INT 86WM,Freshman standing.,None
+INT 87AC,No Prerequisites,None
+INT 84AG,Enrollment in Letters and Science Honors Program.,None
+INT 84AT,Enrollment in Letters and Science Honors Program.,None
+INT 84BG,Enrollment in Letters and Science Honors Program.,None
+INT 84BR,Freshman standing.,None
+INT 84BT,Freshman standing.,None
+INT 84ZA,Enrollment in Letters and Science Honors Program; lower-division standing.,None
+INT 84ZB,Enrollment in Letters and Science Honors Program.,None
+INT 84ZG,Freshman standing.,None
+INT 84ZI,Freshman standing.,None
+INT 84ZP,Freshman standing.,None
+INT 86HI,Freshman standing.,None
+INT 86TN,Freshman standing.,None
+INT 86VV,Freshman standing.,None
+INT 86WC,Freshman standing.,None
+INT 86WE,Freshman standing.,None
+INT 84AH,Enrollment in Letters and Science Honors Program.,None
+INT 84AQ,Enrollment in Letters and Science Honors Program.,None
+INT 84CC,Enrollment in Letters and Science Honors Program.,None
+INT 84CO,Enrollment in Letters and Science Honors Program.,None
+INT 84CT,Enrollment in Letters and Science Honors Program.,None
+INT 84ZN,Enrollment in Letters and Science Honors Program.,None
+INT 86EB,Freshman standing.,None
+INT 86TK,Freshman standing.,None
+INT 86US,Freshman standing.,None
+INT 86UX,Freshman standing.,None
+INT 86VL,Freshman standing.,None
+INT 86WB,Freshman standing.,None
+INT 87AG,No Prerequisites,None
+INT 87AJ,No Prerequisites,None
+INT 87AP,No Prerequisites,None
+INT 102,Upper-division standing.,None
+INT 35LT,No Prerequisites,None
+INT 37UD,No Prerequisites,None
+INT 37VR,No Prerequisites,None
+INT 90M,Admission to McNair Scholars Program.,None
+INT 93LS,Consent of instructor.,None
+INT W 188C,Instructor approval required prior to registration.,None
+INT W 188E,Instructor approval required prior to registration.,None
+INT 192DC,Upper-division standing; consent of instructor; acceptance to Washington Center.,None
+INT 199H,Upper-division Letters & Science Honors Program students only.,None
+ITAL 1,No Prerequisites,"ITAL 2, ITAL 2HY, ITAL 16B, ITAL 8B, ITAL 119B, ITAL 8A"
+ITAL 1HY,No Prerequisites,None
+ITAL 2,Italian 1 or equivalent.,"ITAL 3, ITAL 3HY, ITAL 16B"
+ITAL 2HY,Completion of Italian 1 or Italian 1HY with a grade of P or a grade of C or higher.,None
+ITAL 3,Italian 2 or equivalent.,"ITAL 99RA, ITAL 4"
+ITAL 4,Italian 3; or Italian 16B.,ITAL 5
+ITAL 8A,Italian 1 or equivalent.,None
+ITAL 16A,1 year of college Spanish; or 3 years of high school Spanish; or be native or heritage speaker of Spanish.,ITAL 16B
+ITAL 20X,No Prerequisites,None
+ITAL 101,Italian 6 or equivalent,ITAL 111
+ITAL 119A,Italian 1-6 or equivalent,None
+ITAL 124X,Upper Division standing.,None
+ITAL 130X,Upper Division Standing,None
+ESS W 131,Upper-division standing.,None
+ITAL 139FX,Upper division standing.,None
+ITAL 195H,Senior standing; completion of 24 upper-division units in Italian.,None
+ITAL 199,Upper-division standing; completion of 2 upper-division courses in Italian.,None
+ITAL 199RA,Upper-division standing; completion of 2 upper-division courses in Italian;consent of instructor.,None
+ITAL 500,No Prerequisites,None
+ITAL 6,Italian 5.,"ITAL 103, ITAL 109, ITAL 104, ITAL 119B, ITAL 101, ITAL 119A"
+ESS W 9,No Prerequisites,None
+ITAL 16B,Italian 16A with a grade of P or a grade of C or higher; or ITA1 and ITA2 with one year of college Spanish or 3 years of high school Spanish; or be native or heritage speaker of Spanish.,ITAL 4
+ITAL 104,Italian 6 or equivalent.,None
+ITAL 109,Italian 5. Concurrent enrollment in Italian 6 or upper-division standing.,None
+ITAL 114X,Upper-division standing or instructor approval.,None
+ITAL 145AX,Upper division standing.,None
+ITAL 596,Graduate standing and consent of instructor.,None
+ITAL 5,Italian 4.,"ITAL 6, ITAL 109"
+ITAL 99RA,Italian 3 or equivalent with a grade of a minimum grade of B.,None
+ITAL 103,Italian 6 or equivalent.,None
+ITAL 120X,No Prerequisites,None
+ITAL 139CX,Upper division standing.,None
+ITAL 179X,No Prerequisites,None
+JAPAN 1,No Prerequisites,JAPAN 2
+JAPAN 4,"Japanese 3 with grade C or better, or equivalent",JAPAN 5
+JAPAN 73,No Prerequisites,None
+JAPAN 111,Upper-division standing.,None
+JAPAN 120A,"Japanese 6 with grade C or better, or equivalent",JAPAN 120B
+JAPAN 144,Japanese 120C,JAPAN 145
+JAPAN 175B,Upper division standing,None
+JAPAN 181,Japanese 120C,JAPAN 183
+JAPAN 198,Upper-division standing; completion of 2 upper-division courses in Japaneseconsent of instructor.,None
+JAPAN 199,Upper-division standing; completion of 2 upper-division courses in Japanese; at least one of those two courses taken with instructor for Japan 199; GPA for those two courses 3.5 or higher,None
+JAPAN 199RA,Completion of at least 2 upper-division courses in Japanese studies or EastAsian Cultural Studies; consent of instructor and department.,None
+JAPAN 201,Ability to read japanese at graduate level; consent of instructor. Normallygraduate status is required.,None
+JAPAN 287J,Graduate Standing,None
+JAPAN 596,Graduate standing.,None
+JAPAN 597,Consent of graduate adviser.,None
+JAPAN 598,Graduate standing.,None
+JAPAN 3,"Japanese 2 with grade C or better, or equivalent",JAPAN 4
+JAPAN 6,"Japanese 5 with grade C or better, or equivalent",JAPAN 120A
+JAPAN 99,minimum 3.0 cumulative GPA,None
+JAPAN 99RA,minimum 3.0 cumulative GPA,None
+JAPAN 120C,"Japanese 120B with grade C or better, or equivalent.","JAPAN 144, JAPAN 181"
+JAPAN 165,Upper-division standing.,None
+JAPAN 180TV,Upper Division Standing,None
+JAPAN 2,"Japanese 1 with grade C or better, or equivalent.",JAPAN 3
+JAPAN 5,"Japanese 4 with grade C or better, or equivalent",JAPAN 6
+JAPAN 120B,"Japanese 120A with grade C or better, or equivalent",JAPAN 120C
+JAPAN 145,Japanese 144.,None
+JAPAN 183,Japanese 181.,None
+KOR 1,No Prerequisites,"KOR 3, KOR 6, KOR 2, KOR 5, KOR 4"
+KOR 4,"Korean 1, 2, 3.","KOR 6, KOR 5"
+KOR 152,Upper-division standing.,None
+KOR 153,Upper-division standing.,None
+KOR 199,Upper-division standing; completion of 2 upper-division Korean courses; one of those two courses taken with the instructor for KOR 199; GPA for those two courses 3.5 or higher,None
+KOR 3,"Korean 1, 2.","KOR 6, KOR 4, KOR 5"
+KOR 6,"Korean 1, 2, 3, 4, 5.",None
+KOR 2,Korean 1.,"KOR 3, KOR 6, KOR 4, KOR 5"
+KOR 5,"Korean 1, 2, 3, 4.",KOR 6
+KOR 123,No Prerequisites,None
+LAIS 100,Upper-division standing.,"LAIS 100H, SPAN 106H"
+LAIS 100H,Concurrent enrollment in SPAN 106 or LAIS 100; honors standing in LAIS or the College of Letters and Science.,None
+LAIS 103,Upper-division standing,None
+LAIS 145,Spanish 25 or Spanish 16B; and Spanish 100,None
+LAIS 195A,Admission to honors program; consent of department.,None
+LAIS 195B,Admission to honors program; consent of department.,None
+LAIS 199,Upper-division standing; completion of 2 upper-division courses in LAIS.,None
+LAIS 596,Graduate standing.,None
+LAIS 598,Fulfillment of all graduate requirements except the thesis.,None
+LAIS 10,None,None
+LAIS 127,Spanish 30 (can be taken concurrently),None
+LAIS 156A,History 8 or upper-division standing.,None
+LAIS 165,Spanish 30; and Spanish 100 (may be taken concurrently),None
+LAIS 591,TA appointment.,None
+LAIS 597,Graduate standing. No unit credit allowed toward advanced degrees.,None
+LAIS 174,Spanish 102L or Spanish 30 (Prerequisite may be taken concurrently).,None
+LAIS 189,Spanish 102L or Spanish 30 (Prerequisite may be taken concurrently).,None
+LAIS 194,Spanish 102L or Spanish 30 (Prerequisite may be taken concurrently).,None
+LAIS 101,Upper-division standing.,None
+LATIN 1,No Prerequisites,"LATIN 103, LATIN 2"
+LATIN 100,Latin 3 with a grade of C or better.,LATIN 101
+LATIN 103,"Latin 1, 2, and 3.",None
+LATIN 123,Latin 102.,None
+LATIN 199,Consent of instructor and department chair. upper-division standing; completion of 2 upper-division courses in Latin.,None
+LATIN 223,Graduate standing.,None
+LATIN 596,Written proposal approved by department chair and graduate advisor.,None
+LATIN 598,Graduate standing and consent of instructor and graduate advisor.,None
+LATIN 3,Latin 2 with a grade of C or better.,"LATIN 100, LATIN 103"
+LATIN 102,Latin 101.,"LATIN 113, LATIN 120, LATIN 114, LATIN 123, LATIN 136"
+LATIN 120,Latin 102.,None
+LATIN 220,Graduate standing.,None
+LATIN 2,Latin 1 with a grade of C or better.,"LATIN 3, LATIN 103"
+LATIN 101,Latin 100 with a grade of C or better.,LATIN 102
+LATIN 114,Latin 102.,None
+LING 2G,Placement based on English Language Placement Examination.,None
+LING 3A,Placement based on Analytical Writing Placement Exam (AWPE)and English Language Placement Examination (ELPE).,"LING 3B, LING W 3B"
+LING 3B,Open to students who have a Ling 3B placement or a prerequisite of Ling 3A with a pass grade.,"LING 3B, LING 3C, LING W 3C, LING W 3B"
+LING 3C,Open to students who have a Linguistics 3C placement; or Linguistics 3B with a minimum grade of C.,"LING 3C, LING W 3C, LING 12, LING W 12"
+LING W 3B,Open to students who have a Ling 3B placement or a prerequisite of Ling 3A with a pass grade.,None
+LING W 3C,Open to students who have a Ling 3C placement; or Linguistics 3B with a minimum grade of C.,None
+LING 4,Consent of the instructor.,None
+LING 3G,Graduate standing. Placement based on English Language Placement Examination scores.,None
+LING 12,Open to students who have not satisfied the Entry Level Writing Requirement and have a Ling 12 placement or a prerequisite of Ling 3C with a grade of C or better.,"LING 12, LING W 12, WRIT 2, WRIT 2E"
+LING W 12,Open to students who have not satisfied the Entry Level Writing Requirement and have a Ling 12 placement or a prerequisite of Ling 3C with a grade of C or better.,None
+LING 14,No Prerequisites,None
+LING 15,No Prerequisites,None
+LING 80,No Prerequisites,None
+LING 99,NONE,None
+LING 105,Linguistics 104,None
+LING 108,Linguistics 101 OR Linguistics 107.,LING 109
+LING 10,Undergraduate-standing.,None
+LING 20,No Prerequisites,"LING 147LD, LING 125, LING 137, LING 147, LING 147CS, LING 129"
+LING 106,Department approval to finalize registration.,"LING 146, LING 107, LING 145"
+LING 132,No Prerequisites,None
+LING 137,Linguistics 20.,None
+LING 147LD,LING 20 or upper-division standing.,None
+LING 191,Consent of instructor.,None
+LING 195B,Senior standing; consent of instructor.,LING 195C
+LING 195C,Linguistics 195B.,None
+LING 199,Upper-division standing; completion of 2 upper-division courses in linguistics; consent of instructor.,None
+MARINCS 10,No Prerequisites,None
+MARSC 595,No Prerequisites,None
+MAT 200A,Consent of instructor.,None
+MAT 240A,No Prerequisites,"MATH 241C, MATH 241B"
+MAT 255,No Prerequisites,None
+MAT 261A,No Prerequisites,None
+MAT 261B,No Prerequisites,None
+MAT 276IA,"MAT majors and graduate non-majors in areas of electrical engineering, computer science, physics and math; consent of instructor.",None
+MAT 276LA,"Graduate MAT majors and graduate non-majors in areas of electrical engineering, computer science, physics and math; consent of instructor.",None
+MAT 293,Consent of instructor.,None
+MAT 299,Consent of graduate advisor and Director of graduate studies.,None
+MAT 502,Must be a T.A.,None
+MAT 594CE,No Prerequisites,None
+MAT 594P,No Prerequisites,None
+MAT 595M,No Prerequisites,None
+MAT 80AS,No Prerequisites,None
+MAT 200B,No Prerequisites,None
+MAT 201A,No Prerequisites,"MATH 246C, MATH 246B"
+MAT 238,No Prerequisites,None
+MAT 240C,No Prerequisites,"MATH 241C, MATH 241B"
+MAT 254,No Prerequisites,None
+MAT 261E,No Prerequisites,None
+MAT 276LC,MAT 276LB.,None
+MAT 294CR,No Prerequisites,None
+MAT 80EM,No Prerequisites,None
+MAT 10,No Prerequisites,MAT 189
+MAT 110CF,Not open to freshmen.,None
+MAT 111AU,Not open to freshmen.,None
+MAT 111FS,Not open to freshmen.,None
+MAT 111PF,Not open to freshmen.,None
+MAT 111WN,Not open to freshmen.,None
+MAT 189,MAT 10 or CMPSC 8 or CMPSCW 8,None
+MATRL 100A,"Chemistry 1A-B and Mathematics 4B, 6A, 6B",None
+MATRL 162A,"ECE 130A-B and 134 with a minimum grade of C- in all; open to EE, senior students in the BS/MS programs and Materials graduate students only.",None
+MATRL 185,Materials 100B or 101.,None
+MATRL 200A,No Prerequisites,None
+MATRL 200Q,No Prerequisites,None
+MATRL 200S,No Prerequisites,None
+MATRL 205,No Prerequisites,None
+MATRL 207,No Prerequisites,"MATRL 263, ME 267, MATRL 261"
+MATRL 209A,No Prerequisites,None
+MATRL 215A,ECE 132 or equivalent.,None
+MATRL 222A,Consent of instructor.,None
+MATRL 226,No Prerequisites,None
+MATRL 241,"Chemistry 173A-B, and 175; or equivalent.",None
+MATRL 253,No Prerequisites,None
+MATRL 261,Materials 207; consent of instructor.,None
+MATRL 268A,ECE 162A-B-C; or MATRL 162A-B and ECE 162C; or ECE 144.,None
+MATRL 271A,Consent of instructor.,None
+MATRL 280A,No Prerequisites,None
+MATRL 286N,Consent of instructor.,None
+MATRL 289O,Consent of instructor.,None
+MATRL 289P,Consent of instructor.,None
+MATRL 290,Consent of instructor.,None
+MATRL 501,Consent of graduate advisor.,None
+MATRL 100C,Materials 100A and Materials 100B.,"ME 105, ME 156A"
+MATRL 160,Chemical Engineering 110A or Chemistry 113A or equivalent.,None
+MATRL 186B,Upper-division standing.,None
+MATRL 200C,No Prerequisites,None
+MATRL 206B,ECE 162A-B.,None
+MATRL 209B,Consent of instructor.,None
+MATRL 209C,Consent of instructor.,None
+MATRL 211B,"ECE 211A or MATRL 211A, or ECE 215A or MATRL 206A.",None
+MATRL 217,MATRL 162A-B or ECE 162A-B,None
+MATRL 227,No Prerequisites,None
+MATRL 234,Materials 207.,None
+MATRL 242,No Prerequisites,None
+MATRL 245,No Prerequisites,None
+MATRL 263,Materials 207 (same course as ME 219); consent of instructor,None
+MATRL 270,Consent of instructor.,None
+MATRL 271C,No Prerequisites,None
+MATRL 274,Chemistry 173A-B or equivalent.,None
+MATRL 286H,Consent of instructor.,None
+MATRL 286M,Consent of instructor.,None
+MATRL 286Q,Consent of instructor.,None
+MATRL 287A,Consent of instructor.,None
+MATRL 289X,Consent of instructor.,None
+MATRL 10,"Not open to engineering, pre-computer science, or computer science majors.",None
+MATRL 100B,Materials 100A.,"MATRL 185, ME 185"
+MATRL 101,No Prerequisites,"MATRL 185, ME 105, ME 156A, ME 185"
+MATRL 135,Physics 5 or 6C or 25.,None
+MATRL 162B,"ECE 162A with a minimum grade of C-; open to EE, senior students in the BS/MS programs and Materials graduate students only.",None
+MATRL 186A,ME 151C; and ME 15; and Materials 101 or Materials 100C,None
+MATRL 596,No Prerequisites,None
+MCDB 1A,"Chemistry 1A-B-C with a grade of C- or better (Chem 1C may be taken concurrently), or a score of 4 or better on either the Advanced Placement Chemistry or Advanced Placement Biology exams.","EEMB 159, EEMB 170, MCDB W 111, EARTH 144, EEMB 3, EEMB 102"
+MCDB 1AZ,Consent of department.,None
+MCDB 1B,MCDB 1A and Chemistry 1A-B-C with a grade of C- or better; or MCDB 1A with a grade of C or better.,"EEMB 159, EEMB 170, MCDB W 111, EARTH 144, EEMB 3, EEMB 102"
+MCDB 6,Chem 1A-B with a minimum grade of C- or better in each.,EEMB 7
+MCDB 11,Concurrent enrollment in Chemistry 1A or Chemistry 2A.,None
+MCDB 15SF,Freshmen/1st year Prebiology majors only.,None
+MCDB 26,No Prerequisites,None
+MCDB 84,Lower-division standing; instructor and departmental approval required.,None
+MCDB 92,No Prerequisites,None
+MCDB 98,Consent of instructor and department.,None
+MCDB 99,Consent of instructor and department.,None
+MCDB 101A,"MCDB 1A-B, EEMB 2; and, Chemistry 1A-B-C; completion of all listed prerequisites with a grade of C or better.","MCDB 101B, MCDB 135, MCDB 136H, MCDB 140L, MCDB 153, MCDB 118"
+MCDB 101L,MCDB 101A-B or EEMB 129; MCDB 101B may be taken concurrently. Completion of all listed prerequisites with a grade of C or better.,None
+MCDB 103,"MCDB 1A, and EEMB 2 and MCDB 1B. Completion of all listed prerequisites wita grade of C or better.","MCDB 103H, MCDB 103L"
+MCDB 103H,Concurrent enrollment in MCDB 103; consent of instructor.,None
+MCDB 108A,"MCDB 1A, and EEMB 2 and MCDB 1B; and Chemistry 1A-B-C; and Chemistry 109A-B-C (Chem 109C may be taken concurrently). Completion of all listed prerequisites with a grade of C or better.","CHEM 145, CHEM 151, BMSE 201B, BMSE 204, CHEM 112B, CHEM 112A"
+MCDB 108AH,MCDB 108A or MCDB W 108A (may be taken concurrently). Consent of instructor.,None
+MCDB 111,"MCDB 1A, and EEMB 2 and MCDB 1B with a grade of C or better.",MCDB 111H
+MCDB 111H,Concurrent enrollment in MCDB 111; consent of instructor.,None
+MCDB 126,MCDB 101A (may be taken concurrently) or Chemistry 142C; Chemistry 109A-B-C. Completion of all listed prerequisites with a grade of C or better.,"PSY 134, MCDB 126AL"
+MCDB 12,Concurrent enrollment in Chemistry 1B or 2B.,None
+MCDB 13,Concurrent enrollment in Chemistry 1C or Chemistry 2C.,None
+MCDB 101B,"MCDB 1A, EEMB 2 and MCDB 1B, and MCDB 101A. Completion of all listed prerequisites with a grade of C or better.","MCDB 135, MCDB 136H, MCDB 140L, MCDB 101L, MCDB 101BH, MCDB 232"
+MCDB 108C,MCDB 108A-B with a grade of C or better or MCDB W 108A and MCDB 108B with a grade of C or better; Physics 6A-B-C with minimum grade of C (Physics 6C may be taken concurrently); Math 34A-B with a grade of C or better or Math 3A-B with a grade of C or better or Math 2A-B with a grade of C or better.,"CHEM 112C, BMSE 201B, CHEM 143, CHEM 162A, CHEM 243, CHEM 141"
+MCDB 109L,MCDB 108A or MCDB W 108A; and MCDB 108B; and MCDB 1A-1B. Completion of all listed prerequisites with a grade of C or better.,None
+MCDB 110,Chemistry 1A-B-C; and Chemistry 109A-B. Completion of all listed prerequisites with a grade of C or better.,"MCDB 140L, MCDB 131"
+MCDB 118,"MCDB 1A, and EEMB 2 and MCDB 1B; and, MCDB 101A or EEMB 129. Completion of all listed prerequisites with a grade of C or better.",None
+MCDB 133,MCDB 101A with a grade of C or better.,"MCDB 133L, MCDB 133H"
+MCDB 133H,Concurrent enrollment in MCDB 133.,None
+MCDB 133L,MCDB 133 with a grade of C or better (may be taken concurrently).,None
+MCDB 135,MCDB 101A-B with a grade of C or better.,MCDB 135H
+MCDB 135H,Concurrent enrollment in MCDB 135; consent of instructor.,None
+MCDB 136H,MCDB 101A and MCDB 101B (101B may be taken concurrently) with a minimum grade of C.,None
+MCDB 139,"MCDB 1A, and EEMB 2 and MCDB 1B, and EEMB 3. Completion of all prerequisites with a grade of C or better.",MCDB 139H
+MCDB 139H,Concurrent enrollment in MCDB 139; consent of instructor.,None
+MCDB 1BZ,Consent of department.,None
+MCDB 1LL,Grade of C- or better in MCDB 1A (may be taken concurrently).,None
+MCDB 20,No Prerequisites,"ENV S 111, GEOG 149"
+MCDB 108B,MCDB 108A or MCDB W 108A with a grade of C or better. Chem 109C with a grade of C or better.,"CHEM 112C, BMSE 201B, CHEM 112B, CHEM 143, CHEM 162A, CHEM 243"
+MCDB W 111,"MCDB 1A, and EEMB 2 and MCDB 1B with a grade of C or better.",None
+MCDB 183,Upper-division standing and consent of instructor.,None
+MCDB 184,Upper-division standing; instructor and departmental approval required.,None
+MCDB 192,Chem 1A-B-C with a minimum grade of C; MCDB 1A-B and EEMB 2 with a minimum grade of C. Upper-division standing in EEMB or MCDB and consent of instructor or department.,None
+ME 11,Lower-division standing.,None
+ME 12S,Mechanical engineering majors only.,None
+ME 14,"Math 2B, or Math 3B, or AP Calculus AB with a score of 5, or AP Calculus BCwith a score of 3 or better; and Physics 7A, or Physics 1.","ME W 16, ME 16, ME 180, ME 151A, ME 156A, ME 15"
+ME 17,Engineering 3; open to ME majors only.,"ECE 179P, ME 155A, ME 179P, ECE 141A, ME 107, ME 140A"
+ME 18,No Prerequisites,None
+ME 95,Consent of instructor.,None
+ME 97,Consent of instructor.,None
+ME 99,Consent of instructor.,None
+ME 100,Undergraduate standing.,None
+ME 103,Math 6B and ME 16,"ME 104, ME 105, ME 189A"
+ME 105,"ME 151B, ME 152A, ME 103; and MATRL 101 or MATRL 100C.",None
+ME 107,ME 17; or consent of instructor,None
+ME 112,Senior Undergraduate or Graduate Student status in the College of Engineering; or consent of Instructor,None
+ME 125AS,Consent of instructor.,None
+ME 125TB,Consent of instructor.,None
+ME 125TD,Consent of instructor.,None
+ME 125YZ,Consent of instructor.,None
+ME 128,"Mechanical Engineering 10, 14, 15, 16, and 153; open to ME majors only.",None
+ME 140A,"ME 17 with a minimum grade of C-, or Chemical Engineering 132A.",None
+ME 151A,"Physics 7D or Physics 2, and ME 14 with a minimum grade of C-, and Math 6B or Math 5C","ECE 141A, ME 157, ME 141A, ME 151B, ME 220B, THTR 111A"
+ME 152A,"Math 6B or Math 5C, and ME 16 with a minimum grade of C-, and Physics 7B orPhysics 2.","ME 151C, ECE 141A, ME 102, ME 105, ME 157, ME 189A"
+ME 154,"ME 15 with a minimum grade of C-; and, ME 16 with a minimum grade of C-; open to ME majors only.",None
+ME 156A,"ME 14, with a minimum grade of C-; and ME 15, with a minimum grade of C-; and MATRL 101 (or MATRL 100C); or consent of instructor. Open to ME majors only.",ME 156B
+ME 157,ME 151A; and ME 151B; and ME 152A,None
+ME 10,Mechanical Engineering majors only.,"ME 153, ME 158"
+ME 13,No Prerequisites,None
+ME 16,"Physics 7A or Physics 2, and ME 14 with a minimum grade of C-, and Math 6B or Math 5C (may be taken concurrently); open to ME majors only.","ME 153, ME 197, ECE 141A, ME 103, ME 152A, ME 154"
+ME 104,ME 6 and ME 103; open to ME majors only.,None
+ME 125F,Consent of instructor.,None
+ME 125RA,Consent of instructor.,None
+ME 125YV,Consent of instructor.,None
+ME 129,No Prerequisites,None
+ME 134,Consent of Instructor,None
+ME 135,ME 152A,None
+ME 141B,"ME 141A, ME 163 (may be concurrent); or ECE 141A.",None
+ME 146,No Prerequisites,None
+ME 151C,ME 151B and 152A. Open to ME majors only.,"MATRL 186A, ME 186A, THTR 111C"
+ME 153,ME 10 and 16 or ME W 16; open to ME majors only.,ME 189A
+ME 155A,ME 17 with a minimum grade of C-; ME 163.,"ME 155C, ECE 179D, ECE 289, ME 179D"
+ME 155C,ME 155A.,None
+ME 166,ME 15.,None
+ME W 167,ME 15,None
+ME 169,Physics 105A or Physics 103; or ME 163 or upper-division standing in ECE.,None
+ME 6,"Physics 7B, or Physics 3 and Physics 3L; and Mathematics 4A, or 4AI, or 3C;open to ME majors only.","ME 104, ME 179L"
+ME 12,ME majors only.,None
+ME 15,ME 14 with a minimum grade of C-; open to mechanical engineering majors only.,"ME 166, ME W 167, ME 180, MATRL 186A, ME 154, ME 156A"
+ME 102,ME151B and ME152A; or by consent of Instructor,None
+ME 108,ME 14; ME 15,None
+ME 125ED,Consent of instructor.,None
+ME 125EH,Consent of instructor.,None
+ME 125FA,Consent of instructor.,None
+ME 125KF,Consent of instructor.,None
+ME 125MV,Consent of instructor.,None
+ME 125RM,Consent of instructor.,None
+ME 127,ME 16 or ME W 16.,None
+ME 141A,ME 16 or ME W 16 and 17; ME 152A and ME 151A (may be concurrent); or ECE 130A & 137A with a minimum grade of C- in both.,"ECE 141B, ME 141B"
+ME 151B,ME 151A and 152A.,"ME 151C, ME 102, ME 105, ME 157, ME 189A, ME 220B"
+ME 152B,ME 152A. Open to ME majors only.,ME 220B
+ME 156B,ME 156A. Open to ME majors only.,None
+ME 158,ME 10; open to ME majors only.,None
+ME 159,Upper-division standing.,None
+ME 163,ME 16 or ME W 16 with a minimum grade of C-; open to ME majors only.,"ECE 141B, ECE 183, ME 141B, ME 155A, ME 169, PHYS 106"
+ME 186A,ME 151C; and ME 15; and Materials 101 or Materials 100C,None
+ME W 16,"Physics 7A or Physics 2, and ME 14 with a minimum grade of C-, and Math 6B or Math 5C (may be taken concurrently); open to ME majors only.",None
+ME 193,Consent of instructor. Prior departmental approval needed.,None
+ME 197,ME 16; consent of instructor.,None
+ME 199,Consent of instructor; upper-division standing; completion of two upper-division courses in Mechanical Engineering.,None
+ME ST 199,Upper-division standing; completion of at least two upper-division courses in medieval studies.,None
+ME ST 200A,Consent of instructor.,None
+ME ST 200C,Consent of instructor.,None
+MS 1A,none,None
+MS 2AA,none,None
+MS 6,No Prerequisites,None
+MS 22,No Prerequisites,MS 190
+MS 99,Consent of instuctor and department.,None
+MS 131,Junior standing.,"MS 190, MS 132"
+MS 141,Military Science 133; senior standing.,MS 142
+MS 190,"Students must have had successfully completed MS 131, 132, and MS 133, and three quarters of MS 22 prior to attending this course. Students must meet US Army Officer contracted Qualification and Documentation Requirements.",None
+MS 199,Upper-division standing; completion of at least two upper-division courses in military science; open only to ROTC advanced students approved by the department chair.,None
+MS 1C,none,None
+MS 2AC,none,None
+MS 133,Military Science 132; junior standing.,"MS 190, MS 141"
+MS 143,Military Science 142; senior standing.,None
+MS 1AB,none,None
+MS 2AB,none,None
+MS 132,Military Science 131; junior standing.,"MS 133, MS 190"
+MS 142,Military Science 141; senior standing.,MS 143
+MUS 1,No Prerequisites,"CMPSC 196, CMPSC 196B, ECE 196"
+MUS 3A,No prerequisites.,MUS 3B
+MUS 4A,"Placement exam. A grade of at least C- is required in each course of the Music 4 series. Must be taken consecutively, and concurrently with the Music 5 series.",None
+MUS 4D,"Placement Exam. A grade of at least C- is required in each course of the Music 4 series. Must be taken consecutively, and concurrently with the Music 5 series.",None
+MUS 5A,Placement Exam or Music 11.,None
+MUS 6,Music 5C.,None
+MUS 8,Consent of instructor.,None
+MUS 10A,No Prerequisites,"MUS 182, MUS 184"
+MUS 11,No Prerequisites,"MUS 20A, MUS 5A"
+MUS 15,No Prerequisites,None
+MUS 16,No Prerequisites,None
+MUS 17,No Prerequisites,None
+MUS 20A,Music 11 or UCSB Exam 38 (Music Theory Placement Test) with a score of 1 or higher. Placement by audition on the first day of class.,None
+MUS 22D,No Prerequisites,None
+MUS 22M,No Prerequisites,None
+MUS 22N,No Prerequisites,None
+MUS 22O,No Prerequisites,None
+MUS 22X,No Prerequisites,None
+MUS 24,Consent of instructor.,MUS 124
+MUS 3C,"Music 3B with a minimum grade of C-, or consent of instructor.",None
+MUS 4C,"Placement Exam. A grade of at least C- is required in each course of the Music 4 series. Must be taken consecutively, and concurrently with the Music 5 series.","MUS 160P, MUS 160C, MUS 160A, MUS 160B"
+MUS 4F,"Placement Exam. A grade of at least C- is required in each course of the Music 4 series. Must be taken consecutively, and concurrently with the Music 5 series.",None
+MUS 5C,"Placement exam. A grade of at least C- is required in each course of the Music 5 series. Must be taken consecutively, and concurrently with the Music 4 series.","MUS 160P, MUS 108, MUS 160C, MUS 106B, MUS 6, MUS 101A"
+MUS CS 5,Consent of Instructor,None
+MUS 10C,No Prerequisites,"MUS 182, MUS 184"
+MUS 25,By audition. Departmental approval required prior to registration. Consent of instructor to finalize registration.,"MUS 158D, MUS A 139, MUS 51, MUS 150, MUS 158B"
+MUS 26A,By audition. Consent of instructor and department.,None
+MUS 26B,By audition. Consent of instructor and department.,None
+MUS 26D,By audition. Consent of instructor and department.,None
+MUS 26E,By audition. Consent of instructor and department.,None
+MUS 27A,By audition. Consent of instructor and department.,None
+MUS 3B,"Music 3A with a minimum grade of C-, or consent of instructor.",MUS 3C
+MUS 4B,"Placement Exam. A grade of at least C- is required in each course of the Music 4 series. Must be taken consecutively, and concurrently with the Music 5 series.",None
+MUS 4E,"Placement Exam. A grade of at least C- is required in each course of the Music 4 series. Must be taken consecutively, and concurrently with the Music 5 series.",None
+MUS 5B,Placement exam. A grade of at least C- is required in each course of the Music 5 series. Must be taken concurrently with the Music 4 series.,None
+MUS 10B,No Prerequisites,"MUS 182, MUS 184"
+MUS 114,Upper-division standing.,None
+MUS A 34,Enrollment by audition.,None
+MUS A 36,Enrollment by audition.,None
+MUS A 37,No Prerequisites,None
+MUS A 40,Enrollment by audition.,None
+MUS A 41,By audition.,None
+MUS A 42,Enrollment by audition.,None
+MUS A 43,Audition.,None
+MUS A 44,Enrollment by audition.,None
+MUS A 45,By audition.,None
+MUS A 45BR,Enrollment by audition.,None
+MUS A 45H,Enrollment by audition.,None
+MUS A 47S,Enrollment by audition.,None
+MUS A 49,Enrollment by audition.,None
+MUS A 70I,Enrollment by audition.,None
+MUS A 70J,Enrollment by audition.,None
+MUS A 70M,Enrollment by audition.,None
+MUS A 70N,Enrollment by audition.,None
+MUS A 70V,Enrollment by audition.,None
+MUS A 134,Enrollment by audition. For upper-division students.,None
+MUS A 136,Enrollment by audition.,None
+MUS A 137,No Prerequisites,None
+MUS A 140,Enrollment by audition. For upper-division students.,None
+MUS A 141,Enrollment by audition. Upper-division students only.,None
+MUS A 37M,No audition required.,None
+MUS A 38P,By audition only.,None
+MUS A 38,By audition only.,None
+MUS A 52,No Prerequisites,None
+PHIL 1,No Prerequisites,PHIL 136
+PHIL 3,No Prerequisites,PHIL 100A
+PHIL 4,No Prerequisites,"PHIL 136, PHIL 134"
+PHIL 20A,No Prerequisites,None
+PHIL 100A,"One prior course in philosophy; or, Philosphy 3 (may be taken concurrently)","PHIL 139, PHIL 150A, PHIL 136, PHIL 150B, PHIL 166B, PHIL 138"
+PHIL 100D,One prior course in philosophy.,"PHIL 149, PHIL 150A, PHIL 150B, PHIL 161, PHIL 135, PHIL 134"
+PHIL 117,"A course from PHIL 100A-F, or two prior courses in philosophy.",None
+PHIL 124G,No Prerequisites,None
+PHIL 128,"Philosophy 100A; or, two prior courses in philosophy.",None
+PHIL 135,Philosophy 100B or 100D or 100E.,None
+PHIL 141,"Philosophy 100A; or, two prior courses in philosophy.",None
+PHIL 143,No Prerequisites,None
+PHIL 151,One prior upper-division course in Philosophy and one additional course in philosophy.,None
+PHIL 152,One prior upper-division course in Philosophy and one additional course in philosophy.,None
+PHIL 156,One prior upper-division course in Philosophy and one additional course in philosophy.,None
+PHIL 183,No Prerequisites,"PHIL 116, PHIL 184"
+PHIL 197A,Enrollment limited to senior honors philosophy majors; by consent of instructor and departmental approval.,None
+PHIL 197B,Enrollment limited to senior honors philosophy majors; by consent of instructor and departmental approval.,None
+PHIL 197P,Upper-division standing in philosophy; consent of department.,None
+PHIL 199,Upper-division standing; completion of 2 upper-division courses in philosophy.,None
+PHIL 199RA,Upper-division standing.,None
+PHIL 217,No Prerequisites,None
+PHIL 224G,No Prerequisites,None
+PHIL 228G,No Prerequisites,None
+PHIL 20C,No Prerequisites,None
+PHIL 100C,One prior course in philosophy.,"PHIL 149, PHIL 150A, PHIL 150B, PHIL 134"
+PHIL 100E,One prior course in philosophy.,"PHIL 149, PHIL 150A, PHIL 150B, PHIL 161, PHIL 135, PHIL 134"
+PHIL 124A,A prior course in philosophy.,None
+PHIL 124F,A prior course in philosophy.,None
+PHIL 134,"Philosophy 4 or 100A; and, Philosophy 100B or 100C or 100D or 100E.",None
+PHIL 139,"Philosophy 100A; or, two prior courses in philosophy.",None
+PHIL 149,"One prior course from Philosophy 100B, 100C, 100D, and 100E; or, two prior course in philosophy.",None
+PHIL 150A,Two courses from Philosophy 100A or 100B or 100C or 100D or 100E or 100F.,None
+PHIL 184,Philosophy 183.,None
+PHIL 189,Two prior upper-division courses in philosophy.,None
+PHIL 224A,No Prerequisites,None
+PHIL 224F,No Prerequisites,None
+PHIL 7,No Prerequisites,None
+PHIL 20B,No Prerequisites,PHIL 160
+PHIL 100B,One prior course in philosophy.,"PHIL 149, PHIL 150A, PHIL 150B, PHIL 161, PHIL 135, PHIL 134"
+PHIL 121,"Major in philosophy, law & society, political science, or global and international studies.",None
+PHIL 130,Prerequisite: one prior course in philosophy.,None
+PHIL 136,Philosophy 1 or Philosophy 4 or Philosophy 100A,None
+PHIL 138,"Philosophy 100A; or, two prior courses in philosophy.",None
+PHIL 150B,Two courses from Philosophy 100A or 100B or 100C or 100D or 100E or 100F.,None
+PHIL 153,One prior upper-division course in Philosophy and one additional course in philosophy.,None
+PHIL 161,Philosophy 100B or 100D or 100E.,None
+PHIL 100F,"One prior course in philosophy; or major in physics, chemistry, or biology.","PHIL 150A, PHIL 150B, PHIL 117, PHIL 127"
+PHIL 145,No Prerequisites,None
+POL S 1,No Prerequisites,"POL S 110CD, POL S 110DA, POL S 110ET, POL S 114, POL S 187, POL S 188"
+POL S 6,No Prerequisites,"POL S 146, POL S 132, POL S 134, POL S 149, POL S 150A, POL S 176"
+POL S 7,No Prerequisites,"POL SW 121, POL S 145, POL S 146, POL S 186, GLOBL 123, POL S 131"
+POL S 12,No Prerequisites,"AS AM 160, ENV S 163A, POL S 155, POL S 162, POL S 170, POL S 176"
+POL S 15,No Prerequisites,"POL S 132, POL S 134, POL S 149, POL S 166, POL S 170, POL S 143"
+POL S 99,Consent of instructor and department.,None
+POL S 106CD,"Upper-division, full POLS major standing.",None
+POL S 106GR,"Upper-division, full POLS major standing.",None
+POL S 106PP,"Upper-division, full POLS major standing.",None
+POL S 110AN,Political Science 1.,None
+POL S 121,Political Science 7.,POL S 126
+POL S 124,Political Science 7.,None
+POL S 126,"Political Science 7 or 121, and 15.",None
+POL S 172,Political Science 15.,None
+POL S 177,Environmental Studies 1 or Political Science 6,None
+POL S 188,Political Science 1; upper-division standing.,None
+POL S 192,Upper-division standing; consent of department prior to enrollment.,None
+POL S 196,No Prerequisites,None
+POL S 197A,Senior standing; consent of department.,None
+POL S 199,Upper-division standing; completion of two prior upper-division courses in political science; major in political science; consent of department.,None
+POL S 199RA,Upper-division standing; completion of 2 upper-division courses in politicascience; consent of instructor and department.,None
+POL S 205,No Prerequisites,"SOC 205B, SOC 205A"
+POL S 211,No Prerequisites,None
+POL S 272,Political Science 225 or equivalent.,None
+POL SH 7,No Prerequisites,None
+POL S 106CR,"Upper-division, full POLS major standing.",None
+POL S 106EA,"Upper-division, full POLS major standing.",None
+POL S 106EJ,"Upper-division, full POLS major standing.",None
+POL S 110CD,Political Science 1.,None
+POL S 131,Political Science 7 and upper-division standing.,None
+POL S 132,Political Science 6 and 15.,None
+POL S 133,POLS 6 or POLS 7.,None
+POL S 134,"Political Science 6 or 7, and 15.",None
+POL S 141,Political Science 7.,None
+POL S 142,Political Science 7.,None
+POL S 149,Political Science 6 and 15; not open to freshmen.,None
+POL S 150A,POL S 6 or 7.,None
+POL S 160,Political Science 12 or Asian American Studies 1 or Asian American Studies 2.,None
+POL S 162,Political Science 12.,None
+POL S 106AD,"Upper-division, full POLS major standing.",None
+POL S 106AS,"Upper-division, full POLS major standing.",None
+POL S 106BT,"Upper-division, full POLS major standing.",None
+POL S 106HR,"Upper-division, full POLS major standing.",None
+POL S 117,Political Science 6,None
+POL S 119JW,Political Science 1 and 7.,None
+POL S 135,Political Science 6.,None
+POL S 143,Political Science 6 and 15; not open to freshmen.,None
+POL S 147,Political Science 6.,None
+POL S 166,Political Science 15.,None
+POL S 173,Upper-division standing.,None
+POL S 197B,Senior standing; consent of department.,None
+POL S 101,No Prerequisites,None
+POL SW 121,Political Science 7.,None
+POL S 145,POL S 7.,None
+POL S 146,Political Science 6 or 7; upper-division standing.,None
+POL S 186,POLS 7 or GLOBL 2; upper-division standing.,None
+POL S 596,A written proposal for each tutorial must be approved by the instructor andthe department graduate advisor and filed with the department graduate offi,None
+PORT 1,No Prerequisites,PORT 2
+PORT W 1,No Prerequisites,None
+PORT 4,"Portuguese 3 or Portuguese 16B, either class must be passed with a grade of P or a grade of C or higher.",PORT 5
+PORT 31,No prerequisites,None
+PORT 32,No Prerequisites,None
+PORT 102A,Portuguese 6,None
+PORT 125A,Upper-division standing.,None
+PORT 195,Admission to the Portuguese senior honors program.,None
+PORT 199,Upper-division standing; completion of 2 upper-division courses in Portuguese; consent of department.,None
+PORT 591,No Prerequisites,None
+PORT 592,No Prerequisites,None
+PORT 596,Consent of the program advisor.,None
+PORT 3,Portuguese 2 with a grade of P or a grade of C or higher.,"GLOBL 196C, GLOBL 196B, GLOBL 196A, PORT 4"
+PORT 6,"Portuguese 5 with a grade of P, or a grade of C or higher.","PORT 147, PORT 145, PORT 102A"
+PORT 16B,Portuguese 16A with a grade of P or a grade of C or higher.,PORT 4
+PORT 130B,Upper-division standing.,None
+PORT 147,Portuguese 6,None
+PORT 593,No Prerequisites,None
+PORT 2,"Portuguese 1, or Portuguese 16A, with a grade of P or a grade of C or higher.",PORT 3
+PORT 5,"Portuguese 4 with a grade of P, or a grade of C or higher.",PORT 6
+PORT 16A,No Prerequisites,"PORT 16B, PORT 2"
+PORT 105E,Upper-division standing,None
+PORT 114,Upper-division standing.,None
+PORT 129C,Upper-division standing.,None
+RENST 199,Upper-division standing; completion of 2 upper-division courses in Renaissance Studies.,None
+RG ST 4,none,None
+RG ST 10A,No Prerequisites,"RG ST 10C, RG ST 10D"
+RG ST 10D,Religious Studies 10A-B-C.,RG ST 10E
+RG ST 11A,No Prerequisites,RG ST 11B
+RG ST 14,No Prerequisites,None
+RG ST 28,No Prerequisites,None
+RG ST 29,No Prerequisites,None
+RG ST 30,No Prerequisites,None
+RG ST 35,No Prerequisites,None
+RG ST 37,No Prerequisites,None
+RG ST 58A,Instructor approval.,RG ST 58B
+RG ST 58D,RG ST 58C or Instructor Approval.,RG ST 158E
+RG ST 73,No Prerequisites,None
+RG ST 98,No Prerequisites,None
+RG ST 99,minimum 3.0 cumulative GPA,None
+RG ST 104,Religious studies majors with upper division standing and consent of department.,None
+RG ST 107,Upper Division Standing,None
+RG ST 111B,Upper-division only.,None
+RG ST 112,Upper-division standing.,None
+RG ST 115G,Upper division standing,None
+RG ST 127A,Upper-division standing.,None
+RG ST 147,Upper division standing,None
+RG ST 148A,Religious Studies 10F.,RG ST 148B
+RG ST 156CC,Instructor approval required prior to enrolling.,None
+RG ST 7,No Prerequisites,None
+RG ST 10C,Religious Studies 10A-B.,RG ST 10D
+RG ST 10F,Religious Studies 10E.,RG ST 148A
+RG ST 11C,Religious Studies 11B.,None
+RG ST 19,No Prerequisites,None
+RG ST 31,No Prerequisites,None
+RG ST 58C,RG ST 58B or Instructor Approval,RG ST 58D
+RG ST 63,No Prerequisites,None
+RG ST 65C,RG ST 65B,None
+RG ST 65F,RG ST 65E,None
+RG ST 71,none,None
+RG ST 80C,No Prerequisites,None
+RG ST 99PL,Minimum 3.0 cumulative GPA.,None
+RG ST 99PS,minimum 3.0 cumulative GPA,None
+RG ST 99RA,minimum 3.0 cumulative GPA,None
+RG ST 109B,Upper-division standing.,None
+RG ST 110L,Upper division standing.,None
+RG ST 112A,Upper division standing,None
+RG ST 116B,No Prerequisites,None
+RG ST 129,Upper-division standing or instructor approval,None
+RG ST 3,No Prerequisites,None
+RG ST 10B,Relgious Studies 10A.,"RG ST 10C, RG ST 10D"
+RG ST 10E,Religious Studies 10D.,RG ST 10F
+RG ST 11B,Religious Studies 11A.,RG ST 11C
+RG ST 13,No Prerequisites,None
+RG ST 24,No Prerequisites,None
+RG ST 58B,RG ST 58A or Instructor Approval,"RG ST 157CP, RG ST 58C, RG ST 157G"
+RG ST 65B,RG ST 65A,RG ST 65C
+RG ST 65E,RG ST 65D,RG ST 65F
+RG ST 81,No Prerequisites,None
+RG ST 101,Upper-division standing or instructor approval,None
+RG ST 111,Upper division standing,None
+RG ST 116A,Upper-division standing or instructor approval,None
+RG ST 125A,upper-division standing,None
+RG ST 128C,Upper-division standing or instructor approval,None
+RG ST 131H,Upper-division standing or a prior course in religious studies.,None
+RG ST 132B,Upper-division standing.,None
+RG ST 1,No Prerequisites,None
+RG ST 21,No Prerequisites,None
+RG ST 106,Upper-division standing or instructor approval,None
+RG ST 110,Upper division standing.,None
+RG ST 160A,Upper-division standing or instructor approval,None
+RG ST 195,Two prior upper-division courses in religious studies; consent of instructoand department; senior standing; open to religious studies majors only.,None
+RG ST 199,Two upper-division courses in religious studies; consent of instructor and department; open to Religious Studies majors only.,None
+RG ST 199RA,Two upper-division courses in religious studies; consent of instructor and department; open to Religious Studies majors only.,None
+RG ST 296,No Prerequisites,None
+RUSS 1,"Lower-division only. If junior or senior standing, please contact Larry McLellan to request to enroll in the course. mclellan@gss.ucsb.edu",RUSS 2
+RUSS 4,Russian 3 or equivalent.,RUSS 5
+RUSS 101A,Russian 6 or equivalent.,None
+RUSS 101D,Russian 6 or equivalent.,None
+RUSS 3,Russian 2 or equivalent.,RUSS 4
+RUSS 6,Russian 5 or equivalent.,"RUSS 101C, RUSS 121, RUSS 101F, RUSS 122, RUSS 101B, RUSS 101A"
+RUSS 101C,Russian 6 or equivalent.,None
+RUSS 121,Russian 6 or equivalent; and upper-division standing.,None
+RUSS 2,Russian 1 or equivalent.,RUSS 3
+RUSS 5,Russian 4 or equivalent.,RUSS 6
+RUSS 101B,Russian 6 or equivalent.,None
+SLAV 33,No Prerequisites,None
+SLAV 145,Upper-division standing.,None
+SLAV 152A,Upper-division standing.,None
+SLAV 164B,Upper-division standing.,None
+SLAV 197,Senior standing; consent of instructor.,None
+SLAV 199,Upper-division standing; completion of 2 upper-division courses in Slavic.,None
+SLAV 596,No Prerequisites,None
+SLAV 35,No Prerequisites,None
+SLAV 152C,Upper-division standing.,None
+SLAV 182,Upper-division standing.,None
+SLAV 117I,Upper-division standing.,None
+SLAV 123C,Upper-division standing.,None
+SLAV 181C,Upper Division standing.,None
+SLAV 187,Upper-Division Standing,None
+SPAN 1,No Prerequisites,None
+SPAN W 1,No Prerequisites,None
+SPAN W 2,No Prerequisites,None
+SPAN 3,Spanish 2 with a grade of P or a grade of C or higher.,SPAN 4
+SPAN 4,"Spanish 3, Spanish 3SS, 3HY, with a grade of P or a grade of C or higher; or a score of 3 on the AP Spanish Language Examination; or a score of 3 on the AP Spanish Language & Culture Examination.",SPAN 5
+SPAN 5,Spanish 4 with a grade of P or a grade of C or higher; or a score of 4 on the AP Spanish Language Examination; or a score of 4 on the AP Spanish Language and Culture Examination; or a score of 3 on the AP Spanish Literature and Culture Examination.,SPAN 6
+SPAN 6,Spanish 5 with a grade of P or a grade of C or higher; or a score of 5 on the AP Spanish Language Examination; or a score of 5 on the AP Spanish Language and Culture Examination; or a score of 3 on the AP Spanish Literature Examination; or a score of 4 on the AP Spanish Literature and Culture Examination.,SPAN 25
+SPAN 15,Instructor or department approval required to finalize enrollment.,None
+SPAN 16A,No Prerequisites,"SPAN 128, SPAN 16B, SPAN 147, SPAN 119A, SPAN 177, SPAN 178"
+SPAN 16B,Spanish 16A with a grade of P or a grade of C or higher.,"SPAN 128, C LIT 102B, C LIT 102A, SPAN 147, SPAN 30, SPAN 100"
+SPAN 25,Spanish 6 with a grade of P or a grade of C or higher; or a score of 4 or 5 on the AP Spanish Literature Examination; or a score of 5 on the AP Spanish Literature and Culture Examination.,"SPAN 128, C LIT 102B, C LIT 102A, SPAN 147, SPAN 30, SPAN 100"
+SPAN 2,No Prerequisites,"SPAN W 3, SPAN 3, SPAN 3HY"
+SPAN W 3,Spanish 2 with a grade of P or a grade of C or higher.,None
+SPAN 100,SPAN 16B or SPAN 25 (may be taken concurrently).,"LAIS 165, SPAN 165, LAIS 145, SPAN 109, SPAN 145"
+SPAN 126,Upper-division standing.,None
+SPAN 128,Spanish 16A or 16B or 25 (may be taken concurrently).,None
+SPAN 139,Upper-division standing.,None
+SPAN 195,Spanish or Portuguese majors only.,None
+SPAN 199,Upper-division standing; completion of two upper-division courses in Spanish and consent of department.,None
+SPAN 596,Consent of instructor; approval of department chair.,None
+THTR 2B,No Prerequisites,None
+THTR 5,No Prerequisites,"THTR 10C, THTR 11C, THTR 15C, THTR 140B, THTR 10A, THTR 11A"
+THTR 10A,Theater 5; audition.,None
+THTR 11A,Theater 5; consent of instructor.,None
+THTR 15A,Theater 5; consent of instructor.,None
+THTR 19,No Prerequisites,"THTR 123, THTR 25, THTR 23, THTR 23D, THTR 122, THTR 125"
+THTR 25,Theater 19.,THTR 125
+THTR 29A,No Prerequisites,None
+THTR 29B,No Prerequisites,None
+THTR 29C,No Prerequisites,None
+THTR 29D,No Prerequisites,None
+THTR 40,Theater 5 or permission of instructor.,None
+THTR 42,Lower-division standing.,None
+THTR 95,No Prerequisites,None
+THTR 104A,Consent of instructor.,None
+THTR 2C,No Prerequisites,None
+THTR 10C,Theater 5; consent of instructor.,THTR 110A
+THTR 11C,Theater 5; consent of instructor.,"THTR 111C, THTR 111A, THTR 111B"
+THTR 15C,Theater 5; consent of instructor.,"THTR 151C, THTR 151A, THTR 151B"
+THTR 22,No Prerequisites,"THTR 122, THTR 196"
+THTR 49,Lower-division standing.,None
+THTR 110C,Concurrent enrollment in Theater 151C. Consent of instructor.,"THTR 151C, THTR 110D"
+THTR 110D,Theater 110C.,None
+THTR 111C,Theater 11C; and concurrent enrollment in 151C.,"THTR 151C, THTR 112"
+THTR 125,"Theater 1, 19 and 25.","THTR 124, THTR 196"
+THTR 130,No Prerequisites,None
+THTR 140A,Theater 5; upper-division standing.,None
+THTR 142,Upper Division Standing.,None
+THTR 1,No Prerequisites,"THTR 123, THTR 122, THTR 125, THTR 152B"
+THTR 10B,Theater 5; audition.,None
+THTR 11B,Theater 5; consent of instructor.,None
+THTR 15B,Theater 5; consent of instructor.,None
+THTR 104C,Consent of instructor.,None
+THTR W 2B,No Prerequisites,None
+THTR W 19,No Prerequisites,None
+THTR 43,Lower-division standing.,None
+THTR 134P,Permission of instructor.,None
+THTR 143,No Prerequisites,None
+THTR 144A,No Prerequisites,None
+THTR 144B,Consent of instructor.,None
+THTR 149,Upper-division standing.,None
+THTR 194A,Consent of instructor.,None
+THTR 199,Consent of instructor; completion of 2 upper-division courses in Theater.,None
+TMP 120,Sophomore standing or higher.,"TMP 124, TMP 127"
+TMP 122,Sophomore standing or higher.,None
+TMP 124,Sophomore standing or higher.,None
+TMP 127,Sophomore standing or higher.,None
+TMP 199,Upper-division standing; consent of instructor.,None
+TMP 240,Graduate standing,None
+TMP 241,Graduate standing.,None
+TMP 242,Graduate standing.,None
+TMP 244,Graduate standing.,None
+TMP 273,No Prerequisites,None
+TMP 291ST,No Prerequisites,None
+TMP 402,No Prerequisites,None
+TMP 412,Graduate Standing,None
+TMP 441,Graduate Standing,None
+TMP 191PL,Upper-division standing.,None
+TMP 283,No Prerequisites,None
+TMP 291TW,No Prerequisites,None
+TMP 442,Graduate Standing,None
+TMP 500,Appointment as teaching assistant and departmental approval.,None
+TMP 596,No Prerequisites,None
+TMP 597A,Completion of:32 units of theory/research courses16 units of Methods courses8 units of Elective courses,None
+TMP 597B,Completion of: 32 units of theory/research courses 16 units of Methods courses 8 units of Elective courses,None
+W&L CS 1,Consent of instructor,None
+W&L CS 2,Consent of Instructor,None
+W&L CS 3,Consent of Instructor,None
+W&L CS 20,Consent of Instructor,None
+W&L CS 110,Consent of Instructor,None
+W&L CS 120,Consent of Instructor,None
+W&L CS 130,Consent of Instructor,None
+W&L CS 142,Consent of Instructor,None
+W&L CS 152CS,Consent of Instructor,None
+W&L CS 170A,Consent of Instructor,None
+W&L CS 190,Consent of Instructor,None
+W&L CS 5,Consent of Instructor,None
+W&L CS 10,Consent of Instructor,None
+W&L CS 13,No Prerequisites,None
+W&L CS 141B,Writing & Literature CS 141A,None
+W&L CS 152FL,Consent of Instructor,None
+W&L CS 160SS,No Prerequisites,None
+W&L CS 170C,"W&L CS 170A, Consent of instructor",None
+W&L CS 198,Consent of Instructor,None
+W&L CS 199,Consent of Instructor,None
+W&L CS 12,No Prerequisites,None
+W&L CS 30,Consent of Instructor,None
+W&L CS 141A,No Prerequisites,None
+W&L CS 149,Consent of Instructor,None
+W&L CS 150TL,Consent of Instructor,None
+W&L CS 170B,"WL CS 170A, Consent of Instructor",None
+W&L CS 197,Consent of Instructor,None
+W&L CSW 15,No Prerequisites,None
+WRIT 1,Has not completed the Entry Level Writing Requirement and received a score of 6 or lower on the Analytical Writing Placement Exam.,"WRIT W 109ST, WRIT 107WC, WRIT 105CW, WRIT 105SW, WRIT 105WE, WRIT 28"
+WRIT 1E,"Has not completed the Entry Level Writing Requirement and received a score of 6 or lower on the Analytical Writing Placement Exam. Freshmen only; open to ECE, Chemical Engineering, Mechanical Engineering, and Computer Engineering majors only.",None
+WRIT 2,"Satisfaction of the Entry Level Writing requirement or Linguistics 12 with a grade of ""C"" or better.","C LIT 190A, ENGL 65AL, ENGL 103B, ENGL 122UE, ENGL 124, ENGL 134AA"
+WRIT W 6R,No Prerequisites,None
+WRIT 50,Writing 2 or 2E or 2LK.,"ENGL 103B, ENGL 124, ENGL 184, ENGL 103A, ENGL 103AS, ENGL 104A"
