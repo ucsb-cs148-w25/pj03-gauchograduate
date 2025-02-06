@@ -25,16 +25,26 @@ export default async function handler(
     return res.status(401).json({ error: "Not authenticated" })
   }
 
-  const { major } = req.body
+  const { major, firstQuarter } = req.body
 
   if (!major || typeof major !== 'string') {
     return res.status(400).json({ error: "Major is required and must be a string" })
   }
 
+  if (!firstQuarter || typeof firstQuarter !== 'string' || !/^\d{5}$/.test(firstQuarter)) {
+    return res.status(400).json({ error: "First quarter must be a valid quarter code" })
+  }
+
   try {
     const updatedUser = await prisma.user.update({
       where: { id: session.user.id },
-      data: { major },
+      data: { 
+        major,
+        courses: {
+          firstQuarter,
+          courses: []
+        }
+      },
       select: {
         id: true,
         major: true

@@ -1,22 +1,12 @@
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import NextAuth, { NextAuthOptions, DefaultSession } from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { prisma } from "@/lib/prisma";
 
-declare module "next-auth" {
-  interface UserCourse {
-    id: string;
-    quarter: string;
-  }
+// import { Session, DefaultSession } from "next-auth"
 
-  interface Session extends DefaultSession {
-    user?: DefaultSession["user"] & {
-      id: string;
-      major: string;
-      courses: UserCourse[];
-    }
-  }
-}
+// Import types from our d.ts file
+// import type { UserCourses } from "@/types/next-auth"
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),

@@ -43,16 +43,18 @@ export default async function handler(
       return res.status(404).json({ error: "User not found" })
     }
 
-    // Cast the JSON courses to our expected type
-    const currentCourses = user.courses as { id: string; quarter: string }[]
+    const userCourses = user.courses as { firstQuarter: string; courses: { id: string; quarter: string }[] }
     
     // Check if course already exists for this quarter
-    if (currentCourses.some(course => course.id === id && course.quarter === quarter)) {
+    if (userCourses.courses.some(course => course.id === id && course.quarter === quarter)) {
       return res.status(400).json({ error: "Course already exists in this quarter" })
     }
 
     // Add the new course
-    const updatedCourses = [...currentCourses, { id, quarter }]
+    const updatedCourses = {
+      firstQuarter: userCourses.firstQuarter,
+      courses: [...userCourses.courses, { id, quarter }]
+    }
 
     // Update the user's courses
     const updatedUser = await prisma.user.update({

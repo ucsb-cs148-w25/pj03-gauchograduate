@@ -43,20 +43,22 @@ export default async function handler(
       return res.status(404).json({ error: "User not found" })
     }
 
-    // Cast the JSON courses to our expected type
-    const currentCourses = user.courses as { id: string; quarter: string }[]
+    const userCourses = user.courses as { firstQuarter: string; courses: { id: string; quarter: string }[] }
     
     // Check if course exists in the user's list
-    const courseExists = currentCourses.some(course => course.id === id && course.quarter === quarter)
+    const courseExists = userCourses.courses.some(course => course.id === id && course.quarter === quarter)
     
     if (!courseExists) {
       return res.status(400).json({ error: "Course not found in user's course list" })
     }
 
     // Remove the course
-    const updatedCourses = currentCourses.filter(
-      course => !(course.id === id && course.quarter === quarter)
-    )
+    const updatedCourses = {
+      firstQuarter: userCourses.firstQuarter,
+      courses: userCourses.courses.filter(
+        course => !(course.id === id && course.quarter === quarter)
+      )
+    }
 
     // Update the user's courses
     const updatedUser = await prisma.user.update({
