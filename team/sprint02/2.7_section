@@ -1,0 +1,25 @@
+### Mentor: Anderson L
+### Type of Meeting: Daily Scrum
+### Team: John Kim[x], Jaren Lowe[x], Kade Williams[x], Selena Zeng[x], Taedon Reth[x], Vala Bahrami[x], Chiran Arumugam[x]
+
+### Scribed Discussion:
+
+#### Tasks:
+
+Selena/Chiran:
+- Chiran: progress bar updated to incorporate prerequisite format
+- completed course drag and drop between quarters
+- Selena: created Figma mockup of web app UI on mobile 
+
+Jaren/Tadeon:
+- Updated api calls for changed database to update front end
+- Create new issues and plan ahead for more features
+- No roadblocks
+
+
+John/Vala/Kade:
+- Redid the schema to account for courses offered in multiple years
+- Parsed JSON data from the past two years into SQL commands
+- Executed .sql file on the database
+- Updated API to reflect new schema
+- Roadblock: Want to do pre-reqs but the data is inconsistently formatted
