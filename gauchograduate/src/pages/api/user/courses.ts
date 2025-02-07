@@ -5,6 +5,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 type ResponseData = {
   error?: string
+  firstQuarter?: string
   courses?: {
     id: string;
     quarter: string;
@@ -37,7 +38,8 @@ export default async function handler(
       return res.status(404).json({ error: "User not found" })
     }
 
-    res.json({ courses: user.courses as { id: string; quarter: string }[] })
+    const userCourses = user.courses as { firstQuarter: string; courses: { id: string; quarter: string }[] }
+    res.json(userCourses)
   } catch (error) {
     console.error('Error fetching user courses:', error)
     res.status(500).json({ error: "Failed to fetch user courses" })

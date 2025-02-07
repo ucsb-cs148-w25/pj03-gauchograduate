@@ -30,11 +30,12 @@ CREATE TABLE "Session" (
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
     "name" TEXT,
-    "email" TEXT,
+    "email" TEXT NOT NULL,
     "emailVerified" TIMESTAMP(3),
     "image" TEXT,
     "major" TEXT NOT NULL DEFAULT '',
     "dateJoined" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "courses" JSONB NOT NULL DEFAULT '{"firstQuarter": "20224", "courses": []}',
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
@@ -44,6 +45,31 @@ CREATE TABLE "VerificationToken" (
     "identifier" TEXT NOT NULL,
     "token" TEXT NOT NULL,
     "expires" TIMESTAMP(3) NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "Course" (
+    "gold_id" TEXT NOT NULL,
+    "title" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
+    "subject_area" TEXT NOT NULL,
+    "units" DOUBLE PRECISION,
+    "general_ed" JSONB NOT NULL,
+    "prerequisites" JSONB NOT NULL,
+    "unlocks" JSONB NOT NULL,
+    "id" SERIAL NOT NULL,
+
+    CONSTRAINT "Course_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Offering" (
+    "id" SERIAL NOT NULL,
+    "quarter" TEXT NOT NULL,
+    "year" TEXT NOT NULL,
+    "courseId" INTEGER NOT NULL,
+
+    CONSTRAINT "Offering_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
@@ -66,3 +92,6 @@ ALTER TABLE "Account" ADD CONSTRAINT "Account_userId_fkey" FOREIGN KEY ("userId"
 
 -- AddForeignKey
 ALTER TABLE "Session" ADD CONSTRAINT "Session_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Offering" ADD CONSTRAINT "Offering_courseId_fkey" FOREIGN KEY ("courseId") REFERENCES "Course"("id") ON DELETE CASCADE ON UPDATE CASCADE;
