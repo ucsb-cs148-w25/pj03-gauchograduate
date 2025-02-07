@@ -4,6 +4,10 @@ export const Years = ['Year 1', 'Year 2', 'Year 3', 'Year 4'];
 
 export type Term = typeof Terms[number];
 export type YearType = typeof Years[number];
+export type GeneralEd = {
+  geCode: string;
+  geCollege: string;
+};
 
 // each course information
 export interface Course {
@@ -12,7 +16,7 @@ export interface Course {
   description: string;
   subjectArea: string;
   units: number;
-  generalEd: string[];
+  generalEd: GeneralEd[];
   prerequisites: string[];
   unlocks: string[];
   department: string;

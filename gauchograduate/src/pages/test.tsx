@@ -44,7 +44,12 @@ async function fetchAndSetCourses(quarter: string, setCourses: (courses: Course[
       subjectArea: course.subject_area,
       department: course.subject_area,
       units: course.units,
-      generalEd: course.general_ed || [],
+      generalEd: Array.isArray(course.general_ed)
+      ? course.general_ed.map((ge: any) => ({
+          geCode: ge.geCode?.trim() || "", 
+          geCollege: ge.geCollege?.trim() || ""
+        }))
+      : [],
       prerequisites: course.prerequisites || [],
       unlocks: course.unlocks || [],
       term: []
@@ -54,19 +59,16 @@ async function fetchAndSetCourses(quarter: string, setCourses: (courses: Course[
     const sortedCourses = formattedCourses.sort((a, b) => a.course_id.localeCompare(b.course_id));
 
 
-    console.log(`Formatted and Sorted Courses for quarter ${quarter}:`, sortedCourses);
-
     sortedCourses.forEach(course => {
       console.log(`Course: ${course.course_id} - ${course.title}`);
     
-      if (Array.isArray(course.generalEd)) {
-        const genEdValues = course.generalEd.map(ge => 
-          typeof ge === "string" ? ge : JSON.stringify(ge) // Convert objects to strings for debugging
-        );
+      if (Array.isArray(course.generalEd) && course.generalEd.length > 0) {
+        // Formatting general education information
+        const genEdValues = course.generalEd.map(ge => `${ge.geCode} (${ge.geCollege.trim()})`).join(", ");
     
-        console.log(`Gen Eds: ${genEdValues.length > 0 ? genEdValues.join(", ") : "None"}`);
+        console.log(`Gen Eds: ${genEdValues}`);
       } else {
-        console.log("Gen Eds: None (unexpected format)");
+        console.log("Gen Eds: None");
       }
     });
 
@@ -149,7 +151,7 @@ export default function TestPage() {
 
 
         {/* Graduation Progress */}
-        <div className="w-1/4 bg-[var(--off-white)] p-4">
+        <div className="w-full md:w-1/5 bg-[var(--off-white)] p-4 overflow-y-scroll">
           <ProgressTracker studentSchedule={studentSchedule} courses={courses} />
         </div>
       </div>
