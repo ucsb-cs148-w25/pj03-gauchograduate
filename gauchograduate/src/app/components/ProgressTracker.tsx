@@ -10,142 +10,114 @@ interface ProgressTrackerProps {
 }
 
 const ProgressTracker = ({ studentSchedule, courses }: ProgressTrackerProps) => {
-  const [overallProgress, setOverallProgress] = useState<number>(0); // Overall progress
-  const [coreProgress, setCoreProgress] = useState<number>(0); // Core course progress
-  const [genEdProgress, setGenEdProgress] = useState<number>(0); // Gen Ed progress
-  const [coreRequirements, setCoreRequirements] = useState<string[]>([]);
-  const [genEdRequirements, setGenEdRequirements] = useState<string[]>([]);
-  const [completedCourses, setCompletedCourses] = useState<string[]>([]); // Courses added to schedule
+  // overall progress now based on units taken out of 180
+  const [overallProgress, setOverallProgress] = useState<number>(0);
+  const [totalUnits, setTotalUnits] = useState<number>(0);
+  const [coreCoursesTaken, setCoreCoursesTaken] = useState<Course[]>([]);
+  const [genEdCoursesTaken, setGenEdCoursesTaken] = useState<Course[]>([]);
+  const [showAllCore, setShowAllCore] = useState<boolean>(false);
+  const [showAllGenEd, setShowAllGenEd] = useState<boolean>(false);
 
   useEffect(() => {
-    // Extract Core and Gen Ed requirements
-    const coreCourses = courses
-      .filter((course) => course.generalEd === "Core")
-      .map((course) => course.course_id);
-
-    const genEdCourses = courses
-      .filter((course) => course.generalEd === "Gen Ed")
-      .map((course) => course.course_id);
-
-    setCoreRequirements(coreCourses);
-    setGenEdRequirements(genEdCourses);
-
-    // Find scheduled courses
-    const scheduledCourses = Object.values(studentSchedule)
+    const scheduledCourseIds = Object.values(studentSchedule)
       .flatMap((terms) => Object.values(terms).flat())
       .map((course) => course.course_id);
 
-    setCompletedCourses(scheduledCourses);
+      const completedCourseObjects = courses.filter((course) =>
+      scheduledCourseIds.includes(course.course_id)
+    );
 
-    // Calculate progress for Core Courses
-    const completedCoreCount = scheduledCourses.filter((id) =>
-      coreCourses.includes(id)
-    ).length;
-    const corePercentage = coreCourses.length
-      ? Math.round((completedCoreCount / coreCourses.length) * 100)
-      : 0;
+    // sum of total units taken
+    const totalUnitsTaken = completedCourseObjects.reduce(
+      (sum, course) => sum + course.units,
+      0
+    );
+    setTotalUnits(totalUnitsTaken);
 
-    // Calculate progress for Gen Ed Courses
-    const completedGenEdCount = scheduledCourses.filter((id) =>
-      genEdCourses.includes(id)
-    ).length;
-    const genEdPercentage = genEdCourses.length
-      ? Math.round((completedGenEdCount / genEdCourses.length) * 100)
-      : 0;
-
-    // Calculate overall progress
-    const totalCourses = coreCourses.length + genEdCourses.length;
-    const overallCompleted = completedCoreCount + completedGenEdCount;
-    const overallPercentage = totalCourses
-      ? Math.round((overallCompleted / totalCourses) * 100)
-      : 0;
-
-    // Update state
-    setCoreProgress(corePercentage);
-    setGenEdProgress(genEdPercentage);
+    // Calculate overall progress as a percentage (capped at 100).
+    const overallPercentage = Math.min(
+      Math.round((totalUnitsTaken / 180) * 100),
+      100
+    );
     setOverallProgress(overallPercentage);
+
+    // core vs gened courses completed
+    const completedCore = completedCourseObjects.filter(
+      (course) => course.generalEd.length === 0
+    );
+    const completedGenEd = completedCourseObjects.filter(
+      (course) => course.generalEd.length > 0
+    );
+    setCoreCoursesTaken(completedCore);
+    setGenEdCoursesTaken(completedGenEd);
   }, [studentSchedule, courses]);
 
-  // Helper function to render horizontal progress bars
-  const renderProgressBar = (percentage: number, colorVar: string) => (
-    <div className="w-full bg-gray-200 rounded-full h-4"
-    style= {{
-      backgroundColor: "var(--off-white)"
-    }}>
-      <div
-        className="bg-blue-500 h-4 rounded-full"
-        style={{ 
-          width: `${percentage}%`,
-          backgroundColor: `var(${colorVar})` }}
-      ></div>
-    </div>
-  );
+  // collapsable list component that only shows first three courses taken
+  const renderCourseList = (
+    coursesList: Course[],
+    showAll: boolean,
+    setShowAll: (value: boolean) => void
+  ) => {
+    const itemsToShow = showAll ? coursesList : coursesList.slice(0, 3);
+
+    return (
+      <div>
+        <ul className="list-disc ml-5 space-y-1">
+          {itemsToShow.map((course) => (
+            <li key={course.course_id}>
+              {course.course_id} ({course.units} units)
+            </li>
+          ))}
+        </ul>
+        {coursesList.length > 3 && (
+          <button
+            className="text-blue-500 text-sm mt-2 focus:outline-none"
+            onClick={() => setShowAll(!showAll)}
+          >
+            {showAll ? "Show Less" : "Show More"}
+          </button>
+        )}
+      </div>
+    );
+  };
 
   return (
-    <div className="p-4 bg-white rounded-md shadow-md">
+    <div className="h-full p-4 bg-white rounded-md shadow-md">
       <h2 className="text-xl font-semibold mb-4">Graduation Progress</h2>
 
-      {/* Circular Progress Bar for Overall Progress */}
+      {/* Overall Progress: Circular progress bar based on units taken */}
       <div className="w-2/3 mx-auto mb-6">
-        <CircularProgressbar 
+        <CircularProgressbar
           value={overallProgress}
           text={`${overallProgress}%`}
           styles={buildStyles({
             pathColor: "var(--pale-blue)",
             trailColor: "var(--off-white)",
             textColor: "var(--foreground)"
-          })} />
-        <p className="text-center text-sm mt-2">Overall Progress</p>
+          })}
+        />
+        <p className="text-center text-sm mt-2">{`${totalUnits} / 180 Units Completed`}</p>
       </div>
 
-      {/* Horizontal Progress Bar for Core Courses */}
-      <h3 className="text-lg font-semibold mb-2">Core Courses</h3>
-      <div className="mb-6">
-        {renderProgressBar(coreProgress, "--pale-orange")}
-        <p className="text-sm text-gray-500 mt-1">{`${coreProgress}% of Core Courses Completed`}</p>
-      </div>
-      <ul className="list-none space-y-2 mb-4">
-        {coreRequirements.map((req) => (
-          <li key={req} className="flex items-center">
-            <input
-              type="checkbox"
-              checked={completedCourses.includes(req)} // Checked if in schedule
-              readOnly
-              className="mr-2"
-            />
-            <span>{req}</span>
-          </li>
-        ))}
-      </ul>
+      {/* Core Courses Taken */}
+      <h3 className="text-lg font-semibold mb-2">Core Courses Taken</h3>
+      {coreCoursesTaken.length > 0 ? (
+        renderCourseList(coreCoursesTaken, showAllCore, setShowAllCore)
+      ) : (
+        <p className="text-sm text-gray-500">No core courses taken yet.</p>
+      )}
 
-      {/* Horizontal Progress Bar for General Education */}
-      <h3 className="text-lg font-semibold mb-2">General Education</h3>
-      <div className="mb-6">
-        {renderProgressBar(genEdProgress, "--pale-pink")}
-        <p className="text-sm text-gray-500 mt-1">{`${genEdProgress}% of Gen Ed Courses Completed`}</p>
-      </div>
-      <ul className="list-none space-y-2">
-        {genEdRequirements.map((req) => (
-          <li key={req} className="flex items-center">
-            <input
-              type="checkbox"
-              checked={completedCourses.includes(req)} // Checked if in schedule
-              readOnly
-              className="mr-2"
-            />
-            <span>{req}</span>
-          </li>
-        ))}
-      </ul>
+      {/* General Education Courses Taken */}
+      <h3 className="text-lg font-semibold mt-6 mb-2">
+        General Education Courses Taken
+      </h3>
+      {genEdCoursesTaken.length > 0 ? (
+        renderCourseList(genEdCoursesTaken, showAllGenEd, setShowAllGenEd)
+      ) : (
+        <p className="text-sm text-gray-500">No Gen Ed courses taken yet.</p>
+      )}
     </div>
   );
 };
 
 export default ProgressTracker;
-
-
-
-
-
-
-

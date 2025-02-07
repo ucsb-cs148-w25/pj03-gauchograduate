@@ -1,9 +1,25 @@
-
 export const Terms = ['Fall', 'Winter', 'Spring', 'Summer'];
 export const Years = ['Year 1', 'Year 2', 'Year 3', 'Year 4'];
 
 export type Term = typeof Terms[number];
 export type YearType = typeof Years[number];
+export type GeneralEd = {
+  geCode: string;
+  geCollege: string;
+};
+
+// Interface for course data as it comes from the database
+export interface CourseInfo {
+  gold_id: string;
+  title: string;
+  description: string;
+  subject_area: string;
+  units: number | null;
+  general_ed: GeneralEd[];
+  prerequisites: number[];
+  unlocks: number[];
+  id: number;
+}
 
 // each course information
 export interface Course {
@@ -12,14 +28,14 @@ export interface Course {
   description: string;
   subjectArea: string;
   units: number;
-  generalEd: string;
+  generalEd: GeneralEd[];
   prerequisites: string[];
   unlocks: string[];
   department: string;
   term: Term[];
 }
 
-// describing the student’s entire 4-year schedule
+// describing the student's entire 4-year schedule
 export type ScheduleType = {
     [year in YearType]: {
       [t in Term]: Course[];
