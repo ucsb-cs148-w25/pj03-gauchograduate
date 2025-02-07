@@ -3,6 +3,7 @@ import "next-auth"
 export interface UserCourse {
   quarter: string;
   id: string;
+  grade?: string;
 }
 
 export interface UserCourses {

@@ -1,4 +1,4 @@
-`use client`;
+// `use client`;
 
 import { useState, useEffect } from "react";
 import CourseCatalog from "../app/components/CourseCatalog";
@@ -6,8 +6,7 @@ import FourYearPlan from "../app/components/four-year-plan";
 import Navbar from "../app/components/Navbar";
 import ProgressTracker from "../app/components/ProgressTracker";
 
-import { Course, ScheduleType, YearType, Term } from "../app/components/coursetypes";
-
+import { Course, CourseInfo, ScheduleType, YearType, Term } from "../app/components/coursetypes";
 
 const termToQuarter: { [key in Term]: string } = {
   Fall: "20241",
@@ -16,56 +15,42 @@ const termToQuarter: { [key in Term]: string } = {
   Summer: "20244",
 };
 
-
 async function fetchAndSetCourses(quarter: string, setCourses: (courses: Course[]) => void) {
   try {
     const response = await fetch(`https://thingproxy.freeboard.io/fetch/https://gauchograduate.vercel.app/api/course/query?quarter=${quarter}`);
-
 
     if (!response.ok) {
       throw new Error(`Failed to fetch courses. Status: ${response.status}`);
     }
 
-
     const data = await response.json();
     console.log(`API Response for quarter ${quarter}:`, data);
-
 
     if (!data || !data.courses || !Array.isArray(data.courses)) {
       console.error("Unexpected API structure", data);
       return;
     }
 
-
-    const formattedCourses: Course[] = data.courses.map((course: any) => ({
-      course_id: course.gold_id.trim(),
+    const formattedCourses: Course[] = data.courses.map((course: CourseInfo) => ({
+      course_id: course.gold_id,
       title: course.title,
       description: course.description,
       subjectArea: course.subject_area,
       department: course.subject_area,
-      units: course.units,
-      generalEd: Array.isArray(course.general_ed)
-      ? course.general_ed.map((ge: any) => ({
-          geCode: ge.geCode?.trim() || "", 
-          geCollege: ge.geCollege?.trim() || ""
-        }))
-      : [],
-      prerequisites: course.prerequisites || [],
-      unlocks: course.unlocks || [],
+      units: course.units || 0,
+      generalEd: Array.isArray(course.general_ed) ? course.general_ed : [],
+      prerequisites: course.prerequisites.map(String) || [],
+      unlocks: course.unlocks.map(String) || [],
       term: []
     }));
 
-
     const sortedCourses = formattedCourses.sort((a, b) => a.course_id.localeCompare(b.course_id));
-
 
     sortedCourses.forEach(course => {
       console.log(`Course: ${course.course_id} - ${course.title}`);
     
       if (Array.isArray(course.generalEd) && course.generalEd.length > 0) {
-        // Formatting general education information
         const genEdValues = course.generalEd.map(ge => `${ge.geCode} (${ge.geCollege.trim()})`).join(", ");
-    
         console.log(`Gen Eds: ${genEdValues}`);
       } else {
         console.log("Gen Eds: None");
@@ -78,21 +63,14 @@ async function fetchAndSetCourses(quarter: string, setCourses: (courses: Course[
   }
 }
 
-
-
-
 export default function TestPage() {
-
-
   const [courses, setCourses] = useState<Course[]>([]);
-  const [selectedTerm, setSelectedTerm] = useState<Term>("Fall"); // Default to Fall
-
+  const [selectedTerm, setSelectedTerm] = useState<Term>("Fall");
 
   useEffect(() => {
     console.log(`Fetching courses for selected term: ${selectedTerm}`);
     fetchAndSetCourses(termToQuarter[selectedTerm], setCourses);
   }, [selectedTerm]);
-
 
   const defaultSchedule: ScheduleType = {
     "Year 1": { Fall: [], Winter: [], Spring: [], Summer: [] },
@@ -101,10 +79,8 @@ export default function TestPage() {
     "Year 4": { Fall: [], Winter: [], Spring: [], Summer: [] },
   };
 
-
   const [studentSchedule, setStudentSchedule] = useState<ScheduleType>(defaultSchedule);
   const [selectedYear, setSelectedYear] = useState<YearType>("Year 1");
-
 
   const addCourse = (course: Course, term: Term) => {
     setStudentSchedule((prevSchedule) => ({
@@ -116,7 +92,6 @@ export default function TestPage() {
     }));
   };
 
-
   const removeCourse = (course: Course, term: Term) => {
     setStudentSchedule((prevSchedule) => ({
       ...prevSchedule,
@@ -127,18 +102,13 @@ export default function TestPage() {
     }));
   };
 
-
   return (
     <div className="h-screen flex flex-col">
       <Navbar />
       <div className="flex flex-1 flex-col md:flex-row overflow-hidden">
-        {/* Course Catalog */}
         <div className="w-full md:w-1/5 bg-[var(--off-white)] p-4 overflow-y-scroll">
           <CourseCatalog courses={courses} selectedTerm={selectedTerm} setSelectedTerm={setSelectedTerm} />
         </div>
-
-
-        {/* 4-year calendar */}
         <div className="w-full md:w-3/5 bg-white p-4 rounded-md shadow overflow-y-scroll">
           <FourYearPlan
             selectedYear={selectedYear}
@@ -148,9 +118,6 @@ export default function TestPage() {
             removeCourse={removeCourse}
           />
         </div>
-
-
-        {/* Graduation Progress */}
         <div className="w-full md:w-1/5 bg-[var(--off-white)] p-4 overflow-y-scroll">
           <ProgressTracker studentSchedule={studentSchedule} courses={courses} />
         </div>
