@@ -74,3 +74,10 @@ model Offering {
   courseId Int
   course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
 }
+
+model Major {
+  id           Int      @id @default(autoincrement())
+  name         String   @unique
+  college      String
+  requirements Json     // Array of course IDs
+}
