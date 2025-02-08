@@ -36,7 +36,17 @@ export default async function handler(
       return res.status(404).json({ error: 'Major not found' })
     }
 
-    res.json({ major })
+    // Convert the JSON requirements field to number[]
+    const requirements = major.requirements as number[];
+
+    res.json({ 
+      major: {
+        id: major.id,
+        name: major.name,
+        college: major.college,
+        requirements
+      }
+    })
   } catch (error) {
     console.error('Error fetching major:', error)
     res.status(500).json({ error: 'Failed to fetch major' })
