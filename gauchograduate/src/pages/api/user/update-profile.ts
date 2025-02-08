@@ -7,7 +7,7 @@ type ResponseData = {
   error?: string
   user?: {
     id: string
-    major: string | null
+    majorId: number | null
   }
 }
 
@@ -36,10 +36,18 @@ export default async function handler(
   }
 
   try {
+    const majorRecord = await prisma.major.findUnique({
+      where: { name: major }
+    });
+
+    if (!majorRecord) {
+      return res.status(400).json({ error: "Invalid major selected" });
+    }
+
     const updatedUser = await prisma.user.update({
       where: { id: session.user.id },
       data: { 
-        major,
+        majorId: majorRecord.id,
         courses: {
           firstQuarter,
           courses: []
@@ -47,7 +55,7 @@ export default async function handler(
       },
       select: {
         id: true,
-        major: true
+        majorId: true
       }
     })
     res.json({ user: updatedUser })
