@@ -71,8 +71,8 @@ export default function UpdateMajor() {
     setIsLoading(true);
     setMessage('');
 
-    const isValidMajor = majors.some(m => m.name === major);
-    if (!isValidMajor) {
+    const selectedMajor = majors.find(m => m.name === major);
+    if (!selectedMajor) {
       setMessage('Please select a valid major from the list');
       setIsLoading(false);
       return;
@@ -82,7 +82,7 @@ export default function UpdateMajor() {
       const response = await fetch('/api/user/update-profile', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ major, firstQuarter }),
+        body: JSON.stringify({ majorId: selectedMajor.id, firstQuarter }),
         credentials: 'include',
       });
 
