@@ -46,7 +46,7 @@ async function fetchCourses(quarter: string): Promise<Course[]> {
 }
 
 export default function HomePage() {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   const router = useRouter();
   const [selectedTerm, setSelectedTerm] = useState<Term>("Fall");
   const [studentSchedule, setStudentSchedule] = useState<ScheduleType>({

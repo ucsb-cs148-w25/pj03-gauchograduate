@@ -1,7 +1,9 @@
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../auth/[...nextauth]"
 import { prisma } from "@/lib/prisma"
+import { Prisma } from "@prisma/client"
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { UserCourses } from "@/types/next-auth"
 
 type ResponseData = {
   error?: string
@@ -55,17 +57,17 @@ export default async function handler(
       return res.status(404).json({ error: "User not found" });
     }
 
-    // Parse the existing courses JSON
-    const existingCourses = currentUser.courses as { firstQuarter: string; courses: any[] };
-
+    // Parse the existing courses JSON and validate its structure
+    const coursesData = currentUser.courses as unknown as UserCourses;
+    
     const updatedUser = await prisma.user.update({
       where: { id: session.user.id },
       data: { 
         majorId,
         courses: {
           firstQuarter,
-          courses: existingCourses.courses // Preserve existing courses
-        }
+          courses: coursesData.courses
+        } as unknown as Prisma.JsonObject
       },
       select: {
         id: true,
