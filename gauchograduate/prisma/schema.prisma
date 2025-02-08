@@ -78,7 +78,7 @@ model Offering {
 
 model Major {
   id           Int      @id @default(autoincrement())
-  name         String   @unique
+  name         String
   college      String
   requirements Json     // Array of course IDs
   users        User[]
