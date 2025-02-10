@@ -12,5 +12,6 @@ I used some [Codebuff](https://www.codebuff.com/) to learn about it's capabiliti
 ### Tadeon's AI tools
 ### John's AI tools
 ### Jaren's AI tools
+I’ve mainly used ChatGPT to help me figure out how to implement certain features in the application my team is working on. Since I’m still getting the hang of TypeScript and React, it’s really helped speed up my learning by making it easier to understand the code my teammates have written. One example is when I needed to understand how to make an API call in TypeScript and how the different components were structured. It’s also been useful for testing my own knowledge where I’ll get a function outline and have to fill in the missing details, which helps me see if I actually get what’s going on. I’ve gotten more comfortable with TypeScript and Next.js. Using ChatGPT has also helped me properly connect the database for courses on the frontend of our app. It’s been a great tool for quickly picking up concepts and making sense of what my teammates have already built, plus it’s made debugging and refining things easier. To make sure the AI-generated code actually worked and made sense, I always checked that it fit in with the rest of our code and that I fully understood it instead of just copying it over without thinking.
 ### Chiran's AI tools
 ### Selena's AI tools
