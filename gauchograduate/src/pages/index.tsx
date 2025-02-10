@@ -18,7 +18,7 @@ const termToQuarter: { [key in Term]: string } = {
 
 async function fetchAndSetCourses(quarter: string, setCourses: (courses: Course[]) => void) {
     try {
-        const response = await fetch(`/api/course/query?quarter=${quarter}`);
+        const response = await fetch(`https://thingproxy.freeboard.io/fetch/https://gauchograduate.vercel.app/api/course/query?quarter=${quarter}`);
 
         if (!response.ok) {
             throw new Error(`Failed to fetch courses. Status: ${response.status}`);
