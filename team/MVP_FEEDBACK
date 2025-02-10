@@ -1,0 +1,75 @@
+Using ChatGPT, we were able to identify some of the common ideas that people had when reviewing our MVP. From this list, we formulated an action plan moving forward for the direction of our app.
+Perceived Purpose of App:
+- solid understanding of our user stories and goals
+
+Things People Liked:
+- UI design (clean/minimal)
+- drag and drop
+- graduation progress
+- visualization style
+
+Potential Improvements:
+- Automated Course Suggestions (based on graduation requirements)
+- plan for double majors and minors
+- 3 to 5 year graduation tracker
+- Alternative Courses (classes get full)
+- Completed vs. In Progress vs. Planned
+- GPA calculator and grade tracking
+- export proposed schedule
+
+
+Summary of MVP Feedback given by ChatGPT:
+
+Summary of Key Points from Each Column
+What People Think the Purpose of Your App Is
+The app is perceived primarily as a four-year course planner for UCSB students to help them graduate on time.
+Many users see it as a graduation progress tracker, showing how close they are to completing their degree.
+Some describe it as an organization tool to help manage courses efficiently.
+A few users compare it to GOLD (UCSB’s course planning system) but suggest that your app is more user-friendly and visually appealing.
+Some users also recognize its potential to plan for multiple majors or minors.
+Things People Liked About Your Project
+Drag-and-Drop Feature: Many users appreciate the ability to easily move courses between quarters.
+Graduation Progress Tracker: The visual representation of progress towards a degree is well-received.
+Clean and Intuitive UI: The app is described as well-designed, polished, and easy to navigate.
+Authentication and Security: Users liked that the app only allows UCSB emails for sign-in, ensuring it’s exclusive to UCSB students.
+Course Planning Visualization: Features like unit tracking, core course organization, and Kanban-style dashboards were praised.
+Integration with UCSB Systems: Some users highlighted the app's connection to UCSB API for authentication.
+Customization Features: The ability to personalize the planner for different majors/minors was seen as valuable.
+Suggestions for Improvement
+Automatic Course Presets & Suggestions
+
+Add preloaded templates from UCSB’s GEAR (General Education and Major Requirements Guide) to reduce manual input.
+Auto-suggest courses based on the user’s major and remaining requirements.
+Include alternative courses or elective recommendations in case preferred classes are full.
+Integration with UCSB’s GOLD System
+
+Pull real-time course availability from GOLD to prevent users from planning courses in quarters where they are not offered.
+Sync student progress from GOLD, so users don’t have to manually enter completed courses.
+Display historical course offerings to help users anticipate when classes are likely to be available.
+Expanded Planning Features
+
+Allow users to plan for double majors and minors.
+Add a multi-year graduation planner for students graduating in 3 or 5 years, rather than assuming a strict four-year timeline.
+Include a feature to mark courses as "completed," "in progress," or "planned".
+Improved User Experience (UX/UI)
+
+Add color coding for different course types (e.g., GE, major, minor).
+Improve course filtering (by major, department, prerequisites, etc.).
+Include a homepage explaining the app’s features.
+Make UI simpler and less cluttered for better usability.
+Additional Functionality
+
+Implement a GPA calculator to estimate future GPA based on planned courses.
+Include professor information (possibly via Rate My Professor API).
+Add pass-time suggestions to help students plan when to enroll in courses.
+Create a social feature where students can connect with others in similar course plans.
+Export & Advisor Collaboration
+
+Allow students to export their plan to share with academic advisors for feedback.
+Provide a collaborative planning feature where advisors can suggest changes.
+Overall Takeaways
+The app is well-received for its drag-and-drop planning, graduation tracking, and clean UI.
+Users want more automation, including preloaded course plans, integration with GOLD, and better filtering.
+Adding support for minors, double majors, and personalized recommendations would enhance usability.
+Expanding features like GPA calculation, course offering predictions, and advisor collaboration would make the app even more useful.
+These insights can help prioritize next steps for development and ensure that the app meets student needs effective
