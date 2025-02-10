@@ -24,6 +24,7 @@ This webapp is built using Next.js on Typescript.
 Install Node (v23.6.0) and NPM (v10.9.2) first.
 
 ### Dependencies
+```
 ├── @auth/prisma-adapter@2.7.4 - The Prisma ORM is how we interface with our Postgres DB.
 ├── @emotion/react@11.14.0  - Used for some of our components, allows for styling with JS.
 ├── @emotion/styled@11.14.0 - Is a way to create React components that have styles attached to them.
@@ -45,7 +46,7 @@ Install Node (v23.6.0) and NPM (v10.9.2) first.
 ├── react@19.0.0 - Ditto.
 ├── tailwindcss@3.4.17 - Tailwind, our styling framework.
 └── typescript@5.7.3 - Typescript, the language the app is written in.
-
+```
 Note that these are only layer 0 dependencies, that is dependencies directly installed by us. For all the necessary packages, you must use `npm ci` to install the complete list of dependencies from the package.json file.
 
 ### Installation Steps
