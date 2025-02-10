@@ -32,6 +32,7 @@ Install Node (v23.6.0) and NPM (v10.9.2) first.
 ├── @mui/icons-material@6.4.2 - Icons we use in the webapp.
 ├── @mui/material@6.4.2 - More styles/icons we use in the webapp.
 ├── @prisma/client@6.2.1 - The Prisma client is part of the Prisma ORM.
+├── @tanstack/react-query@5.66.0 - Used for caching key information on the client, like course lists.
 ├── @types/node@20.17.14 - Typescript types for Node.js
 ├── @types/react-dom@19.0.3 - Typescript types for react
 ├── @types/react@19.0.7 - Ditto
