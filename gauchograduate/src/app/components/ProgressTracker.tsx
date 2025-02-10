@@ -62,9 +62,9 @@ const ProgressTracker = ({ studentSchedule, courses }: ProgressTrackerProps) => 
 
     return (
       <div>
-        <ul className="list-disc ml-5 space-y-1">
+        <ul className="list-disc ml-5 space-y-1 break-words">
           {itemsToShow.map((course) => (
-            <li key={course.course_id}>
+            <li key={course.course_id} className="whitespace-normal overflow-wrap-anywhere">
               {course.course_id} ({course.units} units)
             </li>
           ))}
@@ -82,7 +82,7 @@ const ProgressTracker = ({ studentSchedule, courses }: ProgressTrackerProps) => 
   };
 
   return (
-    <div className="h-full p-4 bg-white rounded-md shadow-md">
+    <div className="h-full p-4 bg-white rounded-md shadow-md overflow-auto">
       <h2 className="text-xl font-semibold mb-4">Graduation Progress</h2>
 
       {/* Overall Progress: Circular progress bar based on units taken */}
