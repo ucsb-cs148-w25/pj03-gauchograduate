@@ -81,12 +81,15 @@ const ProgressTracker = ({ studentSchedule, courses, college = "CoE" }: Progress
       areaCourses[area] = [];
     });
 
+    // CoE is actually called ENGR in the geCode from API
+    const collegeFromAPI = college === "CoE" ? "ENGR" : college;
+
     scheduledCourses.forEach((course) => {
       if (course.generalEd && course.generalEd.length > 0) {
         course.generalEd.forEach((geItem) => {
           if (typeof geItem === "object" && geItem !== null && "geCode" in geItem && "geCollege" in geItem) {
             const { geCode, geCollege } = geItem as { geCode: string; geCollege: string };
-            if (geCollege.trim() === college) {
+            if (geCollege.trim() === collegeFromAPI) {
               const trimmedCode = geCode.trim();
               if (trimmedCode in requirements) {
                 areaCounts[trimmedCode]++;
