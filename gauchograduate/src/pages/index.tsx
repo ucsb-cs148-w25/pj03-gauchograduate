@@ -60,8 +60,19 @@ export default function HomePage() {
   const { data: courses = [] } = useQuery({
     queryKey: ['courses', termToQuarter[selectedTerm]],
     queryFn: () => fetchCourses(termToQuarter[selectedTerm]),
-    staleTime: 5 * 60 * 1000, // Consider data fresh for 5 minutes
-    gcTime: 30 * 60 * 1000, // Keep unused data in cache for 30 minutes
+    staleTime: 5 * 60 * 1000,
+    gcTime: 30 * 60 * 1000,
+  });
+
+  const { data: majorData } = useQuery({
+    queryKey: ['major'],
+    queryFn: async () => {
+      const response = await fetch('/api/user/major');
+      if (!response.ok) {
+        throw new Error('Failed to fetch major');
+      }
+      return response.json();
+    },
   });
 
   useEffect(() => {
@@ -107,7 +118,11 @@ export default function HomePage() {
           />
         </div>
         <div className="w-full md:w-1/5 bg-[var(--off-white)] p-4 overflow-y-scroll">
-          <ProgressTracker studentSchedule={studentSchedule} courses={courses} />
+          <ProgressTracker 
+            studentSchedule={studentSchedule} 
+            courses={courses} 
+            college={majorData?.major?.college} 
+          />
         </div>
       </div>
     </div>

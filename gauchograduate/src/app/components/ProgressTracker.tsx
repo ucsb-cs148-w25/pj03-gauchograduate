@@ -7,6 +7,7 @@ import { buildStyles } from "react-circular-progressbar";
 interface ProgressTrackerProps {
   studentSchedule: ScheduleType;
   courses: Course[];
+  college?: string;
 }
 
 interface GERequirement {
@@ -16,11 +17,10 @@ interface GERequirement {
   courses: Course[];  // tracks courses for each requirement
 }
 
-const ProgressTracker = ({ studentSchedule, courses }: ProgressTrackerProps) => {
+const ProgressTracker = ({ studentSchedule, courses, college = "CoE" }: ProgressTrackerProps) => {
   const [overallProgress, setOverallProgress] = useState<number>(0);
   const [totalUnits, setTotalUnits] = useState<number>(0);
   const [coreCoursesTaken, setCoreCoursesTaken] = useState<Course[]>([]);
-  const [selectedCollege, setSelectedCollege] = useState<string>("ENGR");
   const [genEdFulfilled, setGenEdFulfilled] = useState<{ [req: string]: GERequirement }>({});
   const [showAllCore, setShowAllCore] = useState<boolean>(false);
   const [expandedAreas, setExpandedAreas] = useState<{ [area: string]: boolean }>({});
@@ -54,7 +54,7 @@ const ProgressTracker = ({ studentSchedule, courses }: ProgressTrackerProps) => 
 
   useEffect(() => {
     const collegeRequirements: { [college: string]: { [area: string]: number } } = {
-      ENGR: {
+      "CoE": {
         "A1": 1,
         "A2": 1,
         "D": 2,
@@ -66,7 +66,7 @@ const ProgressTracker = ({ studentSchedule, courses }: ProgressTrackerProps) => 
         "EUR": 1,
         "NWC": 1
       },
-      "L&S": {} 
+      "L&S": {} // Requirements for L&S would go here
     };
 
     const scheduledCourses = Object.values(studentSchedule)
@@ -74,7 +74,7 @@ const ProgressTracker = ({ studentSchedule, courses }: ProgressTrackerProps) => 
 
     const areaCounts: { [area: string]: number } = {};
     const areaCourses: { [area: string]: Course[] } = {};
-    const requirements = collegeRequirements[selectedCollege];
+    const requirements = collegeRequirements[college] || {};
     
     Object.keys(requirements).forEach(area => {
       areaCounts[area] = 0;
@@ -86,7 +86,7 @@ const ProgressTracker = ({ studentSchedule, courses }: ProgressTrackerProps) => 
         course.generalEd.forEach((geItem) => {
           if (typeof geItem === "object" && geItem !== null && "geCode" in geItem && "geCollege" in geItem) {
             const { geCode, geCollege } = geItem as { geCode: string; geCollege: string };
-            if (geCollege.trim() === selectedCollege) {
+            if (geCollege.trim() === college) {
               const trimmedCode = geCode.trim();
               if (trimmedCode in requirements) {
                 areaCounts[trimmedCode]++;
@@ -116,7 +116,7 @@ const ProgressTracker = ({ studentSchedule, courses }: ProgressTrackerProps) => 
     });
 
     setGenEdFulfilled(geStatus);
-  }, [studentSchedule, selectedCollege]);
+  }, [studentSchedule, college]);
 
   const areaDescriptions: { [key: string]: string } = {
     "A1": "Oral Communication",
@@ -194,21 +194,6 @@ const ProgressTracker = ({ studentSchedule, courses }: ProgressTrackerProps) => 
   return (
     <div className="h-full p-4 bg-white rounded-md shadow-md overflow-auto">
       <h2 className="text-xl font-semibold mb-4">Courses Taken</h2>
-      <div className="mt-4 mb-4">
-        <label htmlFor="college-select" className="mr-2 font-medium text-lg">
-          College:
-        </label>
-        <select
-          id="college-select"
-          value={selectedCollege}
-          onChange={(e) => setSelectedCollege(e.target.value)}
-          className="p-2 border border-gray-300 rounded-lg text-sm"
-          aria-label="Select your college"
-        >
-          <option value="ENGR">ENGR</option>
-          <option value="L&S">L&S</option>
-        </select>
-      </div>
       <div className="w-5/6 mx-auto mb-6">
         <CircularProgressbar
           value={overallProgress}
