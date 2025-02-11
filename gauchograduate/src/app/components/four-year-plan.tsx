@@ -20,6 +20,16 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
     if (!json) return;
     const droppedCourse = JSON.parse(json);
     const { originTerm, ...course } = droppedCourse;
+
+    // Check if course already exists in the target term
+    const courseExists = studentSchedule[selectedYear][term].some(
+      existingCourse => existingCourse.course_id === course.course_id
+    );
+    
+    if (courseExists) {
+      return; // Don't add if course already exists in this term
+    }
+
     if (originTerm && originTerm !== term) {
       removeCourse(course, originTerm);
     }

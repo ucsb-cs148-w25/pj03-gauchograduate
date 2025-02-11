@@ -129,7 +129,12 @@ export default function TestPage() {
       <Navbar />
       <div className="flex flex-1 flex-col md:flex-row overflow-hidden">
         <div className="w-full md:w-1/5 bg-[var(--off-white)] p-4 overflow-y-scroll">
-          <CourseCatalog courses={courses} selectedTerm={selectedTerm} setSelectedTerm={setSelectedTerm} />
+          <CourseCatalog 
+            courses={courses} 
+            selectedTerm={selectedTerm} 
+            setSelectedTerm={setSelectedTerm}
+            studentSchedule={studentSchedule}  // Add this prop
+          />
         </div>
         <div className="w-full md:w-3/5 bg-white p-4 rounded-md shadow overflow-y-scroll">
           <FourYearPlan

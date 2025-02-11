@@ -9,3 +9,7 @@ On the left of the screen is a catalog of all courses available. They are able t
 They can also remove courses by pressing the trash icon that appears on the bottom right of the course when hovering over it. Once again, the progress bar updates live.
 
 They see 4 columns in the planner, with a dropdown menu to select their year. There are 4 years, with 4 quarters per year.
+
+## College Codes
+- College of Engineering (CoE) is represented as "ENGR" in the API responses
+- This mapping is needed when checking GE requirements against course.generalEd[].geCollege
