@@ -26,9 +26,14 @@ export default async function handler(
   }
 
   try {
+    const majorId = parseInt(id)
+    if (isNaN(majorId)) {
+      return res.status(400).json({ error: 'Major ID must be a number' })
+    }
+
     const major = await prisma.major.findUnique({
       where: {
-        id: parseInt(id)
+        id: majorId
       }
     })
     
