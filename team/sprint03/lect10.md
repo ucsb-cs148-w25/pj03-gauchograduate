@@ -1,9 +1,10 @@
 ### Mentor: Anderson L
 ### Type of Meeting: Daily Scrum
-### Team: John Kim[x], Jaren Lowe[x], Kade Williams[x], Selena Zeng[x], Taedon Reth[ ], Vala Bahrami[x], Chiran Arumugam[x]
+### Team: John Kim[x], Jaren Lowe[x], Kade Williams[x], Selena Zeng[x], Taedon Reth[x], Vala Bahrami[x], Chiran Arumugam[x]
 
 ### Scribed Discussion:
 
+Everyone Present.
 
 #### Tasks:
 
@@ -18,6 +19,6 @@ Jaren/Tadeon:
 - Roadblocks: proper API authentication
 
 John/Vala/Kade:
-- Finished: got major requirements for COE into the database,
+- Finished: got major requirements for COE into the database, 
 - Now: getting course prerequisites into the right format, make sure it's right.
-- Roadblocks: Not sure how to do L&S courses
+- Roadblocks: Not sure how to do L&S major requirements, things like: course sequences, lab requirements
