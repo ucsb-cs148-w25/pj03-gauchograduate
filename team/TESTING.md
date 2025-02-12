@@ -24,3 +24,18 @@ npm test              # Run all tests
 npm test -- --watch  # Watch mode: rerun tests on file changes
 npm test -- -t "pattern"  # Run tests matching pattern
 ```
+
+### Continuous Integration
+We use GitHub Actions for continuous integration with three workflows:
+1. Build Check: Ensures the project builds successfully
+2. Tests: Runs all Jest tests
+3. Lint: Checks code style with ESLint
+
+These checks run automatically on:
+- All pull requests to main
+- All pushes to main
+
+The CI pipeline requires:
+- Node.js 20
+- All dependencies installed with `npm ci`
+- Environment variables configured in GitHub Secrets
