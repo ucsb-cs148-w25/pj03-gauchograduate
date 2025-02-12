@@ -16,6 +16,7 @@ We use the TS compiler to ensure our code is typed correctly.
 - Test both success and error cases
 - Validate input parameters
 - Keep tests focused and isolated
+- Don't be alarmed by console.error logs in tests when testing error handling - these are expected
 
 ### Common Testing Commands
 ```bash

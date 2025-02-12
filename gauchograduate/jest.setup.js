@@ -5,5 +5,9 @@ jest.mock('@/lib/prisma', () => ({
       findUnique: jest.fn(),
       findMany: jest.fn(),
     },
+    major: {
+      findUnique: jest.fn(),
+      findMany: jest.fn(),
+    },
   },
 }));
