@@ -1,0 +1,122 @@
+{
+  "preparation": {
+    "and": [
+      "CHEM_1A",
+      "CHEM_2AL",
+      "CHEM_1B",
+      "CHEM_2AC",
+      "CHEM_2B",
+      "ENGR_3",
+      "MATH_3A",
+      "MATH_3B",
+      "MATH_4A",
+      "MATH_4B",
+      "MATH_6A",
+      "MATH_6B",
+      "ME_6",
+      "ME_10",
+      "ME_12S",
+      "ME_14",
+      "ME_15",
+      "ME_16",
+      "ME_17",
+      "PHYS_7A",
+      "PHYS_7B",
+      "PHYS_7C",
+      "PHYS_7D",
+      "PHYS_7L"
+    ]
+  },
+  "upper_division": {
+    "required": {
+      "and": [
+        "MATRL_101",
+        "ME_103",
+        "ME_104",
+        "ME_107",
+        "ME_108",
+        "ME_151A",
+        "ME_151B",
+        "ME_152A",
+        "ME_153",
+        "ME_105",
+        "ME_156A",
+        "ME_156B",
+        "ME_189A",
+        "ME_189B",
+        "ME_189C"
+      ],
+      "or": [
+        "ME_154",
+        "ME_157",
+        "ME_167"
+      ]
+    },
+    "specialization": {
+      "notes": ["Two courses required: Either a group, or 1 course from L1 and 1 course from L2"],
+      "groups": {
+        "group1": ["BIOE_120A", "BIOE_120B"],
+        "group2": ["ME_163", "ME_155A"],
+        "group3": ["ME_127", "ME_129"],
+        "group4": ["ME_141A", "ME_141B"],
+        "group5": ["ME_166", "ME_154"],
+        "group6": ["ME_152B", "ME_151C"]
+      }
+    },
+    "electives": {
+      "count": 9,
+      "classes": [
+        "BIOE_120A",
+        "BIOE_120B",
+        "CHEM_109A",
+        "CHEM_123",
+        "ECE_147A",
+        "ECE_147C",
+        "CMPSC_181B",
+        "ENGR_101",
+        "ENGR_195A",
+        "ENGR_195B",
+        "ENGR_195C",
+        "ENV_S_105",
+        "MATRL_100A",
+        "MATRL_100B",
+        "MATRL_186A",
+        "MATRL_186B",
+        "MATRL_188",
+        "ME_102",
+        "ME_110",
+        "ME_112",
+        "ME_124",
+        "ME_127",
+        "ME_128",
+        "ME_129",
+        "ME_133",
+        "ME_134",
+        "ME_135",
+        "ME_140A",
+        "ME_140B",
+        "ME_141A",
+        "ME_141B",
+        "ME_146",
+        "ME_147",
+        "ME_154",
+        "ME_155B",
+        "ME_155C",
+        "ME_157",
+        "ME_158",
+        "ME_159",
+        "ME_162",
+        "ME_166",
+        "ME_167",
+        "ME_169",
+        "ME_179D",
+        "ME_179L",
+        "ME_179P",
+        "ME_180",
+        "ME_185",
+        "ME_186A",
+        "ME_186B"
+      ]
+    }
+  }
+}
