@@ -38,4 +38,3 @@ These checks run automatically on:
 The CI pipeline requires:
 - Node.js 20
 - All dependencies installed with `npm ci`
-- Environment variables configured in GitHub Secrets
