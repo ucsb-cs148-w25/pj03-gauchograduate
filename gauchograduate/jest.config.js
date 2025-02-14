@@ -10,6 +10,11 @@ module.exports = {
   transform: {
     '^.+\\.(ts|tsx)$': ['ts-jest', {
       tsconfig: 'tsconfig.json',
+      useESM: true,
     }],
   },
+  transformIgnorePatterns: [
+    '/node_modules/(?!(@auth/prisma-adapter|next-auth|@prisma/client)/)'
+  ],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
 };
