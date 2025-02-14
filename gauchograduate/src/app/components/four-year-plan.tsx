@@ -10,6 +10,27 @@ interface FourYearPlanProps {
   removeCourse: (course: Course, term: Term) => void;
 }
 
+async function DBAddCourses(courseID: string) {
+  try {
+
+    const response = await fetch("/api/user/add-course", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: courseID,
+        quarter: "20241",
+      }),
+    });
+
+    const data = await response.json();
+    console.log("Response:", data);
+  } catch (error) {
+    console.error("Error adding courses:", error);
+  }
+}
+
 
 export default function FourYearPlan({ selectedYear, setSelectedYear, studentSchedule, addCourse, removeCourse}: FourYearPlanProps) { 
   
@@ -24,6 +45,7 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
       removeCourse(course, originTerm);
     }
     // now we just update the schedule
+    DBAddCourses(course.course_id)
     addCourse(course, term as Term);
   }
 
