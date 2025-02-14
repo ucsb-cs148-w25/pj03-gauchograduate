@@ -4,16 +4,66 @@ import { useState } from 'react';
 import { getAcademicYear, isQuarterInPast, isCurrentQuarter } from './utils/quarterUtils';
 import CourseModal from './course-popup';
 
-export default function FourYearPlan({ selectedYear, setSelectedYear, studentSchedule, addCourse, removeCourse}: FourYearPlanProps) { 
+export default function FourYearPlan({ selectedYear, setSelectedYear, studentSchedule, addCourse, removeCourse }: FourYearPlanProps) {
   const { data: session } = useSession();
   const firstQuarter = session?.user?.courses?.firstQuarter || '20224';
   const [showSummer, setShowSummer] = useState(false);
-  const [selectedCourse, setSelectedCourse] = useState<{course: Course, term: Term} | null>(null);
-  
+  const [selectedCourse, setSelectedCourse] = useState<{ course: Course, term: Term } | null>(null);
+
   const getYearDisplay = (year: YearType): string => {
     const yearIndex = Years.indexOf(year);
     return getAcademicYear(firstQuarter, yearIndex);
   };
+
+  const termToQuarter: { [key in Term]: string } = {
+    Fall: "20241",
+    Winter: "20242",
+    Spring: "20243",
+    Summer: "20244",
+  };
+
+
+  async function DBAddCourses(courseID: string, term: Term) {
+    try {
+
+      const response = await fetch("/api/user/add-course", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: courseID,
+          quarter: termToQuarter[term],
+        }),
+      });
+
+      const data = await response.json();
+      console.log("Response:", data);
+    } catch (error) {
+      console.error("Error adding courses:", error);
+    }
+  }
+
+  async function DBRemoveCourses(courseID: string, term: Term) {
+    try {
+
+      const response = await fetch("/api/user/remove-course", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: courseID,
+          quarter: termToQuarter[term],
+        }),
+      });
+
+      const data = await response.json();
+      console.log("Response:", data);
+    } catch (error) {
+      console.error("Error removing courses:", error);
+    }
+  }
 
   function handleDrop(e: React.DragEvent<HTMLDivElement>, term: Term) {
     e.preventDefault();
@@ -25,7 +75,7 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
     const courseExists = studentSchedule[selectedYear][term].some(
       existingCourse => existingCourse.course_id === course.course_id
     );
-    
+
     if (courseExists) {
       return;
     }
@@ -34,6 +84,7 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
       removeCourse(course, originTerm);
     }
     addCourse(course, term as Term);
+    DBAddCourses(course.course_id, term)
   }
 
   const displayTerms = Terms.filter(term => term !== 'Summer' || showSummer);
@@ -48,15 +99,16 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
           onClose={() => setSelectedCourse(null)}
           onDelete={() => {
             removeCourse(selectedCourse.course, selectedCourse.term);
+            DBRemoveCourses(selectedCourse.course.course_id, selectedCourse.term);
             setSelectedCourse(null);
           }}
         />
       )}
-      
+
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-semibold">Four-Year Plan</h2>
-        <select 
-          className="p-2 border border-gray-300 rounded-lg" 
+        <select
+          className="p-2 border border-gray-300 rounded-lg"
           value={selectedYear}
           onChange={(e) => setSelectedYear(e.target.value as YearType)}
         >
@@ -74,7 +126,7 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
             const isPast = isQuarterInPast(yearDisplay, term);
             const isCurrent = isCurrentQuarter(yearDisplay, term);
             const bgColor = isCurrent ? "bg-[var(--pale-blue)]" : isPast ? "bg-[var(--pale-green)]" : "bg-white";
-            
+
             return (
               <div
                 key={term}
@@ -87,23 +139,24 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
                   <div className="flex flex-col gap-4">
                     {studentSchedule[selectedYear][term].length > 0 ? (
                       studentSchedule[selectedYear][term].map((course) => {
-                        const bgColorClass = course.generalEd.length === 0  ? "bg-[var(--pale-orange)]" : "bg-[var(--pale-pink)]"; 
+                        const bgColorClass = course.generalEd.length === 0 ? "bg-[var(--pale-orange)]" : "bg-[var(--pale-pink)]";
                         return (
-                        <div 
-                          key={course.course_id}
-                          draggable={true}
-                          onDragStart={(e) => {
-                            const courseData = { ...course, originTerm: term };
-                            e.dataTransfer.setData("application/json", JSON.stringify(courseData));
-                          }}
-                          onClick={() => setSelectedCourse({ course, term })}
-                          className={`relative p-4 ${bgColorClass} rounded-lg group whitespace-normal break-words cursor-pointer hover:shadow-md transition-shadow`}
-                        >
-                          <p className="font-bold text-sm">{course.course_id}</p>
-                          <p className="text-xs">{course.title}</p>
-                          <p className="text-xs text-gray-500">{course.units} units</p>
-                        </div>
-                      );})
+                          <div
+                            key={course.course_id}
+                            draggable={true}
+                            onDragStart={(e) => {
+                              const courseData = { ...course, originTerm: term };
+                              e.dataTransfer.setData("application/json", JSON.stringify(courseData));
+                            }}
+                            onClick={() => setSelectedCourse({ course, term })}
+                            className={`relative p-4 ${bgColorClass} rounded-lg group whitespace-normal break-words cursor-pointer hover:shadow-md transition-shadow`}
+                          >
+                            <p className="font-bold text-sm">{course.course_id}</p>
+                            <p className="text-xs">{course.title}</p>
+                            <p className="text-xs text-gray-500">{course.units} units</p>
+                          </div>
+                        );
+                      })
                     ) : (
                       <p className="text-xs text-gray-500 text-center">No courses</p>
                     )}
@@ -121,7 +174,7 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
             );
           })}
         </div>
-        
+
         <button
           onClick={() => setShowSummer(!showSummer)}
           className="writing-mode-vertical px-2 py-4 bg-[var(--pale-blue)] text-black rounded-lg transition-colors whitespace-nowrap h-auto"
