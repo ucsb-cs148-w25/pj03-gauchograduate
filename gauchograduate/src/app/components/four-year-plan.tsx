@@ -1,76 +1,14 @@
-import DeleteIcon from '@mui/icons-material/Delete'
 import { useSession } from 'next-auth/react';
-import { Terms, Years, Course, ScheduleType, YearType, Term } from "./coursetypes";
+import { Terms, Years, Course, Term, FourYearPlanProps, YearType } from "./coursetypes";
 import { useState } from 'react';
-
-interface FourYearPlanProps {
-  selectedYear: YearType;
-  setSelectedYear: React.Dispatch<React.SetStateAction<YearType>>;
-  studentSchedule: ScheduleType;
-  addCourse: (course: Course, term: Term) => void;
-  removeCourse: (course: Course, term: Term) => void;
-}
-
-export function getAcademicYear(quarterCode: string, yearOffset: number = 0): string {
-  const year = parseInt(quarterCode.substring(0, 4));
-  const shortYear = (year + yearOffset).toString().slice(2);
-  const nextYear = ((year + yearOffset + 1) % 100).toString().padStart(2, '0');
-  return `'${shortYear}-'${nextYear}`;
-}
-
-function getCurrentQuarter(): { quarter: Term; academicYear: string } {
-  const now = new Date();
-  const year = now.getFullYear();
-  
-  // Define quarter date ranges
-  const fallStart = new Date(year, 8, 22);  // Sep 22
-  const winterStart = new Date(year, 0, 6); // Jan 6
-  const springStart = new Date(year, 2, 31); // Mar 31
-  const summerStart = new Date(year, 5, 23); // Jun 23
-
-  let quarter: Term;
-  let academicYear: string;
-
-  if (now >= fallStart || now < winterStart) {
-    quarter = 'Fall';
-    academicYear = now >= fallStart ? `'${year.toString().slice(2)}-'${(year + 1).toString().slice(2)}` 
-                                  : `'${(year - 1).toString().slice(2)}-'${year.toString().slice(2)}`;
-  } else if (now >= winterStart && now < springStart) {
-    quarter = 'Winter';
-    academicYear = `'${(year - 1).toString().slice(2)}-'${year.toString().slice(2)}`;
-  } else if (now >= springStart && now < summerStart) {
-    quarter = 'Spring';
-    academicYear = `'${(year - 1).toString().slice(2)}-'${year.toString().slice(2)}`;
-  } else {
-    quarter = 'Summer';
-    academicYear = `'${(year - 1).toString().slice(2)}-'${year.toString().slice(2)}`;
-  }
-
-  return { quarter, academicYear };
-}
-
-function isQuarterInPast(yearDisplay: string, term: Term): boolean {
-  const current = getCurrentQuarter();
-  const currentYear = parseInt(current.academicYear.slice(1, 3));
-  const yearToCheck = parseInt(yearDisplay.slice(1, 3));
-
-  if (yearToCheck < currentYear) return true;
-  if (yearToCheck > currentYear) return false;
-
-  // If in same year, check quarters
-  const quarterOrder: Record<Term, number> = { 'Fall': 0, 'Winter': 1, 'Spring': 2, 'Summer': 3 };
-  return quarterOrder[term] < quarterOrder[current.quarter];
-}
-
-function isCurrentQuarter(yearDisplay: string, term: Term): boolean {
-  const current = getCurrentQuarter();
-  return yearDisplay === current.academicYear && term === current.quarter;
-}
+import { getAcademicYear, isQuarterInPast, isCurrentQuarter } from './utils/quarterUtils';
+import CourseModal from './course-popup';
 
 export default function FourYearPlan({ selectedYear, setSelectedYear, studentSchedule, addCourse, removeCourse}: FourYearPlanProps) { 
   const { data: session } = useSession();
-  const firstQuarter = session?.user?.courses?.firstQuarter || '20234';
+  const firstQuarter = session?.user?.courses?.firstQuarter || '20224';
   const [showSummer, setShowSummer] = useState(false);
+  const [selectedCourse, setSelectedCourse] = useState<{course: Course, term: Term} | null>(null);
   
   const getYearDisplay = (year: YearType): string => {
     const yearIndex = Years.indexOf(year);
@@ -103,6 +41,18 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
 
   return (
     <div className="h-full w-full p-4 bg-white rounded-lg shadow-lg flex flex-col overflow-auto max-h-screen">
+      {selectedCourse && (
+        <CourseModal
+          course={selectedCourse.course}
+          term={selectedCourse.term}
+          onClose={() => setSelectedCourse(null)}
+          onDelete={() => {
+            removeCourse(selectedCourse.course, selectedCourse.term);
+            setSelectedCourse(null);
+          }}
+        />
+      )}
+      
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-semibold">Four-Year Plan</h2>
         <select 
@@ -141,22 +91,17 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
                         return (
                         <div 
                           key={course.course_id}
-                          draggable = {true}
+                          draggable={true}
                           onDragStart={(e) => {
                             const courseData = { ...course, originTerm: term };
                             e.dataTransfer.setData("application/json", JSON.stringify(courseData));
                           }}
-                          className={`relative p-4 ${bgColorClass} rounded-lg group whitespace-normal break-words`}
+                          onClick={() => setSelectedCourse({ course, term })}
+                          className={`relative p-4 ${bgColorClass} rounded-lg group whitespace-normal break-words cursor-pointer hover:shadow-md transition-shadow`}
                         >
                           <p className="font-bold text-sm">{course.course_id}</p>
                           <p className="text-xs">{course.title}</p>
                           <p className="text-xs text-gray-500">{course.units} units</p>
-                          <button
-                            className="bg-red-500 text-white p-1 rounded-full opacity-0 group-hover:opacity-100"
-                            onClick={() => removeCourse(course, term)}
-                          >
-                            <DeleteIcon fontSize="small" />
-                          </button>
                         </div>
                       );})
                     ) : (
