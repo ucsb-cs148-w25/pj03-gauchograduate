@@ -18,6 +18,55 @@ export function getAcademicYear(quarterCode: string, yearOffset: number = 0): st
   return `'${shortYear}-'${nextYear}`;
 }
 
+function getCurrentQuarter(): { quarter: Term; academicYear: string } {
+  const now = new Date();
+  const year = now.getFullYear();
+  
+  // Define quarter date ranges
+  const fallStart = new Date(year, 8, 22);  // Sep 22
+  const winterStart = new Date(year, 0, 6); // Jan 6
+  const springStart = new Date(year, 2, 31); // Mar 31
+  const summerStart = new Date(year, 5, 23); // Jun 23
+
+  let quarter: Term;
+  let academicYear: string;
+
+  if (now >= fallStart || now < winterStart) {
+    quarter = 'Fall';
+    academicYear = now >= fallStart ? `'${year.toString().slice(2)}-'${(year + 1).toString().slice(2)}` 
+                                  : `'${(year - 1).toString().slice(2)}-'${year.toString().slice(2)}`;
+  } else if (now >= winterStart && now < springStart) {
+    quarter = 'Winter';
+    academicYear = `'${(year - 1).toString().slice(2)}-'${year.toString().slice(2)}`;
+  } else if (now >= springStart && now < summerStart) {
+    quarter = 'Spring';
+    academicYear = `'${(year - 1).toString().slice(2)}-'${year.toString().slice(2)}`;
+  } else {
+    quarter = 'Summer';
+    academicYear = `'${(year - 1).toString().slice(2)}-'${year.toString().slice(2)}`;
+  }
+
+  return { quarter, academicYear };
+}
+
+function isQuarterInPast(yearDisplay: string, term: Term): boolean {
+  const current = getCurrentQuarter();
+  const currentYear = parseInt(current.academicYear.slice(1, 3));
+  const yearToCheck = parseInt(yearDisplay.slice(1, 3));
+
+  if (yearToCheck < currentYear) return true;
+  if (yearToCheck > currentYear) return false;
+
+  // If in same year, check quarters
+  const quarterOrder: Record<Term, number> = { 'Fall': 0, 'Winter': 1, 'Spring': 2, 'Summer': 3 };
+  return quarterOrder[term] < quarterOrder[current.quarter];
+}
+
+function isCurrentQuarter(yearDisplay: string, term: Term): boolean {
+  const current = getCurrentQuarter();
+  return yearDisplay === current.academicYear && term === current.quarter;
+}
+
 export default function FourYearPlan({ selectedYear, setSelectedYear, studentSchedule, addCourse, removeCourse}: FourYearPlanProps) { 
   const { data: session } = useSession();
   const firstQuarter = session?.user?.courses?.firstQuarter || '20234';
@@ -50,6 +99,7 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
   }
 
   const displayTerms = Terms.filter(term => term !== 'Summer' || showSummer);
+  const yearDisplay = getYearDisplay(selectedYear);
 
   return (
     <div className="h-full w-full p-4 bg-white rounded-lg shadow-lg flex flex-col overflow-auto max-h-screen">
@@ -70,55 +120,61 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
 
       <div className="flex gap-2 flex-1 min-h-0">
         <div className={`grid grid-cols-1 ${showSummer ? 'md:grid-cols-4' : 'md:grid-cols-3'} gap-2 flex-grow border border-gray-300 rounded-md p-2 bg-gray-50 min-h-0 overflow-y-auto`}>
-          {displayTerms.map((term) => (
-            <div
-              key={term}
-              onDragOver={(e) => e.preventDefault()}
-              onDrop={(e) => handleDrop(e, term)}
-              className="flex flex-col h-full justify-between p-4 border border-gray-300 rounded-lg bg-white"
-            >
-              <div className="flex-grow">
-                <h3 className="text-lg font-semibold text-center mb-4">{term}</h3>
-                <div className="flex flex-col gap-4">
-                  {studentSchedule[selectedYear][term].length > 0 ? (
-                    studentSchedule[selectedYear][term].map((course) => {
-                      const bgColorClass = course.generalEd.length === 0  ? "bg-[var(--pale-orange)]" : "bg-[var(--pale-pink)]"; 
-                      return (
-                      <div 
-                        key={course.course_id}
-                        draggable = {true}
-                        onDragStart={(e) => {
-                          const courseData = { ...course, originTerm: term };
-                          e.dataTransfer.setData("application/json", JSON.stringify(courseData));
-                        }}
-                        className={`relative p-4 ${bgColorClass} rounded-lg group whitespace-normal break-words`}
-                      >
-                        <p className="font-bold text-sm">{course.course_id}</p>
-                        <p className="text-xs">{course.title}</p>
-                        <p className="text-xs text-gray-500">{course.units} units</p>
-                        <button
-                          className="bg-red-500 text-white p-1 rounded-full opacity-0 group-hover:opacity-100"
-                          onClick={() => removeCourse(course, term)}
+          {displayTerms.map((term) => {
+            const isPast = isQuarterInPast(yearDisplay, term);
+            const isCurrent = isCurrentQuarter(yearDisplay, term);
+            const bgColor = isCurrent ? "bg-[var(--pale-blue)]" : isPast ? "bg-[var(--pale-green)]" : "bg-white";
+            
+            return (
+              <div
+                key={term}
+                onDragOver={(e) => e.preventDefault()}
+                onDrop={(e) => handleDrop(e, term)}
+                className={`flex flex-col h-full justify-between p-4 border border-gray-300 rounded-lg ${bgColor}`}
+              >
+                <div className="flex-grow">
+                  <h3 className="text-lg font-semibold text-center mb-4">{term}</h3>
+                  <div className="flex flex-col gap-4">
+                    {studentSchedule[selectedYear][term].length > 0 ? (
+                      studentSchedule[selectedYear][term].map((course) => {
+                        const bgColorClass = course.generalEd.length === 0  ? "bg-[var(--pale-orange)]" : "bg-[var(--pale-pink)]"; 
+                        return (
+                        <div 
+                          key={course.course_id}
+                          draggable = {true}
+                          onDragStart={(e) => {
+                            const courseData = { ...course, originTerm: term };
+                            e.dataTransfer.setData("application/json", JSON.stringify(courseData));
+                          }}
+                          className={`relative p-4 ${bgColorClass} rounded-lg group whitespace-normal break-words`}
                         >
-                          <DeleteIcon fontSize="small" />
-                        </button>
-                      </div>
-                    );})
-                  ) : (
-                    <p className="text-xs text-gray-500 text-center">No courses</p>
-                  )}
+                          <p className="font-bold text-sm">{course.course_id}</p>
+                          <p className="text-xs">{course.title}</p>
+                          <p className="text-xs text-gray-500">{course.units} units</p>
+                          <button
+                            className="bg-red-500 text-white p-1 rounded-full opacity-0 group-hover:opacity-100"
+                            onClick={() => removeCourse(course, term)}
+                          >
+                            <DeleteIcon fontSize="small" />
+                          </button>
+                        </div>
+                      );})
+                    ) : (
+                      <p className="text-xs text-gray-500 text-center">No courses</p>
+                    )}
+                  </div>
+                  <div className="mt-4 p-4 border-dashed border-2 border-gray-300 rounded-lg text-center text-sm text-gray-400">
+                    Drop Course Here
+                  </div>
                 </div>
-                <div className="mt-4 p-4 border-dashed border-2 border-gray-300 rounded-lg text-center text-sm text-gray-400">
-                  Drop Course Here
+                <div className="mt-6 text-right">
+                  <p className="font-light">
+                    Total units: <span className="font-light"> {studentSchedule[selectedYear][term].reduce((sum, course) => sum + course.units, 0)}</span>
+                  </p>
                 </div>
               </div>
-              <div className="mt-6 text-right">
-                <p className="font-light">
-                  Total units: <span className="font-light"> {studentSchedule[selectedYear][term].reduce((sum, course) => sum + course.units, 0)}</span>
-                </p>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
         
         <button
