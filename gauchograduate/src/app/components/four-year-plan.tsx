@@ -1,5 +1,5 @@
 import DeleteIcon from '@mui/icons-material/Delete'
-
+import { useSession } from 'next-auth/react';
 import { Terms, Years, Course, ScheduleType, YearType, Term } from "./coursetypes";
 
 interface FourYearPlanProps {
@@ -10,30 +10,42 @@ interface FourYearPlanProps {
   removeCourse: (course: Course, term: Term) => void;
 }
 
+// converts quarter code '20224' to string '22-'23
+export function getAcademicYear(quarterCode: string, yearOffset: number = 0): string {
+  const year = parseInt(quarterCode.substring(0, 4));
+  const shortYear = (year + yearOffset).toString().slice(2);
+  const nextYear = ((year + yearOffset + 1) % 100).toString().padStart(2, '0');
+  return `'${shortYear}-'${nextYear}`;
+}
 
 export default function FourYearPlan({ selectedYear, setSelectedYear, studentSchedule, addCourse, removeCourse}: FourYearPlanProps) { 
+  const { data: session } = useSession();
+  const firstQuarter = session?.user?.courses?.firstQuarter || '20234'; // Default to Fall 2022
   
+  // Function to get the display text for the year selector
+  const getYearDisplay = (year: YearType): string => {
+    const yearIndex = Years.indexOf(year);
+    return getAcademicYear(firstQuarter, yearIndex);
+  };
+
   function handleDrop(e: React.DragEvent<HTMLDivElement>, term: Term) {
     e.preventDefault();
-    // gets the course thats dropped
     const json = e.dataTransfer.getData("application/json");
     if (!json) return;
     const droppedCourse = JSON.parse(json);
     const { originTerm, ...course } = droppedCourse;
 
-    // Check if course already exists in the target term
     const courseExists = studentSchedule[selectedYear][term].some(
       existingCourse => existingCourse.course_id === course.course_id
     );
     
     if (courseExists) {
-      return; // Don't add if course already exists in this term
+      return;
     }
 
     if (originTerm && originTerm !== term) {
       removeCourse(course, originTerm);
     }
-    // now we just update the schedule
     addCourse(course, term as Term);
   }
 
@@ -41,7 +53,6 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
     <div className="h-full w-full p-4 bg-white rounded-lg shadow-lg flex flex-col overflow-auto max-h-screen">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-semibold">Four-Year Plan</h2>
-        {/* Year Selector */}
         <select 
         className="p-2 border border-gray-300 rounded-lg" 
         value={selectedYear}
@@ -49,13 +60,12 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
         >
           {Years.map((year, index) => (
             <option key={index} value={year}>
-              {year}
+              {getYearDisplay(year)}
             </option>
           ))}
         </select>
       </div>
 
-      {/* Plan Table */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-2 flex-grow border border-gray-300 rounded-md p-2 bg-gray-50 min-h-0 overflow-y-auto">
         {Terms.map((term) => (
           <div
@@ -67,7 +77,6 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
             <div className="flex-grow">
               <h3 className="text-lg font-semibold text-center mb-4">{term}</h3>
               <div className="flex flex-col gap-4">
-                {/* Course cards */}
                 {studentSchedule[selectedYear][term].length > 0 ? (
                   studentSchedule[selectedYear][term].map((course) => {
                     const bgColorClass = course.generalEd.length === 0  ? "bg-[var(--pale-orange)]" : "bg-[var(--pale-pink)]"; 
@@ -81,20 +90,15 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
                       }}
                       className={`relative p-4 ${bgColorClass} rounded-lg group whitespace-normal break-words`}
                     >
-          
-                      {/* course details */}
                       <p className="font-bold text-sm">{course.course_id}</p>
                       <p className="text-xs">{course.title}</p>
                       <p className="text-xs text-gray-500">{course.units} units</p>
-
-                      {/* hover to click on delete button */}
                       <button
                         className="bg-red-500 text-white p-1 rounded-full opacity-0 group-hover:opacity-100"
                         onClick={() => removeCourse(course, term)}
                       >
                         <DeleteIcon fontSize="small" />
                       </button>
-
                     </div>
                   );})
                 ) : (

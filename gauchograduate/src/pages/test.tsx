@@ -104,6 +104,15 @@ export default function TestPage() {
     }
   };
 
+  const mockSession = {
+    user: {
+      courses: {
+        firstQuarter: '20224', // Fall 2022
+        courses: []
+      }
+    }
+  };
+
   const addCourse = (course: Course, term: Term) => {
     setStudentSchedule((prevSchedule) => ({
       ...prevSchedule,
