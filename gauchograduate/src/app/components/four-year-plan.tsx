@@ -1,6 +1,7 @@
 import DeleteIcon from '@mui/icons-material/Delete'
 import { useSession } from 'next-auth/react';
 import { Terms, Years, Course, ScheduleType, YearType, Term } from "./coursetypes";
+import { useState } from 'react';
 
 interface FourYearPlanProps {
   selectedYear: YearType;
@@ -10,7 +11,6 @@ interface FourYearPlanProps {
   removeCourse: (course: Course, term: Term) => void;
 }
 
-// converts quarter code '20224' to string '22-'23
 export function getAcademicYear(quarterCode: string, yearOffset: number = 0): string {
   const year = parseInt(quarterCode.substring(0, 4));
   const shortYear = (year + yearOffset).toString().slice(2);
@@ -20,9 +20,9 @@ export function getAcademicYear(quarterCode: string, yearOffset: number = 0): st
 
 export default function FourYearPlan({ selectedYear, setSelectedYear, studentSchedule, addCourse, removeCourse}: FourYearPlanProps) { 
   const { data: session } = useSession();
-  const firstQuarter = session?.user?.courses?.firstQuarter || '20234'; // Default to Fall 2022
+  const firstQuarter = session?.user?.courses?.firstQuarter || '20234';
+  const [showSummer, setShowSummer] = useState(false);
   
-  // Function to get the display text for the year selector
   const getYearDisplay = (year: YearType): string => {
     const yearIndex = Years.indexOf(year);
     return getAcademicYear(firstQuarter, yearIndex);
@@ -49,25 +49,38 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
     addCourse(course, term as Term);
   }
 
+  const displayTerms = Terms.filter(term => term !== 'Summer' || showSummer);
+
   return (
     <div className="h-full w-full p-4 bg-white rounded-lg shadow-lg flex flex-col overflow-auto max-h-screen">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-semibold">Four-Year Plan</h2>
-        <select 
-        className="p-2 border border-gray-300 rounded-lg" 
-        value={selectedYear}
-        onChange={(e) => setSelectedYear(e.target.value as YearType)}
-        >
-          {Years.map((year, index) => (
-            <option key={index} value={year}>
-              {getYearDisplay(year)}
-            </option>
-          ))}
-        </select>
+        <div className="flex items-center gap-4">
+          <label className="flex items-center gap-2 text-sm">
+            <input
+              type="checkbox"
+              checked={showSummer}
+              onChange={(e) => setShowSummer(e.target.checked)}
+              className="rounded border-gray-300"
+            />
+            Show Summer Quarter
+          </label>
+          <select 
+            className="p-2 border border-gray-300 rounded-lg" 
+            value={selectedYear}
+            onChange={(e) => setSelectedYear(e.target.value as YearType)}
+          >
+            {Years.map((year, index) => (
+              <option key={index} value={year}>
+                {getYearDisplay(year)}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-2 flex-grow border border-gray-300 rounded-md p-2 bg-gray-50 min-h-0 overflow-y-auto">
-        {Terms.map((term) => (
+      <div className={`grid grid-cols-1 ${showSummer ? 'md:grid-cols-4' : 'md:grid-cols-3'} gap-2 flex-grow border border-gray-300 rounded-md p-2 bg-gray-50 min-h-0 overflow-y-auto`}>
+        {displayTerms.map((term) => (
           <div
             key={term}
             onDragOver={(e) => e.preventDefault()}
