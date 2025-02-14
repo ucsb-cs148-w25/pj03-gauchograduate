@@ -11,10 +11,10 @@ import { Course, CourseInfo, ScheduleType, YearType, Term } from "../app/compone
 import { useQuery } from '@tanstack/react-query';
 
 const termToQuarter: { [key in Term]: string } = {
-    Fall: "20241",
-    Winter: "20242",
-    Spring: "20243",
-    Summer: "20244",
+  Fall: "20241",
+  Winter: "20242",
+  Spring: "20243",
+  Summer: "20244",
 };
 
 async function fetchCourses(quarter: string): Promise<Course[]> {
@@ -23,7 +23,7 @@ async function fetchCourses(quarter: string): Promise<Course[]> {
     throw new Error(`Failed to fetch courses. Status: ${response.status}`);
   }
   const data = await response.json();
-  
+
   if (!data || !data.courses || !Array.isArray(data.courses)) {
     console.error("Unexpected API structure", data);
     return [];
@@ -118,10 +118,10 @@ export default function HomePage() {
           />
         </div>
         <div className="w-full md:w-1/5 bg-[var(--off-white)] p-4 overflow-y-scroll">
-          <ProgressTracker 
-            studentSchedule={studentSchedule} 
-            courses={courses} 
-            college={majorData?.major?.college} 
+          <ProgressTracker
+            studentSchedule={studentSchedule}
+            courses={courses}
+            college={majorData?.major?.college}
           />
         </div>
       </div>

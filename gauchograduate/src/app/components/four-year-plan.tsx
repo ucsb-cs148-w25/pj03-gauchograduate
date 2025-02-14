@@ -10,7 +10,14 @@ interface FourYearPlanProps {
   removeCourse: (course: Course, term: Term) => void;
 }
 
-async function DBAddCourses(courseID: string) {
+const termToQuarter: { [key in Term]: string } = {
+  Fall: "20241",
+  Winter: "20242",
+  Spring: "20243",
+  Summer: "20244",
+};
+
+async function DBAddCourses(courseID: string, term: Term) {
   try {
 
     const response = await fetch("/api/user/add-course", {
@@ -20,7 +27,7 @@ async function DBAddCourses(courseID: string) {
       },
       body: JSON.stringify({
         id: courseID,
-        quarter: "20241",
+        quarter: termToQuarter[term],
       }),
     });
 
@@ -31,9 +38,30 @@ async function DBAddCourses(courseID: string) {
   }
 }
 
+async function DBRemoveCourses(courseID: string, term: Term) {
+  try {
 
-export default function FourYearPlan({ selectedYear, setSelectedYear, studentSchedule, addCourse, removeCourse}: FourYearPlanProps) { 
-  
+    const response = await fetch("/api/user/remove-course", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: courseID,
+        quarter: termToQuarter[term],
+      }),
+    });
+
+    const data = await response.json();
+    console.log("Response:", data);
+  } catch (error) {
+    console.error("Error removing courses:", error);
+  }
+}
+
+
+export default function FourYearPlan({ selectedYear, setSelectedYear, studentSchedule, addCourse, removeCourse }: FourYearPlanProps) {
+
   function handleDrop(e: React.DragEvent<HTMLDivElement>, term: Term) {
     e.preventDefault();
     // gets the course thats dropped
@@ -45,7 +73,7 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
       removeCourse(course, originTerm);
     }
     // now we just update the schedule
-    DBAddCourses(course.course_id)
+    DBAddCourses(course.course_id, term)
     addCourse(course, term as Term);
   }
 
@@ -54,10 +82,10 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-semibold">Four-Year Plan</h2>
         {/* Year Selector */}
-        <select 
-        className="p-2 border border-gray-300 rounded-lg" 
-        value={selectedYear}
-        onChange={(e) => setSelectedYear(e.target.value as YearType)}
+        <select
+          className="p-2 border border-gray-300 rounded-lg"
+          value={selectedYear}
+          onChange={(e) => setSelectedYear(e.target.value as YearType)}
         >
           {Years.map((year, index) => (
             <option key={index} value={year}>
@@ -82,33 +110,37 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
                 {/* Course cards */}
                 {studentSchedule[selectedYear][term].length > 0 ? (
                   studentSchedule[selectedYear][term].map((course) => {
-                    const bgColorClass = course.generalEd.length === 0  ? "bg-[var(--pale-orange)]" : "bg-[var(--pale-pink)]"; 
+                    const bgColorClass = course.generalEd.length === 0 ? "bg-[var(--pale-orange)]" : "bg-[var(--pale-pink)]";
                     return (
-                    <div 
-                      key={course.course_id}
-                      draggable = {true}
-                      onDragStart={(e) => {
-                        const courseData = { ...course, originTerm: term };
-                        e.dataTransfer.setData("application/json", JSON.stringify(courseData));
-                      }}
-                      className={`relative p-4 ${bgColorClass} rounded-lg group whitespace-normal break-words`}
-                    >
-          
-                      {/* course details */}
-                      <p className="font-bold text-sm">{course.course_id}</p>
-                      <p className="text-xs">{course.title}</p>
-                      <p className="text-xs text-gray-500">{course.units} units</p>
-
-                      {/* hover to click on delete button */}
-                      <button
-                        className="bg-red-500 text-white p-1 rounded-full opacity-0 group-hover:opacity-100"
-                        onClick={() => removeCourse(course, term)}
+                      <div
+                        key={course.course_id}
+                        draggable={true}
+                        onDragStart={(e) => {
+                          const courseData = { ...course, originTerm: term };
+                          e.dataTransfer.setData("application/json", JSON.stringify(courseData));
+                        }}
+                        className={`relative p-4 ${bgColorClass} rounded-lg group whitespace-normal break-words`}
                       >
-                        <DeleteIcon fontSize="small" />
-                      </button>
 
-                    </div>
-                  );})
+                        {/* course details */}
+                        <p className="font-bold text-sm">{course.course_id}</p>
+                        <p className="text-xs">{course.title}</p>
+                        <p className="text-xs text-gray-500">{course.units} units</p>
+
+                        {/* hover to click on delete button */}
+                        <button
+                          className="bg-red-500 text-white p-1 rounded-full opacity-0 group-hover:opacity-100"
+                          onClick={() => {
+                            removeCourse(course, term);
+                            DBRemoveCourses(course.course_id, term);
+                          }}
+                        >
+                          <DeleteIcon fontSize="small" />
+                        </button>
+
+                      </div>
+                    );
+                  })
                 ) : (
                   <p className="text-xs text-gray-500 text-center">No courses</p>
                 )}
