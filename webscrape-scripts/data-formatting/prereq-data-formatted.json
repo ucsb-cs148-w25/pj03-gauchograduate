@@ -1,0 +1,232 @@
+[
+  {
+    "course": "CHEM 6AL",
+    "prerequisites": {
+      "type": "and",
+      "requirements": [
+        {
+          "type": "or",
+          "requirements": [
+            {
+              "type": "or",
+              "requirements": [
+                {
+                  "type": "course",
+                  "dept": "CHEM",
+                  "number": "1AL",
+                  "minGrade": null,
+                  "canTakeConcurrently": false
+                },
+                {
+                  "type": "course",
+                  "dept": "CHEM",
+                  "number": "2AC",
+                  "minGrade": null,
+                  "canTakeConcurrently": false
+                }
+              ]
+            },
+            {
+              "type": "or",
+              "requirements": [
+                {
+                  "type": "course",
+                  "dept": "CHEM",
+                  "number": "1BL",
+                  "minGrade": null,
+                  "canTakeConcurrently": false
+                },
+                {
+                  "type": "course",
+                  "dept": "CHEM",
+                  "number": "2BC",
+                  "minGrade": null,
+                  "canTakeConcurrently": false
+                }
+              ]
+            },
+            {
+              "type": "or",
+              "requirements": [
+                {
+                  "type": "course",
+                  "dept": "CHEM",
+                  "number": "1CL",
+                  "minGrade": null,
+                  "canTakeConcurrently": false
+                },
+                {
+                  "type": "course",
+                  "dept": "CHEM",
+                  "number": "2CC",
+                  "minGrade": null,
+                  "canTakeConcurrently": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "and",
+          "requirements": [
+            {
+              "type": "or",
+              "requirements": [
+                {
+                  "type": "course",
+                  "dept": "CHEM",
+                  "number": "2AL",
+                  "minGrade": null,
+                  "canTakeConcurrently": false
+                },
+                {
+                  "type": "course",
+                  "dept": "CHEM",
+                  "number": "2BL",
+                  "minGrade": null,
+                  "canTakeConcurrently": false
+                }
+              ]
+            },
+            {
+              "type": "or",
+              "requirements": [
+                {
+                  "type": "course",
+                  "dept": "CHEM",
+                  "number": "109A",
+                  "minGrade": "C-",
+                  "canTakeConcurrently": false
+                },
+                {
+                  "type": "course",
+                  "dept": "CHEM",
+                  "number": "109AH",
+                  "minGrade": "C-",
+                  "canTakeConcurrently": false
+                },
+                {
+                  "type": "course",
+                  "dept": "CHEM",
+                  "number": "130A",
+                  "minGrade": "C-",
+                  "canTakeConcurrently": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "or",
+          "requirements": [
+            {
+              "type": "course",
+              "dept": "CHEM",
+              "number": "109B",
+              "minGrade": null,
+              "canTakeConcurrently": true
+            },
+            {
+              "type": "course",
+              "dept": "CHEM",
+              "number": "109BH",
+              "minGrade": null,
+              "canTakeConcurrently": true
+            },
+            {
+              "type": "course",
+              "dept": "CHEM",
+              "number": "130B",
+              "minGrade": null,
+              "canTakeConcurrently": true
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "course": "CHEM 6BL",
+    "prerequisites": {
+      "type": "and",
+      "requirements": [
+        {
+          "type": "and",
+          "requirements": [
+            {
+              "type": "course",
+              "dept": "CHEM",
+              "number": "6AL",
+              "minGrade": "C-",
+              "canTakeConcurrently": false
+            },
+            {
+              "type": "or",
+              "requirements": [
+                {
+                  "type": "course",
+                  "dept": "CHEM",
+                  "number": "109A",
+                  "minGrade": "C-",
+                  "canTakeConcurrently": false
+                },
+                {
+                  "type": "course",
+                  "dept": "CHEM",
+                  "number": "109AH",
+                  "minGrade": "C-",
+                  "canTakeConcurrently": false
+                },
+                {
+                  "type": "course",
+                  "dept": "CHEM",
+                  "number": "130A",
+                  "minGrade": "C-",
+                  "canTakeConcurrently": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "or",
+          "requirements": [
+            {
+              "type": "course",
+              "dept": "CHEM",
+              "number": "109B",
+              "minGrade": "C-",
+              "canTakeConcurrently": false
+            },
+            {
+              "type": "course",
+              "dept": "CHEM",
+              "number": "109BH",
+              "minGrade": "C-",
+              "canTakeConcurrently": false
+            },
+            {
+              "type": "course",
+              "dept": "CHEM",
+              "number": "130B",
+              "minGrade": "C-",
+              "canTakeConcurrently": false
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "course": "CHEM 99",
+    "prerequisites": {
+      "type": "and",
+      "requirements": [
+        {
+          "type": "specialRequirement",
+          "requirement": "Consent of instructor"
+        }
+      ]
+    }
+  }
+]
