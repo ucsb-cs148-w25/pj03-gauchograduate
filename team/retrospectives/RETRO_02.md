@@ -29,7 +29,7 @@ MVP Refelction:
 - Our UI is easy to navigate and consistent, which is good.
 - Add more useful features such as gpa calculator, automatic course history, and future course suggestions
 
-  ## Retro Assessment
+## Retro Assessment
 
 * We individually reflected on what we as a team want to start, stop, and continue doing for 10 minutes. Then we had a team discussion and decided on a few action items we want to focus on, and identify what was the change we wanted to see for next week.
 * It was productive and the team correctly identified our shortcomings and things we were doing good at. 
