@@ -24,6 +24,11 @@ Continue:
 - adding acceptance criteria for new issues
 - our current work flow and communication
 
+MVP Refelction:
+- Good feedback overall, we had many features students liked.
+- Our UI is easy to navigate and consistent, which is good.
+- Add more useful features such as gpa calculator, automatic course history, and future course suggestions
+
   ## Retro Assessment
 
 * We individually reflected on what we as a team want to start, stop, and continue doing for 10 minutes. Then we had a team discussion and decided on a few action items we want to focus on, and identify what was the change we wanted to see for next week.
