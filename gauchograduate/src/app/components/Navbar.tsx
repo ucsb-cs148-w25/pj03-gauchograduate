@@ -3,14 +3,17 @@
 import { useSession, signOut } from "next-auth/react";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 export default function Navbar() {
   const { data: session } = useSession();
   const pathname = usePathname();
 
   return (
-    <nav className="p-5 bg-[var(--background)] border-b border-gray-300 flex justify-between items-center">
-      <h1 className="text-2xl font-bold"><Link href="/">GauchoGraduate</Link></h1>
+    <nav className="py-3 px-5 bg-[var(--background)] border-b border-gray-300 flex justify-between items-center">
+      <Link href = "/">
+        <Image src = "/navbarlogo.png" alt = "GauchoGraduate Logo" width={200} height ={40} className = "h-10 w-auto" />
+      </Link>
       <div className="text-sm flex items-center gap-4">
         {session?.user?.name && (
           <>
