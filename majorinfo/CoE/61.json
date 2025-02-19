@@ -1,0 +1,98 @@
+{
+  "preparation": {
+    "and": [
+      "CMPSC_16",
+      "CMPSC_24",
+      "CMPSC_32",
+      "CMPSC_40",
+      "ECE_1A",
+      "ECE_1B",
+      "ECE_5",
+      "ECE_10A",
+      "ECE_10AL",
+      "ECE_10B",
+      "ECE_10BL",
+      "ECE_10C",
+      "ECE_10CL",
+      "ECE_15A",
+      "MATH_3A",
+      "MATH_3B",
+      "MATH_4A",
+      "MATH_4B",
+      "MATH_6A",
+      "PHYS_7A",
+      "PHYS_7B",
+      "PHYS_7C",
+      "PHYS_7D",
+      "PHYS_7L"
+    ]
+  },
+  "upper_division": {
+    "required": {
+      "and": [
+        "CMPSC_130A",
+        "ECE_139",
+        "ECE_152A",
+        "ECE_154A",
+        "ENGR_101"
+      ],
+      "or": {
+        "count": 1,
+        "classes": [
+          ["CMPSC_189A", "CMPSC_189B"],
+          ["ECE_189A", "ECE_189B", "ECE_189C"]
+        ]
+      }
+    },
+    "electives": {
+      "or": {
+        "count": 36,
+        "notes": ["Must include at least 2 sequences", "See ECE Department student office for list of approved sequences"],
+        "classes": [
+          "CMPSC_130B",
+          "CMPSC_138",
+          "CMPSC_153A",
+          "CMPSC_156",
+          "CMPSC_160",
+          "CMPSC_162",
+          "CMPSC_165A",
+          "CMPSC_165B",
+          "CMPSC_170",
+          "CMPSC_171",
+          "CMPSC_174A",
+          "CMPSC_176A",
+          "CMPSC_176B",
+          "CMPSC_176C",
+          "CMPSC_177",
+          "CMPSC_178",
+          "CMPSC_181",
+          "ECE_122A",
+          "ECE_122B",
+          "ECE_123",
+          "ECE_130A",
+          "ECE_130B",
+          "ECE_130C",
+          "ECE_133",
+          "ECE_147A",
+          "ECE_147B",
+          "ECE_149",
+          "ECE_150",
+          "ECE_152B",
+          "ECE_153B",
+          "ECE_154B",
+          "ECE_157A",
+          "ECE_157B",
+          "ECE_157C",
+          "ECE_160",
+          "ECE_178",
+          "ECE_179D",
+          "ECE_179P",
+          "ECE_180",
+          "ECE_184",
+          "ECE_194AA",
+          "ECE_194ZZ"
+        ]
+      }
+    }
+  }
+}

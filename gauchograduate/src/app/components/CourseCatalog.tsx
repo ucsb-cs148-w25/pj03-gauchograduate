@@ -1,44 +1,43 @@
 'use client';
 
-
 import React, { useState } from 'react';
-
-
-import { Course, Term } from "./coursetypes";
-
+import { Course, Term, ScheduleType } from "./coursetypes";
 
 interface CourseCatalogProps {
     courses: Course[];
     selectedTerm: string;
     setSelectedTerm: (term: Term) => void;
+    studentSchedule: ScheduleType; // Add this prop
 }
 
-
-export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm }: CourseCatalogProps) {
-
-
+export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, studentSchedule }: CourseCatalogProps) {
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedDepartment, setSelectedDepartment] = useState('');
-
 
     const departments = [...new Set(courses.map((course) => course.department))];
     const termsOptions: Term[] = ["Fall", "Winter", "Spring", "Summer"];
 
+    // Get all courses in student schedule
+    const takenCourseIds = new Set(
+        Object.values(studentSchedule)
+            .flatMap(yearSchedule => 
+                Object.values(yearSchedule)
+                    .flat()
+                    .map(course => course.course_id)
+            )
+    );
 
-    // filters courses by title using searchQuery
-    // if the user doesn't input one, searchQuery is '' which returns all the courses
+    // filters courses by title using searchQuery and excludes taken courses
     const filteredCourses = courses.filter(course => {
         const searchMatches = course.title.toLowerCase().includes(searchQuery.toLowerCase());
         const deptMatches = selectedDepartment === '' || course.department === selectedDepartment;
-        return searchMatches && deptMatches;
-    }
-    );
-
+        const notTaken = !takenCourseIds.has(course.course_id);
+        return searchMatches && deptMatches && notTaken;
+    });
 
     return (
         <div className="h-full w-full flex flex-col">
             <h2 className="text-xl font-semibold mb-4">Course Catalog</h2>
-
 
             {/* Search Bar */}
             {/* once the user types a search query it automatically filters*/}
@@ -63,7 +62,6 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm }
                         </option>
                     ))}
                 </select>
-
 
                 {/* Term Selector */}
                 <select
@@ -116,5 +114,3 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm }
         </div>
     );
 }
-
-

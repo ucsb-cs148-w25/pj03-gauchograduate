@@ -37,7 +37,23 @@ export interface Course {
 
 // describing the student's entire 4-year schedule
 export type ScheduleType = {
-    [year in YearType]: {
-      [t in Term]: Course[];
-    };
+  [year in YearType]: {
+    [t in Term]: Course[];
   };
+};
+
+// CoursePopup props
+export interface CoursePopupProps {
+  course: Course;
+  term: Term;
+  onClose: () => void;
+  onDelete: () => void;
+}
+
+export interface FourYearPlanProps {
+  selectedYear: YearType;
+  setSelectedYear: React.Dispatch<React.SetStateAction<YearType>>;
+  studentSchedule: ScheduleType;
+  addCourse: (course: Course, term: Term) => void;
+  removeCourse: (course: Course, term: Term) => void;
+}

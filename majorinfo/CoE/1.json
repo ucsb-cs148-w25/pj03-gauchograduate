@@ -1,0 +1,86 @@
+{
+    "preparation": {
+        "and": [
+            "CMPSC_16",
+            "CMPSC_24",
+            "CMPSC_32",
+            "CMPSC_40",
+            "CMPSC_64",
+            "MATH_3A",
+            "MATH_3B",
+            "MATH_4A",
+            "MATH_4B",
+            "MATH_6A",
+            "PSTAT_120A"
+        ]
+    },
+    "upper_division": {
+        "required": {
+            "and": [
+                "CMPSC_130A",
+                "CMPSC_130B",
+                "ENGR_101"
+            ]
+        },
+        "electives": {
+            "or": {
+                "count": 14,
+                "notes": [
+                    "At least 7 courses (28 units) must be CMPSC courses"
+                ],
+                "classes": [
+                    "CMPSC_110",
+                    "CMPSC_111",
+                    "CMPSC_132",
+                    "CMPSC_134",
+                    "CMPSC_138",
+                    "CMPSC_140",
+                    "CMPSC_148",
+                    "CMPSC_153A",
+                    "CMPSC_154",
+                    "CMPSC_156",
+                    "CMPSC_160",
+                    "CMPSC_162",
+                    "CMPSC_165A",
+                    "CMPSC_165B",
+                    "CMPSC_170",
+                    "CMPSC_171",
+                    "CMPSC_172",
+                    "CMPSC_174A",
+                    "CMPSC_174B",
+                    "CMPSC_176A",
+                    "CMPSC_176B",
+                    "CMPSC_176C",
+                    "CMPSC_177",
+                    "CMPSC_178",
+                    "CMPSC_180",
+                    "CMPSC_181",
+                    "CMPSC_184",
+                    "CMPSC_185",
+                    "CMPSC_186",
+                    "CMPSC_188",
+                    "CMPSC_189A",
+                    "CMPSC_189B",
+                    "ECE_130A",
+                    "ECE_130B",
+                    "ECE_130C",
+                    "ECE_152A",
+                    "ECE_153B",
+                    "ECE_160",
+                    "ECE_178",
+                    "MATH_108A",
+                    "MATH_108B",
+                    "MATH_119A",
+                    "MATH_119B",
+                    "MATH_124A",
+                    "MATH_124B",
+                    "PSTAT_120B",
+                    "PSTAT_122",
+                    "PSTAT_130",
+                    "PSTAT_160A",
+                    "PSTAT_160B"
+                ]
+            }
+        }
+    }
+}

@@ -1,4 +1,4 @@
-// `use client`;
+'use client';
 
 import { useState, useEffect } from "react";
 import CourseCatalog from "../app/components/CourseCatalog";
@@ -31,18 +31,31 @@ async function fetchAndSetCourses(quarter: string, setCourses: (courses: Course[
       return;
     }
 
-    const formattedCourses: Course[] = data.courses.map((course: CourseInfo) => ({
-      course_id: course.gold_id,
-      title: course.title,
-      description: course.description,
-      subjectArea: course.subject_area,
-      department: course.subject_area,
-      units: course.units || 0,
-      generalEd: Array.isArray(course.general_ed) ? course.general_ed : [],
-      prerequisites: course.prerequisites.map(String) || [],
-      unlocks: course.unlocks.map(String) || [],
-      term: []
-    }));
+    const formattedCourses: Course[] = data.courses.map((course: CourseInfo) => {
+      const formattedCourse = {
+        course_id: course.gold_id,
+        title: course.title,
+        description: course.description,
+        subjectArea: course.subject_area,
+        department: course.subject_area,
+        units: course.units || 0,
+        generalEd: Array.isArray(course.general_ed) ? course.general_ed : [],
+        prerequisites: course.prerequisites.map(String) || [],
+        unlocks: course.unlocks.map(String) || [],
+        term: []
+      };
+      
+      // Add debug logging for GE courses
+      if (formattedCourse.generalEd.length > 0) {
+        console.log('GE Course found:', {
+          id: formattedCourse.course_id,
+          title: formattedCourse.title,
+          generalEd: formattedCourse.generalEd
+        });
+      }
+      
+      return formattedCourse;
+    });
 
     const sortedCourses = formattedCourses.sort((a, b) => a.course_id.localeCompare(b.course_id));
 
@@ -82,6 +95,15 @@ export default function TestPage() {
   const [studentSchedule, setStudentSchedule] = useState<ScheduleType>(defaultSchedule);
   const [selectedYear, setSelectedYear] = useState<YearType>("Year 1");
 
+  const mockMajorData = {
+    major: {
+      id: 1,
+      name: "Computer Science",
+      college: "CoE",
+      requirements: [1, 2, 3] // Mock requirement IDs
+    }
+  };
+
   const addCourse = (course: Course, term: Term) => {
     setStudentSchedule((prevSchedule) => ({
       ...prevSchedule,
@@ -107,7 +129,12 @@ export default function TestPage() {
       <Navbar />
       <div className="flex flex-1 flex-col md:flex-row overflow-hidden">
         <div className="w-full md:w-1/5 bg-[var(--off-white)] p-4 overflow-y-scroll">
-          <CourseCatalog courses={courses} selectedTerm={selectedTerm} setSelectedTerm={setSelectedTerm} />
+          <CourseCatalog 
+            courses={courses} 
+            selectedTerm={selectedTerm} 
+            setSelectedTerm={setSelectedTerm}
+            studentSchedule={studentSchedule}  // Add this prop
+          />
         </div>
         <div className="w-full md:w-3/5 bg-white p-4 rounded-md shadow overflow-y-scroll">
           <FourYearPlan
@@ -119,7 +146,11 @@ export default function TestPage() {
           />
         </div>
         <div className="w-full md:w-1/5 bg-[var(--off-white)] p-4 overflow-y-scroll">
-          <ProgressTracker studentSchedule={studentSchedule} courses={courses} />
+          <ProgressTracker 
+            studentSchedule={studentSchedule} 
+            courses={courses} 
+            college={mockMajorData.major.college} 
+          />
         </div>
       </div>
     </div>
