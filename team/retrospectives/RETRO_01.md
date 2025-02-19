@@ -1,5 +1,5 @@
 #Sprint Retrospective
-## Date of Retrospective: 01/24/23
+## Date of Retrospective: 01/24/25
 ### Team: John Kim[x],  Jaren Lowe[x],  Kade Williams[x], Selena Zeng[x] Taedon Reth[x], Vala Bahrami[x], Chiran Arumugam[x]
 * Led by: Selena Zeng
 
