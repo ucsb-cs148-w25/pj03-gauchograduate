@@ -18,31 +18,31 @@ import argparse
 load_dotenv(dotenv_path="./../gauchograduate/.env")
 
 
-def get_all_gold_ids():
-    name = os.getenv('POSTGRES_URL_NON_POOLING_NAME')
-    password = os.getenv('POSTGRES_URL_NON_POOLING_PASSWORD')
-    host = os.getenv('POSTGRES_URL_NON_POOLING_HOST')
-    port = os.getenv('POSTGRES_URL_NON_POOLING_PORT')
+# def get_all_gold_ids():
+#     name = os.getenv('POSTGRES_URL_NON_POOLING_NAME')
+#     password = os.getenv('POSTGRES_URL_NON_POOLING_PASSWORD')
+#     host = os.getenv('POSTGRES_URL_NON_POOLING_HOST')
+#     port = os.getenv('POSTGRES_URL_NON_POOLING_PORT')
 
-    try:
-        connection = psycopg2.connect(dbname=name, user=name, password=password, host=host, port=port)
-        cursor = connection.cursor()
+#     try:
+#         connection = psycopg2.connect(dbname=name, user=name, password=password, host=host, port=port)
+#         cursor = connection.cursor()
         
-        cursor.execute("SELECT gold_id FROM Course")
-        gold_ids = [row[0] for row in cursor.fetchall()]
+#         cursor.execute("SELECT gold_id FROM Course")
+#         gold_ids = [row[0] for row in cursor.fetchall()]
         
-        cursor.close()
-        connection.close()
+#         cursor.close()
+#         connection.close()
         
-        return gold_ids
-    except psycopg2.OperationalError as e:
-        print(f"OperationalError: {e}")
-        print(f"Host: {host}, Port: {port}, User: {name}")
-        print("Please check your network connection and ensure the database server is accessible.")
-        return []
-    except Exception as e:
-        print(f"Error connecting to the database: {e}")
-        return []
+#         return gold_ids
+#     except psycopg2.OperationalError as e:
+#         print(f"OperationalError: {e}")
+#         print(f"Host: {host}, Port: {port}, User: {name}")
+#         print("Please check your network connection and ensure the database server is accessible.")
+#         return []
+#     except Exception as e:
+#         print(f"Error connecting to the database: {e}")
+#         return []
 
 # Read gold_ids from PreReqsToScrape.txt
 with open('./PreReqsToScrape.txt', 'r') as file:
