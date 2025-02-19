@@ -8,18 +8,18 @@
 
 ## Action item
 
-* Goals:
+Goals:
 - Address things we all have to work on regarding planning
 - Individually write tests for everything we implement
 - More documentation/commenting
 - Refactoring backend code for clarity and scalability
 - Complete issues quicker
 
-* Changes:
+Changes:
 - Meeting once a week outside of class on saturdays for short dicussion/catch up
 - Communicating with Mentor more for lab requirements
 
-* Measurements:
+Measurements:
 - How many issues have we completed within the past week?
 - How do we like these additions to the workflow compared to before?
 - Are we more effective at staying on top of our deliverables?
