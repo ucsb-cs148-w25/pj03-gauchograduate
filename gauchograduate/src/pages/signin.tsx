@@ -1,5 +1,4 @@
 import { signIn } from 'next-auth/react';
-import Navbar from '../app/components/Navbar';
 import GoogleLogo from '../app/components/icons/GoogleLogo';
 import Image from 'next/image';
 
