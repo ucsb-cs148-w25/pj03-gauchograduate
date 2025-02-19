@@ -4,7 +4,7 @@ export default function CoursePopup({ course, term, onClose, onDelete }: CourseP
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" onClick={onClose}>
       <div className="bg-white p-6 rounded-lg shadow-xl max-w-md w-full m-4" onClick={e => e.stopPropagation()}>
-        <h3 className="text-xl font-bold mb-4">{course.course_id}</h3>
+        <h3 className="text-xl font-bold mb-4">{course.gold_id}</h3>
         <div className="space-y-3">
           <p className="text-lg">{course.title}</p>
           <p className="text-gray-600">{course.units} units</p>

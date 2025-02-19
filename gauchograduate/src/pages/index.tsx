@@ -30,7 +30,8 @@ async function fetchCourses(quarter: string): Promise<Course[]> {
   }
 
   const formattedCourses: Course[] = data.courses.map((course: CourseInfo) => ({
-    course_id: course.gold_id,
+    gold_id: course.gold_id,
+    id: course.id,
     title: course.title,
     description: course.description,
     subjectArea: course.subject_area,
@@ -42,7 +43,7 @@ async function fetchCourses(quarter: string): Promise<Course[]> {
     term: []
   }));
 
-  return formattedCourses.sort((a, b) => a.course_id.localeCompare(b.course_id));
+  return formattedCourses.sort((a, b) => a.gold_id.localeCompare(b.gold_id));
 }
 
 export default function HomePage() {
@@ -96,7 +97,7 @@ export default function HomePage() {
       ...prevSchedule,
       [selectedYear]: {
         ...prevSchedule[selectedYear],
-        [term]: prevSchedule[selectedYear][term].filter((c) => c.course_id !== course.course_id),
+        [term]: prevSchedule[selectedYear][term].filter((c) => c.gold_id !== course.gold_id),
       },
     }));
   };

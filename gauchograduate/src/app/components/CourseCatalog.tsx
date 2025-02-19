@@ -14,7 +14,7 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, 
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedDepartment, setSelectedDepartment] = useState('');
 
-    const departments = [...new Set(courses.map((course) => course.department))];
+    const departments = [...new Set(courses.map((course) => course.subjectArea))];
     const termsOptions: Term[] = ["Fall", "Winter", "Spring", "Summer"];
 
     // Get all courses in student schedule
@@ -23,15 +23,15 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, 
             .flatMap(yearSchedule => 
                 Object.values(yearSchedule)
                     .flat()
-                    .map(course => course.course_id)
+                    .map(course => course.gold_id)
             )
     );
 
     // filters courses by title using searchQuery and excludes taken courses
     const filteredCourses = courses.filter(course => {
         const searchMatches = course.title.toLowerCase().includes(searchQuery.toLowerCase());
-        const deptMatches = selectedDepartment === '' || course.department === selectedDepartment;
-        const notTaken = !takenCourseIds.has(course.course_id);
+        const deptMatches = selectedDepartment === '' || course.subjectArea === selectedDepartment;
+        const notTaken = !takenCourseIds.has(course.gold_id);
         return searchMatches && deptMatches && notTaken;
     });
 
@@ -84,7 +84,7 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, 
                     const bgColorClass = course.generalEd.length === 0 ? "bg-[var(--pale-orange)]" : "bg-[var(--pale-pink)]";
                     return (
                         <div
-                            key={course.course_id}
+                            key={course.gold_id}
                             className="p-4 border border-gray-300 rounded-xl bg-white flex flex-col gap-5"
                             draggable={true}
                             onDragStart={(e) => {
@@ -94,7 +94,7 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, 
                             }}
                         >
                             <div>
-                                <h3 className="text-lg font-bold">{course.course_id}</h3>
+                                <h3 className="text-lg font-bold">{course.gold_id}</h3>
                                 <p className="text-sm">{course.title}</p>
                             </div>
                             <div className="flex flex-wrap gap-2 justify-between items-center">
