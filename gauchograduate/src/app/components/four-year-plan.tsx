@@ -44,7 +44,7 @@ export default function FourYearPlan({
       });
 
       const data = await response.json();
-      console.log("Response:", data);
+      console.log("Add Response:", data);
     } catch (error) {
       console.error("Error adding courses:", error);
     }
@@ -65,10 +65,15 @@ export default function FourYearPlan({
       });
 
       const data = await response.json();
-      console.log("Response:", data);
+      console.log("Removal Response:", data);
     } catch (error) {
       console.error("Error removing courses:", error);
     }
+  }
+
+  async function DBMoveCourse(courseID: number, originTerm: Term, term: Term){
+    await DBRemoveCourses(courseID, originTerm);
+    await DBAddCourses(courseID, term);
   }
 
   function handleDrop(e: React.DragEvent<HTMLDivElement>, term: Term) {
@@ -87,9 +92,12 @@ export default function FourYearPlan({
     }
     if (originTerm && originTerm !== term) {
       removeCourse(course, originTerm);
+      addCourse(course, term as Term);
+      DBMoveCourse(course.id, originTerm, term);
+    } else {
+      addCourse(course, term as Term);
+      DBAddCourses(course.id, term);
     }
-    addCourse(course, term as Term);
-    DBAddCourses(course.id, term);
   }
 
   function handleCourseReorder(e: React.DragEvent<HTMLDivElement>, term: Term, targetIndex: number) {
