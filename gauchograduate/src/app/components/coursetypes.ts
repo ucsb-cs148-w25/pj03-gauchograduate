@@ -21,9 +21,10 @@ export interface CourseInfo {
   id: number;
 }
 
-// each course information
+// each course information for rendered courses in the frontend
 export interface Course {
-  course_id: string;
+  gold_id: string;
+  id: number;
   title: string;
   description: string;
   subjectArea: string;
@@ -31,7 +32,6 @@ export interface Course {
   generalEd: GeneralEd[];
   prerequisites: string[];
   unlocks: string[];
-  department: string;
   term: Term[];
 }
 

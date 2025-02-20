@@ -28,10 +28,10 @@ const ProgressTracker = ({ studentSchedule, courses, college = "CoE" }: Progress
   useEffect(() => {
     const scheduledCourseIds = Object.values(studentSchedule)
       .flatMap((terms) => Object.values(terms).flat())
-      .map((course) => course.course_id);
+      .map((course) => course.gold_id);
 
     const completedCourseObjects = courses.filter((course) =>
-      scheduledCourseIds.includes(course.course_id)
+      scheduledCourseIds.includes(course.gold_id)
     );
 
     const totalUnitsTaken = completedCourseObjects.reduce(
@@ -145,8 +145,8 @@ const ProgressTracker = ({ studentSchedule, courses, college = "CoE" }: Progress
       <div>
         <ul className="list-disc ml-5 space-y-1 break-words">
           {itemsToShow.map((course) => (
-            <li key={course.course_id} className="whitespace-normal overflow-wrap-anywhere">
-              {course.course_id} ({course.units} units)
+            <li key={course.gold_id} className="whitespace-normal overflow-wrap-anywhere">
+              {course.gold_id} ({course.units} units)
             </li>
           ))}
         </ul>
@@ -175,8 +175,8 @@ const ProgressTracker = ({ studentSchedule, courses, college = "CoE" }: Progress
       <div className="ml-8 mt-1">
         <ul className="list-disc space-y-1 break-words text-sm text-gray-600">
           {itemsToShow.map((course) => (
-            <li key={course.course_id} className="whitespace-normal overflow-wrap-anywhere">
-              {course.course_id} ({course.units} units)
+            <li key={course.gold_id} className="whitespace-normal overflow-wrap-anywhere">
+              {course.gold_id} ({course.units} units)
             </li>
           ))}
         </ul>

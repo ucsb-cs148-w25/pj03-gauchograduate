@@ -27,8 +27,8 @@ export default async function handler(
 
   const { id, quarter } = req.body
 
-  if (!id || !quarter || typeof id !== 'string' || typeof quarter !== 'string') {
-    return res.status(400).json({ error: "Course ID and quarter are required and must be strings" })
+  if (!id || !quarter || typeof id !== 'number' || typeof quarter !== 'string') {
+    return res.status(400).json({ error: "Course ID (number) and quarter (string) are required and must be of the appropriate type" })
   }
 
   try {
@@ -43,7 +43,7 @@ export default async function handler(
       return res.status(404).json({ error: "User not found" })
     }
 
-    const userCourses = user.courses as { firstQuarter: string; courses: { id: string; quarter: string }[] }
+    const userCourses = user.courses as { firstQuarter: string; courses: { id: number; quarter: string }[] }
     
     // Check if course already exists for this quarter
     if (userCourses.courses.some(course => course.id === id && course.quarter === quarter)) {

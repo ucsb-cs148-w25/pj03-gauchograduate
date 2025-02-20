@@ -23,7 +23,7 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
   };
 
 
-  async function DBAddCourses(courseID: string, term: Term) {
+  async function DBAddCourses(courseID: number, term: Term) {
     try {
 
       const response = await fetch("/api/user/add-course", {
@@ -44,7 +44,7 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
     }
   }
 
-  async function DBRemoveCourses(courseID: string, term: Term) {
+  async function DBRemoveCourses(courseID: number, term: Term) {
     try {
 
       const response = await fetch("/api/user/remove-course", {
@@ -73,18 +73,18 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
     const { originTerm, ...course } = droppedCourse;
 
     const courseExists = studentSchedule[selectedYear][term].some(
-      existingCourse => existingCourse.course_id === course.course_id
+      existingCourse => existingCourse.gold_id === course.gold_id
     );
 
     if (courseExists) {
       return;
     }
-
+    // In case the course was moved from another quarter, first we drop then we re-add
     if (originTerm && originTerm !== term) {
       removeCourse(course, originTerm);
     }
     addCourse(course, term as Term);
-    DBAddCourses(course.course_id, term)
+    DBAddCourses(course.id, term);
   }
 
   const displayTerms = Terms.filter(term => term !== 'Summer' || showSummer);
@@ -99,7 +99,7 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
           onClose={() => setSelectedCourse(null)}
           onDelete={() => {
             removeCourse(selectedCourse.course, selectedCourse.term);
-            DBRemoveCourses(selectedCourse.course.course_id, selectedCourse.term);
+            DBRemoveCourses(selectedCourse.course.id, selectedCourse.term);
             setSelectedCourse(null);
           }}
         />
@@ -142,7 +142,7 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
                         const bgColorClass = course.generalEd.length === 0 ? "bg-[var(--pale-orange)]" : "bg-[var(--pale-pink)]";
                         return (
                           <div
-                            key={course.course_id}
+                            key={course.gold_id}
                             draggable={true}
                             onDragStart={(e) => {
                               const courseData = { ...course, originTerm: term };
@@ -151,7 +151,7 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
                             onClick={() => setSelectedCourse({ course, term })}
                             className={`relative p-4 ${bgColorClass} rounded-lg group whitespace-normal break-words cursor-pointer hover:shadow-md transition-shadow`}
                           >
-                            <p className="font-bold text-sm">{course.course_id}</p>
+                            <p className="font-bold text-sm">{course.gold_id}</p>
                             <p className="text-xs">{course.title}</p>
                             <p className="text-xs text-gray-500">{course.units} units</p>
                           </div>

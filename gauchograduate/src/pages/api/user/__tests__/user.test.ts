@@ -81,7 +81,7 @@ describe('User API Endpoints', () => {
       const { req, res } = createMocks({
         method: 'POST',
         body: {
-          id: "CMPSC 16",
+          id: 1,
           quarter: "20241"
         },
       });
@@ -97,7 +97,7 @@ describe('User API Endpoints', () => {
 
       const updatedCourses = {
         firstQuarter: "20241",
-        courses: [{ id: "CMPSC 16", quarter: "20241" }]
+        courses: [{ id: 1, quarter: "20241" }]
       };
 
       (prisma.user.findUnique as jest.Mock).mockResolvedValueOnce({
@@ -122,7 +122,7 @@ describe('User API Endpoints', () => {
       const { req, res } = createMocks({
         method: 'POST',
         body: {
-          id: "CMPSC 16",
+          id: 1,
           quarter: "20241"
         },
       });
@@ -141,7 +141,7 @@ describe('User API Endpoints', () => {
       const { req, res } = createMocks({
         method: 'POST',
         body: {
-          id: "CMPSC 16",
+          id: 1,
           quarter: "20241"
         },
       });
@@ -152,7 +152,7 @@ describe('User API Endpoints', () => {
 
       const existingCourses = {
         firstQuarter: "20241",
-        courses: [{ id: "CMPSC 16", quarter: "20241" }]
+        courses: [{ id: 1, quarter: "20241" }]
       };
 
       const updatedCourses = {
