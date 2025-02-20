@@ -28,42 +28,37 @@ async function fetchAndSetCourses(quarter: string, setCourses: (courses: Course[
 
     if (!data || !data.courses || !Array.isArray(data.courses)) {
       console.error("Unexpected API structure", data);
+      setCourses([]);
       return;
     }
 
-    const formattedCourses: Course[] = data.courses.map((course: CourseInfo) => {
-      const formattedCourse = {
-        course_id: course.gold_id,
-        title: course.title,
-        description: course.description,
-        subjectArea: course.subject_area,
-        department: course.subject_area,
+    const formattedCourses: Course[] = data.courses
+      .filter((course: CourseInfo) => course && course.gold_id)
+      .map((course: CourseInfo) => ({
+        gold_id: course.gold_id,
+        id: course.id,
+        title: course.title || '',
+        description: course.description || '',
+        subjectArea: course.subject_area || '',
+        department: course.subject_area || '',
         units: course.units || 0,
         generalEd: Array.isArray(course.general_ed) ? course.general_ed : [],
-        prerequisites: course.prerequisites.map(String) || [],
-        unlocks: course.unlocks.map(String) || [],
+        prerequisites: Array.isArray(course.prerequisites) ? course.prerequisites.map(String) : [],
+        unlocks: Array.isArray(course.unlocks) ? course.unlocks.map(String) : [],
         term: []
-      };
-      
-      // Add debug logging for GE courses
-      if (formattedCourse.generalEd.length > 0) {
-        console.log('GE Course found:', {
-          id: formattedCourse.course_id,
-          title: formattedCourse.title,
-          generalEd: formattedCourse.generalEd
-        });
-      }
-      
-      return formattedCourse;
-    });
+      }));
 
-    const sortedCourses = formattedCourses.sort((a, b) => a.course_id.localeCompare(b.course_id));
+    const sortedCourses = formattedCourses.length > 0 
+      ? formattedCourses.sort((a, b) => (a.gold_id || '').localeCompare(b.gold_id || ''))
+      : formattedCourses;
 
     sortedCourses.forEach(course => {
-      console.log(`Course: ${course.course_id} - ${course.title}`);
-    
+      console.log(`Course: ${course.gold_id} - ${course.title}`);
+      
       if (Array.isArray(course.generalEd) && course.generalEd.length > 0) {
-        const genEdValues = course.generalEd.map(ge => `${ge.geCode} (${ge.geCollege.trim()})`).join(", ");
+        const genEdValues = course.generalEd
+          .map(ge => `${ge?.geCode || 'N/A'} (${(ge?.geCollege || '').trim()})`)
+          .join(", ");
         console.log(`Gen Eds: ${genEdValues}`);
       } else {
         console.log("Gen Eds: None");
@@ -73,6 +68,7 @@ async function fetchAndSetCourses(quarter: string, setCourses: (courses: Course[
     setCourses(sortedCourses);
   } catch (error) {
     console.error("Error fetching courses:", error);
+    setCourses([]);
   }
 }
 
@@ -119,8 +115,18 @@ export default function TestPage() {
       ...prevSchedule,
       [selectedYear]: {
         ...prevSchedule[selectedYear],
-        [term]: prevSchedule[selectedYear][term].filter((c) => c.course_id !== course.course_id),
+        [term]: prevSchedule[selectedYear][term].filter((c) => c.gold_id !== course.gold_id),
       },
+    }));
+  };
+
+  const reorderCourse = (year: YearType, term: Term, newCourses: Course[]) => {
+    setStudentSchedule((prevSchedule) => ({
+      ...prevSchedule,
+      [year]: {
+        ...prevSchedule[year],
+        [term]: newCourses
+      }
     }));
   };
 
@@ -133,7 +139,7 @@ export default function TestPage() {
             courses={courses} 
             selectedTerm={selectedTerm} 
             setSelectedTerm={setSelectedTerm}
-            studentSchedule={studentSchedule}  // Add this prop
+            studentSchedule={studentSchedule}
           />
         </div>
         <div className="w-full md:w-3/5 bg-white p-4 rounded-md shadow overflow-y-scroll">
@@ -143,6 +149,7 @@ export default function TestPage() {
             studentSchedule={studentSchedule}
             addCourse={addCourse}
             removeCourse={removeCourse}
+            reorderCourse={reorderCourse}
           />
         </div>
         <div className="w-full md:w-1/5 bg-[var(--off-white)] p-4 overflow-y-scroll">

@@ -4,7 +4,14 @@ import { useState } from 'react';
 import { getAcademicYear, isQuarterInPast, isCurrentQuarter } from './utils/quarterUtils';
 import CourseModal from './course-popup';
 
-export default function FourYearPlan({ selectedYear, setSelectedYear, studentSchedule, addCourse, removeCourse }: FourYearPlanProps) {
+export default function FourYearPlan({ 
+  selectedYear, 
+  setSelectedYear, 
+  studentSchedule, 
+  addCourse, 
+  removeCourse,
+  reorderCourse
+}: FourYearPlanProps) {
   const { data: session } = useSession();
   const firstQuarter = session?.user?.courses?.firstQuarter || '20224';
   const [showSummer, setShowSummer] = useState(false);
@@ -22,7 +29,6 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
     Summer: "20244",
   };
 
-
   async function DBAddCourses(courseID: number, term: Term) {
     try {
 
@@ -38,7 +44,7 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
       });
 
       const data = await response.json();
-      console.log("Response:", data);
+      console.log("Add Response:", data);
     } catch (error) {
       console.error("Error adding courses:", error);
     }
@@ -59,10 +65,15 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
       });
 
       const data = await response.json();
-      console.log("Response:", data);
+      console.log("Removal Response:", data);
     } catch (error) {
       console.error("Error removing courses:", error);
     }
+  }
+
+  async function DBMoveCourse(courseID: number, originTerm: Term, term: Term){
+    await DBRemoveCourses(courseID, originTerm);
+    await DBAddCourses(courseID, term);
   }
 
   function handleDrop(e: React.DragEvent<HTMLDivElement>, term: Term) {
@@ -79,12 +90,30 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
     if (courseExists) {
       return;
     }
-    // In case the course was moved from another quarter, first we drop then we re-add
     if (originTerm && originTerm !== term) {
       removeCourse(course, originTerm);
+      addCourse(course, term as Term);
+      DBMoveCourse(course.id, originTerm, term);
+    } else {
+      addCourse(course, term as Term);
+      DBAddCourses(course.id, term);
     }
-    addCourse(course, term as Term);
-    DBAddCourses(course.id, term);
+  }
+
+  function handleCourseReorder(e: React.DragEvent<HTMLDivElement>, term: Term, targetIndex: number) {
+    e.preventDefault();
+    const data = e.dataTransfer.getData("application/json");
+    if (!data) return;
+    const dragged = JSON.parse(data);
+    if (dragged.originTerm !== term) return;
+    const sourceIndex = dragged.sourceIndex;
+    if (sourceIndex === undefined || sourceIndex === targetIndex) return;
+    const coursesArr = [...studentSchedule[selectedYear][term]];
+    const [movedCourse] = coursesArr.splice(sourceIndex, 1);
+    coursesArr.splice(targetIndex, 0, movedCourse);
+    if (typeof reorderCourse === "function") {
+      reorderCourse(selectedYear, term, coursesArr);
+    }
   }
 
   const displayTerms = Terms.filter(term => term !== 'Summer' || showSummer);
@@ -125,35 +154,43 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
           {displayTerms.map((term) => {
             const isPast = isQuarterInPast(yearDisplay, term);
             const isCurrent = isCurrentQuarter(yearDisplay, term);
-            const bgColor = isCurrent ? "bg-[var(--pale-blue)]" : isPast ? "bg-[var(--pale-green)]" : "bg-white";
+            const statusBarColor = isCurrent ? "bg-[var(--pale-blue)]" : isPast ? "bg-[var(--pale-green)]" : "";
 
             return (
               <div
                 key={term}
                 onDragOver={(e) => e.preventDefault()}
                 onDrop={(e) => handleDrop(e, term)}
-                className={`flex flex-col h-full justify-between p-4 border border-gray-300 rounded-lg ${bgColor}`}
+                className="flex flex-col h-full justify-between p-4 border border-gray-300 rounded-lg bg-white relative"
               >
+                {(isPast || isCurrent) && (
+                  <div className={`h-3 absolute top-0 left-0 right-0 ${statusBarColor} rounded-t-lg`}></div>
+                )}
                 <div className="flex-grow">
                   <h3 className="text-lg font-semibold text-center mb-4">{term}</h3>
                   <div className="flex flex-col gap-4">
                     {studentSchedule[selectedYear][term].length > 0 ? (
-                      studentSchedule[selectedYear][term].map((course) => {
+                      studentSchedule[selectedYear][term].map((course, index) => {
                         const bgColorClass = course.generalEd.length === 0 ? "bg-[var(--pale-orange)]" : "bg-[var(--pale-pink)]";
                         return (
                           <div
                             key={course.gold_id}
                             draggable={true}
                             onDragStart={(e) => {
-                              const courseData = { ...course, originTerm: term };
+                              const courseData = { ...course, originTerm: term, sourceIndex: index };
                               e.dataTransfer.setData("application/json", JSON.stringify(courseData));
                             }}
+                            onDragOver={(e) => e.preventDefault()}
+                            onDrop={(e) => handleCourseReorder(e, term, index)}
                             onClick={() => setSelectedCourse({ course, term })}
                             className={`relative p-4 ${bgColorClass} rounded-lg group whitespace-normal break-words cursor-pointer hover:shadow-md transition-shadow`}
                           >
                             <p className="font-bold text-sm">{course.gold_id}</p>
                             <p className="text-xs">{course.title}</p>
                             <p className="text-xs text-gray-500">{course.units} units</p>
+                            <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+                              ···
+                            </div>
                           </div>
                         );
                       })

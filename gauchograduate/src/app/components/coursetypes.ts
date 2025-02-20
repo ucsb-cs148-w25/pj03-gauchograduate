@@ -56,4 +56,5 @@ export interface FourYearPlanProps {
   studentSchedule: ScheduleType;
   addCourse: (course: Course, term: Term) => void;
   removeCourse: (course: Course, term: Term) => void;
+  reorderCourse: (year: YearType, term: Term, newCourses: Course[]) => void;
 }

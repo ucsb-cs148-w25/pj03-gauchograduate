@@ -13,8 +13,8 @@ interface ProgressTrackerProps {
 interface GERequirement {
   fulfilled: boolean;
   count: number;
-  required: number; // number of courses per category
-  courses: Course[];  // tracks courses for each requirement
+  required: number;
+  courses: Course[];
 }
 
 const ProgressTracker = ({ studentSchedule, courses, college = "CoE" }: ProgressTrackerProps) => {
@@ -66,7 +66,7 @@ const ProgressTracker = ({ studentSchedule, courses, college = "CoE" }: Progress
         "EUR": 1,
         "NWC": 1
       },
-      "L&S": {} // Requirements for L&S would go here
+      "L&S": {}
     };
 
     const scheduledCourses = Object.values(studentSchedule)
@@ -81,7 +81,6 @@ const ProgressTracker = ({ studentSchedule, courses, college = "CoE" }: Progress
       areaCourses[area] = [];
     });
 
-    // CoE is actually called ENGR in the geCode from API
     const collegeFromAPI = college === "CoE" ? "ENGR" : college;
 
     scheduledCourses.forEach((course) => {
@@ -95,13 +94,6 @@ const ProgressTracker = ({ studentSchedule, courses, college = "CoE" }: Progress
                 areaCounts[trimmedCode]++;
                 areaCourses[trimmedCode].push(course);
               }
-            }
-          } else {
-            const geCode = typeof geItem === "string" ? geItem : String(geItem);
-            const trimmedCode = geCode.trim();
-            if (trimmedCode in requirements) {
-              areaCounts[trimmedCode]++;
-              areaCourses[trimmedCode].push(course);
             }
           }
         });
@@ -195,7 +187,7 @@ const ProgressTracker = ({ studentSchedule, courses, college = "CoE" }: Progress
   };
 
   return (
-    <div className="h-full p-4 bg-white rounded-md shadow-md overflow-auto">
+    <div className="h-full p-4 overflow-auto">
       <h2 className="text-xl font-semibold mb-4">Courses Taken</h2>
       <div className="w-5/6 mx-auto mb-6">
         <CircularProgressbar
@@ -203,7 +195,7 @@ const ProgressTracker = ({ studentSchedule, courses, college = "CoE" }: Progress
           text={`${overallProgress}%`}
           styles={buildStyles({
             pathColor: "var(--pale-blue)",
-            trailColor: "var(--off-white)",
+            trailColor: "var(--background)",
             textColor: "var(--foreground)"
           })}
         />
