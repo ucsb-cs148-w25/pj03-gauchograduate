@@ -34,8 +34,8 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, 
     });
 
     return (
-        <div className="h-full w-full flex flex-col">
-            <div className="flex-none pb-4">
+        <div className="h-full w-full flex flex-col rounded-xl overflow-hidden">
+            <div className="flex-none bg-[var(--off-white)] px-4 pt-4 pb-4">
                 <h2 className="text-xl font-semibold mb-4">Course Catalog</h2>
 
                 <input
@@ -74,8 +74,8 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, 
                 </div>
             </div>
 
-            <div className="flex-1 overflow-y-auto min-h-0">
-                <div className="space-y-4 pr-2">
+            <div className="flex-1 overflow-y-auto min-h-0 shadow-[inset_0_8px_6px_-6px_rgba(0,0,0,0.1)]">
+                <div className="space-y-4 p-4">
                     {filteredCourses.map((course) => {
                         const bgColorClass = course.generalEd.length === 0 ? "bg-[var(--pale-orange)]" : "bg-[var(--pale-pink)]";
                         return (
