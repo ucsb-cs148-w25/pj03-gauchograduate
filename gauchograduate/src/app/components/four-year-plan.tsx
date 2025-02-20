@@ -4,7 +4,14 @@ import { useState } from 'react';
 import { getAcademicYear, isQuarterInPast, isCurrentQuarter } from './utils/quarterUtils';
 import CourseModal from './course-popup';
 
-export default function FourYearPlan({ selectedYear, setSelectedYear, studentSchedule, addCourse, removeCourse }: FourYearPlanProps) {
+export default function FourYearPlan({ 
+  selectedYear, 
+  setSelectedYear, 
+  studentSchedule, 
+  addCourse, 
+  removeCourse,
+  reorderCourse
+}: FourYearPlanProps) {
   const { data: session } = useSession();
   const firstQuarter = session?.user?.courses?.firstQuarter || '20224';
   const [showSummer, setShowSummer] = useState(false);
@@ -85,6 +92,22 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
     DBAddCourses(course.id, term);
   }
 
+  function handleCourseReorder(e: React.DragEvent<HTMLDivElement>, term: Term, targetIndex: number) {
+    e.preventDefault();
+    const data = e.dataTransfer.getData("application/json");
+    if (!data) return;
+    const dragged = JSON.parse(data);
+    if (dragged.originTerm !== term) return;
+    const sourceIndex = dragged.sourceIndex;
+    if (sourceIndex === undefined || sourceIndex === targetIndex) return;
+    const coursesArr = [...studentSchedule[selectedYear][term]];
+    const [movedCourse] = coursesArr.splice(sourceIndex, 1);
+    coursesArr.splice(targetIndex, 0, movedCourse);
+    if (typeof reorderCourse === "function") {
+      reorderCourse(selectedYear, term, coursesArr);
+    }
+  }
+
   const displayTerms = Terms.filter(term => term !== 'Summer' || showSummer);
   const yearDisplay = getYearDisplay(selectedYear);
 
@@ -139,16 +162,18 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
                   <h3 className="text-lg font-semibold text-center mb-4">{term}</h3>
                   <div className="flex flex-col gap-4">
                     {studentSchedule[selectedYear][term].length > 0 ? (
-                      studentSchedule[selectedYear][term].map((course) => {
+                      studentSchedule[selectedYear][term].map((course, index) => {
                         const bgColorClass = course.generalEd.length === 0 ? "bg-[var(--pale-orange)]" : "bg-[var(--pale-pink)]";
                         return (
                           <div
                             key={course.gold_id}
                             draggable={true}
                             onDragStart={(e) => {
-                              const courseData = { ...course, originTerm: term };
+                              const courseData = { ...course, originTerm: term, sourceIndex: index };
                               e.dataTransfer.setData("application/json", JSON.stringify(courseData));
                             }}
+                            onDragOver={(e) => e.preventDefault()}
+                            onDrop={(e) => handleCourseReorder(e, term, index)}
                             onClick={() => setSelectedCourse({ course, term })}
                             className={`relative p-4 ${bgColorClass} rounded-lg group whitespace-normal break-words cursor-pointer hover:shadow-md transition-shadow`}
                           >

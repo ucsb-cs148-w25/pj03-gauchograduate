@@ -120,6 +120,16 @@ export default function TestPage() {
     }));
   };
 
+  const reorderCourse = (year: YearType, term: Term, newCourses: Course[]) => {
+    setStudentSchedule((prevSchedule) => ({
+      ...prevSchedule,
+      [year]: {
+        ...prevSchedule[year],
+        [term]: newCourses
+      }
+    }));
+  };
+
   return (
     <div className="h-screen flex flex-col">
       <Navbar />
@@ -129,7 +139,7 @@ export default function TestPage() {
             courses={courses} 
             selectedTerm={selectedTerm} 
             setSelectedTerm={setSelectedTerm}
-            studentSchedule={studentSchedule}  // Add this prop
+            studentSchedule={studentSchedule}
           />
         </div>
         <div className="w-full md:w-3/5 bg-white p-4 rounded-md shadow overflow-y-scroll">
@@ -139,6 +149,7 @@ export default function TestPage() {
             studentSchedule={studentSchedule}
             addCourse={addCourse}
             removeCourse={removeCourse}
+            reorderCourse={reorderCourse}
           />
         </div>
         <div className="w-full md:w-1/5 bg-[var(--off-white)] p-4 overflow-y-scroll">
