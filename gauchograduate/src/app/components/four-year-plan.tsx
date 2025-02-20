@@ -22,7 +22,6 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
     Summer: "20244",
   };
 
-
   async function DBAddCourses(courseID: number, term: Term) {
     try {
 
@@ -79,7 +78,6 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
     if (courseExists) {
       return;
     }
-    // In case the course was moved from another quarter, first we drop then we re-add
     if (originTerm && originTerm !== term) {
       removeCourse(course, originTerm);
     }
@@ -125,15 +123,18 @@ export default function FourYearPlan({ selectedYear, setSelectedYear, studentSch
           {displayTerms.map((term) => {
             const isPast = isQuarterInPast(yearDisplay, term);
             const isCurrent = isCurrentQuarter(yearDisplay, term);
-            const bgColor = isCurrent ? "bg-[var(--pale-blue)]" : isPast ? "bg-[var(--pale-green)]" : "bg-white";
+            const statusBarColor = isCurrent ? "bg-[var(--pale-blue)]" : isPast ? "bg-[var(--pale-green)]" : "";
 
             return (
               <div
                 key={term}
                 onDragOver={(e) => e.preventDefault()}
                 onDrop={(e) => handleDrop(e, term)}
-                className={`flex flex-col h-full justify-between p-4 border border-gray-300 rounded-lg ${bgColor}`}
+                className="flex flex-col h-full justify-between p-4 border border-gray-300 rounded-lg bg-white relative"
               >
+                {(isPast || isCurrent) && (
+                  <div className={`h-3 absolute top-0 left-0 right-0 ${statusBarColor} rounded-t-lg`}></div>
+                )}
                 <div className="flex-grow">
                   <h3 className="text-lg font-semibold text-center mb-4">{term}</h3>
                   <div className="flex flex-col gap-4">
