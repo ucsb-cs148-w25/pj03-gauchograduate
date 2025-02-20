@@ -180,6 +180,9 @@ export default function FourYearPlan({
                             <p className="font-bold text-sm">{course.gold_id}</p>
                             <p className="text-xs">{course.title}</p>
                             <p className="text-xs text-gray-500">{course.units} units</p>
+                            <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+                              ···
+                            </div>
                           </div>
                         );
                       })
