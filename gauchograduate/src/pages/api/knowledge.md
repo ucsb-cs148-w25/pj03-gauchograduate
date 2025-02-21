@@ -29,3 +29,6 @@ Response formats:
 - For local development, run the dev server separately from the tests for better reliability
 - Set session cookie with Set-Cookie header in route.fulfill() response
 - Check cookie presence in request headers to conditionally return authenticated session
+- NEXTAUTH_URL warning in tests can be ignored - it's expected in test environment
+- Mock minimal data in API responses - just enough fields to make the test pass
+- Use SLOMO=1 environment variable to slow down test execution for debugging (adds 2s delay between actions)

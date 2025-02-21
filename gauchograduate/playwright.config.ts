@@ -30,6 +30,11 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'off',
+
+    /* Add slowmo if SLOMO env var is set */
+    launchOptions: {
+      slowMo: process.env.SLOMO ? 2000 : 0,
+    },
   },
 
   /* Configure projects for major browsers */
