@@ -1,19 +1,18 @@
 # User Feedback Needs for GauchoGraduate
 
-## Priority 1: Usability and Clarity of the Interface
-Do students find the interface easy to navigate?
-Are key functionalities (adding courses, reordering plans, modifying units) intuitive?
-Do users experience any friction when planning their coursework?
-Are any features missing that would improve usability?
+## Priority 1: Course Catalog Functionality
+Do students find the current search features effective?
+Would there be any more filters that students might want?
+Would they want to see the professors linked to a course?
 
-## Priority 2: Effectiveness of Major Requirement Tracking
+
+## Priority 2: Effectiveness of Major Requirement/GE Tracking
 Can students easily identify which major requirements they have fulfilled and which are pending?
 Are the visual indicators and progress tracking clear?
 Do students trust the requirement tracking, or do they feel the need to double-check with official resources?
 Is there any additional information or functionality they would like to see in this feature?
 
-## Priority 3: User Satisfaction with Overall Product
-Does the app help students feel more in control of their graduation planning?
-How satisfied are users with the app's current features?
-What are the biggest pain points, if any, in using GauchoGraduate?
-What improvements or additional features would make the app more useful?
+## Priority 3: Popularity of Courses/Backups
+Would students like to see which courses are very popular (enrollment trends)?
+Would students like to be add backups in case their courses are filled?
+Do students want to see in which quarters courses are likely offered?
