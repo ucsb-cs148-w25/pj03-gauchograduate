@@ -22,15 +22,24 @@ export default function FourYearPlan({
     return getAcademicYear(firstQuarter, yearIndex);
   };
 
-  const termToQuarter: { [key in Term]: string } = {
-    Fall: "20241",
-    Winter: "20242",
-    Spring: "20243",
-    Summer: "20244",
+  const getQuarterCode = (year: YearType, term: Term): string => {
+    const yearIndex = Years.indexOf(year);
+    const baseYear = parseInt(firstQuarter.substring(0, 4));
+    const yearNum = baseYear + yearIndex;
+
+    const quarterSuffix = {
+      Fall: "1",
+      Winter: "2",
+      Spring: "3",
+      Summer: "4"
+    }[term];
+
+    return `${yearNum}${quarterSuffix}`;
   };
 
   async function DBAddCourses(courseID: number, term: Term) {
     try {
+      const quarterCode = getQuarterCode(selectedYear, term);
 
       const response = await fetch("/api/user/add-course", {
         method: "POST",
@@ -39,7 +48,7 @@ export default function FourYearPlan({
         },
         body: JSON.stringify({
           id: courseID,
-          quarter: termToQuarter[term],
+          quarter: quarterCode,
         }),
       });
 
@@ -52,6 +61,7 @@ export default function FourYearPlan({
 
   async function DBRemoveCourses(courseID: number, term: Term) {
     try {
+      const quarterCode = getQuarterCode(selectedYear, term);
 
       const response = await fetch("/api/user/remove-course", {
         method: "POST",
@@ -60,7 +70,7 @@ export default function FourYearPlan({
         },
         body: JSON.stringify({
           id: courseID,
-          quarter: termToQuarter[term],
+          quarter: quarterCode,
         }),
       });
 
