@@ -1,138 +1,10 @@
 import { useEffect, useState } from "react";
-import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { Course, ScheduleType } from "./coursetypes";
-import { buildStyles } from "react-circular-progressbar";
 import { computeGERequirements, GERequirement } from "./requirements/GEReqs";
 import { computeMajorRequirements } from "./requirements/COREReqs";
-
-interface SegmentedProgressBarProps {
-  geUnits: number;
-  majorUnits: number;
-  extraUnits: number;
-  total: number;
-}
-
-const SegmentedProgressBar = ({
-  geUnits,
-  majorUnits,
-  extraUnits,
-  total,
-}: SegmentedProgressBarProps) => {
-  const radius = 50;
-  const circumference = 2 * Math.PI * radius;
-
-  const fraction = (units: number) => Math.min(units / total, 1);
-  const p_ge = fraction(geUnits);
-  const p_major = fraction(majorUnits);
-  const p_extra = fraction(extraUnits);
-
-  const L_ge = circumference * p_ge;
-  const L_major = circumference * p_major;
-  const L_extra = circumference * p_extra;
-
-  // Offsets: drawn in order GE, then major, then extra.
-  const offset_ge = 0;
-  const offset_major = offset_ge - L_ge;
-  const offset_extra = offset_major - L_major;
-
-  return (
-    <svg width="100%" height="100%" viewBox="0 0 120 120">
-      {/* Background circle: now white */}
-      <circle
-        cx="60"
-        cy="60"
-        r={radius}
-        fill="none"
-        stroke="#ffffff"
-        strokeWidth="10"
-      />
-      {/* GE segment (pale pink) */}
-      <circle
-        cx="60"
-        cy="60"
-        r={radius}
-        fill="none"
-        stroke="#ffb6c1"
-        strokeWidth="10"
-        strokeDasharray={`${L_ge} ${circumference}`}
-        strokeDashoffset={offset_ge}
-        transform="rotate(-90 60 60)"
-        style={{ transition: "stroke-dashoffset 0.5s" }}
-      />
-      {/* Major segment (pale orange) */}
-      <circle
-        cx="60"
-        cy="60"
-        r={radius}
-        fill="none"
-        stroke="#ffcc99"
-        strokeWidth="10"
-        strokeDasharray={`${L_major} ${circumference}`}
-        strokeDashoffset={offset_major}
-        transform="rotate(-90 60 60)"
-        style={{ transition: "stroke-dashoffset 0.5s" }}
-      />
-      {/* Extra segment (pale blue) */}
-      <circle
-        cx="60"
-        cy="60"
-        r={radius}
-        fill="none"
-        stroke="#add8e6"
-        strokeWidth="10"
-        strokeDasharray={`${L_extra} ${circumference}`}
-        strokeDashoffset={offset_extra}
-        transform="rotate(-90 60 60)"
-        style={{ transition: "stroke-dashoffset 0.5s" }}
-      />
-      {/* Center text */}
-      <text
-        x="50%"
-        y="50%"
-        dominantBaseline="central"
-        textAnchor="middle"
-        fontSize="18"
-      >
-        {Math.round(((geUnits + majorUnits + extraUnits) / total) * 100)}%
-      </text>
-    </svg>
-  );
-};
-
-
-
-// A reusable collapsible card component
-interface CollapsibleCardProps {
-  title: string;
-  children: React.ReactNode;
-}
-
-const CollapsibleCard = ({ title, children }: CollapsibleCardProps) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className="bg-white rounded-lg shadow p-4 mb-4">
-      <div
-        className="flex justify-between items-center cursor-pointer"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <h3 className="text-lg font-semibold">{title}</h3>
-        <svg
-          className={`w-6 h-6 transform transition-transform ${
-            isOpen ? "rotate-180" : "rotate-0"
-          }`}
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
-      </div>
-      {isOpen && <div className="mt-4">{children}</div>}
-    </div>
-  );
-};
+import SegmentedProgressBar from "./progress_components/SegmentedProgressBar";
+import CollapsibleCard from "./progress_components/CollapsibleCard";
 
 interface ProgressTrackerProps {
   studentSchedule: ScheduleType;
@@ -384,7 +256,7 @@ const extraUnits = extraCourses.reduce((sum, course) => sum + course.units, 0);
                     <span title={areaDescriptions[area]}>{area}</span>
                   </div>
                   <span className="text-sm text-gray-600">
-                    {genEdFulfilled[area]?.count || 0}/{genEdFulfilled[area]?.required || 0} courses
+                    {genEdFulfilled[area]?.count || 0}/{genEdFulfilled[area]?.required || 0} 
                   </span>
                 </div>
                 {renderGECourseList(area)}
@@ -408,7 +280,7 @@ const extraUnits = extraCourses.reduce((sum, course) => sum + course.units, 0);
                     <span title={areaDescriptions[area]}>{area}</span>
                   </div>
                   <span className="text-sm text-gray-600">
-                    {genEdFulfilled[area]?.count || 0}/{genEdFulfilled[area]?.required || 0} courses
+                    {genEdFulfilled[area]?.count || 0}/{genEdFulfilled[area]?.required || 0}
                   </span>
                 </div>
                 {renderGECourseList(area)}
@@ -438,7 +310,7 @@ const extraUnits = extraCourses.reduce((sum, course) => sum + course.units, 0);
                     <span>Preparation</span>
                   </div>
                   <span className="text-sm text-gray-600">
-                    {majorStatus.preparation?.count || 0}/{majorStatus.preparation?.required || 0} courses
+                    {majorStatus.preparation?.count || 0}/{majorStatus.preparation?.required || 0}
                   </span>
                 </div>
                 {renderMajorCourseList("preparation", majorStatus.preparation?.courses || [])}
@@ -463,7 +335,7 @@ const extraUnits = extraCourses.reduce((sum, course) => sum + course.units, 0);
                     <span>Required</span>
                   </div>
                   <span className="text-sm text-gray-600">
-                    {majorStatus.upperRequired?.count || 0}/{majorStatus.upperRequired?.required || 0} courses
+                    {majorStatus.upperRequired?.count || 0}/{majorStatus.upperRequired?.required || 0}
                   </span>
                 </div>
                 {renderMajorCourseList("upperRequired", majorStatus.upperRequired?.courses || [])}
@@ -481,7 +353,7 @@ const extraUnits = extraCourses.reduce((sum, course) => sum + course.units, 0);
                     <span>Electives</span>
                   </div>
                   <span className="text-sm text-gray-600">
-                    {majorStatus.upperElectives?.count || 0}/{majorStatus.upperElectives?.required || 0} courses
+                    {majorStatus.upperElectives?.count || 0}/{majorStatus.upperElectives?.required || 0}
                   </span>
                 </div>
                 {renderMajorCourseList("upperElectives", majorStatus.upperElectives?.courses || [])}
