@@ -32,3 +32,4 @@ Response formats:
 - NEXTAUTH_URL warning in tests can be ignored - it's expected in test environment
 - Mock minimal data in API responses - just enough fields to make the test pass
 - Use SLOMO=1 environment variable to slow down test execution for debugging (adds 2s delay between actions)
+- Run `npm run test:e2e:headed` to debug tests visually with browser window and slow motion
