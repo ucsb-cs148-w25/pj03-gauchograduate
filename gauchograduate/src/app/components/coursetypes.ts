@@ -58,3 +58,18 @@ export interface FourYearPlanProps {
   removeCourse: (course: Course, term: Term) => void;
   reorderCourse: (year: YearType, term: Term, newCourses: Course[]) => void;
 }
+
+export interface MajorRequirements {
+  preparation: { and: string[] };
+  upper_division: {
+    required: { and: string[] };
+    electives: { or: { count: number; notes: string[]; classes: string[] } };
+  };
+}
+
+export interface MajorData {
+  id: number;
+  name: string;
+  college: string;
+  requirements: MajorRequirements;
+}

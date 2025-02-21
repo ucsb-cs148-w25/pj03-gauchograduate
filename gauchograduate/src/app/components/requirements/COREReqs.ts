@@ -1,4 +1,4 @@
-import { Course, ScheduleType } from "../coursetypes";
+import { Course, MajorData, ScheduleType } from "../coursetypes";
 import { GERequirement } from "./GEReqs";
 
 /**
@@ -8,7 +8,7 @@ import { GERequirement } from "./GEReqs";
 export function computeMajorRequirements(
   studentSchedule: ScheduleType,
   courses: Course[],
-  majorData: any
+  majorData: MajorData
 ): { [key: string]: GERequirement } {
   // Extract completed courses based on the student's schedule using internal id.
   const scheduledCourseIds = Object.values(studentSchedule)

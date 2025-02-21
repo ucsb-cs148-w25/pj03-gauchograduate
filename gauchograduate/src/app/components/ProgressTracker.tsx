@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import "react-circular-progressbar/dist/styles.css";
-import { Course, ScheduleType } from "./coursetypes";
+import { Course, MajorData, ScheduleType } from "./coursetypes";
 import { computeGERequirements, GERequirement } from "./requirements/GEReqs";
 import { computeMajorRequirements } from "./requirements/COREReqs";
 import SegmentedProgressBar from "./progress_components/SegmentedProgressBar";
 import CollapsibleCard from "./progress_components/CollapsibleCard";
+
+
 
 interface ProgressTrackerProps {
   studentSchedule: ScheduleType;
@@ -13,8 +15,6 @@ interface ProgressTrackerProps {
 }
 
 const ProgressTracker = ({ studentSchedule, courses, college = "CoE" }: ProgressTrackerProps) => {
-  // Overall progress state
-  const [overallProgress, setOverallProgress] = useState<number>(0);
   const [totalUnits, setTotalUnits] = useState<number>(0);
 
   // GE requirements state
@@ -22,7 +22,7 @@ const ProgressTracker = ({ studentSchedule, courses, college = "CoE" }: Progress
   const [expandedAreas, setExpandedAreas] = useState<{ [area: string]: boolean }>({});
 
   // Major requirements state
-  const [majorData, setMajorData] = useState<any>(null);
+  const [majorData, setMajorData] = useState<MajorData | null>(null);
   const [majorStatus, setMajorStatus] = useState<{ [key: string]: GERequirement }>({});
   const [expandedMajorAreas, setExpandedMajorAreas] = useState<{ [area: string]: boolean }>({});
 
@@ -45,9 +45,6 @@ const ProgressTracker = ({ studentSchedule, courses, college = "CoE" }: Progress
       0
     );
     setTotalUnits(totalUnitsTaken);
-
-    const overallPercentage = Math.min(Math.round((totalUnitsTaken / 180) * 100), 100);
-    setOverallProgress(overallPercentage);
   }, [studentSchedule, courses]);
 
   // Compute GE requirements.
