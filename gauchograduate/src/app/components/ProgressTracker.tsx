@@ -6,6 +6,102 @@ import { buildStyles } from "react-circular-progressbar";
 import { computeGERequirements, GERequirement } from "./requirements/GEReqs";
 import { computeMajorRequirements } from "./requirements/COREReqs";
 
+interface SegmentedProgressBarProps {
+  geUnits: number;
+  majorUnits: number;
+  extraUnits: number;
+  total: number;
+}
+
+const SegmentedProgressBar = ({
+  geUnits,
+  majorUnits,
+  extraUnits,
+  total,
+}: SegmentedProgressBarProps) => {
+  const radius = 50;
+  const circumference = 2 * Math.PI * radius;
+
+  const fraction = (units: number) => Math.min(units / total, 1);
+  const p_ge = fraction(geUnits);
+  const p_major = fraction(majorUnits);
+  const p_extra = fraction(extraUnits);
+
+  const L_ge = circumference * p_ge;
+  const L_major = circumference * p_major;
+  const L_extra = circumference * p_extra;
+
+  // Offsets: drawn in order GE, then major, then extra.
+  const offset_ge = 0;
+  const offset_major = offset_ge - L_ge;
+  const offset_extra = offset_major - L_major;
+
+  return (
+    <svg width="100%" height="100%" viewBox="0 0 120 120">
+      {/* Background circle: now white */}
+      <circle
+        cx="60"
+        cy="60"
+        r={radius}
+        fill="none"
+        stroke="#ffffff"
+        strokeWidth="10"
+      />
+      {/* GE segment (pale pink) */}
+      <circle
+        cx="60"
+        cy="60"
+        r={radius}
+        fill="none"
+        stroke="#ffb6c1"
+        strokeWidth="10"
+        strokeDasharray={`${L_ge} ${circumference}`}
+        strokeDashoffset={offset_ge}
+        transform="rotate(-90 60 60)"
+        style={{ transition: "stroke-dashoffset 0.5s" }}
+      />
+      {/* Major segment (pale orange) */}
+      <circle
+        cx="60"
+        cy="60"
+        r={radius}
+        fill="none"
+        stroke="#ffcc99"
+        strokeWidth="10"
+        strokeDasharray={`${L_major} ${circumference}`}
+        strokeDashoffset={offset_major}
+        transform="rotate(-90 60 60)"
+        style={{ transition: "stroke-dashoffset 0.5s" }}
+      />
+      {/* Extra segment (pale blue) */}
+      <circle
+        cx="60"
+        cy="60"
+        r={radius}
+        fill="none"
+        stroke="#add8e6"
+        strokeWidth="10"
+        strokeDasharray={`${L_extra} ${circumference}`}
+        strokeDashoffset={offset_extra}
+        transform="rotate(-90 60 60)"
+        style={{ transition: "stroke-dashoffset 0.5s" }}
+      />
+      {/* Center text */}
+      <text
+        x="50%"
+        y="50%"
+        dominantBaseline="central"
+        textAnchor="middle"
+        fontSize="18"
+      >
+        {Math.round(((geUnits + majorUnits + extraUnits) / total) * 100)}%
+      </text>
+    </svg>
+  );
+};
+
+
+
 // A reusable collapsible card component
 interface CollapsibleCardProps {
   title: string;
@@ -231,19 +327,41 @@ const ProgressTracker = ({ studentSchedule, courses, college = "CoE" }: Progress
     );
   };
 
+
+  // Compute completed courses from the schedule.
+const scheduledCourseIds = Object.values(studentSchedule)
+.flatMap((terms) => Object.values(terms).flat())
+.map((course) => course.gold_id);
+
+const completedCourseObjects = courses.filter((course) =>
+scheduledCourseIds.includes(course.gold_id)
+);
+
+// Compute GE units (courses that have GE info).
+const geUnits = completedCourseObjects
+.filter((course) => course.generalEd && course.generalEd.length > 0)
+.reduce((sum, course) => sum + course.units, 0);
+
+// Compute major units from courses used in majorStatus.
+const majorUnits = Object.values(majorStatus).reduce((sum, category) => {
+return sum + category.courses.reduce((s, course) => s + course.units, 0);
+}, 0);
+
+// Extra units: sum from extraCourses.
+const extraUnits = extraCourses.reduce((sum, course) => sum + course.units, 0);
+
   return (
     <div className="h-full p-1 overflow-auto">
       <h2 className="text-xl font-semibold mb-4">Courses Taken</h2>
       <div className="w-5/6 mx-auto mb-6">
-        <CircularProgressbar
-          value={overallProgress}
-          text={`${overallProgress}%`}
-          styles={buildStyles({
-            pathColor: "var(--pale-blue)",
-            trailColor: "var(--background)",
-            textColor: "var(--foreground)"
-          })}
+      <div className="flex justify-center">
+        <SegmentedProgressBar
+          geUnits={geUnits}
+          majorUnits={majorUnits}
+          extraUnits={extraUnits}
+          total={180}
         />
+      </div>
         <p className="text-center text-sm mt-2">{`${totalUnits} / 180 Units Completed`}</p>
       </div>
 
