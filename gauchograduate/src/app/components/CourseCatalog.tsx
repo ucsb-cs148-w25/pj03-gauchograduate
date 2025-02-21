@@ -35,7 +35,7 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, 
 
     return (
         <div className="h-full w-full flex flex-col rounded-xl overflow-hidden">
-            <div className="flex-none bg-[var(--off-white)] px-4 pt-4 pb-4">
+            <div className="flex-none bg-[var(--off-white)] px-2 pt-2 pb-4">
                 <h2 className="text-xl font-semibold mb-4">Course Catalog</h2>
 
                 <input
@@ -45,13 +45,13 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, 
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                 />
-                <div className="flex flex-wrap items-center gap-x-2 gap-y-0">
+                <div className="flex flex-wrap items-left gap-x-2 gap-y-2">
                     <select
                         className="p-2 border border-gray-300 rounded-lg"
                         value={selectedDepartment}
                         onChange={(e) => setSelectedDepartment(e.target.value)}
                     >
-                        <option value="">Department</option>
+                        <option value="">Dept</option>
                         {departments.map((dept) => (
                             <option key={dept} value={dept}>
                                 {dept}
@@ -64,7 +64,7 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, 
                         value={selectedTerm}
                         onChange={(e) => setSelectedTerm(e.target.value as Term)}
                     >
-                        <option value="">Term</option>
+                        <option value="">TERM</option>
                         {termsOptions.map((term) => (
                             <option key={term} value={term}>
                                 {term}
@@ -75,7 +75,7 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, 
             </div>
 
             <div className="flex-1 overflow-y-auto min-h-0 shadow-[inset_0_8px_6px_-6px_rgba(0,0,0,0.1)]">
-                <div className="space-y-4 p-4">
+                <div className="space-y-4 p-2 pt-4">
                     {filteredCourses.map((course) => {
                         const bgColorClass = course.generalEd.length === 0 ? "bg-[var(--pale-orange)]" : "bg-[var(--pale-pink)]";
                         return (

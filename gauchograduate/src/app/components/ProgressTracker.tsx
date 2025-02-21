@@ -232,7 +232,7 @@ const ProgressTracker = ({ studentSchedule, courses, college = "CoE" }: Progress
   };
 
   return (
-    <div className="h-full p-2 overflow-auto">
+    <div className="h-full p-1 overflow-auto">
       <h2 className="text-xl font-semibold mb-4">Courses Taken</h2>
       <div className="w-5/6 mx-auto mb-6">
         <CircularProgressbar
