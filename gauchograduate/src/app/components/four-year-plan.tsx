@@ -28,10 +28,10 @@ export default function FourYearPlan({
     const yearNum = baseYear + yearIndex;
 
     const quarterSuffix = {
-      Fall: "1",
-      Winter: "2",
-      Spring: "3",
-      Summer: "4"
+      Fall: "4",
+      Winter: "1",
+      Spring: "2",
+      Summer: "3"
     }[term];
 
     return `${yearNum}${quarterSuffix}`;
