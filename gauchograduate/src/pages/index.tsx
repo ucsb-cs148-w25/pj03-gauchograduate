@@ -11,10 +11,10 @@ import { Course, CourseInfo, ScheduleType, YearType, Term } from "../app/compone
 import { useQuery } from '@tanstack/react-query';
 
 const termToQuarter: { [key in Term]: string } = {
-  Fall: "20241",
-  Winter: "20242",
-  Spring: "20243",
-  Summer: "20244",
+  Fall: "20244",
+  Winter: "20241",
+  Spring: "20242",
+  Summer: "20243",
 };
 
 async function fetchCourses(quarter: string): Promise<Course[]> {
@@ -46,6 +46,59 @@ async function fetchCourses(quarter: string): Promise<Course[]> {
   return formattedCourses.sort((a, b) => a.gold_id.localeCompare(b.gold_id));
 }
 
+async function fetchCourseById(id: number): Promise<Course | null> {
+  try {
+    const response = await fetch(`/api/course/${id}`);
+    if (!response.ok) return null;
+
+    const { course } = await response.json();
+    if (!course) return null;
+
+    return {
+      gold_id: course.gold_id,
+      id: course.id,
+      title: course.title,
+      description: course.description,
+      subjectArea: course.subject_area,
+      units: course.units || 0,
+      generalEd: Array.isArray(course.general_ed) ? course.general_ed : [],
+      prerequisites: Array.isArray(course.prerequisites) ? course.prerequisites.map(String) : [],
+      unlocks: Array.isArray(course.unlocks) ? course.unlocks.map(String) : [],
+      term: []
+    };
+  } catch (error) {
+    console.error('Error fetching course:', error);
+    return null;
+  }
+}
+
+const getYearAndTerm = (quarterCode: string, firstQuarter: string): { year: YearType, term: Term } | null => {
+  const year = parseInt(quarterCode.substring(0, 4));
+  const quarter = quarterCode.substring(4);
+  const firstYear = parseInt(firstQuarter.substring(0, 4));
+
+  const yearDiff = year - firstYear + 1;
+
+  const yearMap: { [key: number]: YearType } = {
+    1: "Year 1",
+    2: "Year 2",
+    3: "Year 3",
+    4: "Year 4"
+  };
+
+  const termMap: { [key: string]: Term } = {
+    "1": "Winter",
+    "2": "Spring",
+    "3": "Summer",
+    "4": "Fall"
+  };
+
+  return {
+    year: yearMap[yearDiff],
+    term: termMap[quarter]
+  };
+};
+
 export default function HomePage() {
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -58,42 +111,24 @@ export default function HomePage() {
   });
   const [selectedYear, setSelectedYear] = useState<YearType>("Year 1");
 
-  // Function to convert quarter code to year and term
-  const getYearAndTerm = (quarterCode: string, firstQuarter: string): { year: YearType, term: Term } | null => {
-    const year = parseInt(quarterCode.substring(0, 4));
-    const quarter = quarterCode.substring(4);
-    const firstYear = parseInt(firstQuarter.substring(0, 4));
+  const { data: userCoursesData } = useQuery({
+    queryKey: ['userCourses', session?.user?.id],
+    queryFn: async () => {
+      if (!session?.user?.id) return null;
+      const response = await fetch('/api/user/courses');
+      if (!response.ok) {
+        throw new Error('Failed to fetch user courses');
+      }
+      return response.json();
+    },
+    enabled: !!session?.user?.id,
+    staleTime: 5 * 60 * 1000,
+    gcTime: 30 * 60 * 1000,
+  });
 
-    // Calculate which year in the plan (1-4)
-    const yearDiff = year - firstYear + 1;
-
-    const yearMap: { [key: number]: YearType } = {
-      1: "Year 1",
-      2: "Year 2",
-      3: "Year 3",
-      4: "Year 4"
-    };
-
-    const termMap: { [key: string]: Term } = {
-      "1": "Fall",
-      "2": "Winter",
-      "3": "Spring",
-      "4": "Summer"
-    };
-
-    return {
-      year: yearMap[yearDiff],
-      term: termMap[quarter]
-    };
-  };
-
-  // Load saved schedule when user logs in
   useEffect(() => {
     async function loadSavedSchedule() {
-      if (!session?.user?.courses) return;
-
-      const userCourses = session.user.courses as { courses: { id: number, quarter: string }[], firstQuarter: string };
-      if (!userCourses.courses || !userCourses.firstQuarter) return;
+      if (!userCoursesData || !userCoursesData.courses || !userCoursesData.firstQuarter) return;
 
       const newSchedule: ScheduleType = {
         "Year 1": { Fall: [], Winter: [], Spring: [], Summer: [] },
@@ -102,46 +137,36 @@ export default function HomePage() {
         "Year 4": { Fall: [], Winter: [], Spring: [], Summer: [] },
       };
 
-      // Load each course and place it in the correct position
-      for (const savedCourse of userCourses.courses) {
-        try {
-          // Fetch course details
-          const response = await fetch(`/api/course/${savedCourse.id}`);
-          if (!response.ok) continue;
+      const coursePromises = userCoursesData.courses.map(async (savedCourse: { id: number, quarter: string }) => {
+        const course = await fetchCourseById(savedCourse.id);
+        if (!course) return null;
+        
+        const position = getYearAndTerm(savedCourse.quarter, userCoursesData.firstQuarter);
+        if (!position) return null;
+        
+        return { course, position };
+      });
 
-          const { course } = await response.json();
-          if (!course) continue;
-
-          // Calculate which year and term this course belongs in
-          const position = getYearAndTerm(savedCourse.quarter, userCourses.firstQuarter);
-          if (!position) continue;
-
-          // Format the course data
-          const formattedCourse: Course = {
-            gold_id: course.gold_id,
-            id: course.id,
-            title: course.title,
-            description: course.description,
-            subjectArea: course.subject_area,
-            units: course.units || 0,
-            generalEd: Array.isArray(course.general_ed) ? course.general_ed : [],
-            prerequisites: Array.isArray(course.prerequisites) ? course.prerequisites.map(String) : [],
-            unlocks: Array.isArray(course.unlocks) ? course.unlocks.map(String) : [],
-            term: []
-          };
-
-          // Add course to the schedule
-          newSchedule[position.year][position.term].push(formattedCourse);
-        } catch (error) {
-          console.error('Error loading course:', error);
+      const results = await Promise.all(coursePromises);
+      
+      results.forEach(result => {
+        if (result) {
+          const { course, position } = result;
+          newSchedule[position.year][position.term].push(course);
         }
-      }
+      });
 
       setStudentSchedule(newSchedule);
     }
 
     loadSavedSchedule();
-  }, [session]);
+  }, [userCoursesData]);
+
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/signin");
+    }
+  }, [status, router]);
 
   const { data: courses = [] } = useQuery({
     queryKey: ['courses', termToQuarter[selectedTerm]],
@@ -160,12 +185,6 @@ export default function HomePage() {
       return response.json();
     },
   });
-
-  useEffect(() => {
-    if (status === "unauthenticated") {
-      router.push("/signin");
-    }
-  }, [status, router]);
 
   const addCourse = (course: Course, term: Term) => {
     setStudentSchedule((prevSchedule) => ({
