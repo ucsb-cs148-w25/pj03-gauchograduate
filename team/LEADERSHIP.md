@@ -1,6 +1,24 @@
-```
-# Leadership roles
+## Product Owner
+Jaren
+## Scrum Master
+John
+## Testing/QA Coordinator
+Vala
+## Retro 3 leader
+Chiran
+## UX Coordinator
+Selena
+## Design Document Coordinator
+Chiran
+## Deployment Document Coordinator
+Vala
+## User Manual Coordinator
+Kade
+## Final presentation leader
+Tadeon
 
+## Rotating Leadership roles
+```
 | Date      | Name              | Activity                                               |
 |-----------|-------------------|--------------------------------------------------------|
 | Mon 01/13 | Chiran Arumugam   | Led team discussion to switch project product          | 
@@ -13,5 +31,6 @@
 | Wed 01/29 | Kade Williams     | Led daily stand up on 1/29.                            |
 | Fri 01/31 | Chiran Arumugam   | Ensured daily stand up on 1/31 went smoothly.          |
 | Fri 01/31 | Taedon Reth       | Will lead second retro                                 |
-| Mon 02/03 | Vala Bahrami      | Led 2/3 Stand-up. Checked-in and reviewed tasks.       | 
+| Mon 02/03 | Vala Bahrami      | Led 2/3 Stand-up. Checked-in and reviewed tasks.       |
+| Wed 02/19 | Tadeon Reth       | Led second team retro.                                 |
 ```
