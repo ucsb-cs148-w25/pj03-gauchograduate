@@ -16,6 +16,7 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, 
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [prevTerm, setPrevTerm] = useState(selectedTerm);
+  const [filteredCourses, setFilteredCourses] = useState<Course[]>([]);
 
   useEffect(() => {
     if (prevTerm !== selectedTerm) {
@@ -25,37 +26,33 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, 
   }, [selectedTerm, prevTerm]);
 
   useEffect(() => {
+    const takenCourseIds = new Set(
+      Object.values(studentSchedule)
+        .flatMap(yearSchedule =>
+          Object.values(yearSchedule)
+            .flat()
+            .map(course => course.gold_id)
+        )
+    );
+
+    const filtered = courses.filter(course => {
+      const searchMatches =
+        course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        course.gold_id.toLowerCase().includes(searchQuery.toLowerCase());
+      const deptMatches = selectedDepartment === '' || course.subjectArea === selectedDepartment;
+      const notTaken = !takenCourseIds.has(course.gold_id);
+      return searchMatches && deptMatches && notTaken;
+    });
+
+    setFilteredCourses(filtered);
+
     if (courses.length > 0) {
       setIsLoading(false);
-    } else {
-      const timer = setTimeout(() => {
-        setIsLoading(false);
-      }, 1000);
-      
-      return () => clearTimeout(timer);
     }
-  }, [courses]);
+  }, [courses, searchQuery, selectedDepartment, studentSchedule]);
 
   const departments = [...new Set(courses.map((course) => course.subjectArea))];
   const termsOptions: Term[] = ["Fall", "Winter", "Spring", "Summer"];
-
-  const takenCourseIds = new Set(
-    Object.values(studentSchedule)
-      .flatMap(yearSchedule =>
-        Object.values(yearSchedule)
-          .flat()
-          .map(course => course.gold_id)
-      )
-  );
-
-  const filteredCourses = courses.filter(course => {
-    const searchMatches =
-      course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      course.gold_id.toLowerCase().includes(searchQuery.toLowerCase());
-    const deptMatches = selectedDepartment === '' || course.subjectArea === selectedDepartment;
-    const notTaken = !takenCourseIds.has(course.gold_id);
-    return searchMatches && deptMatches && notTaken;
-  });
 
   const handleTermChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newTerm = e.target.value as Term;
@@ -142,7 +139,7 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, 
                 </div>
               );
             })}
-            {filteredCourses.length === 0 && (
+            {filteredCourses.length === 0 && !isLoading && (
               <p className="text-sm text-gray-500">No courses found.</p>
             )}
           </div>
