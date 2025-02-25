@@ -202,7 +202,7 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, 
               );
             })}
             {filteredCourses.length === 0 && !isLoading && (
-              <p className="text-sm text-gray-500">No courses found.</p>
+              <p className="text-sm text-gray-500">No courses found. <br/> Are they already in your schedule?</p>
             )}
           </div>
         )}
