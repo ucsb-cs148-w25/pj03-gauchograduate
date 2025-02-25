@@ -120,7 +120,7 @@ const getYearAndTerm = (quarterCode: string, firstQuarter: string): { year: Year
 export default function HomePage() {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const [selectedTerm, setSelectedTerm] = useState<string>("");
+  const [selectedTerm, setSelectedTerm] = useState<string>("Fall");
   const [studentSchedule, setStudentSchedule] = useState<ScheduleType>({
     "Year 1": { Fall: [], Winter: [], Spring: [], Summer: [] },
     "Year 2": { Fall: [], Winter: [], Spring: [], Summer: [] },

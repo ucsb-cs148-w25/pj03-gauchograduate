@@ -123,32 +123,43 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, 
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <div className="flex flex-wrap items-left gap-x-2 gap-y-2">
-          <select
-            className="p-2 border border-gray-300 rounded-lg"
-            value={selectedDepartment}
-            onChange={(e) => setSelectedDepartment(e.target.value)}
-          >
-            <option value="">Dept</option>
-            {departments.map((dept) => (
-              <option key={dept} value={dept}>
-                {dept}
-              </option>
-            ))}
-          </select>
+        <div className="flex flex-col gap-2 w-full">
+          <div className="flex items-center border border-gray-300 rounded-lg overflow-hidden w-full">
+            <label htmlFor="department-select" className="bg-gray-100 px-3 py-2 text-sm font-medium text-gray-700 w-1/2">
+              Department
+            </label>
+            <select
+              id="department-select"
+              className="p-2 border-0 focus:ring-0 focus:outline-none w-1/2"
+              value={selectedDepartment}
+              onChange={(e) => setSelectedDepartment(e.target.value)}
+            >
+              <option value="">All</option>
+              {departments.map((dept) => (
+                <option key={dept} value={dept}>
+                  {dept}
+                </option>
+              ))}
+            </select>
+          </div>
 
-          <select
-            className="p-2 border border-gray-300 rounded-lg"
-            value={selectedTerm}
-            onChange={handleTermChange}
-          >
-            <option value="">Term</option>
-            {termsOptions.map((term) => (
-              <option key={term} value={term}>
-                {term}
-              </option>
-            ))}
-          </select>
+          <div className="flex items-center border border-gray-300 rounded-lg overflow-hidden w-full">
+            <label htmlFor="term-select" className="bg-gray-100 px-3 py-2 text-sm font-medium text-gray-700 w-2/5">
+              Quarter
+            </label>
+            <select
+              id="term-select"
+              className="p-2 border-0 focus:ring-0 focus:outline-none w-3/5"
+              value={selectedTerm}
+              onChange={handleTermChange}
+            >
+              {termsOptions.map((term) => (
+                <option key={term} value={term}>
+                  {term}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
       </div>
 
