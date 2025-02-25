@@ -1,6 +1,6 @@
 import { useSession } from 'next-auth/react';
 import { Terms, Years, Course, Term, FourYearPlanProps, YearType } from "./coursetypes";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getAcademicYear, isQuarterInPast, isCurrentQuarter } from './utils/quarterUtils';
 import CourseModal from './course-popup';
 
@@ -16,6 +16,36 @@ export default function FourYearPlan({
   const firstQuarter = session?.user?.courses?.firstQuarter || '20224';
   const [showSummer, setShowSummer] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState<{ course: Course, term: Term } | null>(null);
+  const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved'>('idle');
+  const [isActive, setIsActive] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  
+  useEffect(() => {
+    const hasAnyCourses = Object.values(studentSchedule).some(yearSchedule => 
+      Object.values(yearSchedule).some(termCourses => termCourses.length > 0)
+    );
+    
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+    
+    if (hasAnyCourses) {
+      setIsLoading(false);
+      clearTimeout(timer);
+    }
+    
+    return () => clearTimeout(timer);
+  }, [studentSchedule]);
+  
+  useEffect(() => {
+    if (saveStatus === 'saved') {
+      setIsActive(true);
+      const timer = setTimeout(() => {
+        setIsActive(false);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [saveStatus]);
 
   const getYearDisplay = (year: YearType): string => {
     const yearIndex = Years.indexOf(year);
@@ -39,6 +69,7 @@ export default function FourYearPlan({
 
   async function DBAddCourses(courseID: number, term: Term) {
     try {
+      setSaveStatus('saving');
       const quarterCode = getQuarterCode(selectedYear, term);
 
       const response = await fetch("/api/user/add-course", {
@@ -54,13 +85,16 @@ export default function FourYearPlan({
 
       const data = await response.json();
       console.log("Add Response:", data);
+      setSaveStatus('saved');
     } catch (error) {
       console.error("Error adding courses:", error);
+      setSaveStatus('idle');
     }
   }
 
   async function DBRemoveCourses(courseID: number, term: Term) {
     try {
+      setSaveStatus('saving');
       const quarterCode = getQuarterCode(selectedYear, term);
 
       const response = await fetch("/api/user/remove-course", {
@@ -76,12 +110,15 @@ export default function FourYearPlan({
 
       const data = await response.json();
       console.log("Removal Response:", data);
+      setSaveStatus('saved');
     } catch (error) {
       console.error("Error removing courses:", error);
+      setSaveStatus('idle');
     }
   }
 
   async function DBMoveCourse(courseID: number, originTerm: Term, term: Term){
+    setSaveStatus('saving');
     await DBRemoveCourses(courseID, originTerm);
     await DBAddCourses(courseID, term);
   }
@@ -130,7 +167,7 @@ export default function FourYearPlan({
   const yearDisplay = getYearDisplay(selectedYear);
 
   return (
-    <div className="h-full w-full p-4 bg-white rounded-lg shadow-lg flex flex-col overflow-auto max-h-screen">
+    <div className="h-full w-full p-4 bg-white rounded-lg shadow-lg flex flex-col overflow-auto max-h-screen relative">
       {selectedCourse && (
         <CourseModal
           course={selectedCourse.course}
@@ -144,8 +181,36 @@ export default function FourYearPlan({
         />
       )}
 
+      {isLoading && (
+        <div className="absolute inset-0 bg-white bg-opacity-70 flex items-center justify-center z-10">
+          <div className="text-lg font-medium text-gray-600 animate-pulse flex items-center">
+            <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            Loading your schedule...
+          </div>
+        </div>
+      )}
+
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-semibold">Four-Year Plan</h2>
+        <div className="flex items-center">
+          <h2 className="text-xl font-semibold">Four-Year Plan</h2>
+          <div className="ml-3 flex items-center">
+            {saveStatus === 'saving' ? (
+              <span className="text-xs text-gray-500 animate-pulse">
+                Saving...
+              </span>
+            ) : (
+              <span className={`flex items-center text-xs ${isActive ? 'text-green-600' : 'text-gray-400 opacity-50'} transition-opacity duration-300`}>
+                Saved
+                <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </span>
+            )}
+          </div>
+        </div>
         <select
           className="p-2 border border-gray-300 rounded-lg"
           value={selectedYear}
