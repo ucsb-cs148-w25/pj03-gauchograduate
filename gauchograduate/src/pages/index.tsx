@@ -128,8 +128,14 @@ export default function HomePage() {
     "Year 4": { Fall: [], Winter: [], Spring: [], Summer: [] },
   });
   const [selectedYear, setSelectedYear] = useState<YearType>("Year 1");
+  
+  const [hasEverLoaded, setHasEverLoaded] = useState(false);
 
-  const { data: userCoursesData } = useQuery({
+  const { 
+    data: userCoursesData,
+    isLoading: isUserCoursesLoading,
+    isError: isUserCoursesError
+  } = useQuery({
     queryKey: ['userCourses', session?.user?.id],
     queryFn: async () => {
       if (!session?.user?.id) return null;
@@ -142,9 +148,16 @@ export default function HomePage() {
     enabled: !!session?.user?.id,
     staleTime: 5 * 60 * 1000,
     gcTime: 30 * 60 * 1000,
+    initialData: undefined,
+    refetchOnMount: true,
+    refetchOnWindowFocus: false,
   });
 
-  const { data: savedSchedule } = useQuery({
+  const { 
+    data: savedSchedule, 
+    isLoading: isSavedScheduleLoading,
+    isError: isSavedScheduleError
+  } = useQuery({
     queryKey: ['savedSchedule', userCoursesData],
     queryFn: async () => {
       if (!userCoursesData || !userCoursesData.courses || !userCoursesData.firstQuarter) return null;
@@ -175,11 +188,15 @@ export default function HomePage() {
     enabled: !!userCoursesData,
     staleTime: 5 * 60 * 1000,
     gcTime: 30 * 60 * 1000,
+    initialData: undefined,
+    refetchOnMount: true,
+    refetchOnWindowFocus: false,
   });
 
   useEffect(() => {
     if (savedSchedule) {
       setStudentSchedule(savedSchedule);
+      setHasEverLoaded(true);
     }
   }, [savedSchedule]);
 
@@ -188,6 +205,8 @@ export default function HomePage() {
       router.push("/signin");
     }
   }, [status, router]);
+
+  const isLoading = isUserCoursesLoading || isSavedScheduleLoading || (!hasEverLoaded && !isUserCoursesError && !isSavedScheduleError);
 
   const { data: courses = [] } = useQuery({
     queryKey: ['courses', termToQuarter[selectedTerm as Term]],
@@ -257,6 +276,7 @@ export default function HomePage() {
             addCourse={addCourse}
             removeCourse={removeCourse}
             reorderCourse={reorderCourse}
+            isDataLoading={isLoading}
           />
         </div>
         <div className="w-full md:w-1/5 bg-[var(--off-white)] p-4 overflow-y-scroll">

@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate",
+    "tests": "npm run test && npm run test:e2e",
     "test": "jest",
     "test:e2e": "playwright test",
     "test:e2e:headed": "SLOMO=1 playwright test --headed"

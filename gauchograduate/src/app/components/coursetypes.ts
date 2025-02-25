@@ -57,6 +57,7 @@ export interface FourYearPlanProps {
   addCourse: (course: Course, term: Term) => void;
   removeCourse: (course: Course, term: Term) => void;
   reorderCourse: (year: YearType, term: Term, newCourses: Course[]) => void;
+  isDataLoading: boolean;
 }
 
 export interface MajorRequirements {

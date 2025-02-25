@@ -10,7 +10,8 @@ export default function FourYearPlan({
   studentSchedule, 
   addCourse, 
   removeCourse,
-  reorderCourse
+  reorderCourse,
+  isDataLoading
 }: FourYearPlanProps) {
   const { data: session } = useSession();
   const firstQuarter = session?.user?.courses?.firstQuarter || '20224';
@@ -18,31 +19,13 @@ export default function FourYearPlan({
   const [selectedCourse, setSelectedCourse] = useState<{ course: Course, term: Term } | null>(null);
   const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved'>('idle');
   const [isActive, setIsActive] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const [poofingCourse, setPoofingCourse] = useState<{ id: string, x: number, y: number } | null>(null);
   const planRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   const [validDropTargets, setValidDropTargets] = useState<Set<HTMLElement>>(new Set());
   const [draggedOverTerm, setDraggedOverTerm] = useState<string | null>(null);
   const [isDraggingCourse, setIsDraggingCourse] = useState(false);
-  
-  useEffect(() => {
-    const hasAnyCourses = Object.values(studentSchedule).some(yearSchedule => 
-      Object.values(yearSchedule).some(termCourses => termCourses.length > 0)
-    );
-    
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
-    
-    if (hasAnyCourses) {
-      setIsLoading(false);
-      clearTimeout(timer);
-    }
-    
-    return () => clearTimeout(timer);
-  }, [studentSchedule]);
-  
+
   useEffect(() => {
     if (saveStatus === 'saved') {
       setIsActive(true);
@@ -57,9 +40,7 @@ export default function FourYearPlan({
     if (gridRef.current) {
       const termColumns = gridRef.current.querySelectorAll('[data-term-column]');
       const targets = new Set<HTMLElement>();
-      termColumns.forEach(column => {
-        targets.add(column as HTMLElement);
-      });
+      termColumns.forEach(column => targets.add(column as HTMLElement));
       setValidDropTargets(targets);
     }
   }, [showSummer, selectedYear]);
@@ -87,14 +68,7 @@ export default function FourYearPlan({
     const yearIndex = Years.indexOf(year);
     const baseYear = parseInt(firstQuarter.substring(0, 4));
     const yearNum = baseYear + yearIndex;
-
-    const quarterSuffix = {
-      Fall: "4",
-      Winter: "1",
-      Spring: "2",
-      Summer: "3"
-    }[term];
-
+    const quarterSuffix = { Fall: "4", Winter: "1", Spring: "2", Summer: "3" }[term];
     return `${yearNum}${quarterSuffix}`;
   }, [firstQuarter]);
 
@@ -102,18 +76,11 @@ export default function FourYearPlan({
     try {
       setSaveStatus('saving');
       const quarterCode = getQuarterCode(selectedYear, term);
-
       const response = await fetch("/api/user/remove-course", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          id: courseID,
-          quarter: quarterCode,
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: courseID, quarter: quarterCode }),
       });
-
       const data = await response.json();
       console.log("Removal Response:", data);
       setSaveStatus('saved');
@@ -124,31 +91,19 @@ export default function FourYearPlan({
   }, [selectedYear, getQuarterCode]);
 
   useEffect(() => {
-    const handleDocumentDragOver = (e: DragEvent) => {
-      e.preventDefault();
-    };
-
+    const handleDocumentDragOver = (e: DragEvent) => { e.preventDefault(); };
     const handleDocumentDrop = (e: DragEvent) => {
       e.preventDefault();
-      
       if (planRef.current && !planRef.current.contains(e.target as Node)) {
         const data = e.dataTransfer?.getData("application/json");
         if (data) {
           try {
             const courseData = JSON.parse(data);
             if (courseData.gold_id && courseData.originTerm) {
-              setPoofingCourse({
-                id: courseData.gold_id,
-                x: e.clientX,
-                y: e.clientY
-              });
-              
+              setPoofingCourse({ id: courseData.gold_id, x: e.clientX, y: e.clientY });
               removeCourse(courseData, courseData.originTerm);
               DBRemoveCourses(courseData.id, courseData.originTerm);
-              
-              setTimeout(() => {
-                setPoofingCourse(null);
-              }, 500);
+              setTimeout(() => { setPoofingCourse(null); }, 500);
             }
           } catch (error) {
             console.error("Error parsing dragged course data:", error);
@@ -156,10 +111,8 @@ export default function FourYearPlan({
         }
       }
     };
-
     document.addEventListener('dragover', handleDocumentDragOver);
     document.addEventListener('drop', handleDocumentDrop);
-
     return () => {
       document.removeEventListener('dragover', handleDocumentDragOver);
       document.removeEventListener('drop', handleDocumentDrop);
@@ -175,18 +128,11 @@ export default function FourYearPlan({
     try {
       setSaveStatus('saving');
       const quarterCode = getQuarterCode(selectedYear, term);
-
       const response = await fetch("/api/user/add-course", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          id: courseID,
-          quarter: quarterCode,
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: courseID, quarter: quarterCode }),
       });
-
       const data = await response.json();
       console.log("Add Response:", data);
       setSaveStatus('saved');
@@ -206,28 +152,18 @@ export default function FourYearPlan({
     const isValidTarget = Array.from(validDropTargets).some(target => 
       target === e.target || target.contains(e.target as Node)
     );
-    
     if (!isValidTarget) {
       e.preventDefault();
       e.stopPropagation();
-      
       const data = e.dataTransfer.getData("application/json");
       if (data) {
         try {
           const courseData = JSON.parse(data);
           if (courseData.gold_id && courseData.originTerm) {
-            setPoofingCourse({
-              id: courseData.gold_id,
-              x: e.clientX,
-              y: e.clientY
-            });
-            
+            setPoofingCourse({ id: courseData.gold_id, x: e.clientX, y: e.clientY });
             removeCourse(courseData, courseData.originTerm);
             DBRemoveCourses(courseData.id, courseData.originTerm);
-            
-            setTimeout(() => {
-              setPoofingCourse(null);
-            }, 500);
+            setTimeout(() => { setPoofingCourse(null); }, 500);
           }
         } catch (error) {
           console.error("Error parsing dragged course data:", error);
@@ -253,19 +189,14 @@ export default function FourYearPlan({
     e.preventDefault();
     e.stopPropagation();
     setDraggedOverTerm(null);
-    
     const json = e.dataTransfer.getData("application/json");
     if (!json) return;
     const droppedCourse = JSON.parse(json);
     const { originTerm, ...course } = droppedCourse;
-
     const courseExists = studentSchedule[selectedYear][term].some(
       existingCourse => existingCourse.gold_id === course.gold_id
     );
-
-    if (courseExists) {
-      return;
-    }
+    if (courseExists) return;
     if (originTerm && originTerm !== term) {
       removeCourse(course, originTerm);
       addCourse(course, term as Term);
@@ -279,7 +210,6 @@ export default function FourYearPlan({
   function handleCourseReorder(e: React.DragEvent<HTMLDivElement>, term: Term, targetIndex: number) {
     e.preventDefault();
     e.stopPropagation();
-    
     const data = e.dataTransfer.getData("application/json");
     if (!data) return;
     const dragged = JSON.parse(data);
@@ -317,7 +247,7 @@ export default function FourYearPlan({
         />
       )}
 
-      {isLoading && (
+      {isDataLoading && (
         <div className="absolute inset-0 bg-white bg-opacity-70 flex items-center justify-center z-10">
           <div className="text-lg font-medium text-gray-600 animate-pulse flex items-center">
             <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -390,7 +320,6 @@ export default function FourYearPlan({
             const isCurrent = isCurrentQuarter(yearDisplay, term);
             const statusBarColor = isCurrent ? "bg-[var(--pale-blue)]" : isPast ? "bg-[var(--pale-green)]" : "";
             const isTermDraggedOver = draggedOverTerm === term;
-
             return (
               <div
                 key={term}
@@ -403,7 +332,6 @@ export default function FourYearPlan({
                 {isDraggingCourse && isTermDraggedOver && (
                   <div className="absolute inset-0 pointer-events-none border-2 border-blue-400 rounded-lg"></div>
                 )}
-                
                 {(isPast || isCurrent) && (
                   <div className={`h-3 absolute top-0 left-0 right-0 ${statusBarColor} rounded-t-lg`}></div>
                 )}
@@ -457,7 +385,6 @@ export default function FourYearPlan({
             );
           })}
         </div>
-
         <button
           onClick={() => setShowSummer(!showSummer)}
           className="writing-mode-vertical px-2 py-4 bg-[var(--pale-blue)] text-black rounded-lg transition-colors whitespace-nowrap h-auto"
