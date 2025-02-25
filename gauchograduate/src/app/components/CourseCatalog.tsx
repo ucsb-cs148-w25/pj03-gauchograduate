@@ -10,6 +10,18 @@ interface CourseCatalogProps {
   studentSchedule: ScheduleType;
 }
 
+interface CourseApiResponse {
+  gold_id: string;
+  id: number;
+  title: string;
+  description: string;
+  subject_area: string;
+  units: number | null;
+  general_ed: unknown[];
+  prerequisites: unknown[];
+  unlocks: unknown[];
+}
+
 export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, studentSchedule }: CourseCatalogProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedDepartment, setSelectedDepartment] = useState('');
@@ -17,6 +29,43 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, 
   const [isLoading, setIsLoading] = useState(true);
   const [prevTerm, setPrevTerm] = useState(selectedTerm);
   const [filteredCourses, setFilteredCourses] = useState<Course[]>([]);
+  const [allTermsCourses, setAllTermsCourses] = useState<Course[]>([]);
+
+  useEffect(() => {
+    if (selectedTerm === '') {
+      setIsLoading(true);
+      
+      if (allTermsCourses.length === 0) {
+        fetch('/api/course/query?all=true')
+          .then(response => response.json())
+          .then(data => {
+            if (data && data.courses) {
+              const formattedCourses = data.courses.map((course: CourseApiResponse) => ({
+                gold_id: course.gold_id,
+                id: course.id,
+                title: course.title,
+                description: course.description,
+                subjectArea: course.subject_area,
+                department: course.subject_area,
+                units: course.units || 0,
+                generalEd: Array.isArray(course.general_ed) ? course.general_ed : [],
+                prerequisites: Array.isArray(course.prerequisites) ? course.prerequisites.map(String) : [],
+                unlocks: Array.isArray(course.unlocks) ? course.unlocks.map(String) : [],
+                term: []
+              }));
+              setAllTermsCourses(formattedCourses);
+              setIsLoading(false);
+            }
+          })
+          .catch(error => {
+            console.error('Error fetching all courses:', error);
+            setIsLoading(false);
+          });
+      } else {
+        setIsLoading(false);
+      }
+    }
+  }, [selectedTerm, allTermsCourses.length]);
 
   useEffect(() => {
     if (prevTerm !== selectedTerm) {
@@ -35,7 +84,9 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, 
         )
     );
 
-    const filtered = courses.filter(course => {
+    const courseList = selectedTerm === '' ? allTermsCourses : courses;
+
+    const filtered = courseList.filter(course => {
       const searchMatches =
         course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         course.gold_id.toLowerCase().includes(searchQuery.toLowerCase());
@@ -46,10 +97,10 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, 
 
     setFilteredCourses(filtered);
 
-    if (courses.length > 0) {
+    if ((selectedTerm === '' && allTermsCourses.length > 0) || (selectedTerm !== '' && courses.length > 0)) {
       setIsLoading(false);
     }
-  }, [courses, searchQuery, selectedDepartment, studentSchedule]);
+  }, [courses, searchQuery, selectedDepartment, studentSchedule, selectedTerm, allTermsCourses]);
 
   const departments = [...new Set(courses.map((course) => course.subjectArea))];
   const termsOptions: Term[] = ["Fall", "Winter", "Spring", "Summer"];
@@ -91,7 +142,7 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, 
             value={selectedTerm}
             onChange={handleTermChange}
           >
-            <option value="">TERM</option>
+            <option value="">Term</option>
             {termsOptions.map((term) => (
               <option key={term} value={term}>
                 {term}

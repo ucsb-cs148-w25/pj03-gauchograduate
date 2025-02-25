@@ -18,7 +18,9 @@ const termToQuarter: { [key in Term]: string } = {
 };
 
 async function fetchCourses(quarter: string): Promise<Course[]> {
-  const response = await fetch(`/api/course/query?quarter=${quarter}`);
+  const url = quarter ? `/api/course/query?quarter=${quarter}` : `/api/course/query?all=true`;
+  
+  const response = await fetch(url);
   if (!response.ok) {
     throw new Error(`Failed to fetch courses. Status: ${response.status}`);
   }
@@ -118,7 +120,7 @@ const getYearAndTerm = (quarterCode: string, firstQuarter: string): { year: Year
 export default function HomePage() {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const [selectedTerm, setSelectedTerm] = useState<Term>("Fall");
+  const [selectedTerm, setSelectedTerm] = useState<string>("");
   const [studentSchedule, setStudentSchedule] = useState<ScheduleType>({
     "Year 1": { Fall: [], Winter: [], Spring: [], Summer: [] },
     "Year 2": { Fall: [], Winter: [], Spring: [], Summer: [] },
@@ -188,8 +190,8 @@ export default function HomePage() {
   }, [status, router]);
 
   const { data: courses = [] } = useQuery({
-    queryKey: ['courses', termToQuarter[selectedTerm]],
-    queryFn: () => fetchCourses(termToQuarter[selectedTerm]),
+    queryKey: ['courses', selectedTerm ? termToQuarter[selectedTerm as Term] : 'all'],
+    queryFn: () => selectedTerm ? fetchCourses(termToQuarter[selectedTerm as Term]) : fetchCourses(''),
     staleTime: 5 * 60 * 1000,
     gcTime: 30 * 60 * 1000,
   });
