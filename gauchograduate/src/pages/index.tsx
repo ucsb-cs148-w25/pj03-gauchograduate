@@ -260,7 +260,6 @@ export default function HomePage() {
         <div className="w-full md:w-1/5 bg-[var(--off-white)] p-4 overflow-y-scroll">
           <ProgressTracker
             studentSchedule={studentSchedule}
-            courses={courses}
             college={majorData?.major?.college}
           />
         </div>

@@ -6,16 +6,14 @@ import { computeMajorRequirements } from "./requirements/COREReqs";
 import SegmentedProgressBar from "./progress_components/SegmentedProgressBar";
 import CollapsibleCard from "./progress_components/CollapsibleCard";
 
-
-
 interface ProgressTrackerProps {
   studentSchedule: ScheduleType;
-  courses: Course[];
   college?: string;
 }
 
-const ProgressTracker = ({ studentSchedule, courses, college = "CoE" }: ProgressTrackerProps) => {
+const ProgressTracker = ({ studentSchedule, college = "CoE" }: ProgressTrackerProps) => {
   const [totalUnits, setTotalUnits] = useState<number>(0);
+  const [scheduledCourses, setScheduledCourses] = useState<Course[]>([]);
 
   // GE requirements state
   const [genEdFulfilled, setGenEdFulfilled] = useState<{ [req: string]: GERequirement }>({});
@@ -30,22 +28,17 @@ const ProgressTracker = ({ studentSchedule, courses, college = "CoE" }: Progress
   const [extraCourses, setExtraCourses] = useState<Course[]>([]);
   const [showAllExtra, setShowAllExtra] = useState(false);
 
-  // Process schedule for overall progress.
+  // Extract scheduled courses from studentSchedule
   useEffect(() => {
-    const scheduledCourseIds = Object.values(studentSchedule)
-      .flatMap((terms) => Object.values(terms).flat())
-      .map((course) => course.gold_id);
-
-    const completedCourseObjects = courses.filter((course) =>
-      scheduledCourseIds.includes(course.gold_id)
-    );
-
-    const totalUnitsTaken = completedCourseObjects.reduce(
+    const allCourses = Object.values(studentSchedule)
+      .flatMap((terms) => Object.values(terms).flat());
+    setScheduledCourses(allCourses);
+    const totalUnitsTaken = allCourses.reduce(
       (sum, course) => sum + course.units,
       0
     );
     setTotalUnits(totalUnitsTaken);
-  }, [studentSchedule, courses]);
+  }, [studentSchedule]);
 
   // Compute GE requirements.
   useEffect(() => {
@@ -69,21 +62,16 @@ const ProgressTracker = ({ studentSchedule, courses, college = "CoE" }: Progress
   // Compute major requirements.
   useEffect(() => {
     if (!majorData) return;
-    const newMajorStatus = computeMajorRequirements(studentSchedule, courses, majorData);
+    const allCourses = Object.values(studentSchedule)
+      .flatMap((terms) => Object.values(terms).flat());
+    const newMajorStatus = computeMajorRequirements(studentSchedule, allCourses, majorData);
     setMajorStatus(newMajorStatus);
-  }, [studentSchedule, courses, majorData]);
+  }, [studentSchedule, majorData]);
 
   // Compute extra courses: core courses not used for major requirements.
   useEffect(() => {
-    // Get all completed courses from the schedule.
-    const scheduledCourseIds = Object.values(studentSchedule)
-      .flatMap((terms) => Object.values(terms).flat())
-      .map((course) => course.gold_id);
-    const completedCourseObjects = courses.filter((course) =>
-      scheduledCourseIds.includes(course.gold_id)
-    );
     // Core courses: courses with no GE info.
-    const coreCourses = completedCourseObjects.filter((course) => course.generalEd.length === 0);
+    const coreCourses = scheduledCourses.filter((course) => course.generalEd.length === 0);
 
     // Gather internal IDs of courses used in major requirements.
     const usedCourseIds = new Set<string>();
@@ -94,7 +82,7 @@ const ProgressTracker = ({ studentSchedule, courses, college = "CoE" }: Progress
     // Extra courses are core courses that are not used in major requirements.
     const extras = coreCourses.filter((course) => !usedCourseIds.has(String(course.id)));
     setExtraCourses(extras);
-  }, [studentSchedule, courses, majorStatus]);
+  }, [scheduledCourses, majorStatus]);
 
   const areaDescriptions: { [key: string]: string } = {
     "A1": "Oral Communication",
@@ -196,28 +184,18 @@ const ProgressTracker = ({ studentSchedule, courses, college = "CoE" }: Progress
     );
   };
 
+  // Compute GE units (courses that have GE info).
+  const geUnits = scheduledCourses
+    .filter((course) => course.generalEd && course.generalEd.length > 0)
+    .reduce((sum, course) => sum + course.units, 0);
 
-  // Compute completed courses from the schedule.
-const scheduledCourseIds = Object.values(studentSchedule)
-.flatMap((terms) => Object.values(terms).flat())
-.map((course) => course.gold_id);
+  // Compute major units from courses used in majorStatus.
+  const majorUnits = Object.values(majorStatus).reduce((sum, category) => {
+    return sum + category.courses.reduce((s, course) => s + course.units, 0);
+  }, 0);
 
-const completedCourseObjects = courses.filter((course) =>
-scheduledCourseIds.includes(course.gold_id)
-);
-
-// Compute GE units (courses that have GE info).
-const geUnits = completedCourseObjects
-.filter((course) => course.generalEd && course.generalEd.length > 0)
-.reduce((sum, course) => sum + course.units, 0);
-
-// Compute major units from courses used in majorStatus.
-const majorUnits = Object.values(majorStatus).reduce((sum, category) => {
-return sum + category.courses.reduce((s, course) => s + course.units, 0);
-}, 0);
-
-// Extra units: sum from extraCourses.
-const extraUnits = extraCourses.reduce((sum, course) => sum + course.units, 0);
+  // Extra units: sum from extraCourses.
+  const extraUnits = extraCourses.reduce((sum, course) => sum + course.units, 0);
 
   return (
     <div className="h-full p-1 overflow-auto">
