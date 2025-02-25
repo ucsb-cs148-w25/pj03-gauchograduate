@@ -46,29 +46,45 @@ async function fetchCourses(quarter: string): Promise<Course[]> {
   return formattedCourses.sort((a, b) => a.gold_id.localeCompare(b.gold_id));
 }
 
-async function fetchCourseById(id: number): Promise<Course | null> {
+async function fetchCoursesByIds(courseIds: number[]): Promise<Course[]> {
+  if (!courseIds.length) return [];
+  
   try {
-    const response = await fetch(`/api/course/${id}`);
-    if (!response.ok) return null;
-
-    const { course } = await response.json();
-    if (!course) return null;
-
-    return {
+    const response = await fetch('/api/course/query/batch', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ courseIds }),
+    });
+    
+    if (!response.ok) {
+      throw new Error(`Failed to fetch courses. Status: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    
+    if (!data || !data.courses || !Array.isArray(data.courses)) {
+      console.error("Unexpected API structure", data);
+      return [];
+    }
+    
+    return data.courses.map((course: CourseInfo) => ({
       gold_id: course.gold_id,
       id: course.id,
       title: course.title,
       description: course.description,
       subjectArea: course.subject_area,
+      department: course.subject_area || course.subject_area,
       units: course.units || 0,
       generalEd: Array.isArray(course.general_ed) ? course.general_ed : [],
       prerequisites: Array.isArray(course.prerequisites) ? course.prerequisites.map(String) : [],
       unlocks: Array.isArray(course.unlocks) ? course.unlocks.map(String) : [],
       term: []
-    };
+    }));
   } catch (error) {
-    console.error('Error fetching course:', error);
-    return null;
+    console.error('Error fetching courses by IDs:', error);
+    return [];
   }
 }
 
@@ -138,23 +154,18 @@ export default function HomePage() {
         "Year 4": { Fall: [], Winter: [], Spring: [], Summer: [] },
       };
 
-      const coursePromises = userCoursesData.courses.map(async (savedCourse: { id: number, quarter: string }) => {
-        const course = await fetchCourseById(savedCourse.id);
-        if (!course) return null;
+      const courseIds = userCoursesData.courses.map((savedCourse: { id: number }) => savedCourse.id);
+      
+      const allCourses = await fetchCoursesByIds(courseIds);
+      
+      userCoursesData.courses.forEach((savedCourse: { id: number, quarter: string }) => {
+        const course = allCourses.find(c => c.id === savedCourse.id);
+        if (!course) return;
         
         const position = getYearAndTerm(savedCourse.quarter, userCoursesData.firstQuarter);
-        if (!position) return null;
+        if (!position) return;
         
-        return { course, position };
-      });
-
-      const results = await Promise.all(coursePromises);
-      
-      results.forEach(result => {
-        if (result) {
-          const { course, position } = result;
-          newSchedule[position.year][position.term].push(course);
-        }
+        newSchedule[position.year][position.term].push(course);
       });
 
       return newSchedule;
