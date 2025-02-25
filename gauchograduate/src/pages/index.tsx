@@ -126,9 +126,10 @@ export default function HomePage() {
     gcTime: 30 * 60 * 1000,
   });
 
-  useEffect(() => {
-    async function loadSavedSchedule() {
-      if (!userCoursesData || !userCoursesData.courses || !userCoursesData.firstQuarter) return;
+  const { data: savedSchedule } = useQuery({
+    queryKey: ['savedSchedule', userCoursesData],
+    queryFn: async () => {
+      if (!userCoursesData || !userCoursesData.courses || !userCoursesData.firstQuarter) return null;
 
       const newSchedule: ScheduleType = {
         "Year 1": { Fall: [], Winter: [], Spring: [], Summer: [] },
@@ -156,11 +157,18 @@ export default function HomePage() {
         }
       });
 
-      setStudentSchedule(newSchedule);
-    }
+      return newSchedule;
+    },
+    enabled: !!userCoursesData,
+    staleTime: 5 * 60 * 1000,
+    gcTime: 30 * 60 * 1000,
+  });
 
-    loadSavedSchedule();
-  }, [userCoursesData]);
+  useEffect(() => {
+    if (savedSchedule) {
+      setStudentSchedule(savedSchedule);
+    }
+  }, [savedSchedule]);
 
   useEffect(() => {
     if (status === "unauthenticated") {
