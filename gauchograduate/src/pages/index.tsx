@@ -18,7 +18,7 @@ const termToQuarter: { [key in Term]: string } = {
 };
 
 async function fetchCourses(quarter: string): Promise<Course[]> {
-  const url = quarter ? `/api/course/query?quarter=${quarter}` : `/api/course/query?all=true`;
+  const url = `/api/course/query?quarter=${quarter}`;
   
   const response = await fetch(url);
   if (!response.ok) {
@@ -190,8 +190,8 @@ export default function HomePage() {
   }, [status, router]);
 
   const { data: courses = [] } = useQuery({
-    queryKey: ['courses', selectedTerm ? termToQuarter[selectedTerm as Term] : 'all'],
-    queryFn: () => selectedTerm ? fetchCourses(termToQuarter[selectedTerm as Term]) : fetchCourses(''),
+    queryKey: ['courses', termToQuarter[selectedTerm as Term]],
+    queryFn: () => fetchCourses(termToQuarter[selectedTerm as Term]),
     staleTime: 5 * 60 * 1000,
     gcTime: 30 * 60 * 1000,
   });

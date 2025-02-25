@@ -24,30 +24,7 @@ export default async function handler(
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  const { quarter, subject, all } = req.query
-
-  // If 'all' parameter is provided, return all courses
-  if (all === 'true') {
-    try {
-      const data = await prisma.course.findMany({
-        orderBy: {
-          id: 'asc'
-        }
-      });
-
-      const courses = data.map(course => ({
-        ...course,
-        general_ed: Array.isArray(course.general_ed) ? course.general_ed as string[] : [],
-        prerequisites: Array.isArray(course.prerequisites) ? course.prerequisites as number[] : [],
-        unlocks: Array.isArray(course.unlocks) ? course.unlocks as number[] : [],
-      }));
-
-      return res.json({ courses });
-    } catch (error) {
-      console.error('Error querying all courses:', error);
-      return res.status(500).json({ error: 'Failed to query all courses' });
-    }
-  }
+  const { quarter, subject } = req.query
 
   // We want to prevent large blank queries that will slow down the database
   if (!quarter && !subject) {

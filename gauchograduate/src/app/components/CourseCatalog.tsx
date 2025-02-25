@@ -10,69 +10,17 @@ interface CourseCatalogProps {
   studentSchedule: ScheduleType;
 }
 
-interface CourseApiResponse {
-  gold_id: string;
-  id: number;
-  title: string;
-  description: string;
-  subject_area: string;
-  units: number | null;
-  general_ed: unknown[];
-  prerequisites: unknown[];
-  unlocks: unknown[];
-}
-
 export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, studentSchedule }: CourseCatalogProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedDepartment, setSelectedDepartment] = useState('');
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [prevTerm, setPrevTerm] = useState(selectedTerm);
-  const [filteredCourses, setFilteredCourses] = useState<Course[]>([]);
-  const [allTermsCourses, setAllTermsCourses] = useState<Course[]>([]);
 
   useEffect(() => {
-    if (selectedTerm === '') {
-      setIsLoading(true);
-      
-      if (allTermsCourses.length === 0) {
-        fetch('/api/course/query?all=true')
-          .then(response => response.json())
-          .then(data => {
-            if (data && data.courses) {
-              const formattedCourses = data.courses.map((course: CourseApiResponse) => ({
-                gold_id: course.gold_id,
-                id: course.id,
-                title: course.title,
-                description: course.description,
-                subjectArea: course.subject_area,
-                department: course.subject_area,
-                units: course.units || 0,
-                generalEd: Array.isArray(course.general_ed) ? course.general_ed : [],
-                prerequisites: Array.isArray(course.prerequisites) ? course.prerequisites.map(String) : [],
-                unlocks: Array.isArray(course.unlocks) ? course.unlocks.map(String) : [],
-                term: []
-              }));
-              setAllTermsCourses(formattedCourses);
-              setIsLoading(false);
-            }
-          })
-          .catch(error => {
-            console.error('Error fetching all courses:', error);
-            setIsLoading(false);
-          });
-      } else {
-        setIsLoading(false);
-      }
+    if (courses.length > 0) {
+      setIsLoading(false);
     }
-  }, [selectedTerm, allTermsCourses.length]);
-
-  useEffect(() => {
-    if (prevTerm !== selectedTerm) {
-      setIsLoading(true);
-      setPrevTerm(selectedTerm);
-    }
-  }, [selectedTerm, prevTerm]);
+  }, [courses]);
 
   useEffect(() => {
     const takenCourseIds = new Set(
@@ -84,9 +32,7 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, 
         )
     );
 
-    const courseList = selectedTerm === '' ? allTermsCourses : courses;
-
-    const filtered = courseList.filter(course => {
+    const filtered = courses.filter(course => {
       const searchMatches =
         course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         course.gold_id.toLowerCase().includes(searchQuery.toLowerCase());
@@ -96,18 +42,16 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, 
     });
 
     setFilteredCourses(filtered);
+  }, [courses, searchQuery, selectedDepartment, studentSchedule]);
 
-    if ((selectedTerm === '' && allTermsCourses.length > 0) || (selectedTerm !== '' && courses.length > 0)) {
-      setIsLoading(false);
-    }
-  }, [courses, searchQuery, selectedDepartment, studentSchedule, selectedTerm, allTermsCourses]);
+  const [filteredCourses, setFilteredCourses] = useState<Course[]>([]);
 
   const departments = [...new Set(courses.map((course) => course.subjectArea))];
   const termsOptions: Term[] = ["Fall", "Winter", "Spring", "Summer"];
 
   const handleTermChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newTerm = e.target.value as Term;
     setIsLoading(true);
+    const newTerm = e.target.value as Term;
     setSelectedTerm(newTerm);
   };
 
@@ -210,17 +154,17 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, 
 
       {selectedCourse && (
         <CoursePreview course={selectedCourse} onClose={() => setSelectedCourse(null)} />
-        )}
+      )}
     </div>
   );
 }
 
 interface CoursePreviewProps {
-    course: Course;
-    onClose: () => void;
-  }
+  course: Course;
+  onClose: () => void;
+}
 
-  const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose }) => {
+const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div className="absolute inset-0 bg-black opacity-50" onClick={onClose} />
@@ -233,22 +177,21 @@ interface CoursePreviewProps {
           &times;
         </button>
         <h2 className="text-xl font-bold mb-2">{course.gold_id}</h2>
-        <p className="text-l font-bold mb-3"><strong></strong> {course.title}</p>
+        <p className="text-l font-bold mb-3"> {course.title}</p>
         <p className="mb-1"><strong>Description:</strong> {course.description}</p>
         <p className="mb-1"><strong>Subject Area:</strong> {course.subjectArea}</p>
         <p className="mb-1"><strong>Units:</strong> {course.units}</p>
         <p className="mb-1">
-        <strong>General Ed:</strong> {course.generalEd.length > 0 ? (
+          <strong>General Ed:</strong> {course.generalEd.length > 0 ? (
             <ul className="list-disc pl-5">
-            {course.generalEd.map((ge, index) => (
+              {course.generalEd.map((ge, index) => (
                 <li key={index}>{ge.geCode} ({ge.geCollege})</li>
-            ))}
+              ))}
             </ul>
-        ) : (
+          ) : (
             'None'
-        )}
+          )}
         </p>
-
         <p className="mb-1">
           <strong>Prerequisites:</strong> {course.prerequisites.length ? course.prerequisites.join(', ') : 'None'}
         </p>

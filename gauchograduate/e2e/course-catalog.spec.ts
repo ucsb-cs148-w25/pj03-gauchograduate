@@ -21,7 +21,7 @@ test.describe('Course catalog functionality', () => {
       });
     });
 
-    // Mock course data
+    // Mock course data - updated to use quarter parameter instead of all=true
     await page.route('**/api/course/query**', async (route) => {
       await route.fulfill({
         status: 200,
