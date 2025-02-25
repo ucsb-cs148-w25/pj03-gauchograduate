@@ -15,15 +15,12 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, 
   const [selectedDepartment, setSelectedDepartment] = useState('');
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [prevTerm, setPrevTerm] = useState(selectedTerm);
-  const [filteredCourses, setFilteredCourses] = useState<Course[]>([]);
 
   useEffect(() => {
-    if (prevTerm !== selectedTerm) {
-      setIsLoading(true);
-      setPrevTerm(selectedTerm);
+    if (courses.length > 0) {
+      setIsLoading(false);
     }
-  }, [selectedTerm, prevTerm]);
+  }, [courses]);
 
   useEffect(() => {
     const takenCourseIds = new Set(
@@ -45,18 +42,16 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, 
     });
 
     setFilteredCourses(filtered);
-
-    if (courses.length > 0) {
-      setIsLoading(false);
-    }
   }, [courses, searchQuery, selectedDepartment, studentSchedule]);
+
+  const [filteredCourses, setFilteredCourses] = useState<Course[]>([]);
 
   const departments = [...new Set(courses.map((course) => course.subjectArea))];
   const termsOptions: Term[] = ["Fall", "Winter", "Spring", "Summer"];
 
   const handleTermChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newTerm = e.target.value as Term;
     setIsLoading(true);
+    const newTerm = e.target.value as Term;
     setSelectedTerm(newTerm);
   };
 
@@ -72,32 +67,43 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, 
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <div className="flex flex-wrap items-left gap-x-2 gap-y-2">
-          <select
-            className="p-2 border border-gray-300 rounded-lg"
-            value={selectedDepartment}
-            onChange={(e) => setSelectedDepartment(e.target.value)}
-          >
-            <option value="">Dept</option>
-            {departments.map((dept) => (
-              <option key={dept} value={dept}>
-                {dept}
-              </option>
-            ))}
-          </select>
+        <div className="flex flex-col gap-2 w-full">
+          <div className="flex items-center border border-gray-300 rounded-lg overflow-hidden w-full">
+            <label htmlFor="department-select" className="bg-gray-100 px-3 py-2 text-sm font-medium text-gray-700 w-1/2">
+              Department
+            </label>
+            <select
+              id="department-select"
+              className="p-2 border-0 focus:ring-0 focus:outline-none w-1/2"
+              value={selectedDepartment}
+              onChange={(e) => setSelectedDepartment(e.target.value)}
+            >
+              <option value="">All</option>
+              {departments.map((dept) => (
+                <option key={dept} value={dept}>
+                  {dept}
+                </option>
+              ))}
+            </select>
+          </div>
 
-          <select
-            className="p-2 border border-gray-300 rounded-lg"
-            value={selectedTerm}
-            onChange={handleTermChange}
-          >
-            <option value="">TERM</option>
-            {termsOptions.map((term) => (
-              <option key={term} value={term}>
-                {term}
-              </option>
-            ))}
-          </select>
+          <div className="flex items-center border border-gray-300 rounded-lg overflow-hidden w-full">
+            <label htmlFor="term-select" className="bg-gray-100 px-3 py-2 text-sm font-medium text-gray-700 w-2/5">
+              Quarter
+            </label>
+            <select
+              id="term-select"
+              className="p-2 border-0 focus:ring-0 focus:outline-none w-3/5"
+              value={selectedTerm}
+              onChange={handleTermChange}
+            >
+              {termsOptions.map((term) => (
+                <option key={term} value={term}>
+                  {term}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
       </div>
 
@@ -140,7 +146,7 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, 
               );
             })}
             {filteredCourses.length === 0 && !isLoading && (
-              <p className="text-sm text-gray-500">No courses found.</p>
+              <p className="text-sm text-gray-500">No courses found. <br/> Are they already in your schedule?</p>
             )}
           </div>
         )}
@@ -148,17 +154,17 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, 
 
       {selectedCourse && (
         <CoursePreview course={selectedCourse} onClose={() => setSelectedCourse(null)} />
-        )}
+      )}
     </div>
   );
 }
 
 interface CoursePreviewProps {
-    course: Course;
-    onClose: () => void;
-  }
+  course: Course;
+  onClose: () => void;
+}
 
-  const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose }) => {
+const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div className="absolute inset-0 bg-black opacity-50" onClick={onClose} />
@@ -171,22 +177,21 @@ interface CoursePreviewProps {
           &times;
         </button>
         <h2 className="text-xl font-bold mb-2">{course.gold_id}</h2>
-        <p className="text-l font-bold mb-3"><strong></strong> {course.title}</p>
+        <p className="text-l font-bold mb-3"> {course.title}</p>
         <p className="mb-1"><strong>Description:</strong> {course.description}</p>
         <p className="mb-1"><strong>Subject Area:</strong> {course.subjectArea}</p>
         <p className="mb-1"><strong>Units:</strong> {course.units}</p>
         <p className="mb-1">
-        <strong>General Ed:</strong> {course.generalEd.length > 0 ? (
+          <strong>General Ed:</strong> {course.generalEd.length > 0 ? (
             <ul className="list-disc pl-5">
-            {course.generalEd.map((ge, index) => (
+              {course.generalEd.map((ge, index) => (
                 <li key={index}>{ge.geCode} ({ge.geCollege})</li>
-            ))}
+              ))}
             </ul>
-        ) : (
+          ) : (
             'None'
-        )}
+          )}
         </p>
-
         <p className="mb-1">
           <strong>Prerequisites:</strong> {course.prerequisites.length ? course.prerequisites.join(', ') : 'None'}
         </p>

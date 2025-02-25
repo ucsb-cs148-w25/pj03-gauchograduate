@@ -1,6 +1,6 @@
 import { useSession } from 'next-auth/react';
 import { Terms, Years, Course, Term, FourYearPlanProps, YearType } from "./coursetypes";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { getAcademicYear, isQuarterInPast, isCurrentQuarter } from './utils/quarterUtils';
 import CourseModal from './course-popup';
 
@@ -19,6 +19,12 @@ export default function FourYearPlan({
   const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved'>('idle');
   const [isActive, setIsActive] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [poofingCourse, setPoofingCourse] = useState<{ id: string, x: number, y: number } | null>(null);
+  const planRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const [validDropTargets, setValidDropTargets] = useState<Set<HTMLElement>>(new Set());
+  const [draggedOverTerm, setDraggedOverTerm] = useState<string | null>(null);
+  const [isDraggingCourse, setIsDraggingCourse] = useState(false);
   
   useEffect(() => {
     const hasAnyCourses = Object.values(studentSchedule).some(yearSchedule => 
@@ -47,12 +53,37 @@ export default function FourYearPlan({
     }
   }, [saveStatus]);
 
-  const getYearDisplay = (year: YearType): string => {
-    const yearIndex = Years.indexOf(year);
-    return getAcademicYear(firstQuarter, yearIndex);
-  };
+  useEffect(() => {
+    if (gridRef.current) {
+      const termColumns = gridRef.current.querySelectorAll('[data-term-column]');
+      const targets = new Set<HTMLElement>();
+      termColumns.forEach(column => {
+        targets.add(column as HTMLElement);
+      });
+      setValidDropTargets(targets);
+    }
+  }, [showSummer, selectedYear]);
 
-  const getQuarterCode = (year: YearType, term: Term): string => {
+  useEffect(() => {
+    const handleDragStart = () => {
+      setIsDraggingCourse(true);
+    };
+
+    const handleDragEnd = () => {
+      setIsDraggingCourse(false);
+      setDraggedOverTerm(null);
+    };
+
+    document.addEventListener('dragstart', handleDragStart);
+    document.addEventListener('dragend', handleDragEnd);
+
+    return () => {
+      document.removeEventListener('dragstart', handleDragStart);
+      document.removeEventListener('dragend', handleDragEnd);
+    };
+  }, []);
+
+  const getQuarterCode = useCallback((year: YearType, term: Term): string => {
     const yearIndex = Years.indexOf(year);
     const baseYear = parseInt(firstQuarter.substring(0, 4));
     const yearNum = baseYear + yearIndex;
@@ -65,34 +96,9 @@ export default function FourYearPlan({
     }[term];
 
     return `${yearNum}${quarterSuffix}`;
-  };
+  }, [firstQuarter]);
 
-  async function DBAddCourses(courseID: number, term: Term) {
-    try {
-      setSaveStatus('saving');
-      const quarterCode = getQuarterCode(selectedYear, term);
-
-      const response = await fetch("/api/user/add-course", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          id: courseID,
-          quarter: quarterCode,
-        }),
-      });
-
-      const data = await response.json();
-      console.log("Add Response:", data);
-      setSaveStatus('saved');
-    } catch (error) {
-      console.error("Error adding courses:", error);
-      setSaveStatus('idle');
-    }
-  }
-
-  async function DBRemoveCourses(courseID: number, term: Term) {
+  const DBRemoveCourses = useCallback(async (courseID: number, term: Term) => {
     try {
       setSaveStatus('saving');
       const quarterCode = getQuarterCode(selectedYear, term);
@@ -115,16 +121,139 @@ export default function FourYearPlan({
       console.error("Error removing courses:", error);
       setSaveStatus('idle');
     }
-  }
+  }, [selectedYear, getQuarterCode]);
 
-  async function DBMoveCourse(courseID: number, originTerm: Term, term: Term){
+  useEffect(() => {
+    const handleDocumentDragOver = (e: DragEvent) => {
+      e.preventDefault();
+    };
+
+    const handleDocumentDrop = (e: DragEvent) => {
+      e.preventDefault();
+      
+      if (planRef.current && !planRef.current.contains(e.target as Node)) {
+        const data = e.dataTransfer?.getData("application/json");
+        if (data) {
+          try {
+            const courseData = JSON.parse(data);
+            if (courseData.gold_id && courseData.originTerm) {
+              setPoofingCourse({
+                id: courseData.gold_id,
+                x: e.clientX,
+                y: e.clientY
+              });
+              
+              removeCourse(courseData, courseData.originTerm);
+              DBRemoveCourses(courseData.id, courseData.originTerm);
+              
+              setTimeout(() => {
+                setPoofingCourse(null);
+              }, 500);
+            }
+          } catch (error) {
+            console.error("Error parsing dragged course data:", error);
+          }
+        }
+      }
+    };
+
+    document.addEventListener('dragover', handleDocumentDragOver);
+    document.addEventListener('drop', handleDocumentDrop);
+
+    return () => {
+      document.removeEventListener('dragover', handleDocumentDragOver);
+      document.removeEventListener('drop', handleDocumentDrop);
+    };
+  }, [removeCourse, DBRemoveCourses]);
+
+  const getYearDisplay = (year: YearType): string => {
+    const yearIndex = Years.indexOf(year);
+    return getAcademicYear(firstQuarter, yearIndex);
+  };
+
+  const DBAddCourses = useCallback(async (courseID: number, term: Term) => {
+    try {
+      setSaveStatus('saving');
+      const quarterCode = getQuarterCode(selectedYear, term);
+
+      const response = await fetch("/api/user/add-course", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: courseID,
+          quarter: quarterCode,
+        }),
+      });
+
+      const data = await response.json();
+      console.log("Add Response:", data);
+      setSaveStatus('saved');
+    } catch (error) {
+      console.error("Error adding courses:", error);
+      setSaveStatus('idle');
+    }
+  }, [selectedYear, getQuarterCode]);
+
+  const DBMoveCourse = useCallback(async (courseID: number, originTerm: Term, term: Term) => {
     setSaveStatus('saving');
     await DBRemoveCourses(courseID, originTerm);
     await DBAddCourses(courseID, term);
-  }
+  }, [DBRemoveCourses, DBAddCourses]);
+
+  const handlePlanDrop = useCallback((e: React.DragEvent<HTMLDivElement>) => {
+    const isValidTarget = Array.from(validDropTargets).some(target => 
+      target === e.target || target.contains(e.target as Node)
+    );
+    
+    if (!isValidTarget) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const data = e.dataTransfer.getData("application/json");
+      if (data) {
+        try {
+          const courseData = JSON.parse(data);
+          if (courseData.gold_id && courseData.originTerm) {
+            setPoofingCourse({
+              id: courseData.gold_id,
+              x: e.clientX,
+              y: e.clientY
+            });
+            
+            removeCourse(courseData, courseData.originTerm);
+            DBRemoveCourses(courseData.id, courseData.originTerm);
+            
+            setTimeout(() => {
+              setPoofingCourse(null);
+            }, 500);
+          }
+        } catch (error) {
+          console.error("Error parsing dragged course data:", error);
+        }
+      }
+    }
+  }, [validDropTargets, removeCourse, DBRemoveCourses]);
+
+  const handleDragOver = useCallback((e: React.DragEvent<HTMLDivElement>, term: string) => {
+    e.preventDefault();
+    if (draggedOverTerm !== term) {
+      setDraggedOverTerm(term);
+    }
+  }, [draggedOverTerm]);
+
+  const handleDragLeave = useCallback((e: React.DragEvent<HTMLDivElement>) => {
+    if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+      setDraggedOverTerm(null);
+    }
+  }, []);
 
   function handleDrop(e: React.DragEvent<HTMLDivElement>, term: Term) {
     e.preventDefault();
+    e.stopPropagation();
+    setDraggedOverTerm(null);
+    
     const json = e.dataTransfer.getData("application/json");
     if (!json) return;
     const droppedCourse = JSON.parse(json);
@@ -149,6 +278,8 @@ export default function FourYearPlan({
 
   function handleCourseReorder(e: React.DragEvent<HTMLDivElement>, term: Term, targetIndex: number) {
     e.preventDefault();
+    e.stopPropagation();
+    
     const data = e.dataTransfer.getData("application/json");
     if (!data) return;
     const dragged = JSON.parse(data);
@@ -167,7 +298,12 @@ export default function FourYearPlan({
   const yearDisplay = getYearDisplay(selectedYear);
 
   return (
-    <div className="h-full w-full p-4 bg-white rounded-lg shadow-lg flex flex-col overflow-auto max-h-screen relative">
+    <div 
+      className="h-full w-full p-4 bg-white rounded-lg shadow-lg flex flex-col overflow-auto max-h-screen relative" 
+      ref={planRef}
+      onDragOver={(e) => e.preventDefault()}
+      onDrop={handlePlanDrop}
+    >
       {selectedCourse && (
         <CourseModal
           course={selectedCourse.course}
@@ -190,6 +326,26 @@ export default function FourYearPlan({
             </svg>
             Loading your schedule...
           </div>
+        </div>
+      )}
+
+      {poofingCourse && (
+        <div 
+          className="fixed z-50 animate-poof"
+          style={{ 
+            left: poofingCourse.x - 50, 
+            top: poofingCourse.y - 50,
+            width: '100px',
+            height: '100px',
+            background: 'rgba(255, 200, 200, 0.7)',
+            borderRadius: '50%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            pointerEvents: 'none'
+          }}
+        >
+          <span className="text-xl">💨</span>
         </div>
       )}
 
@@ -225,19 +381,29 @@ export default function FourYearPlan({
       </div>
 
       <div className="flex gap-2 flex-1 min-h-0">
-        <div className={`grid grid-cols-1 ${showSummer ? 'md:grid-cols-4' : 'md:grid-cols-3'} gap-2 flex-grow border border-gray-300 rounded-md p-2 bg-gray-50 min-h-0 overflow-y-auto`}>
+        <div 
+          ref={gridRef}
+          className={`grid grid-cols-1 ${showSummer ? 'md:grid-cols-4' : 'md:grid-cols-3'} gap-2 flex-grow border border-gray-300 rounded-md p-2 bg-gray-50 min-h-0 overflow-y-auto`}
+        >
           {displayTerms.map((term) => {
             const isPast = isQuarterInPast(yearDisplay, term);
             const isCurrent = isCurrentQuarter(yearDisplay, term);
             const statusBarColor = isCurrent ? "bg-[var(--pale-blue)]" : isPast ? "bg-[var(--pale-green)]" : "";
+            const isTermDraggedOver = draggedOverTerm === term;
 
             return (
               <div
                 key={term}
-                onDragOver={(e) => e.preventDefault()}
+                data-term-column={term}
+                onDragOver={(e) => handleDragOver(e, term)}
+                onDragLeave={handleDragLeave}
                 onDrop={(e) => handleDrop(e, term)}
                 className="flex flex-col h-full justify-between p-4 border border-gray-300 rounded-lg bg-white relative"
               >
+                {isDraggingCourse && isTermDraggedOver && (
+                  <div className="absolute inset-0 pointer-events-none border-2 border-blue-400 rounded-lg"></div>
+                )}
+                
                 {(isPast || isCurrent) && (
                   <div className={`h-3 absolute top-0 left-0 right-0 ${statusBarColor} rounded-t-lg`}></div>
                 )}
@@ -273,8 +439,13 @@ export default function FourYearPlan({
                       <p className="text-xs text-gray-500 text-center">No courses</p>
                     )}
                   </div>
-                  <div className="mt-4 p-4 border-dashed border-2 border-gray-300 rounded-lg text-center text-sm text-gray-400">
-                    Drop Course Here
+                  <div className="relative mt-4">
+                    <div className="p-4 border-dashed border-2 border-gray-300 rounded-lg text-center text-sm text-gray-400">
+                      Drop Course Here
+                    </div>
+                    {isDraggingCourse && isTermDraggedOver && (
+                      <div className="absolute inset-0 pointer-events-none border-dashed border-2 border-blue-400 rounded-lg animate-border-pulse"></div>
+                    )}
                   </div>
                 </div>
                 <div className="mt-6 text-right">
