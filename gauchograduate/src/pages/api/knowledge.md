@@ -29,10 +29,10 @@ Response formats:
 
 ### Override Endpoints
 - POST /api/user/add-override: Adds a major requirement override to the user's courses
-  - Request body: `{ override: object }` - The override object format is determined by another team member
+  - Request body: `{ override: object }` - The override object to add
   - Response: `{ overrides: Array<any> }` - The updated array of overrides
 - POST /api/user/remove-override: Removes a major requirement override from the user's courses
-  - Request body: `{ index: number }` - The index of the override to remove
+  - Request body: `{ override: object }` - The override object to remove
   - Response: `{ overrides: Array<any> }` - The updated array of overrides
 
 ### E2E Testing with Playwright
