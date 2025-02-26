@@ -26,6 +26,14 @@ Response formats:
 - POST /api/user/remove-course: Returns `{ courses: Array<{id: string, quarter: string}> }`
 - POST /api/user/add-override: Returns `{ overrides: Array<any> }`
 - POST /api/user/remove-override: Returns `{ overrides: Array<any> }`
+- POST /api/user/courses/set-grade: Returns `{ success: boolean, courses: Array<{id: number, quarter: string, grade?: string}> }`
+
+### Grade Endpoint
+- POST /api/user/courses/set-grade: Sets a grade for a specific course in the user's course list
+  - Request body: `{ id: number, quarter: string, grade: string | null }`
+  - Valid grades: "A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F", "P", "NP"
+  - If grade is null, the grade property is removed from the course
+  - Response: `{ success: boolean, courses: Array<{id: number, quarter: string, grade?: string}> }`
 
 ### Override Endpoints
 - POST /api/user/add-override: Adds a major requirement override to the user's courses

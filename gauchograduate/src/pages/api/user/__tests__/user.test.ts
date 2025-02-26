@@ -7,6 +7,7 @@ import updateProfileHandler from '../update-profile';
 import majorHandler from '../major';
 import addOverrideHandler from '../add-override';
 import removeOverrideHandler from '../remove-override';
+import setGradeHandler from '../courses/set-grade';
 import { prisma } from '@/lib/prisma';
 
 jest.mock('next-auth/next', () => ({
@@ -652,6 +653,168 @@ describe('User API Endpoints', () => {
       expect(res._getStatusCode()).toBe(400);
       expect(JSON.parse(res._getData())).toEqual({
         error: "Valid override object is required with type and requirement fields"
+      });
+    });
+  });
+
+  describe('POST /api/user/courses/set-grade', () => {
+    it('should return 401 if not authenticated', async () => {
+      const { req, res } = createMocks({
+        method: 'POST',
+        body: {
+          id: 1,
+          quarter: "20241",
+          grade: "A"
+        },
+      });
+
+      (getServerSession as jest.Mock).mockResolvedValueOnce(null);
+
+      await setGradeHandler(req, res);
+
+      expect(res._getStatusCode()).toBe(401);
+      expect(JSON.parse(res._getData())).toEqual({
+        error: "Not authenticated"
+      });
+    });
+
+    it('should set a grade successfully', async () => {
+      const { req, res } = createMocks({
+        method: 'POST',
+        body: {
+          id: 1,
+          quarter: "20241",
+          grade: "A"
+        },
+      });
+
+      (getServerSession as jest.Mock).mockResolvedValueOnce({
+        user: { id: '123' }
+      });
+
+      const existingCourses = {
+        firstQuarter: "20241",
+        courses: [{ id: 1, quarter: "20241" }],
+        overrides: []
+      };
+
+      const updatedCourses = {
+        firstQuarter: "20241",
+        courses: [{ id: 1, quarter: "20241", grade: "A" }],
+        overrides: []
+      };
+
+      (prisma.user.findUnique as jest.Mock).mockResolvedValueOnce({
+        courses: existingCourses
+      });
+
+      (prisma.user.update as jest.Mock).mockResolvedValueOnce({
+        courses: updatedCourses
+      });
+
+      await setGradeHandler(req, res);
+
+      expect(res._getStatusCode()).toBe(200);
+      expect(JSON.parse(res._getData())).toEqual({
+        success: true,
+        courses: updatedCourses.courses
+      });
+    });
+
+    it('should remove a grade when grade is null', async () => {
+      const { req, res } = createMocks({
+        method: 'POST',
+        body: {
+          id: 1,
+          quarter: "20241",
+          grade: null
+        },
+      });
+
+      (getServerSession as jest.Mock).mockResolvedValueOnce({
+        user: { id: '123' }
+      });
+
+      const existingCourses = {
+        firstQuarter: "20241",
+        courses: [{ id: 1, quarter: "20241", grade: "A" }],
+        overrides: []
+      };
+
+      const updatedCourses = {
+        firstQuarter: "20241",
+        courses: [{ id: 1, quarter: "20241" }],
+        overrides: []
+      };
+
+      (prisma.user.findUnique as jest.Mock).mockResolvedValueOnce({
+        courses: existingCourses
+      });
+
+      (prisma.user.update as jest.Mock).mockResolvedValueOnce({
+        courses: updatedCourses
+      });
+
+      await setGradeHandler(req, res);
+
+      expect(res._getStatusCode()).toBe(200);
+      expect(JSON.parse(res._getData())).toEqual({
+        success: true,
+        courses: updatedCourses.courses
+      });
+    });
+
+    it('should return 400 for invalid grade', async () => {
+      const { req, res } = createMocks({
+        method: 'POST',
+        body: {
+          id: 1,
+          quarter: "20241",
+          grade: "Z" // Invalid grade
+        },
+      });
+
+      (getServerSession as jest.Mock).mockResolvedValueOnce({
+        user: { id: '123' }
+      });
+
+      await setGradeHandler(req, res);
+
+      expect(res._getStatusCode()).toBe(400);
+      expect(JSON.parse(res._getData())).toEqual({
+        error: expect.stringContaining("Invalid grade")
+      });
+    });
+
+    it('should return 404 if course not found', async () => {
+      const { req, res } = createMocks({
+        method: 'POST',
+        body: {
+          id: 999, // Non-existent course
+          quarter: "20241",
+          grade: "A"
+        },
+      });
+
+      (getServerSession as jest.Mock).mockResolvedValueOnce({
+        user: { id: '123' }
+      });
+
+      const existingCourses = {
+        firstQuarter: "20241",
+        courses: [{ id: 1, quarter: "20241" }],
+        overrides: []
+      };
+
+      (prisma.user.findUnique as jest.Mock).mockResolvedValueOnce({
+        courses: existingCourses
+      });
+
+      await setGradeHandler(req, res);
+
+      expect(res._getStatusCode()).toBe(404);
+      expect(JSON.parse(res._getData())).toEqual({
+        error: "Course not found in user's course list"
       });
     });
   });
