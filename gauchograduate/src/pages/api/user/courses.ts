@@ -2,6 +2,7 @@ import { getServerSession } from "next-auth/next"
 import { authOptions } from "../auth/[...nextauth]"
 import { prisma } from "@/lib/prisma"
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { UserCourses, MajorOverride } from "@/types/next-auth"
 
 type ResponseData = {
   error?: string
@@ -10,6 +11,7 @@ type ResponseData = {
     id: string;
     quarter: string;
   }[]
+  overrides?: MajorOverride[]
 }
 
 export default async function handler(
@@ -38,7 +40,8 @@ export default async function handler(
       return res.status(404).json({ error: "User not found" })
     }
 
-    const userCourses = user.courses as { firstQuarter: string; courses: { id: string; quarter: string }[] }
+    // Cast to unknown first, then to UserCourses to avoid the type error
+    const userCourses = user.courses as unknown as UserCourses
     res.json(userCourses)
   } catch (error) {
     console.error('Error fetching user courses:', error)
