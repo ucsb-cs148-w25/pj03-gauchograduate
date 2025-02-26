@@ -3,6 +3,13 @@
 ### Type Safety
 Because we are using typescript, we want to make sure that endpoints follow type rules. Make sure to note the types in app/components/coursetypes.ts as well as the types in types/next-auth.d.ts.
 
+### JSON Handling in Prisma
+When working with JSON fields in Prisma:
+- Always cast JSON data from Prisma as `unknown` first, then to your expected type: `data as unknown as YourType`
+- When updating JSON fields, use `JSON.parse(JSON.stringify(data))` to ensure proper serialization
+- This prevents type errors when working with complex nested objects in JSON fields
+- When modifying nested JSON data, always preserve all existing fields (like overrides and firstQuarter) to avoid data loss
+
 ### Testing
 - Use Jest for testing API endpoints
 - Tests are located in `__tests__` directories next to the files they test
@@ -17,6 +24,16 @@ Response formats:
 - GET /api/user/courses: Returns `{ firstQuarter: string, courses: Array<{id: string, quarter: string}> }`
 - POST /api/user/add-course: Returns `{ courses: { firstQuarter: string, courses: Array<{id: string, quarter: string}> } }`
 - POST /api/user/remove-course: Returns `{ courses: Array<{id: string, quarter: string}> }`
+- POST /api/user/add-override: Returns `{ overrides: Array<any> }`
+- POST /api/user/remove-override: Returns `{ overrides: Array<any> }`
+
+### Override Endpoints
+- POST /api/user/add-override: Adds a major requirement override to the user's courses
+  - Request body: `{ override: object }` - The override object format is determined by another team member
+  - Response: `{ overrides: Array<any> }` - The updated array of overrides
+- POST /api/user/remove-override: Removes a major requirement override from the user's courses
+  - Request body: `{ index: number }` - The index of the override to remove
+  - Response: `{ overrides: Array<any> }` - The updated array of overrides
 
 ### E2E Testing with Playwright
 - When testing OAuth flows, avoid simulating the full OAuth redirect flow
