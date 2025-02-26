@@ -5,6 +5,8 @@ import { computeGERequirements, GERequirement } from "./requirements/GEReqs";
 import { computeMajorRequirements } from "./requirements/COREReqs";
 import SegmentedProgressBar from "./progress_components/SegmentedProgressBar";
 import CollapsibleCard from "./progress_components/CollapsibleCard";
+import GEOverridePopup from "./progress_components/GEOverridePopup";
+import { MajorOverride } from "@/types/next-auth";
 
 interface ProgressTrackerProps {
   studentSchedule: ScheduleType;
@@ -18,6 +20,8 @@ const ProgressTracker = ({ studentSchedule, college = "CoE" }: ProgressTrackerPr
   // GE requirements state
   const [genEdFulfilled, setGenEdFulfilled] = useState<{ [req: string]: GERequirement }>({});
   const [expandedAreas, setExpandedAreas] = useState<{ [area: string]: boolean }>({});
+  const [overridePopupArea, setOverridePopupArea] = useState<string | null>(null);
+  const [overrides, setOverrides] = useState<MajorOverride[]>([]);
 
   // Major requirements state
   const [majorData, setMajorData] = useState<MajorData | null>(null);
@@ -40,11 +44,50 @@ const ProgressTracker = ({ studentSchedule, college = "CoE" }: ProgressTrackerPr
     setTotalUnits(totalUnitsTaken);
   }, [studentSchedule]);
 
+  // Fetch user courses and overrides
+  useEffect(() => {
+    fetch("/api/user/courses")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.overrides) {
+          setOverrides(data.overrides);
+        }
+      })
+      .catch((err) => console.error("Error fetching user courses:", err));
+  }, []);
+
   // Compute GE requirements.
   useEffect(() => {
     const geStatus = computeGERequirements(studentSchedule, college);
-    setGenEdFulfilled(geStatus);
-  }, [studentSchedule, college]);
+    
+    // Apply GE overrides
+    const updatedGeStatus = { ...geStatus };
+    
+    // Count overrides per requirement area
+    const overrideCountByArea: { [area: string]: number } = {};
+    
+    overrides.forEach(override => {
+      if (override.type === 'ge' && override.requirement in updatedGeStatus) {
+        // Initialize counter if not exists
+        if (!overrideCountByArea[override.requirement]) {
+          overrideCountByArea[override.requirement] = 0;
+        }
+        
+        // Increment counter for this area
+        overrideCountByArea[override.requirement]++;
+        
+        // Update the count in the requirement status
+        updatedGeStatus[override.requirement] = {
+          ...updatedGeStatus[override.requirement],
+          count: updatedGeStatus[override.requirement].count + 1,
+          // Only mark as fulfilled if count meets or exceeds required
+          fulfilled: (updatedGeStatus[override.requirement].count + 1) >= updatedGeStatus[override.requirement].required
+        };
+      }
+    });
+    
+    setGenEdFulfilled(updatedGeStatus);
+  }, [studentSchedule, college, overrides]);
 
   // Fetch major data.
   useEffect(() => {
@@ -97,33 +140,120 @@ const ProgressTracker = ({ studentSchedule, college = "CoE" }: ProgressTrackerPr
     "NWC": "World Cultures"
   };
 
+  const handleCheckboxClick = (area: string, fulfilled: boolean) => {
+    if (!fulfilled) {
+      setOverridePopupArea(area);
+    }
+  };
+
+  const handleOverrideConfirm = async (area: string, creditType: string) => {
+    try {
+      const override = {
+        type: 'ge',
+        requirement: area,
+        creditSource: creditType // This is just for display, not used by the API
+      };
+      
+      const response = await fetch('/api/user/add-override', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ override }),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to add override');
+      }
+      
+      const data = await response.json();
+      setOverrides(data.overrides);
+      setOverridePopupArea(null);
+    } catch (error) {
+      console.error('Error adding override:', error);
+    }
+  };
+
+  const handleRemoveOverride = async (area: string) => {
+    try {
+      // Find the most recently added override for this area
+      const overridesToRemove = overrides
+        .filter(o => o.type === 'ge' && o.requirement === area);
+      
+      if (!overridesToRemove.length) return;
+      
+      // Remove the most recent override
+      const overrideToRemove = overridesToRemove[overridesToRemove.length - 1];
+      
+      const response = await fetch('/api/user/remove-override', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ override: overrideToRemove }),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to remove override');
+      }
+      
+      const data = await response.json();
+      setOverrides(data.overrides);
+    } catch (error) {
+      console.error('Error removing override:', error);
+    }
+  };
+
   const renderGECourseList = (area: string) => {
     const courses = genEdFulfilled[area]?.courses || [];
     const isExpanded = expandedAreas[area] || false;
     const itemsToShow = isExpanded ? courses : courses.slice(0, 1);
-
-    if (courses.length === 0) return null;
+    
+    // Count overrides for this area
+    const areaOverrides = overrides.filter(o => o.type === 'ge' && o.requirement === area);
+    const overrideCount = areaOverrides.length;
+    const hasOverride = overrideCount > 0;
 
     return (
       <div className="ml-8 mt-1">
-        <ul className="list-disc space-y-1 break-words text-sm text-gray-600">
-          {itemsToShow.map((course) => (
-            <li key={course.gold_id} className="whitespace-normal overflow-wrap-anywhere">
-              {course.gold_id} ({course.units} units)
-            </li>
-          ))}
-        </ul>
-        {courses.length > 1 && (
-          <button
-            className="text-blue-500 text-xs mt-1 focus:outline-none"
-            onClick={() =>
-              setExpandedAreas((prev) => ({ ...prev, [area]: !prev[area] }))
-            }
-            aria-expanded={isExpanded}
-            aria-label={isExpanded ? `Show fewer ${area} courses` : `Show more ${area} courses`}
-          >
-            {isExpanded ? "Show Less" : "Show More"}
-          </button>
+        {hasOverride && (
+          <div className="flex items-center text-sm text-blue-600 mb-1">
+            <span>{overrideCount} {overrideCount === 1 ? 'Course' : 'Courses'} Taken outside UCSB</span>
+            <button 
+              onClick={() => handleRemoveOverride(area)}
+              className="ml-2 text-red-500 text-xs hover:underline"
+              aria-label={`Remove ${area} override`}
+            >
+              (Remove)
+            </button>
+          </div>
+        )}
+        
+        {courses.length > 0 ? (
+          <>
+            <ul className="list-disc space-y-1 break-words text-sm text-gray-600">
+              {itemsToShow.map((course) => (
+                <li key={course.gold_id} className="whitespace-normal overflow-wrap-anywhere">
+                  {course.gold_id} ({course.units} units)
+                </li>
+              ))}
+            </ul>
+            {courses.length > 1 && (
+              <button
+                className="text-blue-500 text-xs mt-1 focus:outline-none"
+                onClick={() =>
+                  setExpandedAreas((prev) => ({ ...prev, [area]: !prev[area] }))
+                }
+                aria-expanded={isExpanded}
+                aria-label={isExpanded ? `Show fewer ${area} courses` : `Show more ${area} courses`}
+              >
+                {isExpanded ? "Show Less" : "Show More"}
+              </button>
+            )}
+          </>
+        ) : (
+          // Only show "No courses" message if there are no courses AND no overrides
+          hasOverride ? null : null
         )}
       </div>
     );
@@ -225,8 +355,9 @@ const ProgressTracker = ({ studentSchedule, college = "CoE" }: ProgressTrackerPr
                       type="checkbox"
                       readOnly
                       checked={!!genEdFulfilled[area]?.fulfilled}
-                      className="mr-2"
+                      className="mr-2 cursor-pointer"
                       aria-label={`${area} requirement fulfilled`}
+                      onClick={() => handleCheckboxClick(area, !!genEdFulfilled[area]?.fulfilled)}
                     />
                     <span title={areaDescriptions[area]}>{area}</span>
                   </div>
@@ -249,8 +380,9 @@ const ProgressTracker = ({ studentSchedule, college = "CoE" }: ProgressTrackerPr
                       type="checkbox"
                       readOnly
                       checked={!!genEdFulfilled[area]?.fulfilled}
-                      className="mr-2"
+                      className="mr-2 cursor-pointer"
                       aria-label={`${area} requirement fulfilled`}
+                      onClick={() => handleCheckboxClick(area, !!genEdFulfilled[area]?.fulfilled)}
                     />
                     <span title={areaDescriptions[area]}>{area}</span>
                   </div>
@@ -338,13 +470,21 @@ const ProgressTracker = ({ studentSchedule, college = "CoE" }: ProgressTrackerPr
         </div>
       </CollapsibleCard>
 
-
       {/* Extra Courses Card */}
       <CollapsibleCard title="Extra Courses">
         <div role="region" aria-label="Extra Courses">
           {renderExtraCoursesList()}
         </div>
       </CollapsibleCard>
+
+      {/* Override Popup */}
+      {overridePopupArea && (
+        <GEOverridePopup
+          area={overridePopupArea}
+          onClose={() => setOverridePopupArea(null)}
+          onConfirm={handleOverrideConfirm}
+        />
+      )}
     </div>
   );
 };
