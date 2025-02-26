@@ -33,8 +33,8 @@ export default async function handler(
     return res.status(400).json({ error: "Override must include 'type' and 'requirement' fields" })
   }
 
-  if (override.type !== 'major' && override.type !== 'ge') {
-    return res.status(400).json({ error: "Override type must be 'major' or 'ge'" })
+  if (override.type !== 'major' && override.type !== 'ge' && override.type !== 'unit') {
+    return res.status(400).json({ error: "Override type must be 'major' or 'ge' or 'unit'" })
   }
 
   if (override.type === 'major' && 
