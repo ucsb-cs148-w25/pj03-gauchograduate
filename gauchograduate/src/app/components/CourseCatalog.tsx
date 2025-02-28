@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Course, Term, ScheduleType } from "./coursetypes";
+import { Course, Term, ScheduleType, PrerequisiteCondition } from "./coursetypes";
 
 interface CourseCatalogProps {
   courses: Course[];
@@ -164,11 +164,65 @@ interface CoursePreviewProps {
   onClose: () => void;
 }
 
+const PrerequisiteRenderer: React.FC<{condition: PrerequisiteCondition}> = ({ 
+  condition 
+}) => {
+  if (condition.class && condition.class.length > 0) {
+    return (
+      <ul className="list-disc pl-5">
+        {condition.class.map((cls, idx) => (
+          <li key={idx} className="mb-1">
+            <span className="font-medium">{cls.goldId}</span>
+            {cls.Required_Grade !== "Na" && 
+              <span className="text-sm ml-1">(Min grade: {cls.Required_Grade})</span>
+            }
+            {cls.Taken_Concurrently === "True" && 
+              <span className="text-sm ml-1 text-blue-600">(Can be taken concurrently)</span>
+            }
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
+  if (condition.and && condition.and.length > 0) {
+    return (
+      <div className="ml-4 border-l-2 border-blue-300 pl-3 my-2">
+        {condition.and.map((subcondition, idx) => (
+          <PrerequisiteRenderer 
+            key={idx} 
+            condition={subcondition} 
+          />
+        ))}
+      </div>
+    );
+  }
+
+  if (condition.or && condition.or.length > 0) {
+    return (
+      <div className="ml-4 border-l-2 border-orange-300 pl-3 my-2">
+        {condition.or.map((subcondition, idx) => (
+          <PrerequisiteRenderer 
+            key={idx} 
+            condition={subcondition} 
+          />
+        ))}
+      </div>
+    );
+  }
+
+  return null;
+};
+
 const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose }) => {
+  const hasPrerequisites = course.prerequisites && 
+    ((course.prerequisites.and && course.prerequisites.and.length > 0) || 
+     (course.prerequisites.or && course.prerequisites.or.length > 0));
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div className="absolute inset-0 bg-black opacity-50" onClick={onClose} />
-      <div className="bg-white rounded-xl p-6 z-10 max-w-lg w-full shadow-lg">
+      <div className="bg-white rounded-xl p-6 z-10 max-w-lg w-full shadow-lg max-h-[80vh] overflow-y-auto">
         <button 
           className="float-right text-gray-700 hover:text-gray-900"
           onClick={onClose}
@@ -178,10 +232,11 @@ const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose }) => {
         </button>
         <h2 className="text-xl font-bold mb-2">{course.gold_id}</h2>
         <p className="text-l font-bold mb-3"> {course.title}</p>
-        <p className="mb-1"><strong>Description:</strong> {course.description}</p>
-        <p className="mb-1"><strong>Subject Area:</strong> {course.subjectArea}</p>
-        <p className="mb-1"><strong>Units:</strong> {course.units}</p>
-        <p className="mb-1">
+        <p className="mb-3"><strong>Description:</strong> {course.description}</p>
+        <p className="mb-3"><strong>Subject Area:</strong> {course.subjectArea}</p>
+        <p className="mb-3"><strong>Units:</strong> {course.units}</p>
+        
+        <div className="mb-3">
           <strong>General Ed:</strong> {course.generalEd.length > 0 ? (
             <ul className="list-disc pl-5">
               {course.generalEd.map((ge, index) => (
@@ -189,12 +244,57 @@ const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose }) => {
               ))}
             </ul>
           ) : (
-            'None'
+            <span> None</span>
           )}
-        </p>
-        <p className="mb-1">
-          <strong>Prerequisites:</strong> {course.prerequisites.length ? course.prerequisites.join(', ') : 'None'}
-        </p>
+        </div>
+        
+        <div className="mb-3">
+          <strong>Prerequisites:</strong>
+          {hasPrerequisites ? (
+            <div className="mt-2 bg-gray-50 p-3 rounded-lg">
+              <div className="mb-3 text-xs bg-gray-100 p-2 rounded border border-gray-200">
+                <div className="font-semibold mb-1">Key:</div>
+                <div className="flex items-center mb-1">
+                  <div className="w-3 h-3 bg-blue-300 mr-2"></div>
+                  <span>AND - All conditions must be met</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-3 h-3 bg-orange-300 mr-2"></div>
+                  <span>OR - Any one condition must be met</span>
+                </div>
+              </div>
+              
+              {course.prerequisites.and && course.prerequisites.and.length > 0 && (
+                <div>
+                  <div className="font-semibold mb-2">All of the following are required:</div>
+                  <div className="space-y-2">
+                    {course.prerequisites.and.map((condition, idx) => (
+                      <div key={idx} className="border-l-2 border-blue-300 pl-3 py-1">
+                        <PrerequisiteRenderer condition={condition} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+              
+              {course.prerequisites.or && course.prerequisites.or.length > 0 && (
+                <div>
+                  <div className="font-semibold mb-2">Any one of the following is required:</div>
+                  <div className="space-y-2">
+                    {course.prerequisites.or.map((condition, idx) => (
+                      <div key={idx} className="border-l-2 border-orange-300 pl-3 py-1">
+                        <PrerequisiteRenderer condition={condition} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          ) : (
+            <span> None</span>
+          )}
+        </div>
+        
         <p className="mb-1">
           <strong>Unlocks:</strong> {course.unlocks.length ? course.unlocks.join(', ') : 'None'}
         </p>
