@@ -152,7 +152,7 @@
     "ANTH 194": {
         "course": "ANTH 194",
         "prerequisites": {
-            "type": "and",
+            "type": "or",
             "requirements": [
                 {
                     "type": "and",
@@ -172,24 +172,19 @@
                     ]
                 },
                 {
-                    "type": "or",
+                    "type": "and",
                     "requirements": [
                         {
-                            "type": "and",
-                            "requirements": [
-                                {
-                                    "type": "course",
-                                    "id": "ANTH 3SS",
-                                    "minGrade": null,
-                                    "canTakeConcurrently": false
-                                },
-                                {
-                                    "type": "course",
-                                    "id": "ANTH 100",
-                                    "minGrade": null,
-                                    "canTakeConcurrently": false
-                                }
-                            ]
+                            "type": "course",
+                            "id": "ANTH 3SS",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "ANTH 100",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
                         }
                     ]
                 }
@@ -239,13 +234,13 @@
             "requirements": [
                 {
                     "type": "course",
-                    "id": "ANTH 1*",
+                    "id": "ANTH 1",
                     "minGrade": null,
                     "canTakeConcurrently": false
                 },
                 {
                     "type": "course",
-                    "id": "ANTH 1*",
+                    "id": "ANTH 1",
                     "minGrade": null,
                     "canTakeConcurrently": false
                 }

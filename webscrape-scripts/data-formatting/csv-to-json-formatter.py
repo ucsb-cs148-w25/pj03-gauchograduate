@@ -81,6 +81,10 @@ You are an AI that parses university course prerequisite data from HTML and outp
        "type": "or",
        "requirements": [ ... ]
      }}
+   IMPORTANT:
+   - You must find the outermost operation first. The outermost operations are found in this format:
+   td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;
+   - We know that the outermost operation here is an OR operation but it could be a variety of operations such as AND, OR, or As well as. Then you you must find the inner operations and group them accordingly.
    - "As well as" is usually the outermost AND operation. "As well as" should be converted into a top-level AND block.
    - Use nested and/or blocks as necessary to capture the exact logical grouping.
    - In each block, the array "requirements" holds each sub-requirement (either a course or another nested and/or group).
