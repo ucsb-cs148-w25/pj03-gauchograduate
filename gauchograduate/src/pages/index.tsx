@@ -40,7 +40,7 @@ async function fetchCourses(quarter: string): Promise<Course[]> {
     department: course.subject_area,
     units: course.units || 0,
     generalEd: Array.isArray(course.general_ed) ? course.general_ed : [],
-    prerequisites: Array.isArray(course.prerequisites) ? course.prerequisites.map(String) : [],
+    prerequisites: course.prerequisites,
     unlocks: Array.isArray(course.unlocks) ? course.unlocks.map(String) : [],
     term: []
   }));
@@ -80,7 +80,7 @@ async function fetchCoursesByIds(courseIds: number[]): Promise<Course[]> {
       department: course.subject_area || course.subject_area,
       units: course.units || 0,
       generalEd: Array.isArray(course.general_ed) ? course.general_ed : [],
-      prerequisites: Array.isArray(course.prerequisites) ? course.prerequisites.map(String) : [],
+      prerequisites: course.prerequisites,
       unlocks: Array.isArray(course.unlocks) ? course.unlocks.map(String) : [],
       term: []
     }));
