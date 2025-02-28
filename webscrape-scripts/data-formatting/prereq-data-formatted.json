@@ -1,232 +1,355 @@
-[
-  {
-    "course": "CHEM 6AL",
-    "prerequisites": {
-      "type": "and",
-      "requirements": [
-        {
-          "type": "or",
-          "requirements": [
-            {
-              "type": "or",
-              "requirements": [
+{
+    "ANTH 100": {
+        "course": "ANTH 100",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
                 {
-                  "type": "course",
-                  "dept": "CHEM",
-                  "number": "1AL",
-                  "minGrade": null,
-                  "canTakeConcurrently": false
+                    "type": "course",
+                    "id": "ANTH 3",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
                 },
                 {
-                  "type": "course",
-                  "dept": "CHEM",
-                  "number": "2AC",
-                  "minGrade": null,
-                  "canTakeConcurrently": false
+                    "type": "course",
+                    "id": "ANTH 3SS",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
                 }
-              ]
-            },
-            {
-              "type": "or",
-              "requirements": [
-                {
-                  "type": "course",
-                  "dept": "CHEM",
-                  "number": "1BL",
-                  "minGrade": null,
-                  "canTakeConcurrently": false
-                },
-                {
-                  "type": "course",
-                  "dept": "CHEM",
-                  "number": "2BC",
-                  "minGrade": null,
-                  "canTakeConcurrently": false
-                }
-              ]
-            },
-            {
-              "type": "or",
-              "requirements": [
-                {
-                  "type": "course",
-                  "dept": "CHEM",
-                  "number": "1CL",
-                  "minGrade": null,
-                  "canTakeConcurrently": false
-                },
-                {
-                  "type": "course",
-                  "dept": "CHEM",
-                  "number": "2CC",
-                  "minGrade": null,
-                  "canTakeConcurrently": false
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "and",
-          "requirements": [
-            {
-              "type": "or",
-              "requirements": [
-                {
-                  "type": "course",
-                  "dept": "CHEM",
-                  "number": "2AL",
-                  "minGrade": null,
-                  "canTakeConcurrently": false
-                },
-                {
-                  "type": "course",
-                  "dept": "CHEM",
-                  "number": "2BL",
-                  "minGrade": null,
-                  "canTakeConcurrently": false
-                }
-              ]
-            },
-            {
-              "type": "or",
-              "requirements": [
-                {
-                  "type": "course",
-                  "dept": "CHEM",
-                  "number": "109A",
-                  "minGrade": "C-",
-                  "canTakeConcurrently": false
-                },
-                {
-                  "type": "course",
-                  "dept": "CHEM",
-                  "number": "109AH",
-                  "minGrade": "C-",
-                  "canTakeConcurrently": false
-                },
-                {
-                  "type": "course",
-                  "dept": "CHEM",
-                  "number": "130A",
-                  "minGrade": "C-",
-                  "canTakeConcurrently": false
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "or",
-          "requirements": [
-            {
-              "type": "course",
-              "dept": "CHEM",
-              "number": "109B",
-              "minGrade": null,
-              "canTakeConcurrently": true
-            },
-            {
-              "type": "course",
-              "dept": "CHEM",
-              "number": "109BH",
-              "minGrade": null,
-              "canTakeConcurrently": true
-            },
-            {
-              "type": "course",
-              "dept": "CHEM",
-              "number": "130B",
-              "minGrade": null,
-              "canTakeConcurrently": true
-            }
-          ]
+            ]
         }
-      ]
-    }
-  },
-  {
-    "course": "CHEM 6BL",
-    "prerequisites": {
-      "type": "and",
-      "requirements": [
-        {
-          "type": "and",
-          "requirements": [
-            {
-              "type": "course",
-              "dept": "CHEM",
-              "number": "6AL",
-              "minGrade": "C-",
-              "canTakeConcurrently": false
-            },
-            {
-              "type": "or",
-              "requirements": [
+    },
+    "ANTH 102": {
+        "course": "ANTH 102",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
                 {
-                  "type": "course",
-                  "dept": "CHEM",
-                  "number": "109A",
-                  "minGrade": "C-",
-                  "canTakeConcurrently": false
-                },
-                {
-                  "type": "course",
-                  "dept": "CHEM",
-                  "number": "109AH",
-                  "minGrade": "C-",
-                  "canTakeConcurrently": false
-                },
-                {
-                  "type": "course",
-                  "dept": "CHEM",
-                  "number": "130A",
-                  "minGrade": "C-",
-                  "canTakeConcurrently": false
+                    "type": "course",
+                    "id": "ANTH 2",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
                 }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "or",
-          "requirements": [
-            {
-              "type": "course",
-              "dept": "CHEM",
-              "number": "109B",
-              "minGrade": "C-",
-              "canTakeConcurrently": false
-            },
-            {
-              "type": "course",
-              "dept": "CHEM",
-              "number": "109BH",
-              "minGrade": "C-",
-              "canTakeConcurrently": false
-            },
-            {
-              "type": "course",
-              "dept": "CHEM",
-              "number": "130B",
-              "minGrade": "C-",
-              "canTakeConcurrently": false
-            }
-          ]
+            ]
         }
-      ]
-    }
-  },
-  {
-    "course": "CHEM 99",
-    "prerequisites": {
-      "type": "and",
-      "requirements": [
-        {
-          "type": "specialRequirement",
-          "requirement": "Consent of instructor"
+    },
+    "ANTH 116A": {
+        "course": "ANTH 116A",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "ANTH 2",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
         }
-      ]
+    },
+    "ANTH 123MG": {
+        "course": "ANTH 123MG",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "ANTH 9",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "ANTH 125": {
+        "course": "ANTH 125",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "ANTH 2",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "ANTH 129": {
+        "course": "ANTH 129",
+        "prerequisites": null
+    },
+    "ANTH 130": {
+        "course": "ANTH 130",
+        "prerequisites": null
+    },
+    "ANTH 133": {
+        "course": "ANTH 133",
+        "prerequisites": null
+    },
+    "ANTH 150": {
+        "course": "ANTH 150",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "ANTH 5",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "ANTH 7",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "ANTH 9",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "ANTH 151T": {
+        "course": "ANTH 151T",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "ANTH 5",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSY 1",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "ANTH 178": {
+        "course": "ANTH 178",
+        "prerequisites": null
+    },
+    "ANTH 183": {
+        "course": "ANTH 183",
+        "prerequisites": null
+    },
+    "ANTH 190": {
+        "course": "ANTH 190",
+        "prerequisites": null
+    },
+    "ANTH 193": {
+        "course": "ANTH 193",
+        "prerequisites": null
+    },
+    "ANTH 194": {
+        "course": "ANTH 194",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "and",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "ANTH 3",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "ANTH 100",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "requirements": [
+                        {
+                            "type": "and",
+                            "requirements": [
+                                {
+                                    "type": "course",
+                                    "id": "ANTH 3SS",
+                                    "minGrade": null,
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "ANTH 100",
+                                    "minGrade": null,
+                                    "canTakeConcurrently": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "ANTH 194P": {
+        "course": "ANTH 194P",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "ANTH 100",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "ANTH 195B": {
+        "course": "ANTH 195B",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "ANTH 195A",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "ANTH 195C": {
+        "course": "ANTH 195C",
+        "prerequisites": null
+    },
+    "ANTH 197ES": {
+        "course": "ANTH 197ES",
+        "prerequisites": null
+    },
+    "ANTH 198": {
+        "course": "ANTH 198",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "ANTH 1*",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "ANTH 1*",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "ANTH 199": {
+        "course": "ANTH 199",
+        "prerequisites": null
+    },
+    "ANTH 199RA": {
+        "course": "ANTH 199RA",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "ANTH 1",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "ANTH 1",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "ANTH 2": {
+        "course": "ANTH 2",
+        "prerequisites": null
+    },
+    "ANTH 3": {
+        "course": "ANTH 3",
+        "prerequisites": null
+    },
+    "ANTH 99": {
+        "course": "ANTH 99",
+        "prerequisites": null
+    },
+    "CHEM 6BL": {
+        "course": "CHEM 6BL",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "or",
+                    "requirements": [
+                        {
+                            "type": "and",
+                            "requirements": [
+                                {
+                                    "type": "course",
+                                    "id": "CHEM 6AL",
+                                    "minGrade": "C-",
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "CHEM 109A",
+                                    "minGrade": "C-",
+                                    "canTakeConcurrently": false
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "requirements": [
+                                {
+                                    "type": "course",
+                                    "id": "CHEM 6AL",
+                                    "minGrade": "C-",
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "CHEM 109AH",
+                                    "minGrade": "C-",
+                                    "canTakeConcurrently": false
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "CHEM 109B",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "CHEM 109BH",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        }
+                    ]
+                }
+            ]
+        }
     }
-  }
-]
+}

@@ -1,140 +1,209 @@
-import csv
 import json
 from openai import OpenAI
-import time
 from dotenv import load_dotenv
 import os
-import re
 
 load_dotenv()
 
 openai_api_key = os.getenv("OPENAI_API_KEY")
 client = OpenAI(api_key=openai_api_key)
 
-csv_file = "../unlocks-removed.csv"
-json_file = "prereq-data-formatted.json"
-
 MODEL = "gpt-4o-mini"
 TEMPERATURE = 0
 
-def read_csv(file_path):
-    prerequisites = []
-    with open(file_path, newline='', encoding="utf-8") as csvfile:
-        reader = csv.reader(csvfile)
-        for row in reader:
-            if len(row) < 2:
-                continue
-            course, prereq = row
-            prerequisites.append((course.strip(), prereq.strip()))
-    return prerequisites
+# Load OpenAI API key from .env
+load_dotenv()
+openai_api_key = os.getenv("OPENAI_API_KEY")
+client = OpenAI(api_key=openai_api_key)
 
-def get_structured_prerequisite(course, prereq_text):
+# File paths
+file_path = "../course_prerequisites_full.txt"
+json_file = "prereq-data-formatted.json"
+
+# OpenAI model settings
+MODEL = "gpt-4o-mini"
+TEMPERATURE = .2
+
+# Read the input file
+with open(file_path, "r", encoding="utf-8") as f:
+    lines = f.readlines()
+
+courses_data = {}
+current_course = None
+current_html = []
+parsing_html = False
+
+# **Step through file line by line**
+for line in lines:
+    line = line.strip()  # Remove leading/trailing whitespace
+
+    # Detect a new course
+    if line.startswith("id:"):
+        if current_course and current_html:
+            courses_data[current_course] = "\n".join(current_html)  # Save last course
+
+        # Extract course name
+        current_course = line.replace("id:", "").strip()
+        current_html = []  # Reset HTML content
+        parsing_html = False  # HTML starts when we see <div>
+
+    # Start capturing HTML content once <div> is found
+    elif line.startswith("<div"):
+        parsing_html = True
+
+    # If we are parsing HTML, add to list
+    if parsing_html:
+        current_html.append(line)
+
+# **Save the last parsed course**
+if current_course and current_html:
+    courses_data[current_course] = "\n".join(current_html)
+
+for course_id, course_html in courses_data.items():
     prompt = f"""
-You are an expert at parsing textual course prerequisites into a structured JSON format. 
-Here are strict rules on how to interpret commas, semicolons, 'and', and 'or':
+You are an AI that parses university course prerequisite data from HTML and outputs a structured JSON representation of the requirements. 
 
-1. **Semicolons** (;) almost always separate major **AND** clauses.  
-   - Example: "X, Y; Z" → means "(X, Y) AND (Z)".  
+**Output Requirements**:
+1. Return only valid JSON. Do not include extra commentary or explanations.
+2. JSON Structure:
+   {{
+     "course": "<course_id>",
+     "prerequisites": <logical structure>
+   }}
+3. Logical Structure Conventions:
+   - Use "type": "and" or "type": "or" plus a "requirements" array to represent groupings:
+     {{
+       "type": "and",
+       "requirements": [ ... ]
+     }}
+     or
+     {{
+       "type": "or",
+       "requirements": [ ... ]
+     }}
+   - "As well as" is usually the outermost AND operation. "As well as" should be converted into a top-level AND block.
+   - Use nested and/or blocks as necessary to capture the exact logical grouping.
+   - In each block, the array "requirements" holds each sub-requirement (either a course or another nested and/or group).
 
-2. **'and'** at the same "level" is also an **AND** separator.  
-   - E.g. "X and Y" → {{ "type": "and", "requirements": [X, Y] }}.
+4. Course Requirements:
+   - Each course is represented as:
+     {{
+       "type": "course",
+       "id": "<Department> <Number>",  // e.g., "CHEM 6AL"
+       "minGrade": "<Min Grade>", // if stated (e.g. "C-")
+       "canTakeConcurrently": <Boolean> // if "may be taken concurrently"
+     }}
+   - If concurrency is not explicitly stated, "canTakeConcurrently" should be false or omitted.
+  
+5. Course with no prerequisites:
+   - The course may may have a statement such as "...does not have any PreRequisites" or something similar. In this case, Ignore any other information (such as recommended preparation) and represent the course as having no prerequisites. For example:
+   {{
+      "course": "ANTH 7",
+      "prerequisites": null
+   }}
 
-3. **'or'** indicates an **OR** group.  
-   - E.g. "X or Y or Z" → {{ "type": "or", "requirements": [X, Y, Z] }}.
+Example formatting:
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">CHEM      6AL   with a minimum grade of C-</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">AND CHEM    109A    with a minimum grade of C-</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">CHEM      6AL   with a minimum grade of C-</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">AND CHEM    109AH   with a minimum grade of C-</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;">As well as: </td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">CHEM    109B   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">CHEM    109BH  </td>
+	</tr>
+    
+  would be represented as:
+        {{"course": "CHEM 6BL",
+        "prerequisites": {{
+            "type": "and",
+            "requirements": [
+                {{"type": "or",
+                "requirements": [
+                    {{"type": "and",
+                    "requirements": [
+                        {{"type": "course",
+                        "id": "CHEM 6AL",
+                        "minGrade": "C-",
+                        "canTakeConcurrently": false
+                        }},
+                        {{"type": "course",
+                        "id": "CHEM 109A",
+                        "minGrade": "C-",
+                        "canTakeConcurrently": false
+                        }}
+                    ]}},
+                    {{"type": "and",
+                    "requirements": [
+                        {{"type": "course",
+                        "id": "CHEM 6AL",
+                        "minGrade": "C-",
+                        "canTakeConcurrently": false
+                        }},
+                        {{"type": "course",
+                        "id": "CHEM 109AH",
+                        "minGrade": "C-",
+                        "canTakeConcurrently": false
+                        }}
+                    ]}}
+                ]}},
+                {{"type": "or",
+                "requirements": [
+                    {{"type": "course",
+                    "id": "CHEM 109B",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                    }},
+                    {{"type": "course",
+                    "id": "CHEM 109BH",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                    }}
+                ]}}
+            ]
+        }}
+      }}
 
-4. **Parenthesize 'X and Y or Z'** as (X) AND ((Y) OR (Z)) (i.e., do not interpret it as ((X AND Y) OR Z)).
+  (here double brackets are used to prevent python string formatting from interfering)
 
-5. **Commas** can mean EITHER "and" or "or" depending on the context:
-   - If the text says "X or Y," treat the comma as a continuation of the **OR** group.
-   - If the text says "X, Y, Z, and W" (without an explicit "or" before Y or Z), treat those as **AND** elements unless there's an explicit "or".
-   - If ambiguous, prefer grouping with "or" if 'or' is mentioned close by. 
-     *Example:* "X or Y, Z" might mean OR if it’s "X or Y or Z," but if it’s "X, Y, Z, or W," then everything except "W" might be an **AND** group.
+5. Special Requirements:
+   - If you encounter other requirements (e.g. "Upper-division standing", "3.0 GPA"), represent them as:
+     {{
+       "type": "specialRequirement",
+       "requirement": "<text>"
+     }}
 
-6. **A single requirement that contains multiple "or" groups plus "and"** → break it down **one piece at a time**:
-   - Identify each top-level **AND** section (split by "and" or semicolon).
-   - Within each section, if you see multiple "or" items, nest them in an **OR** node.
+6. Preserve the AND/OR relationships exactly as indicated by words like "AND", "OR", and "As well as" in the HTML.
 
-### **Additional JSON Rules**  
-- Return only **valid JSON** with no extra text or explanations.
-- If there are **no prerequisites** (e.g., "None"), return:
-  {{
-    "course": "{course}",
-    "prerequisites": {{"type": "and", "requirements": []}}
-  }}
-- A **specific course** is:
-  {{
-    "type": "course",
-    "dept": "<DEPT>",
-    "number": "<NUMBER>",
-    "minGrade": "<GRADE OR NULL>",
-    "canTakeConcurrently": <TRUE/FALSE>
-  }}
-- If prerequisites mention **special requirements** (like "Upper-division standing", "3.0 GPA"), use:
-  {{
-    "type": "specialRequirement",
-    "requirement": "<REQUIREMENT>"
-  }}
+7. Your final JSON must be valid and reflect the hierarchical logic of the prerequisites.
 
----
-
-### **Your Task**  
-Convert the prerequisite below into structured JSON, following the rules above as closely as possible.
-
-#### **Input**  
-Course: {course}  
-Prerequisite: {prereq_text}
-
-#### **Output**  
-Return only a valid JSON object named "prerequisites" inside a top-level:
-json
-{{
-  "course": "{course}",
-  "prerequisites": <YOUR AST JSON HERE>
-}}
-
+**Input HTML**:
+this is the target course: {course_id}
+this is the prerequisites in html: {course_html}
 """
+    print(f"\n🔹 THE COURSE ID: {course_id}")
+    response = client.chat.completions.create(
+        model=MODEL,
+        messages=[{"role": "system", "content": "You are a helpful assistant."},
+                  {"role": "user", "content": prompt}],
+        temperature=TEMPERATURE
+    )
+
+    structured_json = response.choices[0].message.content.strip()
+
+    print(f"\n🔹 OpenAI Raw Response for {course_id}:\n{structured_json}\n")
+
     try:
-        response = client.chat.completions.create(
-            model=MODEL,
-            messages=[{"role": "system", "content": "You are a helpful assistant."},
-                      {"role": "user", "content": prompt}],
-            temperature=TEMPERATURE
-        )
-
-        structured_json = response.choices[0].message.content.strip()
-
-        # ✅ Debugging: Print raw response
-        print(f"\n🔹 OpenAI Raw Response for {course}:\n{structured_json}\n")
-
-        # ✅ If response contains Markdown formatting, remove it
-        structured_json = re.sub(r"```json\s*|\s*```", "", structured_json).strip()
-
-        # ✅ Check if response is empty before parsing
-        if not structured_json:
-            raise ValueError(f"Received empty response from OpenAI for {course}.")
-
-        # ✅ Now parse JSON
-        return json.loads(structured_json)
-
+        courses_data[course_id] = json.loads(structured_json)  # ✅ Convert from string to dictionary
     except json.JSONDecodeError as e:
-        print(f"⚠️ JSON Parsing Error for {course}: {e}")
-        return None
-    except Exception as e:
-        print(f"⚠️ Error processing {course}: {str(e)}")
-        return None
+        print(f"❌ JSON Decode Error for {course_id}: {e}")
+        continue  # Skip if JSON is malformed
 
-def process_and_save(csv_file, json_output_file):
-    prerequisites = read_csv(csv_file)
-    parsed_data = []
-
-    for course, prereqs in prerequisites[7:10]:
-        structured_prereq = get_structured_prerequisite(course, prereqs)
-        if structured_prereq:
-            parsed_data.append(structured_prereq)
-        time.sleep(2)  # Avoid API rate limits
-
-    with open(json_output_file, "w", encoding="utf-8") as f:
-        json.dump(parsed_data, f, indent=2)
-
-if __name__ == "__main__":
-    process_and_save(csv_file, json_file)
+# **Save structured JSON output**
+output_file = json_file
+with open(output_file, "w", encoding="utf-8") as f:
+    json.dump(courses_data, f, indent=4)
