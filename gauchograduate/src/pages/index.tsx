@@ -203,8 +203,13 @@ export default function HomePage() {
   useEffect(() => {
     if (status === "unauthenticated") {
       router.push("/signin");
+    } else if (status === "authenticated" && session?.user) {
+      // Check if user has a major selected
+      if (!session.user.majorId) {
+        router.push("/update-profile");
+      }
     }
-  }, [status, router]);
+  }, [status, router, session]);
 
   const isLoading = isUserCoursesLoading || isSavedScheduleLoading || (!hasEverLoaded && !isUserCoursesError && !isSavedScheduleError);
 
