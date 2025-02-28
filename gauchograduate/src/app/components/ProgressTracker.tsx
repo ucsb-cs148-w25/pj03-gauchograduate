@@ -16,6 +16,8 @@ interface ProgressTrackerProps {
 const ProgressTracker = ({ studentSchedule, college = "CoE" }: ProgressTrackerProps) => {
   const [totalUnits, setTotalUnits] = useState<number>(0);
   const [scheduledCourses, setScheduledCourses] = useState<Course[]>([]);
+  const [externalUnits, setExternalUnits] = useState<number>(0);
+  const [isAddingOverride, setIsAddingOverride] = useState<boolean>(false);
 
   // GE requirements state
   const [genEdFulfilled, setGenEdFulfilled] = useState<{ [req: string]: GERequirement }>({});
@@ -44,6 +46,14 @@ const ProgressTracker = ({ studentSchedule, college = "CoE" }: ProgressTrackerPr
     setTotalUnits(totalUnitsTaken);
   }, [studentSchedule]);
 
+  // Calculate external units from overrides
+  const calculateExternalUnits = (overridesList: MajorOverride[]) => {
+    const unitOverrides = overridesList.filter(o => o.type === 'unit');
+    return unitOverrides.reduce((sum: number, override: MajorOverride) => {
+      return sum + (parseInt(override.requirement) || 0);
+    }, 0);
+  };
+
   // Fetch user courses and overrides
   useEffect(() => {
     fetch("/api/user/courses")
@@ -51,6 +61,10 @@ const ProgressTracker = ({ studentSchedule, college = "CoE" }: ProgressTrackerPr
       .then((data) => {
         if (data && data.overrides) {
           setOverrides(data.overrides);
+          
+          // Calculate external units from unit-type overrides
+          const totalExternalUnits = calculateExternalUnits(data.overrides);
+          setExternalUnits(totalExternalUnits);
         }
       })
       .catch((err) => console.error("Error fetching user courses:", err));
@@ -66,22 +80,29 @@ const ProgressTracker = ({ studentSchedule, college = "CoE" }: ProgressTrackerPr
     // Count overrides per requirement area
     const overrideCountByArea: { [area: string]: number } = {};
     
+    // First pass: count all overrides by area
     overrides.forEach(override => {
       if (override.type === 'ge' && override.requirement in updatedGeStatus) {
-        // Initialize counter if not exists
         if (!overrideCountByArea[override.requirement]) {
           overrideCountByArea[override.requirement] = 0;
         }
         
-        // Increment counter for this area
         overrideCountByArea[override.requirement]++;
+      }
+    });
+    
+    // Second pass: update requirements with the total count of overrides
+    Object.entries(overrideCountByArea).forEach(([area, count]) => {
+      if (area in updatedGeStatus) {
+        // Get the original count from GE status before adding overrides
+        const baseCount = updatedGeStatus[area].count;
+        const requiredCount = updatedGeStatus[area].required;
         
-        // Update the count in the requirement status
-        updatedGeStatus[override.requirement] = {
-          ...updatedGeStatus[override.requirement],
-          count: updatedGeStatus[override.requirement].count + 1,
-          // Only mark as fulfilled if count meets or exceeds required
-          fulfilled: (updatedGeStatus[override.requirement].count + 1) >= updatedGeStatus[override.requirement].required
+        // Update with the total including all overrides for this area
+        updatedGeStatus[area] = {
+          ...updatedGeStatus[area],
+          count: baseCount + count,
+          fulfilled: (baseCount + count) >= requiredCount
         };
       }
     });
@@ -146,31 +167,95 @@ const ProgressTracker = ({ studentSchedule, college = "CoE" }: ProgressTrackerPr
     }
   };
 
-  const handleOverrideConfirm = async (area: string, creditType: string) => {
+  const handleOverrideConfirm = async (area: string, creditType: string, units: number) => {
+    if (isAddingOverride) return; // Prevent multiple submissions
+    
+    setIsAddingOverride(true);
+    
     try {
-      const override = {
+      // Create the GE override object
+      const geOverride = {
         type: 'ge',
         requirement: area,
-        creditSource: creditType // This is just for display, not used by the API
+        creditSource: creditType
       };
       
-      const response = await fetch('/api/user/add-override', {
+      // Create the unit override object
+      const unitOverride = {
+        type: 'unit',
+        requirement: units.toString()
+      };
+      
+      // First, try to add the GE override
+      const geResponse = await fetch('/api/user/add-override', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ override }),
+        body: JSON.stringify({ override: geOverride }),
       });
       
-      if (!response.ok) {
-        throw new Error('Failed to add override');
+      if (!geResponse.ok) {
+        throw new Error('Failed to add GE override');
       }
       
-      const data = await response.json();
-      setOverrides(data.overrides);
+      const geData = await geResponse.json();
+      let updatedOverrides = geData.overrides;
+      
+      // Then, try to add the unit override
+      try {
+        const unitResponse = await fetch('/api/user/add-override', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ override: unitOverride }),
+        });
+        
+        if (!unitResponse.ok) {
+          // If unit override fails, roll back the GE override
+          console.error('Failed to add unit override, rolling back GE override');
+          await fetch('/api/user/remove-override', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ override: geOverride }),
+          });
+          
+          throw new Error('Failed to add unit override');
+        }
+        
+        const unitData = await unitResponse.json();
+        updatedOverrides = unitData.overrides;
+      } catch (unitError) {
+        // If there's an error with the unit override, roll back the GE override
+        console.error('Error adding unit override:', unitError);
+        await fetch('/api/user/remove-override', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ override: geOverride }),
+        });
+        
+        throw unitError;
+      }
+      
+      // Update state with the latest overrides
+      setOverrides(updatedOverrides);
+      
+      // Recalculate external units
+      const newExternalUnits = calculateExternalUnits(updatedOverrides);
+      setExternalUnits(newExternalUnits);
+      
+      // Close the popup
       setOverridePopupArea(null);
     } catch (error) {
-      console.error('Error adding override:', error);
+      console.error('Error in override process:', error);
+      alert('Failed to add override. Please try again.');
+    } finally {
+      setIsAddingOverride(false);
     }
   };
 
@@ -198,9 +283,38 @@ const ProgressTracker = ({ studentSchedule, college = "CoE" }: ProgressTrackerPr
       }
       
       const data = await response.json();
-      setOverrides(data.overrides);
+      let updatedOverrides = data.overrides;
+      
+      // Also remove a unit override to keep things balanced
+      const unitOverrides = overrides.filter(o => o.type === 'unit');
+      if (unitOverrides.length > 0) {
+        const unitOverrideToRemove = unitOverrides[unitOverrides.length - 1];
+        
+        const unitResponse = await fetch('/api/user/remove-override', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ override: unitOverrideToRemove }),
+        });
+        
+        if (unitResponse.ok) {
+          const finalData = await unitResponse.json();
+          updatedOverrides = finalData.overrides;
+        } else {
+          console.error('Failed to remove unit override, but GE override was removed');
+        }
+      }
+      
+      // Update state with the latest overrides
+      setOverrides(updatedOverrides);
+      
+      // Recalculate external units
+      const newExternalUnits = calculateExternalUnits(updatedOverrides);
+      setExternalUnits(newExternalUnits);
     } catch (error) {
       console.error('Error removing override:', error);
+      alert('Failed to remove override. Please try again.');
     }
   };
 
@@ -223,6 +337,7 @@ const ProgressTracker = ({ studentSchedule, college = "CoE" }: ProgressTrackerPr
               onClick={() => handleRemoveOverride(area)}
               className="ml-2 text-red-500 text-xs hover:underline"
               aria-label={`Remove ${area} override`}
+              disabled={isAddingOverride}
             >
               (Remove)
             </button>
@@ -327,6 +442,32 @@ const ProgressTracker = ({ studentSchedule, college = "CoE" }: ProgressTrackerPr
   // Extra units: sum from extraCourses.
   const extraUnits = extraCourses.reduce((sum, course) => sum + course.units, 0);
 
+  // External units are calculated from unit-type overrides
+
+  // Render a legend for the progress bar
+  const renderProgressLegend = () => {
+    return (
+      <div className="flex flex-wrap justify-center mt-2 text-xs gap-2">
+        <div className="flex items-center">
+          <div className="w-3 h-3 bg-[#ffb6c1] mr-1 rounded-sm"></div>
+          <span>GE</span>
+        </div>
+        <div className="flex items-center">
+          <div className="w-3 h-3 bg-[#ffcc99] mr-1 rounded-sm"></div>
+          <span>Major</span>
+        </div>
+        <div className="flex items-center">
+          <div className="w-3 h-3 bg-[#add8e6] mr-1 rounded-sm"></div>
+          <span>Extra</span>
+        </div>
+        <div className="flex items-center">
+          <div className="w-3 h-3 bg-[#d3d3d3] mr-1 rounded-sm"></div>
+          <span>External</span>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="h-full p-1 overflow-auto">
       <h2 className="text-xl font-semibold mb-4">Courses Taken</h2>
@@ -336,10 +477,12 @@ const ProgressTracker = ({ studentSchedule, college = "CoE" }: ProgressTrackerPr
           geUnits={geUnits}
           majorUnits={majorUnits}
           extraUnits={extraUnits}
+          externalUnits={externalUnits}
           total={180}
         />
       </div>
-        <p className="text-center text-sm mt-2">{`${totalUnits} / 180 Units Completed`}</p>
+        <p className="text-center text-sm mt-2">{`${totalUnits + externalUnits} / 180 Units Completed`}</p>
+        {renderProgressLegend()}
       </div>
 
       {/* GE Requirements Card */}
@@ -474,6 +617,17 @@ const ProgressTracker = ({ studentSchedule, college = "CoE" }: ProgressTrackerPr
       <CollapsibleCard title="Extra Courses">
         <div role="region" aria-label="Extra Courses">
           {renderExtraCoursesList()}
+        </div>
+      </CollapsibleCard>
+
+      {/* External Units Card */}
+      <CollapsibleCard title="External Units">
+        <div role="region" aria-label="External Units">
+          <p className="ml-5 text-sm">
+            {externalUnits > 0 
+              ? `${externalUnits} units from courses taken outside UCSB` 
+              : "No external units recorded."}
+          </p>
         </div>
       </CollapsibleCard>
 

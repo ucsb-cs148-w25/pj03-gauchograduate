@@ -3,11 +3,12 @@ import React, { useState } from 'react';
 interface GEOverridePopupProps {
   area: string;
   onClose: () => void;
-  onConfirm: (area: string, creditType: string) => void;
+  onConfirm: (area: string, creditType: string, units: number) => void;
 }
 
 const GEOverridePopup: React.FC<GEOverridePopupProps> = ({ area, onClose, onConfirm }) => {
   const [selectedCredit, setSelectedCredit] = useState<string>('');
+  const [units, setUnits] = useState<number>(4); // Default to 4 units
   
   const creditOptions = [
     'AP Credit',
@@ -18,7 +19,7 @@ const GEOverridePopup: React.FC<GEOverridePopupProps> = ({ area, onClose, onConf
 
   const handleConfirm = () => {
     if (selectedCredit) {
-      onConfirm(area, selectedCredit);
+      onConfirm(area, selectedCredit, units);
     }
   };
 
@@ -28,7 +29,7 @@ const GEOverridePopup: React.FC<GEOverridePopupProps> = ({ area, onClose, onConf
         <h3 className="text-xl font-bold mb-4">Override {area} Requirement</h3>
         <p className="mb-4">If you&apos;ve already completed this requirement through other means, select the type of credit:</p>
         
-        <div className="space-y-2 mb-6">
+        <div className="space-y-2 mb-4">
           {creditOptions.map((credit) => (
             <div key={credit} className="flex items-center">
               <input
@@ -43,6 +44,21 @@ const GEOverridePopup: React.FC<GEOverridePopupProps> = ({ area, onClose, onConf
               <label htmlFor={credit}>{credit}</label>
             </div>
           ))}
+        </div>
+        
+        <div className="mb-4">
+          <label htmlFor="units" className="block text-sm font-medium text-gray-700 mb-1">
+            Units
+          </label>
+          <input
+            type="number"
+            id="units"
+            min="1"
+            max="12"
+            value={units}
+            onChange={(e) => setUnits(Number(e.target.value))}
+            className="w-full p-2 border border-gray-300 rounded"
+          />
         </div>
         
         <div className="flex justify-end space-x-3">
