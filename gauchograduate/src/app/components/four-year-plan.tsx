@@ -11,7 +11,8 @@ export default function FourYearPlan({
   addCourse, 
   removeCourse,
   reorderCourse,
-  isDataLoading
+  isDataLoading,
+  updateCourseGrade
 }: FourYearPlanProps) {
   const { data: session } = useSession();
   const firstQuarter = session?.user?.courses?.firstQuarter || '20224';
@@ -123,6 +124,7 @@ export default function FourYearPlan({
     const yearIndex = Years.indexOf(year);
     return getAcademicYear(firstQuarter, yearIndex);
   };
+  
 
   const DBAddCourses = useCallback(async (courseID: number, term: Term) => {
     try {
@@ -139,6 +141,26 @@ export default function FourYearPlan({
     } catch (error) {
       console.error("Error adding courses:", error);
       setSaveStatus('idle');
+    }
+  }, [selectedYear, getQuarterCode]);
+
+  const DBUpdateGrade = useCallback(async (courseID: number, term: Term, grade: string | null) => {
+    try {
+      setSaveStatus('saving');
+      const quarterCode = getQuarterCode(selectedYear, term);
+      const response = await fetch("/api/user/courses/set-grade", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: courseID, quarter: quarterCode, grade }),
+      });
+      const data = await response.json();
+      console.log("Grade Update Response:", data);
+      setSaveStatus('saved');
+      return true;
+    } catch (error) {
+      console.error("Error updating grade:", error);
+      setSaveStatus('idle');
+      return false;
     }
   }, [selectedYear, getQuarterCode]);
 
@@ -171,6 +193,7 @@ export default function FourYearPlan({
       }
     }
   }, [validDropTargets, removeCourse, DBRemoveCourses]);
+
 
   const handleDragOver = useCallback((e: React.DragEvent<HTMLDivElement>, term: string) => {
     e.preventDefault();
@@ -354,9 +377,42 @@ export default function FourYearPlan({
                             onClick={() => setSelectedCourse({ course, term })}
                             className={`relative p-4 ${bgColorClass} rounded-lg group whitespace-normal break-words cursor-pointer hover:shadow-md transition-shadow`}
                           >
-                            <p className="font-bold text-sm">{course.gold_id}</p>
-                            <p className="text-xs">{course.title}</p>
-                            <p className="text-xs text-gray-500">{course.units} units</p>
+                            <div className="flex justify-between items-start">
+                              <div>
+                                <p className="font-bold text-sm">{course.gold_id}</p>
+                                <p className="text-xs">{course.title}</p>
+                                <p className="text-xs text-gray-500">{course.units} units</p>
+                              </div>
+                              <select
+                                className="text-xs p-1 rounded border border-gray-300 bg-white"
+                                value={course.grade || ''}
+                                onChange={async (e) => {
+                                  e.stopPropagation();
+                                  const grade = e.target.value || null;
+                                  const success = await DBUpdateGrade(course.id, term, grade);
+                                  if (success) {
+                                    updateCourseGrade(selectedYear, term, course.gold_id, grade);
+                                  }
+                                }}
+                                onClick={(e) => e.stopPropagation()}
+                              >
+                                <option value="">Grade</option>
+                                <option value="A+">A+</option>
+                                <option value="A">A</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B">B-</option>
+                                <option value="C+">C+</option>
+                                <option value="C">C</option>
+                                <option value="C-">C-</option>
+                                <option value="D+">D+</option>
+                                <option value="D">D</option>
+                                <option value="D-">D-</option>
+                                <option value="F">F</option>
+                                <option value="P">P</option>
+                                <option value="NP">NP</option>
+                              </select>
+                            </div>
                             <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
                               ···
                             </div>

@@ -7,6 +7,7 @@ export default function CoursePopup({ course, term, onClose, onDelete }: CourseP
         <h3 className="text-xl font-bold mb-4">{course.gold_id}</h3>
         <div className="space-y-3">
           <p className="text-lg">{course.title}</p>
+          <p className="text-gray-600">{course.description}</p>
           <p className="text-gray-600">{course.units} units</p>
           <p className="text-sm text-gray-500">Term: {term}</p>
           {course.generalEd.length > 0 && (
