@@ -82,7 +82,8 @@ async function fetchCoursesByIds(courseIds: number[]): Promise<Course[]> {
       generalEd: Array.isArray(course.general_ed) ? course.general_ed : [],
       prerequisites: Array.isArray(course.prerequisites) ? course.prerequisites.map(String) : [],
       unlocks: Array.isArray(course.unlocks) ? course.unlocks.map(String) : [],
-      term: []
+      term: [],
+      grade: null // Add default grade
     }));
   } catch (error) {
     console.error('Error fetching courses by IDs:', error);
@@ -156,7 +157,7 @@ export default function HomePage() {
   const { 
     data: savedSchedule, 
     isLoading: isSavedScheduleLoading,
-    isError: isSavedScheduleError
+    isError: isSavedScheduleError  
   } = useQuery({
     queryKey: ['savedSchedule', userCoursesData],
     queryFn: async () => {
@@ -173,14 +174,20 @@ export default function HomePage() {
       
       const allCourses = await fetchCoursesByIds(courseIds);
       
-      userCoursesData.courses.forEach((savedCourse: { id: number, quarter: string }) => {
+      userCoursesData.courses.forEach((savedCourse: { id: number, quarter: string, grade?: string }) => {
         const course = allCourses.find(c => c.id === savedCourse.id);
         if (!course) return;
         
         const position = getYearAndTerm(savedCourse.quarter, userCoursesData.firstQuarter);
         if (!position) return;
         
-        newSchedule[position.year][position.term].push(course);
+        // Include the grade from the saved course data
+        const courseWithGrade = {
+          ...course,
+          grade: savedCourse.grade || null
+        };
+        
+        newSchedule[position.year][position.term].push(courseWithGrade);
       });
 
       return newSchedule;
@@ -261,6 +268,20 @@ export default function HomePage() {
     }));
   };
 
+  const updateCourseGrade = (year: YearType, term: Term, courseId: string, grade: string | null) => {
+    setStudentSchedule((prevSchedule) => ({
+      ...prevSchedule,
+      [year]: {
+        ...prevSchedule[year],
+        [term]: prevSchedule[year][term].map(course => 
+          course.gold_id === courseId 
+            ? { ...course, grade: grade }
+            : course
+        )
+      }
+    }));
+  };
+
   return (
     <div className="h-screen flex flex-col">
       <Navbar />
@@ -281,6 +302,7 @@ export default function HomePage() {
             addCourse={addCourse}
             removeCourse={removeCourse}
             reorderCourse={reorderCourse}
+            updateCourseGrade={updateCourseGrade}
             isDataLoading={isLoading}
           />
         </div>
