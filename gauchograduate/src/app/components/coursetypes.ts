@@ -51,6 +51,7 @@ export interface Course {
   prerequisites: Prerequisites;
   unlocks: string[];
   term: Term[];
+  grade?: string | null;
 }
 
 // describing the student's entire 4-year schedule
@@ -76,6 +77,7 @@ export interface FourYearPlanProps {
   removeCourse: (course: Course, term: Term) => void;
   reorderCourse: (year: YearType, term: Term, newCourses: Course[]) => void;
   isDataLoading: boolean;
+  updateCourseGrade: (year: YearType, term: Term, courseId: string, grade: string | null) => void;
 }
 
 export interface MajorRequirements {
