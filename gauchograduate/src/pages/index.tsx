@@ -128,6 +128,7 @@ export default function HomePage() {
     "Year 4": { Fall: [], Winter: [], Spring: [], Summer: [] },
   });
   const [selectedYear, setSelectedYear] = useState<YearType>("Year 1");
+  const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved'>('idle');
   
   const [hasEverLoaded, setHasEverLoaded] = useState(false);
 
@@ -282,12 +283,16 @@ export default function HomePage() {
             removeCourse={removeCourse}
             reorderCourse={reorderCourse}
             isDataLoading={isLoading}
+            saveStatus={saveStatus}
+            setSaveStatus={setSaveStatus}
           />
         </div>
         <div className="w-full md:w-1/5 bg-[var(--off-white)] p-4 overflow-y-scroll">
           <ProgressTracker
             studentSchedule={studentSchedule}
             college={majorData?.major?.college}
+            saveStatus={saveStatus}
+            setSaveStatus={setSaveStatus}
           />
         </div>
       </div>

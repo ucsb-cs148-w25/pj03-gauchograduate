@@ -11,9 +11,16 @@ import { MajorOverride } from "@/types/next-auth";
 interface ProgressTrackerProps {
   studentSchedule: ScheduleType;
   college?: string;
+  saveStatus: 'idle' | 'saving' | 'saved';
+  setSaveStatus: (status: 'idle' | 'saving' | 'saved') => void;
 }
 
-const ProgressTracker = ({ studentSchedule, college = "CoE" }: ProgressTrackerProps) => {
+const ProgressTracker = ({ 
+  studentSchedule, 
+  college = "CoE", 
+  saveStatus, 
+  setSaveStatus 
+}: ProgressTrackerProps) => {
   const [totalUnits, setTotalUnits] = useState<number>(0);
   const [scheduledCourses, setScheduledCourses] = useState<Course[]>([]);
   const [externalUnits, setExternalUnits] = useState<number>(0);
@@ -176,16 +183,30 @@ const ProgressTracker = ({ studentSchedule, college = "CoE" }: ProgressTrackerPr
     
     setIsAddingOverride(true);
     
+    // Create the GE override object with units included
+    const geOverride = {
+      type: 'ge',
+      requirement: area,
+      creditSource: creditType,
+      units: units
+    };
+    
+    // Update frontend state immediately
+    const updatedOverrides = [...overrides, geOverride];
+    setOverrides(updatedOverrides);
+    
+    // Recalculate external units
+    const newExternalUnits = calculateExternalUnits(updatedOverrides);
+    setExternalUnits(newExternalUnits);
+    
+    // Close the popup
+    setOverridePopupArea(null);
+    
+    // Now update the database and show saving status
+    setSaveStatus('saving');
+    
     try {
-      // Create the GE override object with units included
-      const geOverride = {
-        type: 'ge',
-        requirement: area,
-        creditSource: creditType,
-        units: units
-      };
-      
-      // Add the GE override
+      // Add the GE override to the database
       const response = await fetch('/api/user/add-override', {
         method: 'POST',
         headers: {
@@ -199,36 +220,47 @@ const ProgressTracker = ({ studentSchedule, college = "CoE" }: ProgressTrackerPr
       }
       
       const data = await response.json();
-      const updatedOverrides = data.overrides;
       
-      // Update state with the latest overrides
-      setOverrides(updatedOverrides);
+      // Update with the server response (which should match our local state)
+      setOverrides(data.overrides);
       
-      // Recalculate external units
-      const newExternalUnits = calculateExternalUnits(updatedOverrides);
-      setExternalUnits(newExternalUnits);
-      
-      // Close the popup
-      setOverridePopupArea(null);
+      setSaveStatus('saved');
     } catch (error) {
       console.error('Error in override process:', error);
       alert('Failed to add override. Please try again.');
+      
+      // Revert the local state change on error
+      setOverrides(overrides);
+      setExternalUnits(calculateExternalUnits(overrides));
+      
+      setSaveStatus('idle');
     } finally {
       setIsAddingOverride(false);
     }
   };
 
   const handleRemoveOverride = async (area: string) => {
+    // Find the most recently added override for this area
+    const overridesToRemove = overrides
+      .filter(o => o.type === 'ge' && o.requirement === area);
+    
+    if (!overridesToRemove.length) return;
+    
+    // Remove the most recent override
+    const overrideToRemove = overridesToRemove[overridesToRemove.length - 1];
+    
+    // Update frontend state immediately
+    const updatedOverrides = overrides.filter(o => o !== overrideToRemove);
+    setOverrides(updatedOverrides);
+    
+    // Recalculate external units
+    const newExternalUnits = calculateExternalUnits(updatedOverrides);
+    setExternalUnits(newExternalUnits);
+    
+    // Now update the database and show saving status
+    setSaveStatus('saving');
+    
     try {
-      // Find the most recently added override for this area
-      const overridesToRemove = overrides
-        .filter(o => o.type === 'ge' && o.requirement === area);
-      
-      if (!overridesToRemove.length) return;
-      
-      // Remove the most recent override
-      const overrideToRemove = overridesToRemove[overridesToRemove.length - 1];
-      
       const response = await fetch('/api/user/remove-override', {
         method: 'POST',
         headers: {
@@ -242,17 +274,20 @@ const ProgressTracker = ({ studentSchedule, college = "CoE" }: ProgressTrackerPr
       }
       
       const data = await response.json();
-      const updatedOverrides = data.overrides;
       
-      // Update state with the latest overrides
-      setOverrides(updatedOverrides);
+      // Update with the server response (which should match our local state)
+      setOverrides(data.overrides);
       
-      // Recalculate external units
-      const newExternalUnits = calculateExternalUnits(updatedOverrides);
-      setExternalUnits(newExternalUnits);
+      setSaveStatus('saved');
     } catch (error) {
       console.error('Error removing override:', error);
       alert('Failed to remove override. Please try again.');
+      
+      // Revert the local state change on error
+      setOverrides(overrides);
+      setExternalUnits(calculateExternalUnits(overrides));
+      
+      setSaveStatus('idle');
     }
   };
 
