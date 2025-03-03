@@ -17,8 +17,7 @@ interface ProgressTrackerProps {
 
 const ProgressTracker = ({ 
   studentSchedule, 
-  college = "CoE", 
-  saveStatus, 
+  college = "CoE",  
   setSaveStatus 
 }: ProgressTrackerProps) => {
   const [totalUnits, setTotalUnits] = useState<number>(0);
