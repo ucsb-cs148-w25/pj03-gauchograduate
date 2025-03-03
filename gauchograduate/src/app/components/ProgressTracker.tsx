@@ -48,9 +48,13 @@ const ProgressTracker = ({ studentSchedule, college = "CoE" }: ProgressTrackerPr
 
   // Calculate external units from overrides
   const calculateExternalUnits = (overridesList: MajorOverride[]) => {
-    const unitOverrides = overridesList.filter(o => o.type === 'unit');
-    return unitOverrides.reduce((sum: number, override: MajorOverride) => {
-      return sum + (parseInt(override.requirement) || 0);
+    return overridesList.reduce((sum: number, override: MajorOverride) => {
+      if (override.type === 'unit') {
+        return sum + (parseInt(override.requirement) || 0);
+      } else if (override.units) {
+        return sum + override.units;
+      }
+      return sum;
     }, 0);
   };
 
@@ -173,21 +177,16 @@ const ProgressTracker = ({ studentSchedule, college = "CoE" }: ProgressTrackerPr
     setIsAddingOverride(true);
     
     try {
-      // Create the GE override object
+      // Create the GE override object with units included
       const geOverride = {
         type: 'ge',
         requirement: area,
-        creditSource: creditType
+        creditSource: creditType,
+        units: units
       };
       
-      // Create the unit override object
-      const unitOverride = {
-        type: 'unit',
-        requirement: units.toString()
-      };
-      
-      // First, try to add the GE override
-      const geResponse = await fetch('/api/user/add-override', {
+      // Add the GE override
+      const response = await fetch('/api/user/add-override', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -195,52 +194,12 @@ const ProgressTracker = ({ studentSchedule, college = "CoE" }: ProgressTrackerPr
         body: JSON.stringify({ override: geOverride }),
       });
       
-      if (!geResponse.ok) {
+      if (!response.ok) {
         throw new Error('Failed to add GE override');
       }
       
-      const geData = await geResponse.json();
-      let updatedOverrides = geData.overrides;
-      
-      // Then, try to add the unit override
-      try {
-        const unitResponse = await fetch('/api/user/add-override', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ override: unitOverride }),
-        });
-        
-        if (!unitResponse.ok) {
-          // If unit override fails, roll back the GE override
-          console.error('Failed to add unit override, rolling back GE override');
-          await fetch('/api/user/remove-override', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ override: geOverride }),
-          });
-          
-          throw new Error('Failed to add unit override');
-        }
-        
-        const unitData = await unitResponse.json();
-        updatedOverrides = unitData.overrides;
-      } catch (unitError) {
-        // If there's an error with the unit override, roll back the GE override
-        console.error('Error adding unit override:', unitError);
-        await fetch('/api/user/remove-override', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ override: geOverride }),
-        });
-        
-        throw unitError;
-      }
+      const data = await response.json();
+      const updatedOverrides = data.overrides;
       
       // Update state with the latest overrides
       setOverrides(updatedOverrides);
@@ -283,28 +242,7 @@ const ProgressTracker = ({ studentSchedule, college = "CoE" }: ProgressTrackerPr
       }
       
       const data = await response.json();
-      let updatedOverrides = data.overrides;
-      
-      // Also remove a unit override to keep things balanced
-      const unitOverrides = overrides.filter(o => o.type === 'unit');
-      if (unitOverrides.length > 0) {
-        const unitOverrideToRemove = unitOverrides[unitOverrides.length - 1];
-        
-        const unitResponse = await fetch('/api/user/remove-override', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ override: unitOverrideToRemove }),
-        });
-        
-        if (unitResponse.ok) {
-          const finalData = await unitResponse.json();
-          updatedOverrides = finalData.overrides;
-        } else {
-          console.error('Failed to remove unit override, but GE override was removed');
-        }
-      }
+      const updatedOverrides = data.overrides;
       
       // Update state with the latest overrides
       setOverrides(updatedOverrides);
