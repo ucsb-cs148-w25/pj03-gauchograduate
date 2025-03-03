@@ -389,10 +389,16 @@ export default function FourYearPlan({
                                 onChange={async (e) => {
                                   e.stopPropagation();
                                   const grade = e.target.value || null;
-                                  const success = await DBUpdateGrade(course.id, term, grade);
-                                  if (success) {
-                                    updateCourseGrade(selectedYear, term, course.gold_id, grade);
-                                  }
+                                  updateCourseGrade(selectedYear, term, course.gold_id, grade);
+                                  await DBUpdateGrade(course.id, term, grade);
+                                  /* 
+                                    We want the dropdown to update instantly rather 
+                                    than wait for the dropdown to update only
+                                    when the grade is saved.
+                                  */
+                                  // if (success) {
+                                    // updateCourseGrade(selectedYear, term, course.gold_id, grade);
+                                  // }
                                 }}
                                 onClick={(e) => e.stopPropagation()}
                               >
