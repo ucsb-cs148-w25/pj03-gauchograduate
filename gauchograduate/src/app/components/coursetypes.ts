@@ -76,6 +76,8 @@ export interface FourYearPlanProps {
   removeCourse: (course: Course, term: Term) => void;
   reorderCourse: (year: YearType, term: Term, newCourses: Course[]) => void;
   isDataLoading: boolean;
+  saveStatus: 'idle' | 'saving' | 'saved';
+  setSaveStatus: (status: 'idle' | 'saving' | 'saved') => void;
 }
 
 export interface MajorRequirements {

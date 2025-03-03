@@ -11,13 +11,14 @@ export default function FourYearPlan({
   addCourse, 
   removeCourse,
   reorderCourse,
-  isDataLoading
+  isDataLoading,
+  saveStatus,
+  setSaveStatus
 }: FourYearPlanProps) {
   const { data: session } = useSession();
   const firstQuarter = session?.user?.courses?.firstQuarter || '20224';
   const [showSummer, setShowSummer] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState<{ course: Course, term: Term } | null>(null);
-  const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved'>('idle');
   const [isActive, setIsActive] = useState(false);
   const [poofingCourse, setPoofingCourse] = useState<{ id: string, x: number, y: number } | null>(null);
   const planRef = useRef<HTMLDivElement>(null);
@@ -88,7 +89,7 @@ export default function FourYearPlan({
       console.error("Error removing courses:", error);
       setSaveStatus('idle');
     }
-  }, [selectedYear, getQuarterCode]);
+  }, [selectedYear, getQuarterCode, setSaveStatus]);
 
   useEffect(() => {
     const handleDocumentDragOver = (e: DragEvent) => { e.preventDefault(); };
@@ -140,13 +141,13 @@ export default function FourYearPlan({
       console.error("Error adding courses:", error);
       setSaveStatus('idle');
     }
-  }, [selectedYear, getQuarterCode]);
+  }, [selectedYear, getQuarterCode, setSaveStatus]);
 
   const DBMoveCourse = useCallback(async (courseID: number, originTerm: Term, term: Term) => {
     setSaveStatus('saving');
     await DBRemoveCourses(courseID, originTerm);
     await DBAddCourses(courseID, term);
-  }, [DBRemoveCourses, DBAddCourses]);
+  }, [DBRemoveCourses, DBAddCourses, setSaveStatus]);
 
   const handlePlanDrop = useCallback((e: React.DragEvent<HTMLDivElement>) => {
     const isValidTarget = Array.from(validDropTargets).some(target => 
