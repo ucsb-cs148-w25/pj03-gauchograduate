@@ -2,21 +2,21 @@
 - plan to implement more filters and features for the CourseCatalog: Professor Names
 - filters: GE Area, different filters by department.
 ### 2: Summary of Product Features
-- What they liked:
+To keep in mind: (What they liked)
   - Effective search features
   - The drag-and-drop functionality
   - Clear visual indicators of progress
   - (in the repo): Organized Kanban boards with clear acceptance criteria
-- What to improve/more features:
+Actions: (What to improve/more features)
   - more complete course details (like in GOLD)
   - links to accurate information (GEAR, department/major requirements, etc.)
   - schedule generation
   - export schedule
 ### 3: Current Effectiveness
-Feedback:
+To keep in mind: (Feedback)
 - drag and drop is smooth and intuitive
 - progress indicator is clear
-Improvements:
+Actions: (What to improve/more features)
 - mobile design/responsive design
 - tutorial/first-time-user demonstration
 
