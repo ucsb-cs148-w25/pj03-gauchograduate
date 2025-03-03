@@ -113,18 +113,7 @@ test.describe('Drag and drop course functionality', () => {
     await expect(page.getByText('Course Catalog')).toBeVisible();
     await expect(page.getByText('CMPSC 148')).toBeVisible();
 
-    // Get the course element and the drop target (Fall quarter)
-    const courseElement = page.getByText('CMPSC 148').first();
-    const fallQuarterDropTarget = page.getByText('Drop Course Here').first();
-
-    // Take a screenshot before drag operation
-    await page.screenshot({ path: 'before-drag.png' });
-
-    // Perform the drag and drop operation
-    // Note: Playwright doesn't fully support HTML5 drag and drop, so we'll simulate it
-    // by triggering the API calls that would happen after a successful drop
-    
-    // 1. Mock the batch course query that would happen after drop
+    // Mock the batch course query that would happen after drop
     await page.route('**/api/course/query/batch', async (route) => {
       await route.fulfill({
         status: 200,
@@ -146,7 +135,10 @@ test.describe('Drag and drop course functionality', () => {
       });
     });
 
-    // 2. Trigger the add-course API call directly
+    // Take a screenshot before the operation
+    await page.screenshot({ path: 'before-drag.png' });
+
+    // Trigger the add-course API call directly
     await page.evaluate(() => {
       fetch('/api/user/add-course', {
         method: 'POST',
@@ -155,35 +147,10 @@ test.describe('Drag and drop course functionality', () => {
       });
     });
 
-    // Wait for the course to appear in the schedule
-    await page.waitForTimeout(1000); // Give time for the API call to complete and UI to update
+    // Give time for the API call to complete
+    await page.waitForTimeout(2000);
 
-    // Refresh the page to ensure the course is loaded from the backend
-    await page.reload();
-
-    // Mock the batch course query again for after reload
-    await page.route('**/api/course/query/batch', async (route) => {
-      await route.fulfill({
-        status: 200,
-        body: JSON.stringify({
-          courses: [
-            {
-              gold_id: 'CMPSC 148',
-              id: 1,
-              title: 'Computer Science Project',
-              description: 'A course about software engineering',
-              subject_area: 'CMPSC',
-              units: 4,
-              general_ed: [],
-              prerequisites: [],
-              unlocks: [],
-            }
-          ],
-        }),
-      });
-    });
-
-    // Mock user courses to include the added course
+    // Now we need to mock the user courses API to include our added course when the page reloads
     await page.route('**/api/user/courses', async (route) => {
       await route.fulfill({
         status: 200,
@@ -197,12 +164,22 @@ test.describe('Drag and drop course functionality', () => {
       });
     });
 
-    // Take a screenshot after the operation
-    await page.screenshot({ path: 'after-drag.png' });
-
-    // Verify the course appears in the Fall quarter
-    await expect(page.getByText('CMPSC 148').nth(1)).toBeVisible();
+    // Refresh the page to ensure the course is loaded from the backend
+    await page.reload();
     
+    // Wait for the page to fully load
+    await page.waitForLoadState('networkidle');
+    
+    // Take a debug screenshot
+    await page.screenshot({ path: 'after-reload.png' });
+
+    // Wait for the four-year plan to load
+    await expect(page.getByText('Four-Year Plan')).toBeVisible();
+
+    // Check if the course appears in any part of the schedule
+    const courseInSchedule = page.locator('div[data-term-column="Fall"]').getByText('CMPSC 148');
+    await expect(courseInSchedule).toBeVisible({ timeout: 10000 });
+
     // Verify the units are displayed in the schedule
     await expect(page.getByText('Total units: 4')).toBeVisible();
   });
