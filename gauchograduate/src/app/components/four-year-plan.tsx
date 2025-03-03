@@ -166,9 +166,24 @@ export default function FourYearPlan({
 
   const DBMoveCourse = useCallback(async (courseID: number, originTerm: Term, term: Term) => {
     setSaveStatus('saving');
+    
+    // Find the course in the original term to get its grade if it exists
+    const course = studentSchedule[selectedYear][originTerm].find(c => c.id === courseID);
+    const grade = course?.grade || null;
+    
+    // First remove the course from the original term
     await DBRemoveCourses(courseID, originTerm);
+    
+    // Then add it to the new term
     await DBAddCourses(courseID, term);
-  }, [DBRemoveCourses, DBAddCourses]);
+    
+    // If the course had a grade, preserve it by setting the grade in the new location
+    if (grade) {
+      await DBUpdateGrade(courseID, term, grade);
+    }
+    
+    setSaveStatus('saved');
+  }, [DBRemoveCourses, DBAddCourses, DBUpdateGrade, studentSchedule, selectedYear]);
 
   const handlePlanDrop = useCallback((e: React.DragEvent<HTMLDivElement>) => {
     const isValidTarget = Array.from(validDropTargets).some(target => 
