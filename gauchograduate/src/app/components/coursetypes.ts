@@ -8,6 +8,24 @@ export type GeneralEd = {
   geCollege: string;
 };
 
+// Types for the complex prerequisites structure
+export type PrerequisiteClass = {
+  goldId: string;
+  Required_Grade: string;
+  Taken_Concurrently: string; // "True" or "False" as strings
+};
+
+export type PrerequisiteCondition = {
+  class?: PrerequisiteClass[];
+  and?: PrerequisiteCondition[];
+  or?: PrerequisiteCondition[];
+};
+
+export type Prerequisites = {
+  and?: PrerequisiteCondition[];
+  or?: PrerequisiteCondition[];
+};
+
 // Interface for course data as it comes from the database
 export interface CourseInfo {
   gold_id: string;
@@ -16,22 +34,22 @@ export interface CourseInfo {
   subject_area: string;
   units: number | null;
   general_ed: GeneralEd[];
-  prerequisites: number[];
+  prerequisites: Prerequisites;
   unlocks: number[];
   id: number;
 }
 
-// each course information
+// each course information for rendered courses in the frontend
 export interface Course {
-  course_id: string;
+  gold_id: string;
+  id: number;
   title: string;
   description: string;
   subjectArea: string;
   units: number;
   generalEd: GeneralEd[];
-  prerequisites: string[];
+  prerequisites: Prerequisites;
   unlocks: string[];
-  department: string;
   term: Term[];
 }
 
@@ -56,4 +74,21 @@ export interface FourYearPlanProps {
   studentSchedule: ScheduleType;
   addCourse: (course: Course, term: Term) => void;
   removeCourse: (course: Course, term: Term) => void;
+  reorderCourse: (year: YearType, term: Term, newCourses: Course[]) => void;
+  isDataLoading: boolean;
+}
+
+export interface MajorRequirements {
+  preparation: { and: string[] };
+  upper_division: {
+    required: { and: string[] };
+    electives: { or: { count: number; notes: string[]; classes: string[] } };
+  };
+}
+
+export interface MajorData {
+  id: number;
+  name: string;
+  college: string;
+  requirements: MajorRequirements;
 }
