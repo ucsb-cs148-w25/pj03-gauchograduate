@@ -49,6 +49,7 @@ export interface CoursePopupProps {
   term: Term;
   onClose: () => void;
   onDelete: () => void;
+  onGradeChange: (grade: string | null) => void;
 }
 
 export interface FourYearPlanProps {

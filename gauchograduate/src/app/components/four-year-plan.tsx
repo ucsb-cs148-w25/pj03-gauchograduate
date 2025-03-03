@@ -4,11 +4,11 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { getAcademicYear, isQuarterInPast, isCurrentQuarter } from './utils/quarterUtils';
 import CourseModal from './course-popup';
 
-export default function FourYearPlan({ 
-  selectedYear, 
-  setSelectedYear, 
-  studentSchedule, 
-  addCourse, 
+export default function FourYearPlan({
+  selectedYear,
+  setSelectedYear,
+  studentSchedule,
+  addCourse,
   removeCourse,
   reorderCourse,
   isDataLoading,
@@ -124,7 +124,7 @@ export default function FourYearPlan({
     const yearIndex = Years.indexOf(year);
     return getAcademicYear(firstQuarter, yearIndex);
   };
-  
+
 
   const DBAddCourses = useCallback(async (courseID: number, term: Term) => {
     try {
@@ -166,27 +166,27 @@ export default function FourYearPlan({
 
   const DBMoveCourse = useCallback(async (courseID: number, originTerm: Term, term: Term) => {
     setSaveStatus('saving');
-    
+
     // Find the course in the original term to get its grade if it exists
     const course = studentSchedule[selectedYear][originTerm].find(c => c.id === courseID);
     const grade = course?.grade || null;
-    
+
     // First remove the course from the original term
     await DBRemoveCourses(courseID, originTerm);
-    
+
     // Then add it to the new term
     await DBAddCourses(courseID, term);
-    
+
     // If the course had a grade, preserve it by setting the grade in the new location
     if (grade) {
       await DBUpdateGrade(courseID, term, grade);
     }
-    
+
     setSaveStatus('saved');
   }, [DBRemoveCourses, DBAddCourses, DBUpdateGrade, studentSchedule, selectedYear]);
 
   const handlePlanDrop = useCallback((e: React.DragEvent<HTMLDivElement>) => {
-    const isValidTarget = Array.from(validDropTargets).some(target => 
+    const isValidTarget = Array.from(validDropTargets).some(target =>
       target === e.target || target.contains(e.target as Node)
     );
     if (!isValidTarget) {
@@ -266,8 +266,8 @@ export default function FourYearPlan({
   const yearDisplay = getYearDisplay(selectedYear);
 
   return (
-    <div 
-      className="h-full w-full p-4 bg-white rounded-lg shadow-lg flex flex-col overflow-auto max-h-screen relative" 
+    <div
+      className="h-full w-full p-4 bg-white rounded-lg shadow-lg flex flex-col overflow-auto max-h-screen relative"
       ref={planRef}
       onDragOver={(e) => e.preventDefault()}
       onDrop={handlePlanDrop}
@@ -281,6 +281,10 @@ export default function FourYearPlan({
             removeCourse(selectedCourse.course, selectedCourse.term);
             DBRemoveCourses(selectedCourse.course.id, selectedCourse.term);
             setSelectedCourse(null);
+          }}
+          onGradeChange={async (grade) => {
+            updateCourseGrade(selectedYear, selectedCourse.term, selectedCourse.course.gold_id, grade);
+            await DBUpdateGrade(selectedCourse.course.id, selectedCourse.term, grade);
           }}
         />
       )}
@@ -298,10 +302,10 @@ export default function FourYearPlan({
       )}
 
       {poofingCourse && (
-        <div 
+        <div
           className="fixed z-50 animate-poof"
-          style={{ 
-            left: poofingCourse.x - 50, 
+          style={{
+            left: poofingCourse.x - 50,
             top: poofingCourse.y - 50,
             width: '100px',
             height: '100px',
@@ -349,7 +353,7 @@ export default function FourYearPlan({
       </div>
 
       <div className="flex gap-2 flex-1 min-h-0">
-        <div 
+        <div
           ref={gridRef}
           className={`grid grid-cols-1 ${showSummer ? 'md:grid-cols-4' : 'md:grid-cols-3'} gap-2 flex-grow border border-gray-300 rounded-md p-2 bg-gray-50 min-h-0 overflow-y-auto`}
         >
@@ -398,41 +402,11 @@ export default function FourYearPlan({
                                 <p className="text-xs">{course.title}</p>
                                 <p className="text-xs text-gray-500">{course.units} units</p>
                               </div>
-                              <select
-                                className="text-xs p-1 rounded border border-gray-300 bg-white"
-                                value={course.grade || ''}
-                                onChange={async (e) => {
-                                  e.stopPropagation();
-                                  const grade = e.target.value || null;
-                                  updateCourseGrade(selectedYear, term, course.gold_id, grade);
-                                  await DBUpdateGrade(course.id, term, grade);
-                                  /* 
-                                    We want the dropdown to update instantly rather 
-                                    than wait for the dropdown to update only
-                                    when the grade is saved.
-                                  */
-                                  // if (success) {
-                                    // updateCourseGrade(selectedYear, term, course.gold_id, grade);
-                                  // }
-                                }}
-                                onClick={(e) => e.stopPropagation()}
-                              >
-                                <option value="">Grade</option>
-                                <option value="A+">A+</option>
-                                <option value="A">A</option>
-                                <option value="A-">A-</option>
-                                <option value="B+">B+</option>
-                                <option value="B">B-</option>
-                                <option value="C+">C+</option>
-                                <option value="C">C</option>
-                                <option value="C-">C-</option>
-                                <option value="D+">D+</option>
-                                <option value="D">D</option>
-                                <option value="D-">D-</option>
-                                <option value="F">F</option>
-                                <option value="P">P</option>
-                                <option value="NP">NP</option>
-                              </select>
+                              {course.grade && (
+                                <span className="text-xs text-gray-500">
+                                  {course.grade}
+                                </span>
+                              )}
                             </div>
                             <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
                               ···
