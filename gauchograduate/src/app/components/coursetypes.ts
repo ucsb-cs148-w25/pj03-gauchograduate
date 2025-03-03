@@ -8,6 +8,24 @@ export type GeneralEd = {
   geCollege: string;
 };
 
+// Types for the complex prerequisites structure
+export type PrerequisiteClass = {
+  goldId: string;
+  Required_Grade: string;
+  Taken_Concurrently: string; // "True" or "False" as strings
+};
+
+export type PrerequisiteCondition = {
+  class?: PrerequisiteClass[];
+  and?: PrerequisiteCondition[];
+  or?: PrerequisiteCondition[];
+};
+
+export type Prerequisites = {
+  and?: PrerequisiteCondition[];
+  or?: PrerequisiteCondition[];
+};
+
 // Interface for course data as it comes from the database
 export interface CourseInfo {
   gold_id: string;
@@ -16,7 +34,7 @@ export interface CourseInfo {
   subject_area: string;
   units: number | null;
   general_ed: GeneralEd[];
-  prerequisites: number[];
+  prerequisites: Prerequisites;
   unlocks: number[];
   id: number;
 }
@@ -30,7 +48,7 @@ export interface Course {
   subjectArea: string;
   units: number;
   generalEd: GeneralEd[];
-  prerequisites: string[];
+  prerequisites: Prerequisites;
   unlocks: string[];
   term: Term[];
 }

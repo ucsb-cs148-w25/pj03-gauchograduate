@@ -66,6 +66,8 @@ export default async function handler(
     }
     
     const isDuplicate = userCourses.overrides.some(existing => {
+      if (override.type === 'unit') return false;
+      
       if (existing.type !== override.type) return false;
       if (existing.requirement !== override.requirement) return false;
       
