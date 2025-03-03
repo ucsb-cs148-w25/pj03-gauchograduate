@@ -1,0 +1,155 @@
+20241:
+
+Course not found for id: ART CS 150
+Course not found for id: ASTRO 1H
+Course not found for id: BL ST 124
+Course not found for id: BL ST 133
+Course not found for id: BL ST 99RA
+Course not found for id: CH ST 191DS
+Course not found for id: CH ST 191GB
+Course not found for id: CLASS 171
+Course not found for id: C LIT 181B
+Course not found for id: DANCE 182MX
+Course not found for id: ECE 194N
+Course not found for id: ECON 137AH
+Course not found for id: EEMB 192
+Course not found for id: EEMB 194MM
+Course not found for id: ENGL 132PR
+Course not found for id: ENV S 111
+Course not found for id: ESS 199
+Course not found for id: ESS 9
+Course not found for id: ESS 98
+Course not found for id: FAMST 113AY
+Course not found for id: FAMST 113CS
+Course not found for id: FAMST 113PW
+Course not found for id: FAMST 192DT
+Course not found for id: FR 149C
+Course not found for id: GEOG 149
+Course not found for id: HIST 170B
+Course not found for id: INT 185VW
+Course not found for id: INT 186AE
+Course not found for id: INT 186BE
+Course not found for id: INT 86BW
+Course not found for id: INT 86EI
+Course not found for id: INT 86PZ
+Course not found for id: INT 95B
+Course not found for id: ITAL 102
+Course not found for id: LAIS 145
+Course not found for id: LAIS 189
+Course not found for id: LAIS 194
+Course not found for id: MARINCS 160PR
+Course not found for id: MCDB 112H
+Course not found for id: MCDB 126BH
+Course not found for id: MCDB 133
+Course not found for id: MCDB 133H
+Course not found for id: MCDB 152H
+Course not found for id: MCDB 15RM
+Course not found for id: MCDB 92
+Course not found for id: ME 125SD
+Course not found for id: MUS 101B
+Course not found for id: MUS 120T
+Course not found for id: MUS 126A
+Course not found for id: MUS 160E
+Course not found for id: MUS 20B
+Course not found for id: MUS 20C
+Course not found for id: MUS 26A
+Course not found for id: MUS A 137M
+Course not found for id: MUS A 138
+Course not found for id: MUS A 146
+Course not found for id: MUS A 37M
+Course not found for id: MUS A 38
+Course not found for id: MUS A 46
+Course not found for id: PHYS 160K
+Course not found for id: PHYS 25
+Course not found for id: POL S 143
+Course not found for id: PSY 190L
+Course not found for id: PSY 98
+Course not found for id: RG ST 17B
+Course not found for id: RG ST 65E
+Course not found for id: SLAV 117J
+Course not found for id: SOC 108G
+Course not found for id: SOC 134CJ
+Course not found for id: SOC 98
+Course not found for id: SPAN 134
+Course not found for id: THTR 94
+Course not found for id: TMP 199
+Course not found for id: W&L CS 198
+Course not found for id: WRIT 105P
+Course not found for id: WRIT 107A
+Course not found for id: WRIT 107P
+Course not found for id: WRIT 124
+Course not found for id: THTR 110D
+
+Failed to click PreRequisites button for course ART 196 
+Failed to click PreRequisites button for course BL ST 155 
+Failed to click PreRequisites button for course CHEM 1B 
+Failed to click PreRequisites button for course CHEM 6AL
+Failed to click PreRequisites button for course CLASS 50
+Failed to click PreRequisites button for course C LIT 181C
+Failed to click PreRequisites button for course CMPTGCS 10
+Failed to click PreRequisites button for course COMM 117
+Failed to click PreRequisites button for course COMM 138
+Failed to click PreRequisites button for course COMM 188
+Failed to click PreRequisites button for course COMM 191
+Failed to click PreRequisites button for course DANCE 147B
+Failed to click PreRequisites button for course EACS 5
+Failed to click PreRequisites button for course EARTH 173
+Failed to click PreRequisites button for course ECE 194BB
+Failed to click PreRequisites button for course EEMB 185
+Failed to click PreRequisites button for course ENGL 147VN
+Failed to click PreRequisites button for course ENV S 2
+Failed to click PreRequisites button for course FAMST 118LP
+Failed to click PreRequisites button for course INT 84CC
+Failed to click PreRequisites button for course LING 109
+Failed to click PreRequisites button for course LING 193
+Failed to click PreRequisites button for course MATH 115A
+Failed to click PreRequisites button for course MCDB 108B
+Failed to click PreRequisites button for course ME 127
+Failed to click PreRequisites button for course MUS 32B
+Failed to click PreRequisites button for course PHYS CS 199
+Failed to click PreRequisites button for course PSY 142
+Failed to click PreRequisites button for course RG ST 99PL 
+Failed to click PreRequisites button for course SOC 108
+Failed to click PreRequisites button for course SOC 122
+Failed to click PreRequisites button for course SPAN 138
+Failed to click PreRequisites button for course W&L CS 197
+Failed to click PreRequisites button for course WRIT 109HU
+Failed to click PreRequisites button for course WRIT 152A 
+
+
+— ESS W 131
+— ESS W 2
+— ESS W 3
+Failed to select 'Exercise & Sport Studies (Online) - ESS' from department dropdown: Message: Could not locate element with visible text: Exercise & Sport Studies (Online) - ESS; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+
+Failed to select 'Exercise & Sport Studies (Online) - ESS' from department dropdown: Message: Could not locate element with visible text: Exercise & Sport Studies (Online) - ESS; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+
+Failed to select 'Exercise & Sport Studies (Online) - ESS' from department dropdown: Message: Could not locate element with visible text: Exercise & Sport Studies (Online) - ESS; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+
+
+
+
+— MATRL 10
+— MATRL 100B
+— MATRL 101
+— MATRL 135
+— MATRL 160
+— MATRL 162B
+— MATRL 186A
+Failed to select 'Material - MATRL' from department dropdown: Message: Could not locate element with visible text: Material - MATRL; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+
+Failed to select 'Material - MATRL' from department dropdown: Message: Could not locate element with visible text: Material - MATRL; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+
+Failed to select 'Material - MATRL' from department dropdown: Message: Could not locate element with visible text: Material - MATRL; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+
+Failed to select 'Material - MATRL' from department dropdown: Message: Could not locate element with visible text: Material - MATRL; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+
+Failed to select 'Material - MATRL' from department dropdown: Message: Could not locate element with visible text: Material - MATRL; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+
+Failed to select 'Material - MATRL' from department dropdown: Message: Could not locate element with visible text: Material - MATRL; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+
+Failed to select 'Material - MATRL' from department dropdown: Message: Could not locate element with visible text: Material - MATRL; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+
+Actually being used.
+ANTH 3, 100, 194
+
