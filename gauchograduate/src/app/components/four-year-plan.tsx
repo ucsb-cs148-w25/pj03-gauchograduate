@@ -12,7 +12,9 @@ export default function FourYearPlan({
   removeCourse,
   reorderCourse,
   isDataLoading,
-  updateCourseGrade
+  updateCourseGrade,
+  saveStatus,
+  setSaveStatus
 }: FourYearPlanProps) {
   const { data: session } = useSession();
   const firstQuarter = session?.user?.courses?.firstQuarter || '20224';
