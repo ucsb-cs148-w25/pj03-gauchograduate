@@ -5,7 +5,7 @@ import Image from 'next/image';
 export default function SignIn() {
     return (
         <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to bg-[var(--pale-blue)]">
-            
+
             <div className="flex-1 flex items-center justify-center">
                 <div className="bg-white p-6 rounded-2xl shadow-lg flex flex-row items-center gap-12 w-full max-w-3xl">
                     {/* Colored Grid */}
@@ -18,10 +18,10 @@ export default function SignIn() {
 
                     {/* Sign-in Section */}
                     <div className="text-left ml-6">
-                    <Image src="/logo1.png" alt="Gaucho Graduate Logo" width={180} height={60} />
+                        <Image src="/logo1.png" alt="Gaucho Graduate Logo" width={180} height={60} />
                         <p className="text-gray-600 mb-6">Please sign in to continue.</p>
-                        <button 
-                            onClick={() => signIn('google', { callbackUrl: '/'})}
+                        <button
+                            onClick={() => signIn('google', { callbackUrl: '/' })}
                             className="bg-[var(--off-white)] text-black py-2 px-4 rounded-md flex items-center justify-center gap-2 w-full hover:bg-gray-300 transition-colors"
                         >
                             <GoogleLogo />

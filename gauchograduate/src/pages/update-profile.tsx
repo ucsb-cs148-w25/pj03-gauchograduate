@@ -1,6 +1,7 @@
 import { useSession } from 'next-auth/react';
 import { useState, useEffect } from 'react';
 import Navbar from '../app/components/Navbar';
+import { useQueryClient } from '@tanstack/react-query';
 
 type Major = {
   id: number;
@@ -16,6 +17,8 @@ export default function UpdateMajor() {
     },
   });
   
+  const queryClient = useQueryClient();
+  
   const [major, setMajor] = useState('');
   const [majors, setMajors] = useState<Major[]>([]);
   const [firstQuarter, setFirstQuarter] = useState('20224');
@@ -25,10 +28,17 @@ export default function UpdateMajor() {
   const [isInputFocused, setIsInputFocused] = useState(false);
 
   const quarterOptions = [
+    { label: 'Fall 2018', value: '20184' },
+    { label: 'Fall 2019', value: '20194' },
+    { label: 'Fall 2020', value: '20204' },
+    { label: 'Fall 2021', value: '20214' },
     { label: 'Fall 2022', value: '20224' },
     { label: 'Fall 2023', value: '20234' },
     { label: 'Fall 2024', value: '20244' },
     { label: 'Fall 2025', value: '20254' },
+    { label: 'Fall 2026', value: '20264' },
+    { label: 'Fall 2027', value: '20274' },
+    { label: 'Fall 2028', value: '20284' },
   ];
 
   useEffect(() => {
@@ -91,6 +101,10 @@ export default function UpdateMajor() {
       }
 
       setMessage('Profile updated successfully!');
+      
+      queryClient.invalidateQueries({ queryKey: ['userCourses', session?.user?.id] });
+      queryClient.invalidateQueries({ queryKey: ['savedSchedule'] });
+      
       await update();
     } catch (error) {
       console.log(error);

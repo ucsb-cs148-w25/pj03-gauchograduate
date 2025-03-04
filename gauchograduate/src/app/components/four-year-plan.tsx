@@ -4,14 +4,15 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { getAcademicYear, isQuarterInPast, isCurrentQuarter } from './utils/quarterUtils';
 import CourseModal from './course-popup';
 
-export default function FourYearPlan({ 
-  selectedYear, 
-  setSelectedYear, 
-  studentSchedule, 
-  addCourse, 
+export default function FourYearPlan({
+  selectedYear,
+  setSelectedYear,
+  studentSchedule,
+  addCourse,
   removeCourse,
   reorderCourse,
   isDataLoading,
+  updateCourseGrade,
   saveStatus,
   setSaveStatus
 }: FourYearPlanProps) {
@@ -125,6 +126,7 @@ export default function FourYearPlan({
     return getAcademicYear(firstQuarter, yearIndex);
   };
 
+
   const DBAddCourses = useCallback(async (courseID: number, term: Term) => {
     try {
       setSaveStatus('saving');
@@ -143,14 +145,49 @@ export default function FourYearPlan({
     }
   }, [selectedYear, getQuarterCode, setSaveStatus]);
 
+  const DBUpdateGrade = useCallback(async (courseID: number, term: Term, grade: string | null) => {
+    try {
+      setSaveStatus('saving');
+      const quarterCode = getQuarterCode(selectedYear, term);
+      const response = await fetch("/api/user/courses/set-grade", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: courseID, quarter: quarterCode, grade }),
+      });
+      const data = await response.json();
+      console.log("Grade Update Response:", data);
+      setSaveStatus('saved');
+      return true;
+    } catch (error) {
+      console.error("Error updating grade:", error);
+      setSaveStatus('idle');
+      return false;
+    }
+  }, [selectedYear, getQuarterCode, setSaveStatus]);
+
   const DBMoveCourse = useCallback(async (courseID: number, originTerm: Term, term: Term) => {
     setSaveStatus('saving');
+
+    // Find the course in the original term to get its grade if it exists
+    const course = studentSchedule[selectedYear][originTerm].find(c => c.id === courseID);
+    const grade = course?.grade || null;
+
+    // First remove the course from the original term
     await DBRemoveCourses(courseID, originTerm);
+
+    // Then add it to the new term
     await DBAddCourses(courseID, term);
-  }, [DBRemoveCourses, DBAddCourses, setSaveStatus]);
+
+    // If the course had a grade, preserve it by setting the grade in the new location
+    if (grade) {
+      await DBUpdateGrade(courseID, term, grade);
+    }
+
+    setSaveStatus('saved');
+  }, [DBRemoveCourses, DBAddCourses, DBUpdateGrade, studentSchedule, selectedYear, setSaveStatus]);
 
   const handlePlanDrop = useCallback((e: React.DragEvent<HTMLDivElement>) => {
-    const isValidTarget = Array.from(validDropTargets).some(target => 
+    const isValidTarget = Array.from(validDropTargets).some(target =>
       target === e.target || target.contains(e.target as Node)
     );
     if (!isValidTarget) {
@@ -172,6 +209,7 @@ export default function FourYearPlan({
       }
     }
   }, [validDropTargets, removeCourse, DBRemoveCourses]);
+
 
   const handleDragOver = useCallback((e: React.DragEvent<HTMLDivElement>, term: string) => {
     e.preventDefault();
@@ -229,8 +267,8 @@ export default function FourYearPlan({
   const yearDisplay = getYearDisplay(selectedYear);
 
   return (
-    <div 
-      className="h-full w-full p-4 bg-white rounded-lg shadow-lg flex flex-col overflow-auto max-h-screen relative" 
+    <div
+      className="h-full w-full p-4 bg-white rounded-lg shadow-lg flex flex-col overflow-auto max-h-screen relative"
       ref={planRef}
       onDragOver={(e) => e.preventDefault()}
       onDrop={handlePlanDrop}
@@ -244,6 +282,10 @@ export default function FourYearPlan({
             removeCourse(selectedCourse.course, selectedCourse.term);
             DBRemoveCourses(selectedCourse.course.id, selectedCourse.term);
             setSelectedCourse(null);
+          }}
+          onGradeChange={async (grade) => {
+            updateCourseGrade(selectedYear, selectedCourse.term, selectedCourse.course.gold_id, grade);
+            await DBUpdateGrade(selectedCourse.course.id, selectedCourse.term, grade);
           }}
         />
       )}
@@ -261,10 +303,10 @@ export default function FourYearPlan({
       )}
 
       {poofingCourse && (
-        <div 
+        <div
           className="fixed z-50 animate-poof"
-          style={{ 
-            left: poofingCourse.x - 50, 
+          style={{
+            left: poofingCourse.x - 50,
             top: poofingCourse.y - 50,
             width: '100px',
             height: '100px',
@@ -312,7 +354,7 @@ export default function FourYearPlan({
       </div>
 
       <div className="flex gap-2 flex-1 min-h-0">
-        <div 
+        <div
           ref={gridRef}
           className={`grid grid-cols-1 ${showSummer ? 'md:grid-cols-4' : 'md:grid-cols-3'} gap-2 flex-grow border border-gray-300 rounded-md p-2 bg-gray-50 min-h-0 overflow-y-auto`}
         >
@@ -355,9 +397,18 @@ export default function FourYearPlan({
                             onClick={() => setSelectedCourse({ course, term })}
                             className={`relative p-4 ${bgColorClass} rounded-lg group whitespace-normal break-words cursor-pointer hover:shadow-md transition-shadow`}
                           >
-                            <p className="font-bold text-sm">{course.gold_id}</p>
-                            <p className="text-xs">{course.title}</p>
-                            <p className="text-xs text-gray-500">{course.units} units</p>
+                            <div className="flex justify-between items-start">
+                              <div>
+                                <p className="font-bold text-sm">{course.gold_id}</p>
+                                <p className="text-xs">{course.title}</p>
+                                <p className="text-xs text-gray-500">{course.units} units</p>
+                              </div>
+                              {course.grade && (
+                                <span className="text-xs text-gray-500">
+                                  {course.grade}
+                                </span>
+                              )}
+                            </div>
                             <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
                               ···
                             </div>
