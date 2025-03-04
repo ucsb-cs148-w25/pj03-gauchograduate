@@ -88,7 +88,7 @@ export default function CoursePopup({ course, term, onClose, onDelete, onGradeCh
           {/* Delete button remains at bottom right */}
           <button
             onClick={onDelete}
-            className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors"
+            className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors"
           >
             Remove Course
           </button>
