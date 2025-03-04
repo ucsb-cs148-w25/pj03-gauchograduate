@@ -15,10 +15,10 @@ interface ProgressTrackerProps {
   setSaveStatus: (status: 'idle' | 'saving' | 'saved') => void;
 }
 
-const ProgressTracker = ({ 
-  studentSchedule, 
-  college = "CoE",  
-  setSaveStatus 
+const ProgressTracker = ({
+  studentSchedule,
+  college = "CoE",
+  setSaveStatus
 }: ProgressTrackerProps) => {
   const [totalUnits, setTotalUnits] = useState<number>(0);
   const [scheduledCourses, setScheduledCourses] = useState<Course[]>([]);
@@ -71,7 +71,7 @@ const ProgressTracker = ({
       .then((data) => {
         if (data && data.overrides) {
           setOverrides(data.overrides);
-          
+
           // Calculate external units from unit-type overrides
           const totalExternalUnits = calculateExternalUnits(data.overrides);
           setExternalUnits(totalExternalUnits);
@@ -83,31 +83,31 @@ const ProgressTracker = ({
   // Compute GE requirements.
   useEffect(() => {
     const geStatus = computeGERequirements(studentSchedule, college);
-    
+
     // Apply GE overrides
     const updatedGeStatus = { ...geStatus };
-    
+
     // Count overrides per requirement area
     const overrideCountByArea: { [area: string]: number } = {};
-    
+
     // First pass: count all overrides by area
     overrides.forEach(override => {
       if (override.type === 'ge' && override.requirement in updatedGeStatus) {
         if (!overrideCountByArea[override.requirement]) {
           overrideCountByArea[override.requirement] = 0;
         }
-        
+
         overrideCountByArea[override.requirement]++;
       }
     });
-    
+
     // Second pass: update requirements with the total count of overrides
     Object.entries(overrideCountByArea).forEach(([area, count]) => {
       if (area in updatedGeStatus) {
         // Get the original count from GE status before adding overrides
         const baseCount = updatedGeStatus[area].count;
         const requiredCount = updatedGeStatus[area].required;
-        
+
         // Update with the total including all overrides for this area
         updatedGeStatus[area] = {
           ...updatedGeStatus[area],
@@ -116,7 +116,7 @@ const ProgressTracker = ({
         };
       }
     });
-    
+
     setGenEdFulfilled(updatedGeStatus);
   }, [studentSchedule, college, overrides]);
 
@@ -179,9 +179,9 @@ const ProgressTracker = ({
 
   const handleOverrideConfirm = async (area: string, creditType: string, units: number) => {
     if (isAddingOverride) return; // Prevent multiple submissions
-    
+
     setIsAddingOverride(true);
-    
+
     // Create the GE override object with units included
     const geOverride = {
       type: 'ge',
@@ -189,21 +189,21 @@ const ProgressTracker = ({
       creditSource: creditType,
       units: units
     };
-    
+
     // Update frontend state immediately
     const updatedOverrides = [...overrides, geOverride];
     setOverrides(updatedOverrides);
-    
+
     // Recalculate external units
     const newExternalUnits = calculateExternalUnits(updatedOverrides);
     setExternalUnits(newExternalUnits);
-    
+
     // Close the popup
     setOverridePopupArea(null);
-    
+
     // Now update the database and show saving status
     setSaveStatus('saving');
-    
+
     try {
       // Add the GE override to the database
       const response = await fetch('/api/user/add-override', {
@@ -213,25 +213,25 @@ const ProgressTracker = ({
         },
         body: JSON.stringify({ override: geOverride }),
       });
-      
+
       if (!response.ok) {
         throw new Error('Failed to add GE override');
       }
-      
+
       const data = await response.json();
-      
+
       // Update with the server response (which should match our local state)
       setOverrides(data.overrides);
-      
+
       setSaveStatus('saved');
     } catch (error) {
       console.error('Error in override process:', error);
       alert('Failed to add override. Please try again.');
-      
+
       // Revert the local state change on error
       setOverrides(overrides);
       setExternalUnits(calculateExternalUnits(overrides));
-      
+
       setSaveStatus('idle');
     } finally {
       setIsAddingOverride(false);
@@ -242,23 +242,23 @@ const ProgressTracker = ({
     // Find the most recently added override for this area
     const overridesToRemove = overrides
       .filter(o => o.type === 'ge' && o.requirement === area);
-    
+
     if (!overridesToRemove.length) return;
-    
+
     // Remove the most recent override
     const overrideToRemove = overridesToRemove[overridesToRemove.length - 1];
-    
+
     // Update frontend state immediately
     const updatedOverrides = overrides.filter(o => o !== overrideToRemove);
     setOverrides(updatedOverrides);
-    
+
     // Recalculate external units
     const newExternalUnits = calculateExternalUnits(updatedOverrides);
     setExternalUnits(newExternalUnits);
-    
+
     // Now update the database and show saving status
     setSaveStatus('saving');
-    
+
     try {
       const response = await fetch('/api/user/remove-override', {
         method: 'POST',
@@ -267,25 +267,25 @@ const ProgressTracker = ({
         },
         body: JSON.stringify({ override: overrideToRemove }),
       });
-      
+
       if (!response.ok) {
         throw new Error('Failed to remove override');
       }
-      
+
       const data = await response.json();
-      
+
       // Update with the server response (which should match our local state)
       setOverrides(data.overrides);
-      
+
       setSaveStatus('saved');
     } catch (error) {
       console.error('Error removing override:', error);
       alert('Failed to remove override. Please try again.');
-      
+
       // Revert the local state change on error
       setOverrides(overrides);
       setExternalUnits(calculateExternalUnits(overrides));
-      
+
       setSaveStatus('idle');
     }
   };
@@ -294,7 +294,7 @@ const ProgressTracker = ({
     const courses = genEdFulfilled[area]?.courses || [];
     const isExpanded = expandedAreas[area] || false;
     const itemsToShow = isExpanded ? courses : courses.slice(0, 1);
-    
+
     // Count overrides for this area
     const areaOverrides = overrides.filter(o => o.type === 'ge' && o.requirement === area);
     const overrideCount = areaOverrides.length;
@@ -305,7 +305,7 @@ const ProgressTracker = ({
         {hasOverride && (
           <div className="flex items-center text-sm text-blue-600 mb-1">
             <span>{overrideCount} {overrideCount === 1 ? 'Course' : 'Courses'} Taken outside UCSB</span>
-            <button 
+            <button
               onClick={() => handleRemoveOverride(area)}
               className="ml-2 text-red-500 text-xs hover:underline"
               aria-label={`Remove ${area} override`}
@@ -315,7 +315,7 @@ const ProgressTracker = ({
             </button>
           </div>
         )}
-        
+
         {courses.length > 0 ? (
           <>
             <ul className="list-disc space-y-1 break-words text-sm text-gray-600">
@@ -416,6 +416,40 @@ const ProgressTracker = ({
 
   // External units are calculated from unit-type overrides
 
+  // Calculate GPA based on courses with grades
+  const calculateGPA = () => {
+    // Grade point mapping
+    const gradePoints: { [key: string]: number } = {
+      'A+': 4.0, 'A': 4.0, 'A-': 3.7,
+      'B+': 3.3, 'B': 3.0, 'B-': 2.7,
+      'C+': 2.3, 'C': 2.0, 'C-': 1.7,
+      'D+': 1.3, 'D': 1.0, 'D-': 0.7,
+      'F': 0.0
+    };
+
+    // Filter courses that have letter grades (not P/NP)
+    const gradedCourses = scheduledCourses.filter(course =>
+      course.grade && course.grade in gradePoints
+    );
+
+    if (gradedCourses.length === 0) return null;
+
+    // Calculate total grade points and total units
+    let totalGradePoints = 0;
+    let totalGradedUnits = 0;
+
+    gradedCourses.forEach(course => {
+      if (course.grade && course.grade in gradePoints) {
+        totalGradePoints += gradePoints[course.grade] * course.units;
+        totalGradedUnits += course.units;
+      }
+    });
+
+    return totalGradedUnits > 0 ? (totalGradePoints / totalGradedUnits).toFixed(2) : null;
+  };
+
+  const gpa = calculateGPA();
+
   // Render a legend for the progress bar
   const renderProgressLegend = () => {
     return (
@@ -444,16 +478,19 @@ const ProgressTracker = ({
     <div className="h-full p-1 overflow-auto">
       <h2 className="text-xl font-semibold mb-4">Courses Taken</h2>
       <div className="w-5/6 mx-auto mb-6">
-      <div className="flex justify-center">
-        <SegmentedProgressBar
-          geUnits={geUnits}
-          majorUnits={majorUnits}
-          extraUnits={extraUnits}
-          externalUnits={externalUnits}
-          total={180}
-        />
-      </div>
-        <p className="text-center text-sm mt-2">{`${totalUnits + externalUnits} / 180 Units Completed`}</p>
+        <div className="flex justify-center">
+          <SegmentedProgressBar
+            geUnits={geUnits}
+            majorUnits={majorUnits}
+            extraUnits={extraUnits}
+            externalUnits={externalUnits}
+            total={180}
+          />
+        </div>
+        <p className="text-center text-sm mt-2">
+          {`${totalUnits + externalUnits} / 180 Units Completed`}
+          {gpa && ` • GPA: ${gpa}`}
+        </p>
         {renderProgressLegend()}
       </div>
 
@@ -477,7 +514,7 @@ const ProgressTracker = ({
                     <span title={areaDescriptions[area]}>{area}</span>
                   </div>
                   <span className="text-sm text-gray-600">
-                    {genEdFulfilled[area]?.count || 0}/{genEdFulfilled[area]?.required || 0} 
+                    {genEdFulfilled[area]?.count || 0}/{genEdFulfilled[area]?.required || 0}
                   </span>
                 </div>
                 {renderGECourseList(area)}
@@ -596,8 +633,8 @@ const ProgressTracker = ({
       <CollapsibleCard title="External Units">
         <div role="region" aria-label="External Units">
           <p className="ml-5 text-sm">
-            {externalUnits > 0 
-              ? `${externalUnits} units from courses taken outside UCSB` 
+            {externalUnits > 0
+              ? `${externalUnits} units from courses taken outside UCSB`
               : "No external units recorded."}
           </p>
         </div>
