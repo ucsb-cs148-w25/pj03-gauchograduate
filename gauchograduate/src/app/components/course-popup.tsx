@@ -19,10 +19,13 @@ export default function CoursePopup({ course, term, onClose, onDelete, onGradeCh
       <div className="bg-white p-6 rounded-lg shadow-xl max-w-md w-full m-4" onClick={e => e.stopPropagation()}>
         <div className="flex justify-between items-start mb-4">
           <h3 className="text-xl font-bold">{course.gold_id}</h3>
-          <div className="flex items-center">
-            <span className="text-xs mr-1">Grade:</span>
+          <div className="flex items-center border border-gray-300 rounded-lg overflow-hidden">
+            <label htmlFor="grade-select" className="bg-gray-100 px-3 py-2 text-sm font-medium text-gray-700">
+              Grade
+            </label>
             <select
-              className="text-xs p-1 rounded border border-gray-300 bg-white"
+              id="grade-select"
+              className="p-2 border-0 focus:ring-0 focus:outline-none"
               value={currentGrade || ''}
               onChange={(e) => {
                 e.stopPropagation();
@@ -31,7 +34,7 @@ export default function CoursePopup({ course, term, onClose, onDelete, onGradeCh
               }}
               onClick={(e) => e.stopPropagation()}
             >
-              <option value=""></option>
+              <option value="">N/A</option>
               <option value="A+">A+</option>
               <option value="A">A</option>
               <option value="A-">A-</option>

@@ -163,7 +163,7 @@ export default function FourYearPlan({
       setSaveStatus('idle');
       return false;
     }
-  }, [selectedYear, getQuarterCode]);
+  }, [selectedYear, getQuarterCode, setSaveStatus]);
 
   const DBMoveCourse = useCallback(async (courseID: number, originTerm: Term, term: Term) => {
     setSaveStatus('saving');
@@ -184,7 +184,7 @@ export default function FourYearPlan({
     }
 
     setSaveStatus('saved');
-  }, [DBRemoveCourses, DBAddCourses, DBUpdateGrade, studentSchedule, selectedYear]);
+  }, [DBRemoveCourses, DBAddCourses, DBUpdateGrade, studentSchedule, selectedYear, setSaveStatus]);
 
   const handlePlanDrop = useCallback((e: React.DragEvent<HTMLDivElement>) => {
     const isValidTarget = Array.from(validDropTargets).some(target =>
