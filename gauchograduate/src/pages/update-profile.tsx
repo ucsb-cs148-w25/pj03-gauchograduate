@@ -102,8 +102,8 @@ export default function UpdateMajor() {
 
       setMessage('Profile updated successfully!');
       
-      queryClient.invalidateQueries(['userCourses', session?.user?.id]);
-      queryClient.invalidateQueries(['savedSchedule']);
+      queryClient.invalidateQueries({ queryKey: ['userCourses', session?.user?.id] });
+      queryClient.invalidateQueries({ queryKey: ['savedSchedule'] });
       
       await update();
     } catch (error) {
