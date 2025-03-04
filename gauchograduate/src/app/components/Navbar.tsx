@@ -26,11 +26,19 @@ export default function Navbar() {
                 Edit Profile
               </Link>
             )}
+            {pathname === '/update-profile' && (
+              <Link 
+                href="/"
+                className="px-3 py-1 border border-blue-500 text-blue-500 rounded-md hover:bg-blue-500 hover:text-white transition-colors"
+              >
+                Dashboard
+              </Link>
+            )}
             <button 
               onClick={() => signOut({ callbackUrl: '/signin' })}
               className="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors"
             >
-              Log out
+              Log Out
             </button>
           </>
         )}

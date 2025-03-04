@@ -1,6 +1,7 @@
 import { useSession } from 'next-auth/react';
 import { useState, useEffect } from 'react';
 import Navbar from '../app/components/Navbar';
+import { useQueryClient } from '@tanstack/react-query';
 
 type Major = {
   id: number;
@@ -15,6 +16,8 @@ export default function UpdateMajor() {
       window.location.href = '/signin';
     },
   });
+  
+  const queryClient = useQueryClient();
   
   const [major, setMajor] = useState('');
   const [majors, setMajors] = useState<Major[]>([]);
@@ -98,6 +101,10 @@ export default function UpdateMajor() {
       }
 
       setMessage('Profile updated successfully!');
+      
+      queryClient.invalidateQueries(['userCourses', session?.user?.id]);
+      queryClient.invalidateQueries(['savedSchedule']);
+      
       await update();
     } catch (error) {
       console.log(error);
