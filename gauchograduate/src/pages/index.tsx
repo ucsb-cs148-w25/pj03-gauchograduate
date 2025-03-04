@@ -40,7 +40,7 @@ async function fetchCourses(quarter: string): Promise<Course[]> {
     department: course.subject_area,
     units: course.units || 0,
     generalEd: Array.isArray(course.general_ed) ? course.general_ed : [],
-    prerequisites: Array.isArray(course.prerequisites) ? course.prerequisites.map(String) : [],
+    prerequisites: course.prerequisites,
     unlocks: Array.isArray(course.unlocks) ? course.unlocks.map(String) : [],
     term: []
   }));
@@ -80,7 +80,7 @@ async function fetchCoursesByIds(courseIds: number[]): Promise<Course[]> {
       department: course.subject_area || course.subject_area,
       units: course.units || 0,
       generalEd: Array.isArray(course.general_ed) ? course.general_ed : [],
-      prerequisites: Array.isArray(course.prerequisites) ? course.prerequisites.map(String) : [],
+      prerequisites: course.prerequisites,
       unlocks: Array.isArray(course.unlocks) ? course.unlocks.map(String) : [],
       term: [],
       grade: null // Add default grade
@@ -129,6 +129,7 @@ export default function HomePage() {
     "Year 4": { Fall: [], Winter: [], Spring: [], Summer: [] },
   });
   const [selectedYear, setSelectedYear] = useState<YearType>("Year 1");
+  const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved'>('idle');
   
   const [hasEverLoaded, setHasEverLoaded] = useState(false);
 
@@ -304,12 +305,16 @@ export default function HomePage() {
             reorderCourse={reorderCourse}
             updateCourseGrade={updateCourseGrade}
             isDataLoading={isLoading}
+            saveStatus={saveStatus}
+            setSaveStatus={setSaveStatus}
           />
         </div>
         <div className="w-full md:w-1/5 bg-[var(--off-white)] p-4 overflow-y-scroll">
           <ProgressTracker
             studentSchedule={studentSchedule}
             college={majorData?.major?.college}
+            saveStatus={saveStatus}
+            setSaveStatus={setSaveStatus}
           />
         </div>
       </div>

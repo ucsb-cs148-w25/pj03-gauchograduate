@@ -18,7 +18,6 @@ export default function FourYearPlan({
   const firstQuarter = session?.user?.courses?.firstQuarter || '20224';
   const [showSummer, setShowSummer] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState<{ course: Course, term: Term } | null>(null);
-  const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved'>('idle');
   const [isActive, setIsActive] = useState(false);
   const [poofingCourse, setPoofingCourse] = useState<{ id: string, x: number, y: number } | null>(null);
   const planRef = useRef<HTMLDivElement>(null);
@@ -89,7 +88,7 @@ export default function FourYearPlan({
       console.error("Error removing courses:", error);
       setSaveStatus('idle');
     }
-  }, [selectedYear, getQuarterCode]);
+  }, [selectedYear, getQuarterCode, setSaveStatus]);
 
   useEffect(() => {
     const handleDocumentDragOver = (e: DragEvent) => { e.preventDefault(); };
@@ -142,7 +141,7 @@ export default function FourYearPlan({
       console.error("Error adding courses:", error);
       setSaveStatus('idle');
     }
-  }, [selectedYear, getQuarterCode]);
+  }, [selectedYear, getQuarterCode, setSaveStatus]);
 
   const DBUpdateGrade = useCallback(async (courseID: number, term: Term, grade: string | null) => {
     try {

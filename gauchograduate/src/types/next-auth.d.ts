@@ -10,6 +10,8 @@ export interface MajorOverride {
   type: string;
   requirement: string;
   courseId?: number;
+  creditSource?: string;
+  units?: number;
 }
 
 export interface UserCourses {
