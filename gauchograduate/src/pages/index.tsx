@@ -301,7 +301,7 @@ export default function HomePage() {
               className="w-full h-full flex flex-col items-center justify-center"
               aria-label="Expand course catalog"
             >
-              <div className="absolute top-4 right-0 z-10 h-auto py-3 w-12 bg-white border-l border-t border-b border-gray-300 rounded-l-md flex flex-col items-center justify-center shadow-sm">
+              <div className="absolute top-4 right-0 z-10 h-auto py-3 w-10 ml-1 bg-white border-l border-t border-b border-gray-300 rounded-l-md flex flex-col items-center justify-center shadow-sm">
                 <svg 
                   xmlns="http://www.w3.org/2000/svg" 
                   className="h-4 w-4 mb-2" 
@@ -370,7 +370,7 @@ export default function HomePage() {
               className="w-full h-full flex flex-col items-center justify-center"
               aria-label="Expand progress tracker"
             >
-              <div className="absolute top-4 left-0 z-10 h-auto py-3 w-12 bg-white border-r border-t border-b border-gray-300 rounded-r-md flex flex-col items-center justify-center shadow-sm">
+              <div className="absolute top-4 left-0 z-10 h-auto py-3 w-10 mr-1 bg-white border-r border-t border-b border-gray-300 rounded-r-md flex flex-col items-center justify-center shadow-sm">
                 <svg 
                   xmlns="http://www.w3.org/2000/svg" 
                   className="h-4 w-4 mb-2" 
