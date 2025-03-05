@@ -66,8 +66,9 @@ export default async function handler(
     }
     
     const isDuplicate = userCourses.overrides.some(existing => {
-      if (override.type === 'unit') return false;
-      
+      // Some GE areas require multiple courses,
+      // so if an override is for a GE, we don't care about duplicates
+      if (override.type === 'ge') return false;
       if (existing.type !== override.type) return false;
       if (existing.requirement !== override.requirement) return false;
       

@@ -55,15 +55,21 @@ export default async function handler(
     
     // Find the override to remove by matching all properties
     const initialLength = userCourses.overrides.length;
+    let removed = false;
     userCourses.overrides = userCourses.overrides.filter(existingOverride => {
+      // If we've already removed one, don't remove any others.
+      if (removed) return true;
+
       // Check if all properties match
       if (existingOverride.type !== override.type) return true;
       if (existingOverride.requirement !== override.requirement) return true;
       
       // For courseId, only compare if both have it or neither has it
       if (override.courseId !== undefined && existingOverride.courseId !== undefined) {
-        return existingOverride.courseId !== override.courseId;
+        if (!(existingOverride.courseId !== override.courseId)) removed = true;
+        return !removed;
       } else if (override.courseId === undefined && existingOverride.courseId === undefined) {
+        removed = true;
         return false; // They match (both don't have courseId)
       }
       
@@ -73,6 +79,10 @@ export default async function handler(
     // Check if any override was removed
     if (userCourses.overrides.length === initialLength) {
       return res.status(404).json({ error: "No matching override found" })
+    }
+    // Only ever allow for one removal per request
+    if (initialLength - userCourses.overrides.length != 1) {
+      return res.status(500).json({ error: "Only one override can be removed per request, but multiple were. Removal cancelled." })
     }
 
     // Update the user's courses - convert to JSON string and then parse to ensure proper format
