@@ -83,6 +83,33 @@ body {
   animation: border-pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
+/* Collapsible panel transitions */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Collapse button hover effect */
+.group:hover .collapse-button {
+  opacity: 1;
+}
+
+.collapse-button {
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+
+.collapse-button:hover {
+  opacity: 1;
+}
+
 /* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;

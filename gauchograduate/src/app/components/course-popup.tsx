@@ -20,7 +20,7 @@ export default function CoursePopup({ course, term, onClose, onDelete, onGradeCh
         {/* Close button in top right */}
         <button 
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
+          className="float-right top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
           aria-label="Close popup"
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
