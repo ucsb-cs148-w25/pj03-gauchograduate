@@ -14,11 +14,12 @@ export default function FourYearPlan({
   isDataLoading,
   updateCourseGrade,
   saveStatus,
-  setSaveStatus
+  setSaveStatus,
+  showSummerByDefault = false
 }: FourYearPlanProps) {
   const { data: session } = useSession();
   const firstQuarter = session?.user?.courses?.firstQuarter || '20224';
-  const [showSummer, setShowSummer] = useState(false);
+  const [showSummer, setShowSummer] = useState(showSummerByDefault);
   const [selectedCourse, setSelectedCourse] = useState<{ course: Course, term: Term } | null>(null);
   const [isActive, setIsActive] = useState(false);
   const [poofingCourse, setPoofingCourse] = useState<{ id: string, x: number, y: number } | null>(null);
@@ -27,6 +28,10 @@ export default function FourYearPlan({
   const [validDropTargets, setValidDropTargets] = useState<Set<HTMLElement>>(new Set());
   const [draggedOverTerm, setDraggedOverTerm] = useState<string | null>(null);
   const [isDraggingCourse, setIsDraggingCourse] = useState(false);
+
+  useEffect(() => {
+    setShowSummer(showSummerByDefault);
+  }, [showSummerByDefault]);
 
   useEffect(() => {
     if (saveStatus === 'saved') {
@@ -437,12 +442,14 @@ export default function FourYearPlan({
             );
           })}
         </div>
-        <button
-          onClick={() => setShowSummer(!showSummer)}
-          className="writing-mode-vertical px-2 py-4 bg-[var(--pale-blue)] text-black rounded-lg transition-colors whitespace-nowrap h-auto"
-        >
-          {showSummer ? 'Hide Summer Quarter' : 'Show Summer Quarter'}
-        </button>
+        {!showSummerByDefault && (
+          <button
+            onClick={() => setShowSummer(!showSummer)}
+            className="writing-mode-vertical px-2 py-4 bg-[var(--pale-blue)] text-black rounded-lg transition-colors whitespace-nowrap h-auto"
+          >
+            {showSummer ? 'Hide Summer Quarter' : 'Show Summer Quarter'}
+          </button>
+        )}
       </div>
     </div>
   );

@@ -81,6 +81,7 @@ export interface FourYearPlanProps {
   updateCourseGrade: (year: YearType, term: Term, courseId: string, grade: string | null) => void;
   saveStatus: 'idle' | 'saving' | 'saved';
   setSaveStatus: (status: 'idle' | 'saving' | 'saved') => void;
+  showSummerByDefault?: boolean;
 }
 
 export interface MajorRequirements {
