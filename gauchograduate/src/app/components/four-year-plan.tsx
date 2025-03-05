@@ -404,7 +404,7 @@ export default function FourYearPlan({
                                 <p className="text-xs text-gray-500">{course.units} units</p>
                               </div>
                               {course.grade && (
-                                <span className="float-right top-4 right-4 text-xs text-gray-500">
+                                <span className="absolute top-4 right-4 text-xs text-gray-500">
                                   {course.grade}
                                 </span>
                               )}
