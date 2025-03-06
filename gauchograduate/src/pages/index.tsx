@@ -2,7 +2,7 @@
 
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import CourseCatalog from "../app/components/CourseCatalog";
 import FourYearPlan from "../app/components/four-year-plan";
 import Navbar from "../app/components/Navbar";
@@ -132,58 +132,8 @@ export default function HomePage() {
   const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved'>('idle');
   const [isCatalogCollapsed, setIsCatalogCollapsed] = useState<boolean>(false);
   const [isTrackerCollapsed, setIsTrackerCollapsed] = useState<boolean>(false);
-  const [showCatalogContent, setShowCatalogContent] = useState<boolean>(true);
-  const [showTrackerContent, setShowTrackerContent] = useState<boolean>(true);
-  
-  const catalogTransitionTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const trackerTransitionTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   
   const [hasEverLoaded, setHasEverLoaded] = useState(false);
-
-  const handleCatalogToggle = () => {
-    if (!isCatalogCollapsed) {
-      setShowCatalogContent(false);
-      setTimeout(() => {
-        setIsCatalogCollapsed(true);
-      }, 50);
-    } else {
-      setIsCatalogCollapsed(false);
-      if (catalogTransitionTimeoutRef.current) {
-        clearTimeout(catalogTransitionTimeoutRef.current);
-      }
-      catalogTransitionTimeoutRef.current = setTimeout(() => {
-        setShowCatalogContent(true);
-      }, 300);
-    }
-  };
-
-  const handleTrackerToggle = () => {
-    if (!isTrackerCollapsed) {
-      setShowTrackerContent(false);
-      setTimeout(() => {
-        setIsTrackerCollapsed(true);
-      }, 50);
-    } else {
-      setIsTrackerCollapsed(false);
-      if (trackerTransitionTimeoutRef.current) {
-        clearTimeout(trackerTransitionTimeoutRef.current);
-      }
-      trackerTransitionTimeoutRef.current = setTimeout(() => {
-        setShowTrackerContent(true);
-      }, 300);
-    }
-  };
-
-  useEffect(() => {
-    return () => {
-      if (catalogTransitionTimeoutRef.current) {
-        clearTimeout(catalogTransitionTimeoutRef.current);
-      }
-      if (trackerTransitionTimeoutRef.current) {
-        clearTimeout(trackerTransitionTimeoutRef.current);
-      }
-    };
-  }, []);
 
   const { 
     data: userCoursesData,
@@ -234,6 +184,7 @@ export default function HomePage() {
         const position = getYearAndTerm(savedCourse.quarter, userCoursesData.firstQuarter);
         if (!position) return;
         
+        // Include the grade from the saved course data
         const courseWithGrade = {
           ...course,
           grade: savedCourse.grade || null
@@ -263,6 +214,7 @@ export default function HomePage() {
     if (status === "unauthenticated") {
       router.push("/signin");
     } else if (status === "authenticated" && session?.user) {
+      // Check if user has a major selected
       if (!session.user.majorId) {
         router.push("/update-profile");
       }
@@ -333,6 +285,7 @@ export default function HomePage() {
     }));
   };
 
+  // Calculate the width classes based on collapse state
   const catalogWidthClass = isCatalogCollapsed ? "w-12" : "w-full md:w-1/5";
   const planWidthClass = `w-full ${isCatalogCollapsed && isTrackerCollapsed ? "md:w-full" : isCatalogCollapsed || isTrackerCollapsed ? "md:w-4/5" : "md:w-3/5"}`;
   const trackerWidthClass = isTrackerCollapsed ? "w-12" : "w-full md:w-1/5";
@@ -341,10 +294,10 @@ export default function HomePage() {
     <div className="h-screen flex flex-col">
       <Navbar />
       <div className="flex flex-1 flex-col md:flex-row overflow-hidden">
-        <div className={`${catalogWidthClass} bg-[var(--off-white)] overflow-y-scroll transition-width duration-300 relative group`}>
+        <div className={`${catalogWidthClass} bg-[var(--off-white)] overflow-y-scroll transition-all duration-300 relative group`}>
           {isCatalogCollapsed ? (
             <button 
-              onClick={handleCatalogToggle}
+              onClick={() => setIsCatalogCollapsed(false)}
               className="w-full h-full flex flex-col items-center justify-center"
               aria-label="Expand course catalog"
             >
@@ -367,7 +320,7 @@ export default function HomePage() {
           ) : (
             <>
               <button 
-                onClick={handleCatalogToggle}
+                onClick={() => setIsCatalogCollapsed(true)}
                 className="absolute top-4 right-0 z-10 h-8 w-6 bg-white border-l border-t border-b border-gray-300 rounded-l-md flex items-center justify-center shadow-sm hover:bg-gray-50"
                 aria-label="Collapse course catalog"
                 style={{ right: '-6px' }}
@@ -382,21 +335,19 @@ export default function HomePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
-              {showCatalogContent && (
-                <div className="p-4 fade-in">
-                  <CourseCatalog
-                    courses={courses}
-                    selectedTerm={selectedTerm}
-                    setSelectedTerm={setSelectedTerm}
-                    studentSchedule={studentSchedule}
-                  />
-                </div>
-              )}
+              <div className="p-4">
+                <CourseCatalog
+                  courses={courses}
+                  selectedTerm={selectedTerm}
+                  setSelectedTerm={setSelectedTerm}
+                  studentSchedule={studentSchedule}
+                />
+              </div>
             </>
           )}
         </div>
         
-        <div className={`${planWidthClass} bg-white p-4 rounded-md shadow overflow-y-scroll transition-width duration-300`}>
+        <div className={`${planWidthClass} bg-white p-4 rounded-md shadow overflow-y-scroll transition-all duration-300`}>
           <FourYearPlan
             selectedYear={selectedYear}
             setSelectedYear={setSelectedYear}
@@ -412,10 +363,10 @@ export default function HomePage() {
           />
         </div>
         
-        <div className={`${trackerWidthClass} bg-[var(--off-white)] overflow-y-scroll transition-width duration-300 relative group`}>
+        <div className={`${trackerWidthClass} bg-[var(--off-white)] overflow-y-scroll transition-all duration-300 relative group`}>
           {isTrackerCollapsed ? (
             <button 
-              onClick={handleTrackerToggle}
+              onClick={() => setIsTrackerCollapsed(false)}
               className="w-full h-full flex flex-col items-center justify-center"
               aria-label="Expand progress tracker"
             >
@@ -438,7 +389,7 @@ export default function HomePage() {
           ) : (
             <>
               <button 
-                onClick={handleTrackerToggle}
+                onClick={() => setIsTrackerCollapsed(true)}
                 className="absolute top-4 left-0 z-10 h-8 w-6 bg-white border-r border-t border-b border-gray-300 rounded-r-md flex items-center justify-center shadow-sm hover:bg-gray-50"
                 aria-label="Collapse progress tracker"
                 style={{ left: '-6px' }}
@@ -453,16 +404,14 @@ export default function HomePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </button>
-              {showTrackerContent && (
-                <div className="p-4 fade-in">
-                  <ProgressTracker
-                    studentSchedule={studentSchedule}
-                    college={majorData?.major?.college}
-                    saveStatus={saveStatus}
-                    setSaveStatus={setSaveStatus}
-                  />
-                </div>
-              )}
+              <div className="p-4">
+                <ProgressTracker
+                  studentSchedule={studentSchedule}
+                  college={majorData?.major?.college}
+                  saveStatus={saveStatus}
+                  setSaveStatus={setSaveStatus}
+                />
+              </div>
             </>
           )}
         </div>
