@@ -2,27 +2,22 @@ import json
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
+import time
 
 load_dotenv()
-
-openai_api_key = os.getenv("OPENAI_API_KEY")
-client = OpenAI(api_key=openai_api_key)
-
-MODEL = "gpt-4o-mini"
-TEMPERATURE = 0
 
 # Load OpenAI API key from .env
-load_dotenv()
 openai_api_key = os.getenv("OPENAI_API_KEY")
 client = OpenAI(api_key=openai_api_key)
 
 # File paths
-file_path = "../course_prerequisites_full.txt"
+file_path = "../W24_course_prerequisites.txt"
 json_file = "prereq-data-formatted.json"
 
 # OpenAI model settings
 MODEL = "gpt-4o-mini"
-TEMPERATURE = .2
+TEMPERATURE = 0.2
+BATCH_SIZE = 10  # Process 10 courses at a time
 
 # Read the input file
 with open(file_path, "r", encoding="utf-8") as f:
@@ -59,7 +54,24 @@ for line in lines:
 if current_course and current_html:
     courses_data[current_course] = "\n".join(current_html)
 
-for course_id, course_html in courses_data.items():
+# Load existing JSON data if file exists
+if os.path.exists(json_file):
+    with open(json_file, "r", encoding="utf-8") as f:
+        try:
+            existing_data = json.load(f)
+        except json.JSONDecodeError:
+            existing_data = {}  # If JSON is corrupted, start fresh
+else:
+    existing_data = {}
+
+# **Find remaining courses to process**
+courses_to_process = {k: v for k, v in courses_data.items() if k not in existing_data}
+
+print(f"📌 {len(courses_to_process)} new courses to process.")
+
+# **Process courses in batches of 10**
+batch = []
+for course_id, course_html in courses_to_process.items():
     prompt = f"""
 You are an AI that parses university course prerequisite data from HTML and outputs a structured JSON representation of the requirements. 
 
@@ -88,6 +100,18 @@ You are an AI that parses university course prerequisite data from HTML and outp
    - "As well as" is usually the outermost AND operation. "As well as" should be converted into a top-level AND block.
    - Use nested and/or blocks as necessary to capture the exact logical grouping.
    - In each block, the array "requirements" holds each sub-requirement (either a course or another nested and/or group).
+    - If there is only one requirement in a block, you don't need a logical operator. for example:
+        "ANTH 125": {{
+        "course": "ANTH 125",
+        "prerequisites": {{
+            {{
+                "type": "course",
+                "id": "ANTH 2",
+                "minGrade": null,
+                "canTakeConcurrently": false
+            }}
+        }}
+        }}
 
 4. Course Requirements:
    - Each course is represented as:
@@ -189,25 +213,76 @@ Example formatting:
 this is the target course: {course_id}
 this is the prerequisites in html: {course_html}
 """
-    print(f"\n🔹 THE COURSE ID: {course_id}")
-    response = client.chat.completions.create(
-        model=MODEL,
-        messages=[{"role": "system", "content": "You are a helpful assistant."},
-                  {"role": "user", "content": prompt}],
-        temperature=TEMPERATURE
-    )
+    batch.append((course_id, prompt))
 
-    structured_json = response.choices[0].message.content.strip()
+    # Process batch when it reaches 10 courses
+    if len(batch) == BATCH_SIZE:
+        new_data = {}
+        for course_id, prompt in batch:
+            print(f"\n🔹 Processing {course_id}...")
 
-    print(f"\n🔹 OpenAI Raw Response for {course_id}:\n{structured_json}\n")
+            try:
+                response = client.chat.completions.create(
+                    model=MODEL,
+                    messages=[{"role": "system", "content": "You are a helpful assistant."},
+                              {"role": "user", "content": prompt}],
+                    temperature=TEMPERATURE
+                )
 
-    try:
-        courses_data[course_id] = json.loads(structured_json)  # ✅ Convert from string to dictionary
-    except json.JSONDecodeError as e:
-        print(f"❌ JSON Decode Error for {course_id}: {e}")
-        continue  # Skip if JSON is malformed
+                structured_json = response.choices[0].message.content.strip()
 
-# **Save structured JSON output**
-output_file = json_file
-with open(output_file, "w", encoding="utf-8") as f:
-    json.dump(courses_data, f, indent=4)
+                print(f"\n🔹 OpenAI Raw Response for {course_id}:\n{structured_json}\n")
+
+                try:
+                    new_data[course_id] = json.loads(structured_json)  # ✅ Convert from string to dictionary
+                except json.JSONDecodeError as e:
+                    print(f"❌ JSON Decode Error for {course_id}: {e}")
+                    continue  # Skip if JSON is malformed
+
+            except Exception as e:
+                print(f"❌ OpenAI API Error for {course_id}: {e}")
+                time.sleep(2)  # Avoid rate limits
+
+        # Append new data to existing JSON file
+        existing_data.update(new_data)
+        with open(json_file, "w", encoding="utf-8") as f:
+            json.dump(existing_data, f, indent=4)
+
+        print(f"✅ {len(new_data)} courses processed and saved.")
+
+        batch = []  # Reset batch
+
+# Process any remaining courses
+if batch:
+    new_data = {}
+    for course_id, prompt in batch:
+        print(f"\n🔹 Processing {course_id}...")
+
+        try:
+            response = client.chat.completions.create(
+                model=MODEL,
+                messages=[{"role": "system", "content": "You are a helpful assistant."},
+                          {"role": "user", "content": prompt}],
+                temperature=TEMPERATURE
+            )
+
+            structured_json = response.choices[0].message.content.strip()
+
+            print(f"\n🔹 OpenAI Raw Response for {course_id}:\n{structured_json}\n")
+
+            try:
+                new_data[course_id] = json.loads(structured_json)  # ✅ Convert from string to dictionary
+            except json.JSONDecodeError as e:
+                print(f"❌ JSON Decode Error for {course_id}: {e}")
+                continue  # Skip if JSON is malformed
+
+        except Exception as e:
+            print(f"❌ OpenAI API Error for {course_id}: {e}")
+            time.sleep(2)  # Avoid rate limits
+
+    # Append remaining data
+    existing_data.update(new_data)
+    with open(json_file, "w", encoding="utf-8") as f:
+        json.dump(existing_data, f, indent=4)
+
+    print(f"✅ {len(new_data)} courses processed and saved.")
