@@ -12350,7 +12350,7 @@
                     "id": "MCDB 1B",
                     "minGrade": "P",
                     "canTakeConcurrently": false
-                }
+                },
                 {
                     "type": "course",
                     "id": "CHEM 1A",
@@ -12368,7 +12368,7 @@
                     "id": "CHEM 1C",
                     "minGrade": "P",
                     "canTakeConcurrently": false
-                }
+                },
                 {
                     "type": "course",
                     "id": "EEMB 2",
