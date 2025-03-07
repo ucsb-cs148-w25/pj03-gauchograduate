@@ -12274,10 +12274,10 @@
     "MATRL 162B": {
         "course": "MATRL 162B",
         "prerequisites": {
-                "type": "course",
-                "id": "ECE 162A",
-                "minGrade": "C-",
-                "canTakeConcurrently": false
+            "type": "course",
+            "id": "ECE 162A",
+            "minGrade": "C-",
+            "canTakeConcurrently": false
         }
     },
     "MATRL 186A": {
@@ -13295,27 +13295,22 @@
                     "canTakeConcurrently": false
                 },
                 {
-                    "type": "or",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "MS 22",
-                            "minGrade": null,
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "MS 22",
-                            "minGrade": null,
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "MS 22",
-                            "minGrade": null,
-                            "canTakeConcurrently": false
-                        }
-                    ]
+                    "type": "course",
+                    "id": "MS 22",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MS 22",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MS 22",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
                 }
             ]
         }
@@ -13707,5 +13702,5852 @@
                 }
             ]
         }
+    },
+    "MUS 135B": {
+        "course": "MUS 135B",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "MUS 133",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "or",
+                    "requirements": [
+                        {
+                            "type": "and",
+                            "requirements": [
+                                {
+                                    "type": "course",
+                                    "id": "MUS 35A",
+                                    "minGrade": null,
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "MUS 35B",
+                                    "minGrade": null,
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "MUS 35C",
+                                    "minGrade": null,
+                                    "canTakeConcurrently": false
+                                }
+                            ]
+                        },
+                        {
+                            "type": "course",
+                            "id": "MUS 135*",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "MUS 15": {
+        "course": "MUS 15",
+        "prerequisites": null
+    },
+    "MUS 150": {
+        "course": "MUS 150",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "MUS 25",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 33",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 125",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 133",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                }
+            ]
+        }
+    },
+    "MUS 151": {
+        "course": "MUS 151",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "MUS 125",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 126",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 127",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 128",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 129",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 220",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                }
+            ]
+        }
+    },
+    "MUS 152": {
+        "course": "MUS 152",
+        "prerequisites": null
+    },
+    "MUS 153": {
+        "course": "MUS 153",
+        "prerequisites": null
+    },
+    "MUS 160B": {
+        "course": "MUS 160B",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "MUS 4C",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 5C",
+                    "minGrade": "C-",
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "MUS 168P": {
+        "course": "MUS 168P",
+        "prerequisites": null
+    },
+    "MUS 168X": {
+        "course": "MUS 168X",
+        "prerequisites": null
+    },
+    "MUS 17": {
+        "course": "MUS 17",
+        "prerequisites": null
+    },
+    "MUS 175P": {
+        "course": "MUS 175P",
+        "prerequisites": null
+    },
+    "MUS 176": {
+        "course": "MUS 176",
+        "prerequisites": null
+    },
+    "MUS 182": {
+        "course": "MUS 182",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "MUS 10A",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 10B",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 10C",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "MUS 184": {
+        "course": "MUS 184",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "MUS 10A",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 10B",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 10C",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "MUS 188": {
+        "course": "MUS 188",
+        "prerequisites": null
+    },
+    "MUS 192": {
+        "course": "MUS 192",
+        "prerequisites": null
+    },
+    "MUS 192A": {
+        "course": "MUS 192A",
+        "prerequisites": null
+    },
+    "MUS 192B": {
+        "course": "MUS 192B",
+        "prerequisites": {
+            "type": "course",
+            "id": "MUS 192A",
+            "minGrade": "C-",
+            "canTakeConcurrently": false
+        }
+    },
+    "MUS 192C": {
+        "course": "MUS 192C",
+        "prerequisites": {
+            "type": "course",
+            "id": "MUS 192B",
+            "minGrade": "C-",
+            "canTakeConcurrently": false
+        }
+    },
+    "MUS 195": {
+        "course": "MUS 195",
+        "prerequisites": {
+            "type": "course",
+            "id": "UCSB M4",
+            "minGrade": "1",
+            "canTakeConcurrently": false
+        }
+    },
+    "MUS 195B": {
+        "course": "MUS 195B",
+        "prerequisites": {
+            "type": "course",
+            "id": "UCSB M5",
+            "minGrade": "1",
+            "canTakeConcurrently": false
+        }
+    },
+    "MUS 196": {
+        "course": "MUS 196",
+        "prerequisites": null
+    },
+    "MUS 197": {
+        "course": "MUS 197",
+        "prerequisites": {
+            "type": "course",
+            "id": "UCSB M6",
+            "minGrade": "1",
+            "canTakeConcurrently": false
+        }
+    },
+    "MUS 197B": {
+        "course": "MUS 197B",
+        "prerequisites": {
+            "type": "course",
+            "id": "UCSB M7",
+            "minGrade": "1",
+            "canTakeConcurrently": false
+        }
+    },
+    "MUS 198": {
+        "course": "MUS 198",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "MUS 112",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 112",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 112",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "MUS 199RA": {
+        "course": "MUS 199RA",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "MUS 112",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 112",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 112",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "MUS 20A": {
+        "course": "MUS 20A",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "MUS 11",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: UCSB 38 with a score of 1"
+                }
+            ]
+        }
+    },
+    "MUS 22D": {
+        "course": "MUS 22D",
+        "prerequisites": null
+    },
+    "MUS 22M": {
+        "course": "MUS 22M",
+        "prerequisites": null
+    },
+    "MUS 22N": {
+        "course": "MUS 22N",
+        "prerequisites": null
+    },
+    "MUS 22O": {
+        "course": "MUS 22O",
+        "prerequisites": null
+    },
+    "MUS 22X": {
+        "course": "MUS 22X",
+        "prerequisites": null
+    },
+    "MUS 24": {
+        "course": "MUS 24",
+        "prerequisites": null
+    },
+    "MUS 25": {
+        "course": "MUS 25",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "UCSB 69",
+                    "minGrade": "1",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "UCS B7",
+                    "minGrade": "0",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "1",
+                    "minGrade": "0",
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "MUS 26B": {
+        "course": "MUS 26B",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "UCSB 42",
+                    "minGrade": "1",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "UCSB 43",
+                    "minGrade": "1",
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "MUS 26D": {
+        "course": "MUS 26D",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "UCSB 46",
+                    "minGrade": "1",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "UCS B4",
+                    "minGrade": "0",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "1 00 00",
+                    "minGrade": "0",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "0 00",
+                    "minGrade": "0",
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "MUS 26E": {
+        "course": "MUS 26E",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "MUS 26E",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: UCSB 48 with a score of 1"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: UCSB 49 with a score of 1"
+                }
+            ]
+        }
+    },
+    "MUS 27A": {
+        "course": "MUS 27A",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "UCSB 50",
+                    "minGrade": "1",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "UCSB 51",
+                    "minGrade": "1",
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "MUS 27B": {
+        "course": "MUS 27B",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "UCSB 52",
+                    "minGrade": "1",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "UCSB 53",
+                    "minGrade": "1",
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "MUS 27C": {
+        "course": "MUS 27C",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "UCSB 54",
+                    "minGrade": "1",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "UCSB 55",
+                    "minGrade": "1",
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "MUS 27D": {
+        "course": "MUS 27D",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "UCSB 56",
+                    "minGrade": "1",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "UCSB 57",
+                    "minGrade": "1",
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "MUS 28A": {
+        "course": "MUS 28A",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "MUS 28A",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: UCSB 58 with a score of 1"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: UCSB 59 with a score of 1"
+                }
+            ]
+        }
+    },
+    "MUS 28B": {
+        "course": "MUS 28B",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "UCSB 60",
+                    "minGrade": "1",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "UCSB 61",
+                    "minGrade": "1",
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "MUS 28C": {
+        "course": "MUS 28C",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "UCSB 62",
+                    "minGrade": "1",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "UCSB 63",
+                    "minGrade": "1",
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "MUS 28D": {
+        "course": "MUS 28D",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "UCSB 64",
+                    "minGrade": "1",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "UCSB 65",
+                    "minGrade": "1",
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "MUS 31B": {
+        "course": "MUS 31B",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "MUS 31A",
+                    "minGrade": "C-",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 31A",
+                    "minGrade": "P",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: UCSB 73 with a score of 2"
+                }
+            ]
+        }
+    },
+    "MUS 31X": {
+        "course": "MUS 31X",
+        "prerequisites": {
+            "type": "course",
+            "id": "MUS 31F",
+            "minGrade": "C-",
+            "canTakeConcurrently": false
+        }
+    },
+    "MUS 32E": {
+        "course": "MUS 32E",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "MUS 32A",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 32B",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 32C",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 32D",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 32F",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: UCSB 74 with a score of 1"
+                }
+            ]
+        }
+    },
+    "MUS 33": {
+        "course": "MUS 33",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "UCSB 71",
+                    "minGrade": "1",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "UCS B7",
+                    "minGrade": "0",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "10000",
+                    "minGrade": "0",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "000",
+                    "minGrade": "0",
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "MUS 35B": {
+        "course": "MUS 35B",
+        "prerequisites": {
+            "type": "course",
+            "id": "MUS 33",
+            "minGrade": null,
+            "canTakeConcurrently": true
+        }
+    },
+    "MUS 3B": {
+        "course": "MUS 3B",
+        "prerequisites": {
+            "type": "course",
+            "id": "MUS 3A",
+            "minGrade": "C-",
+            "canTakeConcurrently": false
+        }
+    },
+    "MUS 4B": {
+        "course": "MUS 4B",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "MUS 4A",
+                    "minGrade": "C-",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 4A",
+                    "minGrade": "P",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: UCSB 37 with a score of 2"
+                }
+            ]
+        }
+    },
+    "MUS 4E": {
+        "course": "MUS 4E",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "MUS 4D",
+                    "minGrade": "C-",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 4D",
+                    "minGrade": "P",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: UCSB 37 with a score of 5"
+                }
+            ]
+        }
+    },
+    "MUS 51": {
+        "course": "MUS 51",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "MUS 25",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 26",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 27",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 28",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 29",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                }
+            ]
+        }
+    },
+    "MUS 52": {
+        "course": "MUS 52",
+        "prerequisites": null
+    },
+    "MUS 53": {
+        "course": "MUS 53",
+        "prerequisites": null
+    },
+    "MUS 5B": {
+        "course": "MUS 5B",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "or",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "MUS 5A",
+                            "minGrade": "C-",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "MUS 5A",
+                            "minGrade": "P",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "specialRequirement",
+                            "requirement": "Taken Exam: UCSB 38 with a score of 2"
+                        }
+                    ]
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 4B",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                }
+            ]
+        }
+    },
+    "MUS 8": {
+        "course": "MUS 8",
+        "prerequisites": null
+    },
+    "MUS 88": {
+        "course": "MUS 88",
+        "prerequisites": null
+    },
+    "MUS 94": {
+        "course": "MUS 94",
+        "prerequisites": null
+    },
+    "MUS 97": {
+        "course": "MUS 97",
+        "prerequisites": null
+    },
+    "MUS 97B": {
+        "course": "MUS 97B",
+        "prerequisites": {
+            "type": "course",
+            "id": "UCSB M1",
+            "minGrade": "1",
+            "canTakeConcurrently": false
+        }
+    },
+    "MUS 98": {
+        "course": "MUS 98",
+        "prerequisites": null
+    },
+    "MUS 99": {
+        "course": "MUS 99",
+        "prerequisites": null
+    },
+    "MUS 99RA": {
+        "course": "MUS 99RA",
+        "prerequisites": null
+    },
+    "MUS A 134": {
+        "course": "MUS A 134",
+        "prerequisites": null
+    },
+    "MUS A 136": {
+        "course": "MUS A 136",
+        "prerequisites": null
+    },
+    "MUS A 137": {
+        "course": "MUS A 137",
+        "prerequisites": null
+    },
+    "MUS A 140": {
+        "course": "MUS A 140",
+        "prerequisites": null
+    },
+    "MUS A 141": {
+        "course": "MUS A 141",
+        "prerequisites": null
+    },
+    "MUS A 142": {
+        "course": "MUS A 142",
+        "prerequisites": null
+    },
+    "MUS A 143": {
+        "course": "MUS A 143",
+        "prerequisites": null
+    },
+    "MUS A 144": {
+        "course": "MUS A 144",
+        "prerequisites": null
+    },
+    "MUS A 145": {
+        "course": "MUS A 145",
+        "prerequisites": null
+    },
+    "MUS A 145BR": {
+        "course": "MUS A 145BR",
+        "prerequisites": null
+    },
+    "MUS A 145H": {
+        "course": "MUS A 145H",
+        "prerequisites": null
+    },
+    "MUS A 147S": {
+        "course": "MUS A 147S",
+        "prerequisites": null
+    },
+    "MUS A 149": {
+        "course": "MUS A 149",
+        "prerequisites": null
+    },
+    "MUS A 152": {
+        "course": "MUS A 152",
+        "prerequisites": null
+    },
+    "MUS A 170I": {
+        "course": "MUS A 170I",
+        "prerequisites": null
+    },
+    "MUS A 170J": {
+        "course": "MUS A 170J",
+        "prerequisites": null
+    },
+    "MUS A 170M": {
+        "course": "MUS A 170M",
+        "prerequisites": null
+    },
+    "MUS A 170N": {
+        "course": "MUS A 170N",
+        "prerequisites": null
+    },
+    "MUS A 170V": {
+        "course": "MUS A 170V",
+        "prerequisites": null
+    },
+    "MUS A 34": {
+        "course": "MUS A 34",
+        "prerequisites": null
+    },
+    "MUS A 36": {
+        "course": "MUS A 36",
+        "prerequisites": null
+    },
+    "MUS A 37": {
+        "course": "MUS A 37",
+        "prerequisites": null
+    },
+    "MUS A 40": {
+        "course": "MUS A 40",
+        "prerequisites": null
+    },
+    "MUS A 41": {
+        "course": "MUS A 41",
+        "prerequisites": null
+    },
+    "MUS A 42": {
+        "course": "MUS A 42",
+        "prerequisites": null
+    },
+    "MUS A 43": {
+        "course": "MUS A 43",
+        "prerequisites": null
+    },
+    "MUS A 44": {
+        "course": "MUS A 44",
+        "prerequisites": null
+    },
+    "MUS A 45": {
+        "course": "MUS A 45",
+        "prerequisites": null
+    },
+    "MUS A 45BR": {
+        "course": "MUS A 45BR",
+        "prerequisites": null
+    },
+    "MUS A 45H": {
+        "course": "MUS A 45H",
+        "prerequisites": null
+    },
+    "MUS A 47S": {
+        "course": "MUS A 47S",
+        "prerequisites": null
+    },
+    "MUS A 49": {
+        "course": "MUS A 49",
+        "prerequisites": null
+    },
+    "MUS A 52": {
+        "course": "MUS A 52",
+        "prerequisites": null
+    },
+    "MUS A 70I": {
+        "course": "MUS A 70I",
+        "prerequisites": null
+    },
+    "MUS A 70J": {
+        "course": "MUS A 70J",
+        "prerequisites": null
+    },
+    "MUS A 70M": {
+        "course": "MUS A 70M",
+        "prerequisites": null
+    },
+    "MUS A 70N": {
+        "course": "MUS A 70N",
+        "prerequisites": null
+    },
+    "MUS A 70V": {
+        "course": "MUS A 70V",
+        "prerequisites": null
+    },
+    "MUS CS 101": {
+        "course": "MUS CS 101",
+        "prerequisites": null
+    },
+    "MUS CS 105SY": {
+        "course": "MUS CS 105SY",
+        "prerequisites": null
+    },
+    "MUS CS 107": {
+        "course": "MUS CS 107",
+        "prerequisites": null
+    },
+    "MUS CS 199": {
+        "course": "MUS CS 199",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "MUS 112",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 112",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 112",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PHIL 1": {
+        "course": "PHIL 1",
+        "prerequisites": null
+    },
+    "PHIL 100B": {
+        "course": "PHIL 100B",
+        "prerequisites": null
+    },
+    "PHIL 100D": {
+        "course": "PHIL 100D",
+        "prerequisites": null
+    },
+    "PHIL 121": {
+        "course": "PHIL 121",
+        "prerequisites": null
+    },
+    "PHIL 130": {
+        "course": "PHIL 130",
+        "prerequisites": null
+    },
+    "PHIL 135": {
+        "course": "PHIL 135",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PHIL 100B",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PHIL 100D",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PHIL 100E",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PHIL 136": {
+        "course": "PHIL 136",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PHIL 1",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PHIL 4",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PHIL 100A",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PHIL 138": {
+        "course": "PHIL 138",
+        "prerequisites": {
+            "type": "course",
+            "id": "PHIL 100A",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "PHIL 150B": {
+        "course": "PHIL 150B",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PHIL 100",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PHIL 100",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PHIL 151": {
+        "course": "PHIL 151",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PHIL 1",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PHIL *",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PHIL 153": {
+        "course": "PHIL 153",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PHIL 1",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PHIL *",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PHIL 161": {
+        "course": "PHIL 161",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PHIL 100B",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PHIL 100D",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PHIL 100E",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PHIL 183": {
+        "course": "PHIL 183",
+        "prerequisites": null
+    },
+    "PHIL 192": {
+        "course": "PHIL 192",
+        "prerequisites": null
+    },
+    "PHIL 197A": {
+        "course": "PHIL 197A",
+        "prerequisites": null
+    },
+    "PHIL 197B": {
+        "course": "PHIL 197B",
+        "prerequisites": null
+    },
+    "PHIL 197P": {
+        "course": "PHIL 197P",
+        "prerequisites": null
+    },
+    "PHIL 199": {
+        "course": "PHIL 199",
+        "prerequisites": null
+    },
+    "PHIL 199RA": {
+        "course": "PHIL 199RA",
+        "prerequisites": null
+    },
+    "PHIL 20B": {
+        "course": "PHIL 20B",
+        "prerequisites": null
+    },
+    "PHIL 3": {
+        "course": "PHIL 3",
+        "prerequisites": null
+    },
+    "PHIL 4": {
+        "course": "PHIL 4",
+        "prerequisites": null
+    },
+    "PHIL 7": {
+        "course": "PHIL 7",
+        "prerequisites": null
+    },
+    "PHYS 100B": {
+        "course": "PHYS 100B",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "MATH 5C",
+                    "minGrade": "C-",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MATH 6B",
+                    "minGrade": "C-",
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PHYS 103": {
+        "course": "PHYS 103",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "or",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "PHYS 2",
+                            "minGrade": "C-",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "PHYS 22",
+                            "minGrade": "C-",
+                            "canTakeConcurrently": false
+                        }
+                    ]
+                },
+                {
+                    "type": "course",
+                    "id": "MATH 6A",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                }
+            ]
+        }
+    },
+    "PHYS 104": {
+        "course": "PHYS 104",
+        "prerequisites": {
+            "type": "course",
+            "id": "PHYS 103",
+            "minGrade": "C-",
+            "canTakeConcurrently": false
+        }
+    },
+    "PHYS 110B": {
+        "course": "PHYS 110B",
+        "prerequisites": {
+            "type": "course",
+            "id": "PHYS 110A",
+            "minGrade": "C-",
+            "canTakeConcurrently": false
+        }
+    },
+    "PHYS 115A": {
+        "course": "PHYS 115A",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "and",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "PHYS 5",
+                            "minGrade": "C-",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "PHYS 100A",
+                            "minGrade": "C-",
+                            "canTakeConcurrently": false
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "PHYS 25",
+                            "minGrade": "C-",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "PHYS 100A",
+                            "minGrade": "C-",
+                            "canTakeConcurrently": false
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "PHYS 115B": {
+        "course": "PHYS 115B",
+        "prerequisites": {
+            "type": "course",
+            "id": "PHYS 115A",
+            "minGrade": "C-",
+            "canTakeConcurrently": false
+        }
+    },
+    "PHYS 119A": {
+        "course": "PHYS 119A",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PHYS 22",
+                    "minGrade": "C-",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MATH 6B",
+                    "minGrade": "C-",
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PHYS 119B": {
+        "course": "PHYS 119B",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PHYS 115A",
+                    "minGrade": "C-",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PHYS 119A",
+                    "minGrade": "C-",
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PHYS 123B": {
+        "course": "PHYS 123B",
+        "prerequisites": {
+            "type": "course",
+            "id": "PHYS 115B",
+            "minGrade": "C-",
+            "canTakeConcurrently": false
+        }
+    },
+    "PHYS 127BL": {
+        "course": "PHYS 127BL",
+        "prerequisites": {
+            "type": "course",
+            "id": "PHYS 127AL",
+            "minGrade": "C-",
+            "canTakeConcurrently": false
+        }
+    },
+    "PHYS 128AL": {
+        "course": "PHYS 128AL",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PHYS 13CL",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PHYS 20CL",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PHYS CS 15C",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        },
+        "additionalRequirements": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PHYS 115A",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                }
+            ]
+        }
+    },
+    "PHYS 129L": {
+        "course": "PHYS 129L",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "and",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "PHYS 5",
+                            "minGrade": "C-",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "MATH 6B",
+                            "minGrade": "C-",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "PHYS 29",
+                            "minGrade": "C-",
+                            "canTakeConcurrently": false
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "PHYS 25",
+                            "minGrade": "C-",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "MATH 6B",
+                            "minGrade": "C-",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "PHYS 29",
+                            "minGrade": "C-",
+                            "canTakeConcurrently": false
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "PHYS 132": {
+        "course": "PHYS 132",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PHYS 5",
+                    "minGrade": "C-",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PHYS 25",
+                    "minGrade": "C-",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PHYS 115A",
+                    "minGrade": "C-",
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PHYS 135": {
+        "course": "PHYS 135",
+        "prerequisites": null
+    },
+    "PHYS 137": {
+        "course": "PHYS 137",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "or",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "PHYS 5",
+                            "minGrade": "C-",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "PHYS 25",
+                            "minGrade": "C-",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "PHYS 115A",
+                            "minGrade": "C-",
+                            "canTakeConcurrently": false
+                        }
+                    ]
+                },
+                {
+                    "type": "course",
+                    "id": "PHYS 104",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                }
+            ]
+        }
+    },
+    "PHYS 138": {
+        "course": "PHYS 138",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PHYS 119B",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                }
+            ]
+        }
+    },
+    "PHYS 13BL": {
+        "course": "PHYS 13BL",
+        "prerequisites": null
+    },
+    "PHYS 142L": {
+        "course": "PHYS 142L",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PHYS 5",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PHYS 25",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PHYS 143L": {
+        "course": "PHYS 143L",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PHYS 5",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PHYS 25",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PHYS 144L": {
+        "course": "PHYS 144L",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PHYS 5",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PHYS 25",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PHYS 145L": {
+        "course": "PHYS 145L",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PHYS 5",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PHYS 25",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PHYS 150": {
+        "course": "PHYS 150",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PHYS 5",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PHYS 25",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PHYS 198": {
+        "course": "PHYS 198",
+        "prerequisites": null
+    },
+    "PHYS 199": {
+        "course": "PHYS 199",
+        "prerequisites": null
+    },
+    "PHYS 199RA": {
+        "course": "PHYS 199RA",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PHYS 1*",
+                    "minGrade": "C-",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PHYS 1*",
+                    "minGrade": "C-",
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PHYS 20BL": {
+        "course": "PHYS 20BL",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "and",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "PHYS 3",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "PHYS 20AL",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "PHYS 23",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "PHYS 20AL",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "PHYS 21": {
+        "course": "PHYS 21",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "or",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "MATH 2A",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "MATH 3A",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "PHYS 8",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "specialRequirement",
+                            "requirement": "Taken Exam: AP 66 with a score of 3"
+                        },
+                        {
+                            "type": "specialRequirement",
+                            "requirement": "Taken Exam: AP 69 with a score of 3"
+                        },
+                        {
+                            "type": "specialRequirement",
+                            "requirement": "Taken Exam: AP 68 with a score of 3"
+                        },
+                        {
+                            "type": "specialRequirement",
+                            "requirement": "Taken Exam: IB M4 with a score of 5"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "MATH 3B",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "PHYS 8",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "specialRequirement",
+                            "requirement": "Taken Exam: AP 68 with a score of 5"
+                        },
+                        {
+                            "type": "specialRequirement",
+                            "requirement": "Taken Exam: IB M with a score of 5"
+                        },
+                        {
+                            "type": "course",
+                            "id": "MATH 2B",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "PHYS 22": {
+        "course": "PHYS 22",
+        "prerequisites": {
+            "type": "course",
+            "id": "PHYS 21",
+            "minGrade": "C-",
+            "canTakeConcurrently": false
+        }
+    },
+    "PHYS 24": {
+        "course": "PHYS 24",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PHYS 23",
+                    "minGrade": "C-",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MATH 4A",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PHYS 29": {
+        "course": "PHYS 29",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "MATH 2B",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MATH 3B",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PHYS 8",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 68 with a score of 5"
+                }
+            ]
+        }
+    },
+    "PHYS 3": {
+        "course": "PHYS 3",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PHYS 2",
+                    "minGrade": "C-",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "or",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "MATH 2A",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "MATH 3A",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "specialRequirement",
+                            "requirement": "Taken Exam: AP 66 with a score of 3"
+                        },
+                        {
+                            "type": "specialRequirement",
+                            "requirement": "Taken Exam: AP 69 with a score of 3"
+                        },
+                        {
+                            "type": "specialRequirement",
+                            "requirement": "Taken Exam: AP 68 with a score of 3"
+                        },
+                        {
+                            "type": "specialRequirement",
+                            "requirement": "Taken Exam: IB M4 with a score of 5"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "MATH 3B",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "specialRequirement",
+                            "requirement": "Taken Exam: AP 68 with a score of 3"
+                        },
+                        {
+                            "type": "specialRequirement",
+                            "requirement": "Taken Exam: IB M with a score of 5"
+                        },
+                        {
+                            "type": "course",
+                            "id": "MATH 2B",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "MATH 4A",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "MATH 4AI",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "PHYS 3L": {
+        "course": "PHYS 3L",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PHYS 3",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "PHYS 23",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                }
+            ]
+        }
+    },
+    "PHYS 4": {
+        "course": "PHYS 4",
+        "prerequisites": {
+            "type": "course",
+            "id": "PHYS 3",
+            "minGrade": "C-",
+            "canTakeConcurrently": false
+        }
+    },
+    "PHYS 4L": {
+        "course": "PHYS 4L",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PHYS 4",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "PHYS 24",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                }
+            ]
+        }
+    },
+    "PHYS 6A": {
+        "course": "PHYS 6A",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "MATH 2A",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "MATH 3A",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "MATH 34A",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 66 with a score of 3"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 69 with a score of 3"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 68 with a score of 3"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB M4 with a score of 5"
+                }
+            ]
+        }
+    },
+    "PHYS 6AL": {
+        "course": "PHYS 6AL",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PHYS 6A",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                }
+            ]
+        }
+    },
+    "PHYS 6B": {
+        "course": "PHYS 6B",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PHYS 6A",
+                    "minGrade": "C-",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 80 with a score of 3"
+                }
+            ]
+        }
+    },
+    "PHYS 6BL": {
+        "course": "PHYS 6BL",
+        "prerequisites": {
+            "type": "course",
+            "id": "PHYS 6B",
+            "minGrade": null,
+            "canTakeConcurrently": true
+        }
+    },
+    "PHYS 7A": {
+        "course": "PHYS 7A",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "MATH 2A",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MATH 3A",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 36 with a score of 3"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 69 with a score of 3"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 68 with a score of 3"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB M4 with a score of 5"
+                }
+            ]
+        }
+    },
+    "PHYS 99": {
+        "course": "PHYS 99",
+        "prerequisites": null
+    },
+    "PHYS CS 10": {
+        "course": "PHYS CS 10",
+        "prerequisites": null
+    },
+    "PHYS CS 140VA": {
+        "course": "PHYS CS 140VA",
+        "prerequisites": null
+    },
+    "PHYS CS 15B": {
+        "course": "PHYS CS 15B",
+        "prerequisites": {
+            "type": "course",
+            "id": "PHYS CS 15A",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "PHYS CS 32": {
+        "course": "PHYS CS 32",
+        "prerequisites": {
+            "type": "course",
+            "id": "PHYS CS 31",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "PHYS CS 35": {
+        "course": "PHYS CS 35",
+        "prerequisites": {
+            "type": "course",
+            "id": "PHYS CS 34",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "POL S 1": {
+        "course": "POL S 1",
+        "prerequisites": null
+    },
+    "POL S 106AD": {
+        "course": "POL S 106AD",
+        "prerequisites": null
+    },
+    "POL S 106AS": {
+        "course": "POL S 106AS",
+        "prerequisites": null
+    },
+    "POL S 106BT": {
+        "course": "POL S 106BT",
+        "prerequisites": null
+    },
+    "POL S 106GR": {
+        "course": "POL S 106GR",
+        "prerequisites": null
+    },
+    "POL S 106HR": {
+        "course": "POL S 106HR",
+        "prerequisites": null
+    },
+    "POL S 117": {
+        "course": "POL S 117",
+        "prerequisites": {
+            "type": "course",
+            "id": "POL S 6",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "POL S 119JW": {
+        "course": "POL S 119JW",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "POL S 1",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "POL S 7",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "POL S 121": {
+        "course": "POL S 121",
+        "prerequisites": {
+            "type": "course",
+            "id": "POL S 7",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "POL S 135": {
+        "course": "POL S 135",
+        "prerequisites": {
+            "type": "course",
+            "id": "POL S 6",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "POL S 147": {
+        "course": "POL S 147",
+        "prerequisites": {
+            "type": "course",
+            "id": "POL S 6",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "POL S 149": {
+        "course": "POL S 149",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "POL S 6",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "POL S 15",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "POL S 15": {
+        "course": "POL S 15",
+        "prerequisites": null
+    },
+    "POL S 166": {
+        "course": "POL S 166",
+        "prerequisites": {
+            "type": "course",
+            "id": "POL S 15",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "POL S 172": {
+        "course": "POL S 172",
+        "prerequisites": {
+            "type": "course",
+            "id": "POL S 15",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "POL S 173": {
+        "course": "POL S 173",
+        "prerequisites": null
+    },
+    "POL S 192": {
+        "course": "POL S 192",
+        "prerequisites": null
+    },
+    "POL S 196": {
+        "course": "POL S 196",
+        "prerequisites": null
+    },
+    "POL S 197B": {
+        "course": "POL S 197B",
+        "prerequisites": null
+    },
+    "POL S 199": {
+        "course": "POL S 199",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "POL S 1*",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "POL S 1*",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "POL S 199RA": {
+        "course": "POL S 199RA",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "POL S 1",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "POL S 1",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PORT 105E": {
+        "course": "PORT 105E",
+        "prerequisites": null
+    },
+    "PORT 114": {
+        "course": "PORT 114",
+        "prerequisites": null
+    },
+    "PORT 129C": {
+        "course": "PORT 129C",
+        "prerequisites": null
+    },
+    "PORT 16A": {
+        "course": "PORT 16A",
+        "prerequisites": null
+    },
+    "PORT 195": {
+        "course": "PORT 195",
+        "prerequisites": null
+    },
+    "PORT 199": {
+        "course": "PORT 199",
+        "prerequisites": null
+    },
+    "PORT 2": {
+        "course": "PORT 2",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PORT 1",
+                    "minGrade": "P",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PORT 16A",
+                    "minGrade": "P",
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PORT 5": {
+        "course": "PORT 5",
+        "prerequisites": {
+            "type": "course",
+            "id": "PORT 4",
+            "minGrade": "P",
+            "canTakeConcurrently": false
+        }
+    },
+    "PSTAT 10": {
+        "course": "PSTAT 10",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "MATH 2B",
+                    "minGrade": "C",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MATH 3B",
+                    "minGrade": "C",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 68 with a score of 3"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB M with a score of 5"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB M4 with a score of 5"
+                }
+            ]
+        }
+    },
+    "PSTAT 115": {
+        "course": "PSTAT 115",
+        "prerequisites": {
+            "type": "course",
+            "id": "PSTAT 126",
+            "minGrade": "C",
+            "canTakeConcurrently": false
+        }
+    },
+    "PSTAT 120A": {
+        "course": "PSTAT 120A",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "or",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "MATH 3C",
+                            "minGrade": "C",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "MATH 4A",
+                            "minGrade": "C",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "MATH 4AI",
+                            "minGrade": "C",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "MATH 6A",
+                            "minGrade": "C",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "MATH 6AI",
+                            "minGrade": "C",
+                            "canTakeConcurrently": false
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "MATH 3C",
+                            "minGrade": "C",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "MATH 4A",
+                            "minGrade": "C",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "MATH 4AI",
+                            "minGrade": "C",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "MATH 6A",
+                            "minGrade": "C",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "MATH 6AI",
+                            "minGrade": "C",
+                            "canTakeConcurrently": false
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "PSTAT 120B": {
+        "course": "PSTAT 120B",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PSTAT 120A",
+                    "minGrade": "C",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSTATW 120A",
+                    "minGrade": "C",
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PSTAT 120C": {
+        "course": "PSTAT 120C",
+        "prerequisites": null
+    },
+    "PSTAT 122": {
+        "course": "PSTAT 122",
+        "prerequisites": null
+    },
+    "PSTAT 123": {
+        "course": "PSTAT 123",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PSTAT 10",
+                    "minGrade": "C",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSTAT 120B",
+                    "minGrade": "C",
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PSTAT 126": {
+        "course": "PSTAT 126",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PSTAT 10",
+                    "minGrade": "C",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSTAT 120B",
+                    "minGrade": "C",
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PSTAT 130": {
+        "course": "PSTAT 130",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PSTAT 1",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MATH 1",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "CMPSC 1",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "ECE 1",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSTATW 1",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PSTAT 131": {
+        "course": "PSTAT 131",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PSTAT 120A",
+                    "minGrade": "C",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSTAT 120B",
+                    "minGrade": "C",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSTAT 126",
+                    "minGrade": "C",
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PSTAT 134": {
+        "course": "PSTAT 134",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "or",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "PSTAT 131",
+                            "minGrade": "C",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "PSTAT 231",
+                            "minGrade": "C",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "CMPSC 165B",
+                            "minGrade": "C",
+                            "canTakeConcurrently": false
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "CMPSC 9",
+                            "minGrade": "C",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "CMPSC 16",
+                            "minGrade": "C",
+                            "canTakeConcurrently": false
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "PSTAT 135": {
+        "course": "PSTAT 135",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "or",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "PSTAT 131",
+                            "minGrade": "C",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "CMPSC 165B",
+                            "minGrade": "C",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "PSTAT 231",
+                            "minGrade": "C",
+                            "canTakeConcurrently": false
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "CMPSC 9",
+                            "minGrade": "C",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "CMPSC 16",
+                            "minGrade": "C",
+                            "canTakeConcurrently": false
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "PSTAT 160A": {
+        "course": "PSTAT 160A",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "or",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "MATH 4A",
+                            "minGrade": "C",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "MATH 4AI",
+                            "minGrade": "C",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "MATH 5A",
+                            "minGrade": "C",
+                            "canTakeConcurrently": false
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "requirements": [
+                        {
+                            "type": "and",
+                            "requirements": [
+                                {
+                                    "type": "course",
+                                    "id": "MATH 8",
+                                    "minGrade": "C",
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "PSTAT 120A",
+                                    "minGrade": "C",
+                                    "canTakeConcurrently": false
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "requirements": [
+                                {
+                                    "type": "course",
+                                    "id": "PSTAT 8",
+                                    "minGrade": "C",
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "PSTAT 120A",
+                                    "minGrade": "C",
+                                    "canTakeConcurrently": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "PSTAT 160B": {
+        "course": "PSTAT 160B",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PSTAT 120B",
+                    "minGrade": "C",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSTAT 160A",
+                    "minGrade": "C",
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PSTAT 170": {
+        "course": "PSTAT 170",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PSTAT 120A",
+                    "minGrade": "C",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSTAT 120B",
+                    "minGrade": "C",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSTAT 160A",
+                    "minGrade": "C",
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PSTAT 171": {
+        "course": "PSTAT 171",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "MATH 2B",
+                    "minGrade": "C",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MATH 3B",
+                    "minGrade": "C",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 68 with a score of 3"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB M with a score of 5"
+                }
+            ]
+        }
+    },
+    "PSTAT 172A": {
+        "course": "PSTAT 172A",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PSTAT 120A",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSTAT 171",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PSTAT 174": {
+        "course": "PSTAT 174",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PSTAT 10",
+                    "minGrade": "C",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSTAT 120B",
+                    "minGrade": "C",
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PSTAT 182T": {
+        "course": "PSTAT 182T",
+        "prerequisites": {
+            "type": "course",
+            "id": "PSTAT 120A",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "PSTAT 193": {
+        "course": "PSTAT 193",
+        "prerequisites": null
+    },
+    "PSTAT 197B": {
+        "course": "PSTAT 197B",
+        "prerequisites": {
+            "type": "course",
+            "id": "PSTAT 197A",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "PSTAT 199": {
+        "course": "PSTAT 199",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PSTAT 1*",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSTAT 1*",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PSTAT 5A": {
+        "course": "PSTAT 5A",
+        "prerequisites": null
+    },
+    "PSTAT 5H": {
+        "course": "PSTAT 5H",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PSTAT 5A",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "PSTAT 5LS",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "PSTAT 8",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "PSTAT 10",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                }
+            ]
+        }
+    },
+    "PSTAT 5LS": {
+        "course": "PSTAT 5LS",
+        "prerequisites": null
+    },
+    "PSTAT 8": {
+        "course": "PSTAT 8",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "MATH 4A",
+                    "minGrade": "B",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MATH 4AI",
+                    "minGrade": "B",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MATH 4B",
+                    "minGrade": "B",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MATH 4BI",
+                    "minGrade": "B",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MATH 6A",
+                    "minGrade": "B",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MATH 6AI",
+                    "minGrade": "B",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MATH 6B",
+                    "minGrade": "B",
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PSTAT 99": {
+        "course": "PSTAT 99",
+        "prerequisites": null
+    },
+    "PSY 1": {
+        "course": "PSY 1",
+        "prerequisites": null
+    },
+    "PSY 105": {
+        "course": "PSY 105",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "specialRequirement",
+                    "requirement": "a class level of JR"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "a class level of SR"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "a class level of LM"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "a class level of SS"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "a class level of SB"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "a class level of SP"
+                },
+                {
+                    "type": "course",
+                    "id": "PSY 1",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 85 with a score of 3"
+                }
+            ]
+        }
+    },
+    "PSY 106": {
+        "course": "PSY 106",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "specialRequirement",
+                    "requirement": "a class level of JR"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "a class level of SR"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "a class level of LM"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "a class level of SS"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "a class level of SB"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "a class level of SP"
+                },
+                {
+                    "type": "course",
+                    "id": "PSY 1",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 85 with a score of 3"
+                }
+            ]
+        }
+    },
+    "PSY 108": {
+        "course": "PSY 108",
+        "prerequisites": null
+    },
+    "PSY 10A": {
+        "course": "PSY 10A",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "or",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "PSY 1",
+                            "minGrade": "C-",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "specialRequirement",
+                            "requirement": "Taken Exam: AP 85 with a score of 3"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "PSY 5",
+                            "minGrade": "C-",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "PSTAT 5A",
+                            "minGrade": "C-",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "PSTAT 5LS",
+                            "minGrade": "C-",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "COMM 87",
+                            "minGrade": "C-",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "specialRequirement",
+                            "requirement": "Taken Exam: AP 90 with a score of 3"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "MATH 3A",
+                            "minGrade": "C-",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "MATH 34A",
+                            "minGrade": "C-",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "MATH 2A",
+                            "minGrade": "C-",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "specialRequirement",
+                            "requirement": "Taken Exam: AP 66 with a score of 3"
+                        },
+                        {
+                            "type": "specialRequirement",
+                            "requirement": "Taken Exam: AP 69 with a score of 3"
+                        },
+                        {
+                            "type": "specialRequirement",
+                            "requirement": "Taken Exam: AP 68 with a score of 3"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "requirements": [
+                        {
+                            "type": "and",
+                            "requirements": [
+                                {
+                                    "type": "course",
+                                    "id": "CHEM 1A",
+                                    "minGrade": null,
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "CHEM 1B",
+                                    "minGrade": null,
+                                    "canTakeConcurrently": false
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "requirements": [
+                                {
+                                    "type": "course",
+                                    "id": "CHEM 1A",
+                                    "minGrade": null,
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "CHEM 1B",
+                                    "minGrade": null,
+                                    "canTakeConcurrently": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "PSY 10B": {
+        "course": "PSY 10B",
+        "prerequisites": {
+            "type": "course",
+            "id": "PSY 10A",
+            "minGrade": "C-",
+            "canTakeConcurrently": false
+        }
+    },
+    "PSY 113L": {
+        "course": "PSY 113L",
+        "prerequisites": null
+    },
+    "PSY 120L": {
+        "course": "PSY 120L",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PSY 102",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSY 105",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSY 106",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSY 108",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PSY 122": {
+        "course": "PSY 122",
+        "prerequisites": {
+            "type": "course",
+            "id": "PSY 106",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "PSY 124": {
+        "course": "PSY 124",
+        "prerequisites": null
+    },
+    "PSY 129L": {
+        "course": "PSY 129L",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PSY 129",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSY 110A",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSY 130",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSY 110B",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSY 131",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSY 132",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PSY 133": {
+        "course": "PSY 133",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PSY 106",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSY 111",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MCDB 126A",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MCDB 126B",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MCDB 126C",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PSY 143": {
+        "course": "PSY 143",
+        "prerequisites": null
+    },
+    "PSY 150L": {
+        "course": "PSY 150L",
+        "prerequisites": {
+            "type": "course",
+            "id": "PSY 102",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "PSY 152": {
+        "course": "PSY 152",
+        "prerequisites": null
+    },
+    "PSY 153": {
+        "course": "PSY 153",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "and",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "PSY 102",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "PSY 106",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "PSY 102",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "PSY 111",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "PSY 154": {
+        "course": "PSY 154",
+        "prerequisites": null
+    },
+    "PSY 155L": {
+        "course": "PSY 155L",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PSY 143",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSY 146",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSY 155",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "ANTH 5",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PSY 160MH": {
+        "course": "PSY 160MH",
+        "prerequisites": null
+    },
+    "PSY 160SK": {
+        "course": "PSY 160SK",
+        "prerequisites": null
+    },
+    "PSY 161": {
+        "course": "PSY 161",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PSY 111",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MCDB 151",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PSY 163BG": {
+        "course": "PSY 163BG",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PSY 106",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSY 111",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PSY 196D": {
+        "course": "PSY 196D",
+        "prerequisites": null
+    },
+    "PSY 197A": {
+        "course": "PSY 197A",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PSY 1*",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSY 1*",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSY 1*",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PSY 197B": {
+        "course": "PSY 197B",
+        "prerequisites": {
+            "type": "course",
+            "id": "PSY 197A",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "PSY 197C": {
+        "course": "PSY 197C",
+        "prerequisites": null
+    },
+    "PSY 198": {
+        "course": "PSY 198",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PSY 1",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSY 1",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PSY 199": {
+        "course": "PSY 199",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "and",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "PSY 1*",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "PSY 1*",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "PSY 199P",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "PSY 1*",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "PSY 1*",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "PSY 99P",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "PSY 199P": {
+        "course": "PSY 199P",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "PSY 1",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSY 1",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "PSY 99": {
+        "course": "PSY 99",
+        "prerequisites": null
+    },
+    "PSY 99P": {
+        "course": "PSY 99P",
+        "prerequisites": null
+    },
+    "RENST 199": {
+        "course": "RENST 199",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "RENST 1*",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "RENST 1*",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "RG ST 101": {
+        "course": "RG ST 101",
+        "prerequisites": null
+    },
+    "RG ST 10B": {
+        "course": "RG ST 10B",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "RG ST 10A",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: UCSB AR with a score of 1"
+                }
+            ]
+        }
+    },
+    "RG ST 10E": {
+        "course": "RG ST 10E",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "RG ST 10D",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: UCSB AR with a score of 4"
+                }
+            ]
+        }
+    },
+    "RG ST 111": {
+        "course": "RG ST 111",
+        "prerequisites": null
+    },
+    "RG ST 115G": {
+        "course": "RG ST 115G",
+        "prerequisites": null
+    },
+    "RG ST 116A": {
+        "course": "RG ST 116A",
+        "prerequisites": null
+    },
+    "RG ST 11B": {
+        "course": "RG ST 11B",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "RG ST 11A",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: UCSB HI with a score of 1"
+                }
+            ]
+        }
+    },
+    "RG ST 125A": {
+        "course": "RG ST 125A",
+        "prerequisites": null
+    },
+    "RG ST 128C": {
+        "course": "RG ST 128C",
+        "prerequisites": null
+    },
+    "RG ST 13": {
+        "course": "RG ST 13",
+        "prerequisites": null
+    },
+    "RG ST 131H": {
+        "course": "RG ST 131H",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "specialRequirement",
+                    "requirement": "a class level of JR"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "a class level of SR"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "a class level of LM"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "a class level of SS"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "a class level of SP"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "a class level of SB"
+                },
+                {
+                    "type": "course",
+                    "id": "RG ST *",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "RG ST 132B": {
+        "course": "RG ST 132B",
+        "prerequisites": null
+    },
+    "RG ST 133E": {
+        "course": "RG ST 133E",
+        "prerequisites": null
+    },
+    "RG ST 14": {
+        "course": "RG ST 14",
+        "prerequisites": null
+    },
+    "RG ST 140D": {
+        "course": "RG ST 140D",
+        "prerequisites": null
+    },
+    "RG ST 147T": {
+        "course": "RG ST 147T",
+        "prerequisites": null
+    },
+    "RG ST 148B": {
+        "course": "RG ST 148B",
+        "prerequisites": {
+            "type": "course",
+            "id": "RG ST 148A",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "RG ST 149R": {
+        "course": "RG ST 149R",
+        "prerequisites": null
+    },
+    "RG ST 156BE": {
+        "course": "RG ST 156BE",
+        "prerequisites": null
+    },
+    "RG ST 158E": {
+        "course": "RG ST 158E",
+        "prerequisites": {
+            "type": "course",
+            "id": "RG ST 58D",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "RG ST 159J": {
+        "course": "RG ST 159J",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "RG ST 159D",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "RG ST 159E",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "RG ST 159F",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "RG ST 162A": {
+        "course": "RG ST 162A",
+        "prerequisites": null
+    },
+    "RG ST 162D": {
+        "course": "RG ST 162D",
+        "prerequisites": null
+    },
+    "RG ST 179": {
+        "course": "RG ST 179",
+        "prerequisites": null
+    },
+    "RG ST 179B": {
+        "course": "RG ST 179B",
+        "prerequisites": null
+    },
+    "RG ST 183B": {
+        "course": "RG ST 183B",
+        "prerequisites": null
+    },
+    "RG ST 184B": {
+        "course": "RG ST 184B",
+        "prerequisites": null
+    },
+    "RG ST 188B": {
+        "course": "RG ST 188B",
+        "prerequisites": null
+    },
+    "RG ST 195": {
+        "course": "RG ST 195",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "RG ST 1*",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "RG ST 1*",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "RG ST 198IS": {
+        "course": "RG ST 198IS",
+        "prerequisites": null
+    },
+    "RG ST 199": {
+        "course": "RG ST 199",
+        "prerequisites": null
+    },
+    "RG ST 199PL": {
+        "course": "RG ST 199PL",
+        "prerequisites": null
+    },
+    "RG ST 199RA": {
+        "course": "RG ST 199RA",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "RG ST 1*",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "RG ST 1*",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "RG ST 24": {
+        "course": "RG ST 24",
+        "prerequisites": null
+    },
+    "RG ST 3": {
+        "course": "RG ST 3",
+        "prerequisites": null
+    },
+    "RG ST 4": {
+        "course": "RG ST 4",
+        "prerequisites": null
+    },
+    "RG ST 58B": {
+        "course": "RG ST 58B",
+        "prerequisites": {
+            "type": "course",
+            "id": "RG ST 58A",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "RG ST 65B": {
+        "course": "RG ST 65B",
+        "prerequisites": {
+            "type": "course",
+            "id": "RG ST 65A",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "RG ST 81": {
+        "course": "RG ST 81",
+        "prerequisites": null
+    },
+    "RG ST 98": {
+        "course": "RG ST 98",
+        "prerequisites": null
+    },
+    "RG ST 99": {
+        "course": "RG ST 99",
+        "prerequisites": null
+    },
+    "RUSS 101B": {
+        "course": "RUSS 101B",
+        "prerequisites": {
+            "type": "course",
+            "id": "RUSS 6",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "RUSS 2": {
+        "course": "RUSS 2",
+        "prerequisites": {
+            "type": "course",
+            "id": "RUSS 1",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "RUSS 5": {
+        "course": "RUSS 5",
+        "prerequisites": {
+            "type": "course",
+            "id": "RUSS 4",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "SLAV 117I": {
+        "course": "SLAV 117I",
+        "prerequisites": null
+    },
+    "SLAV 123C": {
+        "course": "SLAV 123C",
+        "prerequisites": null
+    },
+    "SLAV 181C": {
+        "course": "SLAV 181C",
+        "prerequisites": null
+    },
+    "SLAV 197": {
+        "course": "SLAV 197",
+        "prerequisites": null
+    },
+    "SLAV 199": {
+        "course": "SLAV 199",
+        "prerequisites": null
+    },
+    "SOC 1": {
+        "course": "SOC 1",
+        "prerequisites": null
+    },
+    "SOC 108A": {
+        "course": "SOC 108A",
+        "prerequisites": null
+    },
+    "SOC 108C": {
+        "course": "SOC 108C",
+        "prerequisites": null
+    },
+    "SOC 108ST": {
+        "course": "SOC 108ST",
+        "prerequisites": null
+    },
+    "SOC 118CW": {
+        "course": "SOC 118CW",
+        "prerequisites": null
+    },
+    "SOC 124": {
+        "course": "SOC 124",
+        "prerequisites": null
+    },
+    "SOC 130ST": {
+        "course": "SOC 130ST",
+        "prerequisites": null
+    },
+    "SOC 131": {
+        "course": "SOC 131",
+        "prerequisites": null
+    },
+    "SOC 134": {
+        "course": "SOC 134",
+        "prerequisites": null
+    },
+    "SOC 134G": {
+        "course": "SOC 134G",
+        "prerequisites": null
+    },
+    "SOC 142": {
+        "course": "SOC 142",
+        "prerequisites": null
+    },
+    "SOC 144S": {
+        "course": "SOC 144S",
+        "prerequisites": null
+    },
+    "SOC 145": {
+        "course": "SOC 145",
+        "prerequisites": null
+    },
+    "SOC 146": {
+        "course": "SOC 146",
+        "prerequisites": null
+    },
+    "SOC 147": {
+        "course": "SOC 147",
+        "prerequisites": null
+    },
+    "SOC 152A": {
+        "course": "SOC 152A",
+        "prerequisites": null
+    },
+    "SOC 152B": {
+        "course": "SOC 152B",
+        "prerequisites": {
+            "type": "course",
+            "id": "SOC 152A",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "SOC 154A": {
+        "course": "SOC 154A",
+        "prerequisites": null
+    },
+    "SOC 155": {
+        "course": "SOC 155",
+        "prerequisites": null
+    },
+    "SOC 164": {
+        "course": "SOC 164",
+        "prerequisites": null
+    },
+    "SOC 173R": {
+        "course": "SOC 173R",
+        "prerequisites": null
+    },
+    "SOC 185C": {
+        "course": "SOC 185C",
+        "prerequisites": null
+    },
+    "SOC 185DG": {
+        "course": "SOC 185DG",
+        "prerequisites": null
+    },
+    "SOC 185F": {
+        "course": "SOC 185F",
+        "prerequisites": null
+    },
+    "SOC 185S": {
+        "course": "SOC 185S",
+        "prerequisites": null
+    },
+    "SOC 190A": {
+        "course": "SOC 190A",
+        "prerequisites": null
+    },
+    "SOC 191CA": {
+        "course": "SOC 191CA",
+        "prerequisites": null
+    },
+    "SOC 196HR": {
+        "course": "SOC 196HR",
+        "prerequisites": {
+            "type": "course",
+            "id": "SOC 196H",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "SOC 198": {
+        "course": "SOC 198",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "SOC 1",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "SOC 1",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "SOC 199": {
+        "course": "SOC 199",
+        "prerequisites": null
+    },
+    "SOC 199RA": {
+        "course": "SOC 199RA",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "SOC 1",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "SOC 1",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "SOC 91": {
+        "course": "SOC 91",
+        "prerequisites": null
+    },
+    "SOC 99": {
+        "course": "SOC 99",
+        "prerequisites": null
+    },
+    "SOC W 130SG": {
+        "course": "SOC W 130SG",
+        "prerequisites": null
+    },
+    "SPAN 100": {
+        "course": "SPAN 100",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "SPAN 16B",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "SPAN 25",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                }
+            ]
+        }
+    },
+    "SPAN 117B": {
+        "course": "SPAN 117B",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "SPAN 16B",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "SPAN 25",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "SPAN 119A": {
+        "course": "SPAN 119A",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "SPAN 16A",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "SPAN 16B",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "SPAN 25",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                }
+            ]
+        }
+    },
+    "SPAN 139": {
+        "course": "SPAN 139",
+        "prerequisites": null
+    },
+    "SPAN 141": {
+        "course": "SPAN 141",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "SPAN 30",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "SPAN 102L",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                }
+            ]
+        }
+    },
+    "SPAN 145": {
+        "course": "SPAN 145",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "and",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "SPAN 25",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "SPAN 100",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "SPAN 16B",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "SPAN 100",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "SPAN 147": {
+        "course": "SPAN 147",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "SPAN 16A",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "SPAN 16B",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "SPAN 25",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "SPAN 148B": {
+        "course": "SPAN 148B",
+        "prerequisites": null
+    },
+    "SPAN 152": {
+        "course": "SPAN 152",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "SPAN 30",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "SPAN 102L",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                }
+            ]
+        }
+    },
+    "SPAN 154B": {
+        "course": "SPAN 154B",
+        "prerequisites": {
+            "type": "course",
+            "id": "SPAN 154A",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "SPAN 155A": {
+        "course": "SPAN 155A",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "SPAN 30",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "SPAN 102L",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                }
+            ]
+        }
+    },
+    "SPAN 163": {
+        "course": "SPAN 163",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "SPAN 102L",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "SPAN 30",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                }
+            ]
+        }
+    },
+    "SPAN 16A": {
+        "course": "SPAN 16A",
+        "prerequisites": null
+    },
+    "SPAN 16B": {
+        "course": "SPAN 16B",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "SPAN 16A",
+                    "minGrade": "C",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "SPAN 16A",
+                    "minGrade": "P",
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "SPAN 174": {
+        "course": "SPAN 174",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "SPAN 102L",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "SPAN 30",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                }
+            ]
+        }
+    },
+    "SPAN 183B": {
+        "course": "SPAN 183B",
+        "prerequisites": null
+    },
+    "SPAN 188": {
+        "course": "SPAN 188",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "SPAN 102L",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "SPAN 30",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                }
+            ]
+        }
+    },
+    "SPAN 189": {
+        "course": "SPAN 189",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "SPAN 102L",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "SPAN 30",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                }
+            ]
+        }
+    },
+    "SPAN 194": {
+        "course": "SPAN 194",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "SPAN 102L",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "SPAN 30",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                }
+            ]
+        }
+    },
+    "SPAN 195": {
+        "course": "SPAN 195",
+        "prerequisites": null
+    },
+    "SPAN 199": {
+        "course": "SPAN 199",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "SPAN 1*",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "SPAN 1*",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "SPAN 2": {
+        "course": "SPAN 2",
+        "prerequisites": null
+    },
+    "SPAN 25": {
+        "course": "SPAN 25",
+        "prerequisites": null
+    },
+    "SPAN 4": {
+        "course": "SPAN 4",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "SPAN 3",
+                    "minGrade": "P",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "SPAN 3SS",
+                    "minGrade": "P",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "SPAN 3HY",
+                    "minGrade": "P",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 87 with a score of 3"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 89 with a score of 3"
+                }
+            ]
+        }
+    },
+    "SPAN 5": {
+        "course": "SPAN 5",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "SPAN 4",
+                    "minGrade": "P",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "SPAN 4",
+                    "minGrade": "C",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 87 with a score of 4"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 89 with a score of 3"
+                }
+            ]
+        }
+    },
+    "SPAN 6": {
+        "course": "SPAN 6",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "SPAN 5",
+                    "minGrade": "P",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "SPAN 5",
+                    "minGrade": "C",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 87 with a score of 5"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 89 with a score of 4"
+                }
+            ]
+        }
+    },
+    "SPAN W 1": {
+        "course": "SPAN W 1",
+        "prerequisites": null
+    },
+    "SPAN W 3": {
+        "course": "SPAN W 3",
+        "prerequisites": {
+            "type": "course",
+            "id": "SPAN 2",
+            "minGrade": "P",
+            "canTakeConcurrently": false
+        }
+    },
+    "THTR 1": {
+        "course": "THTR 1",
+        "prerequisites": null
+    },
+    "THTR 104A": {
+        "course": "THTR 104A",
+        "prerequisites": null
+    },
+    "THTR 104C": {
+        "course": "THTR 104C",
+        "prerequisites": null
+    },
+    "THTR 10B": {
+        "course": "THTR 10B",
+        "prerequisites": {
+            "type": "course",
+            "id": "THTR 5",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "THTR 110B": {
+        "course": "THTR 110B",
+        "prerequisites": {
+            "type": "course",
+            "id": "THTR 151B",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "THTR 111B": {
+        "course": "THTR 111B",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "THTR 11C",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "THTR 151B",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                }
+            ]
+        }
+    },
+    "THTR 11B": {
+        "course": "THTR 11B",
+        "prerequisites": {
+            "type": "course",
+            "id": "THTR 5",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "THTR 123": {
+        "course": "THTR 123",
+        "prerequisites": {
+            "type": "and",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "THTR 1",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "THTR 19",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "THTR 23",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "THTR 15B": {
+        "course": "THTR 15B",
+        "prerequisites": {
+            "type": "course",
+            "id": "THTR 5",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "THTR 187MU": {
+        "course": "THTR 187MU",
+        "prerequisites": null
+    },
+    "THTR 188D": {
+        "course": "THTR 188D",
+        "prerequisites": null
+    },
+    "THTR 188S": {
+        "course": "THTR 188S",
+        "prerequisites": null
+    },
+    "THTR 190": {
+        "course": "THTR 190",
+        "prerequisites": null
+    },
+    "THTR 193H": {
+        "course": "THTR 193H",
+        "prerequisites": null
+    },
+    "THTR 193HB": {
+        "course": "THTR 193HB",
+        "prerequisites": {
+            "type": "course",
+            "id": "THTR 193HA",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "THTR 194D": {
+        "course": "THTR 194D",
+        "prerequisites": null
+    },
+    "THTR 195P": {
+        "course": "THTR 195P",
+        "prerequisites": null
+    },
+    "THTR 199": {
+        "course": "THTR 199",
+        "prerequisites": null
+    },
+    "THTR 25": {
+        "course": "THTR 25",
+        "prerequisites": null
+    },
+    "THTR 29A": {
+        "course": "THTR 29A",
+        "prerequisites": null
+    },
+    "THTR 29B": {
+        "course": "THTR 29B",
+        "prerequisites": null
+    },
+    "THTR 29C": {
+        "course": "THTR 29C",
+        "prerequisites": null
+    },
+    "THTR 29D": {
+        "course": "THTR 29D",
+        "prerequisites": null
+    },
+    "THTR 42": {
+        "course": "THTR 42",
+        "prerequisites": null
+    },
+    "THTR 49": {
+        "course": "THTR 49",
+        "prerequisites": null
+    },
+    "THTR 5": {
+        "course": "THTR 5",
+        "prerequisites": null
+    },
+    "TMP 120": {
+        "course": "TMP 120",
+        "prerequisites": null
+    },
+    "TMP 122": {
+        "course": "TMP 122",
+        "prerequisites": null
+    },
+    "TMP 124": {
+        "course": "TMP 124",
+        "prerequisites": {
+            "type": "course",
+            "id": "TMP 120",
+            "minGrade": "B-",
+            "canTakeConcurrently": false
+        }
+    },
+    "TMP 127": {
+        "course": "TMP 127",
+        "prerequisites": {
+            "type": "course",
+            "id": "TMP 120",
+            "minGrade": "B-",
+            "canTakeConcurrently": false
+        }
+    },
+    "W&L CS 12": {
+        "course": "W&L CS 12",
+        "prerequisites": null
+    },
+    "W&L CS 141A": {
+        "course": "W&L CS 141A",
+        "prerequisites": null
+    },
+    "W&L CS 149": {
+        "course": "W&L CS 149",
+        "prerequisites": null
+    },
+    "W&L CS 150TL": {
+        "course": "W&L CS 150TL",
+        "prerequisites": null
+    },
+    "W&L CS 170B": {
+        "course": "W&L CS 170B",
+        "prerequisites": {
+            "type": "course",
+            "id": "W&L CS 170A",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "W&L CS 190": {
+        "course": "W&L CS 190",
+        "prerequisites": null
+    },
+    "W&L CS 199": {
+        "course": "W&L CS 199",
+        "prerequisites": null
+    },
+    "W&L CS 30": {
+        "course": "W&L CS 30",
+        "prerequisites": null
+    },
+    "W&L CS 5": {
+        "course": "W&L CS 5",
+        "prerequisites": null
+    },
+    "WRIT 1": {
+        "course": "WRIT 1",
+        "prerequisites": null
+    },
+    "WRIT 105C": {
+        "course": "WRIT 105C",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "WRIT 2",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 36 with a score of 4"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 37 with a score of 4"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: WAIV AW with a score of 1"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB BL with a score of 6"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB E with a score of 6"
+                }
+            ]
+        }
+    },
+    "WRIT 105CD": {
+        "course": "WRIT 105CD",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "WRIT 2",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 36 with a score of 4"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 37 with a score of 4"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: WAIV AW with a score of 1"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB BL with a score of 6"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB E with a score of 6"
+                }
+            ]
+        }
+    },
+    "WRIT 105CW": {
+        "course": "WRIT 105CW",
+        "prerequisites": null
+    },
+    "WRIT 105G": {
+        "course": "WRIT 105G",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "WRIT 2",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 36 with a score of 4"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 37 with a score of 4"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: WAIV AW with a score of 1"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB BL with a score of 6"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB E with a score of 6"
+                }
+            ]
+        }
+    },
+    "WRIT 105M": {
+        "course": "WRIT 105M",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "WRIT 2",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 36 with a score of 4"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 37 with a score of 4"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: WAIV AW with a score of 1"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB BL with a score of 6"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB E with a score of 6"
+                }
+            ]
+        }
+    },
+    "WRIT 105PS": {
+        "course": "WRIT 105PS",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "WRIT 2",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 36 with a score of 4"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 37 with a score of 4"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: WAIV AW with a score of 1"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB BL with a score of 6"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB E with a score of 6"
+                }
+            ]
+        }
+    },
+    "WRIT 105SW": {
+        "course": "WRIT 105SW",
+        "prerequisites": null
+    },
+    "WRIT 107B": {
+        "course": "WRIT 107B",
+        "prerequisites": null
+    },
+    "WRIT 107DJ": {
+        "course": "WRIT 107DJ",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "specialRequirement",
+                    "requirement": "a class level of JR"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "a class level of SR"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "a class level of LM"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "a class level of SB"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "a class level of SP"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "a class level of SS"
+                },
+                {
+                    "type": "course",
+                    "id": "WRIT 2",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 36 with a score of 4"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 37 with a score of 4"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: WAIV AW with a score of 1"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB BL with a score of 6"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB E with a score of 6"
+                }
+            ]
+        }
+    },
+    "WRIT 107L": {
+        "course": "WRIT 107L",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "WRIT 2",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 36 with a score of 4"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 37 with a score of 4"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: WAIV AW with a score of 1"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB BL with a score of 6"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB E with a score of 6"
+                }
+            ]
+        }
+    },
+    "WRIT 107M": {
+        "course": "WRIT 107M",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "WRIT 2",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 36 with a score of 4"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 37 with a score of 4"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: WAIV AW with a score of 1"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB BL with a score of 6"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB E with a score of 6"
+                }
+            ]
+        }
+    },
+    "WRIT 109ED": {
+        "course": "WRIT 109ED",
+        "prerequisites": null
+    },
+    "WRIT 109F": {
+        "course": "WRIT 109F",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "WRIT 2",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 36 with a score of 4"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 37 with a score of 4"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: WAIV AW with a score of 1"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB BL with a score of 6"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB E with a score of 6"
+                }
+            ]
+        }
+    },
+    "WRIT 109GS": {
+        "course": "WRIT 109GS",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "WRIT 2",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 36 with a score of 4"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 37 with a score of 4"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: WAIV AW with a score of 1"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB BL with a score of 6"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB E with a score of 6"
+                }
+            ]
+        }
+    },
+    "WRIT 109HP": {
+        "course": "WRIT 109HP",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "WRIT 2",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 36 with a score of 4"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 37 with a score of 4"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: WAIV AW with a score of 1"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB BL with a score of 6"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB E with a score of 6"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB LL with a score of 6"
+                }
+            ]
+        }
+    },
+    "WRIT 109V": {
+        "course": "WRIT 109V",
+        "prerequisites": null
+    },
+    "WRIT 131B": {
+        "course": "WRIT 131B",
+        "prerequisites": null
+    },
+    "WRIT 151A": {
+        "course": "WRIT 151A",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "WRIT 105",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "WRIT 107",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "WRIT 109",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "WRIT 153A": {
+        "course": "WRIT 153A",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "WRIT 105",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "WRIT 107",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "WRIT 109",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "WRIT 155A": {
+        "course": "WRIT 155A",
+        "prerequisites": null
+    },
+    "WRIT 157A": {
+        "course": "WRIT 157A",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "WRIT 105",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "WRIT 107",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "WRIT 109",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                }
+            ]
+        }
+    },
+    "WRIT 2": {
+        "course": "WRIT 2",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "LING 12",
+                    "minGrade": "C",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "WRIT 1",
+                    "minGrade": "C",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 22 with a score of 3"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 23 with a score of 3"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 36 with a score of 3"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 37 with a score of 3"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: UCSB EL with a score of 8"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB BL with a score of 5"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: SATR WR with a score of 680"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: ACTP WR with a score of 30"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: CWP CW with a score of 2"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB E with a score of 5"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IBS E with a score of 6"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: RSAT RW with a score of 680"
+                }
+            ]
+        }
+    },
+    "WRIT 28": {
+        "course": "WRIT 28",
+        "prerequisites": {
+            "type": "course",
+            "id": "WRIT 1",
+            "minGrade": null,
+            "canTakeConcurrently": false
+        }
+    },
+    "WRIT 2E": {
+        "course": "WRIT 2E",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "LING 12",
+                    "minGrade": "C",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "WRIT 1",
+                    "minGrade": "C",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: SUBA SA with a score of 8"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: SUBA SB with a score of 3"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 36 with a score of 3"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 37 with a score of 3"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: UCSB EL with a score of 8"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB BL with a score of 5"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: SATR WR with a score of 680"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: ACTP WR with a score of 30"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: CWP CW with a score of 2"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB E with a score of 5"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IBS E with a score of 6"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: RSAT RW with a score of 680"
+                }
+            ]
+        }
+    },
+    "WRIT 50": {
+        "course": "WRIT 50",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "WRIT 2",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 36 with a score of 4"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 37 with a score of 4"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: WAIV AW with a score of 1"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB BL with a score of 6"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB E with a score of 6"
+                }
+            ]
+        }
+    },
+    "WRIT 50E": {
+        "course": "WRIT 50E",
+        "prerequisites": {
+            "type": "or",
+            "requirements": [
+                {
+                    "type": "course",
+                    "id": "WRIT 2",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 36 with a score of 4"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: AP 37 with a score of 4"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: WAIV AW with a score of 1"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB BL with a score of 6"
+                },
+                {
+                    "type": "specialRequirement",
+                    "requirement": "Taken Exam: IB E with a score of 6"
+                }
+            ]
+        }
+    },
+    "WRIT 99": {
+        "course": "WRIT 99",
+        "prerequisites": null
     }
 }
