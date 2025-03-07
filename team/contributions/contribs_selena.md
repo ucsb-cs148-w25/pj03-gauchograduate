@@ -1,0 +1,5 @@
+I first worked on designing the frontend through Figma by creating the branding (colors + hex codes) and a detailed wireframe of both the homepage (course catalog, four-year plan, and course progress) and the signin page, in both a laptop device size and a mobile device size. 
+Then, I worked with Chiran to implement this in code -- I mainly worked on creating the Four-Year Plan section and the Course Progress section, implementing the progress bars and connecting it to the rest of the page so that courses get automatically checked off and units are automatically added to the progress once a course is dropped into the schedule. 
+I then worked on fixing the UI for the signin page, making it more visually appealing. 
+I created and designed our GauchoGraduate logo and added that to the navigation bar and the signin page. 
+I worked on making the web application responsive and usable on all devices regardless of what size the screen is.
