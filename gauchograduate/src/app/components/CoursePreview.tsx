@@ -16,37 +16,40 @@ const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose }) => {
     
     const isNestedFormat = course.prerequisites && 
       typeof course.prerequisites === 'object' && 
-      'course' in course.prerequisites && 
-      'prerequisites' in course.prerequisites;
+      'course' in (course.prerequisites as Record<string, unknown>) && 
+      'prerequisites' in (course.prerequisites as Record<string, unknown>);
     
     console.log("CoursePreview - Is nested format:", isNestedFormat);
     
     if (isNestedFormat) {
-      const innerPrereqs = (course.prerequisites as any).prerequisites;
+      const innerPrereqs = (course.prerequisites as Record<string, unknown>).prerequisites;
       console.log("CoursePreview - Inner prerequisites:", innerPrereqs);
       
       const hasTypeAndRequirements = innerPrereqs && 
         typeof innerPrereqs === 'object' && 
-        'type' in innerPrereqs && 
-        'requirements' in innerPrereqs;
+        'type' in (innerPrereqs as Record<string, unknown>) && 
+        'requirements' in (innerPrereqs as Record<string, unknown>);
       
       console.log("CoursePreview - Inner prerequisites have type and requirements:", hasTypeAndRequirements);
       
       if (hasTypeAndRequirements) {
-        const requirements = innerPrereqs.requirements || [];
-        const hasNestedRequirements = requirements.some((req: any) => 
+        const requirements = (innerPrereqs as Record<string, unknown>).requirements || [];
+        const hasNestedRequirements = Array.isArray(requirements) && requirements.some((req: unknown) => 
           req && typeof req === 'object' && 
-          ('type' in req) && (req.type === 'and' || req.type === 'or') && 
-          'requirements' in req
+          ('type' in (req as Record<string, unknown>)) && 
+          ((req as Record<string, unknown>).type === 'and' || (req as Record<string, unknown>).type === 'or') && 
+          'requirements' in (req as Record<string, unknown>)
         );
         
         console.log("CoursePreview - Has nested requirements:", hasNestedRequirements);
         
         if (hasNestedRequirements) {
           console.log("CoursePreview - Nested requirements structure:", 
-            requirements.map((req: any) => ({
-              type: req.type,
-              requirementsCount: req.requirements?.length || 0
+            Array.isArray(requirements) && requirements.map((req: unknown) => ({
+              type: (req as Record<string, unknown>).type,
+              requirementsCount: Array.isArray((req as Record<string, unknown>).requirements) 
+                ? ((req as Record<string, unknown>).requirements as unknown[]).length 
+                : 0
             }))
           );
         }
@@ -58,13 +61,13 @@ const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose }) => {
     if (!course.prerequisites) return null;
     
     if (typeof course.prerequisites === 'object' && 
-        'course' in course.prerequisites && 
-        'prerequisites' in course.prerequisites) {
-      return (course.prerequisites as any).prerequisites;
+        'course' in (course.prerequisites as Record<string, unknown>) && 
+        'prerequisites' in (course.prerequisites as Record<string, unknown>)) {
+      return ((course.prerequisites as Record<string, unknown>).prerequisites as PrerequisiteNode);
     }
     
     if (typeof course.prerequisites === 'object' && 
-        ('type' in course.prerequisites)) {
+        ('type' in (course.prerequisites as Record<string, unknown>))) {
       return course.prerequisites as PrerequisiteNode;
     }
     
@@ -131,9 +134,13 @@ const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose }) => {
                   <div className="w-3 h-3 bg-blue-300 mr-2" />
                   <span>AND - All conditions must be met</span>
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-center mb-1">
                   <div className="w-3 h-3 bg-orange-300 mr-2" />
                   <span>OR - Any one condition must be met</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-3 h-3 bg-purple-300 mr-2" />
+                  <span>Special requirements (AP scores, etc.)</span>
                 </div>
               </div>
 

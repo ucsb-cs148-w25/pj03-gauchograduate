@@ -18,6 +18,11 @@ export type PrerequisiteNode =
       canTakeConcurrently: boolean;
     }
   | {
+      // A special requirement (like AP exam scores)
+      type: "specialRequirement";
+      requirement: string;       // e.g. "Taken Exam: AP 85 with a score of 3"
+    }
+  | {
       // A logical operator node, either AND or OR
       type: "and" | "or";
       requirements: PrerequisiteNode[];

@@ -40,6 +40,15 @@ export const PrerequisiteRenderer: React.FC<Props> = ({ node, depth = 0 }) => {
       );
     }
 
+    case 'specialRequirement': {
+      // Render a special requirement (like AP exam scores)
+      return (
+        <li style={style}>
+          <span className="font-medium text-purple-600">{node.requirement}</span>
+        </li>
+      );
+    }
+
     case 'and': {
       // All requirements must be met
       return (

@@ -16,6 +16,9 @@ function checkPrerequisitesMet(
     case 'course': {
       return completedCourseIds.has(prerequisiteNode.id);
     }
+    case 'specialRequirement': {
+      return false;
+    }
     case 'and': {
       return prerequisiteNode.requirements.every(req => 
         checkPrerequisitesMet(req, completedCourses)
