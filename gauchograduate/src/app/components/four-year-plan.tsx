@@ -4,32 +4,85 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { getAcademicYear, isQuarterInPast, isCurrentQuarter } from './utils/quarterUtils';
 import CourseModal from './course-popup';
 
+// Helper function to extract the actual prerequisite node from potentially nested structures
+function getPrerequisiteNode(prerequisites: any): PrerequisiteNode | null {
+  if (!prerequisites) return null;
+  
+  // If it's already in the correct format with a type property
+  if (prerequisites.type && 
+      (prerequisites.type === 'course' || 
+       prerequisites.type === 'and' || 
+       prerequisites.type === 'or' || 
+       prerequisites.type === 'specialRequirement')) {
+    return prerequisites as PrerequisiteNode;
+  }
+  
+  // If it's in the nested format with course and prerequisites properties
+  if (prerequisites.course && prerequisites.prerequisites) {
+    return prerequisites.prerequisites as PrerequisiteNode;
+  }
+  
+  // Unknown format
+  console.error("Unknown prerequisite format:", prerequisites);
+  return null;
+}
+
 function checkPrerequisitesMet(
-  prerequisiteNode: PrerequisiteNode | null,
+  prerequisiteNode: any,
   completedCourses: Course[]
 ): boolean {
-  if (!prerequisiteNode) return true;
+  // Extract the actual prerequisite node from potentially nested structures
+  const node = getPrerequisiteNode(prerequisiteNode);
+  
+  if (!node) return true;
 
-  const completedCourseIds = new Set(completedCourses.map(course => course.gold_id));
+  // Create a set of completed course IDs for faster lookups
+  const completedCourseIds = new Set(
+    completedCourses.map(course => course.gold_id)
+  );
 
-  switch (prerequisiteNode.type) {
+  // Also create a normalized set (uppercase) for case-insensitive comparison
+  const normalizedCompletedCourseIds = new Set(
+    completedCourses.map(course => course.gold_id.toUpperCase())
+  );
+
+  // Debug logging
+  console.log("Checking prerequisite node:", node);
+  
+  switch (node.type) {
     case 'course': {
-      return completedCourseIds.has(prerequisiteNode.id);
+      // Check if the course ID exists in our completed courses
+      const courseId = node.id;
+      const exactMatch = completedCourseIds.has(courseId);
+      const normalizedMatch = normalizedCompletedCourseIds.has(courseId.toUpperCase());
+      
+      console.log(`Checking course prerequisite: ${courseId}`);
+      console.log(`Exact match: ${exactMatch}, Normalized match: ${normalizedMatch}`);
+      
+      return exactMatch || normalizedMatch;
     }
     case 'specialRequirement': {
+      // For now, we'll assume special requirements are not met
       return false;
     }
     case 'and': {
-      return prerequisiteNode.requirements.every(req => 
-        checkPrerequisitesMet(req, completedCourses)
-      );
+      // All requirements must be met
+      return node.requirements.every(req => {
+        const result = checkPrerequisitesMet(req, completedCourses);
+        console.log(`AND requirement result for ${req.type}: ${result}`);
+        return result;
+      });
     }
     case 'or': {
-      return prerequisiteNode.requirements.some(req => 
-        checkPrerequisitesMet(req, completedCourses)
-      );
+      // Any one of the requirements is enough
+      return node.requirements.some(req => {
+        const result = checkPrerequisitesMet(req, completedCourses);
+        console.log(`OR requirement result for ${req.type}: ${result}`);
+        return result;
+      });
     }
     default:
+      console.log("Unknown prerequisite type:", node);
       return false;
   }
 }
@@ -262,20 +315,30 @@ export default function FourYearPlan({
     if (courseExists) return;
 
     if (course.prerequisites && course.prerequisites !== null && course.prerequisites !== -1) {
+      // Collect all courses from previous terms and years
       const completedCourses: Course[] = [];
       
+      // Add courses from previous years
       Years.slice(0, Years.indexOf(selectedYear)).forEach(year => {
         Object.values(studentSchedule[year]).forEach(termCourses => {
           completedCourses.push(...termCourses);
         });
       });
       
+      // Add courses from previous terms in the current year
       const currentYearTerms = Terms.slice(0, Terms.indexOf(term));
       currentYearTerms.forEach(t => {
         completedCourses.push(...studentSchedule[selectedYear][t]);
       });
       
+      console.log("=== PREREQUISITE CHECK ===");
+      console.log("Checking prerequisites for:", course.gold_id);
+      console.log("Prerequisites structure:", course.prerequisites);
+      console.log("Completed courses:", completedCourses.map(c => c.gold_id));
+      
       const prerequisitesMet = checkPrerequisitesMet(course.prerequisites, completedCourses);
+      console.log("Final result - Prerequisites met:", prerequisitesMet);
+      console.log("=========================");
       
       if (!prerequisitesMet) {
         setPrerequisiteWarning({ course, term, originTerm });
