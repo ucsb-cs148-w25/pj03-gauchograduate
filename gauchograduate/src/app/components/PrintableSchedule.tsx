@@ -79,8 +79,6 @@ const PrintableSchedule = React.forwardRef<HTMLDivElement, PrintableScheduleProp
         {Object.keys(studentSchedule).map((year) => {
           // Reset cumulative GPA for each year if you want to track by year
           // If you want a running cumulative GPA across all years, move these outside the map function
-          let yearCumulativeUnits = 0;
-          let yearCumulativePoints = 0;
 
           return (
             <div key={year} className="mb-8">
@@ -102,10 +100,6 @@ const PrintableSchedule = React.forwardRef<HTMLDivElement, PrintableScheduleProp
                   // Update cumulative totals for GPA calculation
                   cumulativeUnits += termGradedUnits;
                   cumulativePoints += termPoints;
-
-                  // Update year cumulative totals
-                  yearCumulativeUnits += termGradedUnits;
-                  yearCumulativePoints += termPoints;
 
                   // Calculate cumulative GPA
                   const cumulativeGPA = cumulativeUnits > 0
