@@ -3,6 +3,8 @@ import { Terms, Years, Course, Term, FourYearPlanProps, YearType } from "./cours
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { getAcademicYear, isQuarterInPast, isCurrentQuarter } from './utils/quarterUtils';
 import CourseModal from './course-popup';
+import { useReactToPrint } from 'react-to-print';
+import PrintableSchedule from './PrintableSchedule';
 
 export default function FourYearPlan({
   selectedYear,
@@ -25,6 +27,7 @@ export default function FourYearPlan({
   const [poofingCourse, setPoofingCourse] = useState<{ id: string, x: number, y: number } | null>(null);
   const planRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
+  const printableRef = useRef<HTMLDivElement>(null);
   const [validDropTargets, setValidDropTargets] = useState<Set<HTMLElement>>(new Set());
   const [draggedOverTerm, setDraggedOverTerm] = useState<string | null>(null);
   const [isDraggingCourse, setIsDraggingCourse] = useState(false);
@@ -271,6 +274,14 @@ export default function FourYearPlan({
   const displayTerms = Terms.filter(term => term !== 'Summer' || showSummer);
   const yearDisplay = getYearDisplay(selectedYear);
 
+  const handlePrint = useReactToPrint({
+    documentTitle: `Academic Plan - ${session?.user?.name || 'Student'}`,
+    onAfterPrint: () => {
+      console.log('Print completed');
+    },
+    contentRef: printableRef,
+  });
+
   return (
     <div
       className="h-full w-full p-4 bg-white rounded-lg shadow-lg flex flex-col overflow-auto max-h-screen relative"
@@ -278,6 +289,14 @@ export default function FourYearPlan({
       onDragOver={(e) => e.preventDefault()}
       onDrop={handlePlanDrop}
     >
+      {/* Hidden printable component that will only be used for printing */}
+      <div style={{ display: 'none' }}>
+        <PrintableSchedule
+          ref={printableRef}
+          studentSchedule={studentSchedule}
+          showSummer={showSummer}
+        />
+      </div>
       {selectedCourse && (
         <CourseModal
           course={selectedCourse.course}
@@ -298,7 +317,7 @@ export default function FourYearPlan({
       {isDataLoading && (
         <div className="absolute inset-0 bg-white bg-opacity-70 flex items-center justify-center z-10">
           <div className="text-lg font-medium text-gray-600 animate-pulse flex items-center">
-            <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
@@ -345,19 +364,30 @@ export default function FourYearPlan({
             )}
           </div>
         </div>
-        <select
-          className="p-2 border border-gray-300 rounded-lg"
-          value={selectedYear}
-          onChange={(e) => setSelectedYear(e.target.value as YearType)}
-        >
-          {Years.map((year, index) => (
-            <option key={index} value={year}>
-              {getYearDisplay(year)}
-            </option>
-          ))}
-        </select>
+        <div className="flex items-center gap-5">
+          <button
+            onClick={() => handlePrint()}
+            className="flex items-center gap-1 px-3 py-1.5 bg-[var(--pale-blue)] text-black rounded-lg hover:bg-blue-200 transition-colors"
+            title="Print or save your schedule as PDF"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+            </svg>
+            <span className="text-sm">Print</span>
+          </button>
+          <select
+            className="p-2 border border-gray-300 rounded-lg"
+            value={selectedYear}
+            onChange={(e) => setSelectedYear(e.target.value as YearType)}
+          >
+            {Years.map((year, index) => (
+              <option key={index} value={year}>
+                {getYearDisplay(year)}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
-
       <div className="flex gap-2 flex-1 min-h-0">
         <div
           ref={gridRef}
