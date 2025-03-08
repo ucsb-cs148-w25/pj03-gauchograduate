@@ -5,21 +5,25 @@ import { getAcademicYear, isQuarterInPast, isCurrentQuarter } from './utils/quar
 import CourseModal from './course-popup';
 
 // Helper function to extract the actual prerequisite node from potentially nested structures
-function getPrerequisiteNode(prerequisites: any): PrerequisiteNode | null {
+function getPrerequisiteNode(prerequisites: unknown): PrerequisiteNode | null {
   if (!prerequisites) return null;
   
   // If it's already in the correct format with a type property
-  if (prerequisites.type && 
-      (prerequisites.type === 'course' || 
-       prerequisites.type === 'and' || 
-       prerequisites.type === 'or' || 
-       prerequisites.type === 'specialRequirement')) {
-    return prerequisites as PrerequisiteNode;
-  }
-  
-  // If it's in the nested format with course and prerequisites properties
-  if (prerequisites.course && prerequisites.prerequisites) {
-    return prerequisites.prerequisites as PrerequisiteNode;
+  if (typeof prerequisites === 'object' && prerequisites !== null) {
+    const prereqObj = prerequisites as Record<string, unknown>;
+    
+    if (prereqObj.type && 
+        (prereqObj.type === 'course' || 
+         prereqObj.type === 'and' || 
+         prereqObj.type === 'or' || 
+         prereqObj.type === 'specialRequirement')) {
+      return prerequisites as PrerequisiteNode;
+    }
+    
+    // If it's in the nested format with course and prerequisites properties
+    if (prereqObj.course && prereqObj.prerequisites) {
+      return prereqObj.prerequisites as PrerequisiteNode;
+    }
   }
   
   // Unknown format
@@ -28,7 +32,7 @@ function getPrerequisiteNode(prerequisites: any): PrerequisiteNode | null {
 }
 
 function checkPrerequisitesMet(
-  prerequisiteNode: any,
+  prerequisiteNode: unknown,
   completedCourses: Course[]
 ): boolean {
   // Extract the actual prerequisite node from potentially nested structures
@@ -422,10 +426,10 @@ export default function FourYearPlan({
             
             <div className="space-y-3">
               <p className="text-gray-700">
-                You haven't completed the prerequisites for <span className="font-bold">{prerequisiteWarning.course.gold_id}: {prerequisiteWarning.course.title}</span>.
+                You haven&apos;t completed the prerequisites for <span className="font-bold">{prerequisiteWarning.course.gold_id}: {prerequisiteWarning.course.title}</span>.
               </p>
               <p className="text-gray-600">
-                Please make sure you've added the prerequisite courses to earlier quarters in your schedule.
+                Please make sure you&apos;ve added the prerequisite courses to earlier quarters in your schedule.
               </p>
             </div>
             

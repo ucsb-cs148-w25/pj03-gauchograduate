@@ -81,7 +81,7 @@ export const PrerequisiteRenderer: React.FC<Props> = ({ node, depth = 0 }) => {
       console.log("Unknown node type:", node);
       return (
         <div className="text-red-500">
-          Unknown prerequisite type: {(node as any).type || 'undefined'}
+          Unknown prerequisite type: {String((node as Record<string, unknown>).type || 'undefined')}
         </div>
       );
   }
