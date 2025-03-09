@@ -1,7 +1,7 @@
 // PrerequisiteRenderer.tsx
 
-import React from 'react';
-import { PrerequisiteNode } from './coursetypes';
+import React, { useEffect, useState } from 'react';
+import { PrerequisiteNode, CourseInfo } from './coursetypes';
 
 interface Props {
   node: PrerequisiteNode;
@@ -11,8 +11,63 @@ interface Props {
 const INDENT_PER_LEVEL = 12;
 
 export const PrerequisiteRenderer: React.FC<Props> = ({ node, depth = 0 }) => {
+  const [courseIdMap, setCourseIdMap] = useState<Record<string, string>>({});
+  
+  // Fetch course information for all course IDs in the prerequisites
+  useEffect(() => {
+    const fetchCourseInfo = async () => {
+      // Collect all course IDs from the prerequisite tree
+      const courseIds: string[] = [];
+      const collectCourseIds = (n: PrerequisiteNode) => {
+        if (n.type === 'course') {
+          courseIds.push(n.id);
+        } else if (n.type === 'and' || n.type === 'or') {
+          n.requirements.forEach(collectCourseIds);
+        }
+      };
+      
+      if (node) {
+        collectCourseIds(node);
+      }
+      
+      if (courseIds.length === 0) return;
+      
+      try {
+        // Convert string IDs to numbers
+        const numericIds = courseIds.map(id => parseInt(id, 10)).filter(id => !isNaN(id));
+        
+        // Fetch course information for these IDs
+        const response = await fetch('/api/course/query/batch', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ courseIds: numericIds }),
+        });
+        
+        if (response.ok) {
+          const data = await response.json();
+          const idMap: Record<string, string> = {};
+          
+          if (data.courses && Array.isArray(data.courses)) {
+            data.courses.forEach((course: CourseInfo) => {
+              idMap[course.id.toString()] = course.gold_id;
+            });
+          }
+          
+          setCourseIdMap(idMap);
+        }
+      } catch (error) {
+        console.error('Error fetching course information:', error);
+      }
+    };
+    
+    fetchCourseInfo();
+  }, [node]);
+
   // Add debug logging
   console.log(`PrerequisiteRenderer at depth ${depth}:`, node);
+  console.log('Course ID map:', courseIdMap);
 
   // helper style for nested indentation
   const style = { marginLeft: depth * INDENT_PER_LEVEL };
@@ -25,9 +80,12 @@ export const PrerequisiteRenderer: React.FC<Props> = ({ node, depth = 0 }) => {
   switch (node.type) {
     case 'course': {
       // Render a single course requirement
+      // Display the gold_id if available, otherwise show the internal ID
+      const displayId = courseIdMap[node.id] || `Course ID: ${node.id}`;
+      
       return (
         <li style={style}>
-          <span className="font-medium">{node.id}</span>
+          <span className="font-medium">{displayId}</span>
           {node.minGrade && node.minGrade !== 'Na' && (
             <span className="text-sm ml-1">(Min grade: {node.minGrade})</span>
           )}

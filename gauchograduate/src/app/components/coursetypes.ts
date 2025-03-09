@@ -13,7 +13,7 @@ export type PrerequisiteNode =
   | {
       // A single course requirement
       type: "course";
-      id: string;                // e.g. "ANTH 3"
+      id: string;                // Now represents the internal ID as a string
       minGrade: string | null;   // e.g. "C-", or null
       canTakeConcurrently: boolean;
     }

@@ -41,13 +41,9 @@ function checkPrerequisitesMet(
   if (!node) return true;
 
   // Create a set of completed course IDs for faster lookups
+  // Using internal IDs as strings for comparison
   const completedCourseIds = new Set(
-    completedCourses.map(course => course.gold_id)
-  );
-
-  // Also create a normalized set (uppercase) for case-insensitive comparison
-  const normalizedCompletedCourseIds = new Set(
-    completedCourses.map(course => course.gold_id.toUpperCase())
+    completedCourses.map(course => String(course.id))
   );
 
   // Debug logging
@@ -56,14 +52,19 @@ function checkPrerequisitesMet(
   switch (node.type) {
     case 'course': {
       // Check if the course ID exists in our completed courses
-      const courseId = node.id;
-      const exactMatch = completedCourseIds.has(courseId);
-      const normalizedMatch = normalizedCompletedCourseIds.has(courseId.toUpperCase());
+      // Ensure the node.id is converted to a string for proper comparison
+      const courseId = String(node.id);
+      
+      // Log all completed course IDs for debugging
+      console.log("All completed course IDs:", Array.from(completedCourseIds));
+      console.log(`Looking for ID: ${courseId} (type: ${typeof courseId})`);
+      
+      const match = completedCourseIds.has(courseId);
       
       console.log(`Checking course prerequisite: ${courseId}`);
-      console.log(`Exact match: ${exactMatch}, Normalized match: ${normalizedMatch}`);
+      console.log(`Match: ${match}`);
       
-      return exactMatch || normalizedMatch;
+      return match;
     }
     case 'specialRequirement': {
       // For now, we'll assume special requirements are not met
@@ -305,7 +306,7 @@ export default function FourYearPlan({
     }
   }, []);
 
-  function handleDrop(e: React.DragEvent<HTMLDivElement>, term: Term) {
+  const handleDrop = useCallback((e: React.DragEvent<HTMLDivElement>, term: Term) => {
     e.preventDefault();
     e.stopPropagation();
     setDraggedOverTerm(null);
@@ -335,10 +336,13 @@ export default function FourYearPlan({
         completedCourses.push(...studentSchedule[selectedYear][t]);
       });
       
+      // Also add courses from the current term (for concurrent enrollment)
+      completedCourses.push(...studentSchedule[selectedYear][term]);
+      
       console.log("=== PREREQUISITE CHECK ===");
       console.log("Checking prerequisites for:", course.gold_id);
       console.log("Prerequisites structure:", course.prerequisites);
-      console.log("Completed courses:", completedCourses.map(c => c.gold_id));
+      console.log("Completed courses:", completedCourses.map(c => ({ id: c.id, gold_id: c.gold_id })));
       
       const prerequisitesMet = checkPrerequisitesMet(course.prerequisites, completedCourses);
       console.log("Final result - Prerequisites met:", prerequisitesMet);
@@ -358,9 +362,9 @@ export default function FourYearPlan({
       addCourse(course, term as Term);
       DBAddCourses(course.id, term);
     }
-  }
+  }, [addCourse, DBAddCourses, DBMoveCourse, removeCourse, selectedYear, studentSchedule, setPrerequisiteWarning]);
 
-  function handleCourseReorder(e: React.DragEvent<HTMLDivElement>, term: Term, targetIndex: number) {
+  const handleCourseReorder = useCallback((e: React.DragEvent<HTMLDivElement>, term: Term, targetIndex: number) => {
     e.preventDefault();
     e.stopPropagation();
     const data = e.dataTransfer.getData("application/json");
@@ -375,7 +379,7 @@ export default function FourYearPlan({
     if (typeof reorderCourse === "function") {
       reorderCourse(selectedYear, term, coursesArr);
     }
-  }
+  }, [reorderCourse, selectedYear, studentSchedule]);
 
   const displayTerms = Terms.filter(term => term !== 'Summer' || showSummer);
   const yearDisplay = getYearDisplay(selectedYear);
