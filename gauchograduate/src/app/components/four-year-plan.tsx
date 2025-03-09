@@ -1,10 +1,98 @@
 import { useSession } from 'next-auth/react';
-import { Terms, Years, Course, Term, FourYearPlanProps, YearType } from "./coursetypes";
+import { Terms, Years, Course, Term, FourYearPlanProps, YearType, PrerequisiteNode } from "./coursetypes";
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { getAcademicYear, isQuarterInPast, isCurrentQuarter } from './utils/quarterUtils';
 import CourseModal from './course-popup';
 import { useReactToPrint } from 'react-to-print';
 import PrintableSchedule from './PrintableSchedule';
+
+// Helper function to extract the actual prerequisite node from potentially nested structures
+function getPrerequisiteNode(prerequisites: unknown): PrerequisiteNode | null {
+  if (!prerequisites) return null;
+  
+  // If it's already in the correct format with a type property
+  if (typeof prerequisites === 'object' && prerequisites !== null) {
+    const prereqObj = prerequisites as Record<string, unknown>;
+    
+    if (prereqObj.type && 
+        (prereqObj.type === 'course' || 
+         prereqObj.type === 'and' || 
+         prereqObj.type === 'or' || 
+         prereqObj.type === 'specialRequirement')) {
+      return prerequisites as PrerequisiteNode;
+    }
+    
+    // If it's in the nested format with course and prerequisites properties
+    if (prereqObj.course && prereqObj.prerequisites) {
+      return prereqObj.prerequisites as PrerequisiteNode;
+    }
+  }
+  
+  // Unknown format
+  console.error("Unknown prerequisite format:", prerequisites);
+  return null;
+}
+
+function checkPrerequisitesMet(
+  prerequisiteNode: unknown,
+  completedCourses: Course[]
+): boolean {
+  // Extract the actual prerequisite node from potentially nested structures
+  const node = getPrerequisiteNode(prerequisiteNode);
+  
+  if (!node) return true;
+
+  // Create a set of completed course IDs for faster lookups
+  // Using internal IDs as strings for comparison
+  const completedCourseIds = new Set(
+    completedCourses.map(course => String(course.id))
+  );
+
+  // Debug logging
+  console.log("Checking prerequisite node:", node);
+  
+  switch (node.type) {
+    case 'course': {
+      // Check if the course ID exists in our completed courses
+      // Ensure the node.id is converted to a string for proper comparison
+      const courseId = String(node.id);
+      
+      // Log all completed course IDs for debugging
+      console.log("All completed course IDs:", Array.from(completedCourseIds));
+      console.log(`Looking for ID: ${courseId} (type: ${typeof courseId})`);
+      
+      const match = completedCourseIds.has(courseId);
+      
+      console.log(`Checking course prerequisite: ${courseId}`);
+      console.log(`Match: ${match}`);
+      
+      return match;
+    }
+    case 'specialRequirement': {
+      // For now, we'll assume special requirements are not met
+      return false;
+    }
+    case 'and': {
+      // All requirements must be met
+      return node.requirements.every(req => {
+        const result = checkPrerequisitesMet(req, completedCourses);
+        console.log(`AND requirement result for ${req.type}: ${result}`);
+        return result;
+      });
+    }
+    case 'or': {
+      // Any one of the requirements is enough
+      return node.requirements.some(req => {
+        const result = checkPrerequisitesMet(req, completedCourses);
+        console.log(`OR requirement result for ${req.type}: ${result}`);
+        return result;
+      });
+    }
+    default:
+      console.log("Unknown prerequisite type:", node);
+      return false;
+  }
+}
 
 export default function FourYearPlan({
   selectedYear,
@@ -31,6 +119,7 @@ export default function FourYearPlan({
   const [validDropTargets, setValidDropTargets] = useState<Set<HTMLElement>>(new Set());
   const [draggedOverTerm, setDraggedOverTerm] = useState<string | null>(null);
   const [isDraggingCourse, setIsDraggingCourse] = useState(false);
+  const [prerequisiteWarning, setPrerequisiteWarning] = useState<{ course: Course, term: Term, originTerm?: Term } | null>(null);
 
   useEffect(() => {
     setShowSummer(showSummerByDefault);
@@ -134,7 +223,6 @@ export default function FourYearPlan({
     return getAcademicYear(firstQuarter, yearIndex);
   };
 
-
   const DBAddCourses = useCallback(async (courseID: number, term: Term) => {
     try {
       setSaveStatus('saving');
@@ -176,17 +264,12 @@ export default function FourYearPlan({
   const DBMoveCourse = useCallback(async (courseID: number, originTerm: Term, term: Term) => {
     setSaveStatus('saving');
 
-    // Find the course in the original term to get its grade if it exists
     const course = studentSchedule[selectedYear][originTerm].find(c => c.id === courseID);
     const grade = course?.grade || null;
 
-    // First remove the course from the original term
     await DBRemoveCourses(courseID, originTerm);
-
-    // Then add it to the new term
     await DBAddCourses(courseID, term);
 
-    // If the course had a grade, preserve it by setting the grade in the new location
     if (grade) {
       await DBUpdateGrade(courseID, term, grade);
     }
@@ -218,7 +301,6 @@ export default function FourYearPlan({
     }
   }, [validDropTargets, removeCourse, DBRemoveCourses]);
 
-
   const handleDragOver = useCallback((e: React.DragEvent<HTMLDivElement>, term: string) => {
     e.preventDefault();
     if (draggedOverTerm !== term) {
@@ -232,7 +314,7 @@ export default function FourYearPlan({
     }
   }, []);
 
-  function handleDrop(e: React.DragEvent<HTMLDivElement>, term: Term) {
+  const handleDrop = useCallback((e: React.DragEvent<HTMLDivElement>, term: Term) => {
     e.preventDefault();
     e.stopPropagation();
     setDraggedOverTerm(null);
@@ -244,6 +326,42 @@ export default function FourYearPlan({
       existingCourse => existingCourse.gold_id === course.gold_id
     );
     if (courseExists) return;
+
+    if (course.prerequisites && course.prerequisites !== null && course.prerequisites !== -1) {
+      // Collect all courses from previous terms and years
+      const completedCourses: Course[] = [];
+      
+      // Add courses from previous years
+      Years.slice(0, Years.indexOf(selectedYear)).forEach(year => {
+        Object.values(studentSchedule[year]).forEach(termCourses => {
+          completedCourses.push(...termCourses);
+        });
+      });
+      
+      // Add courses from previous terms in the current year
+      const currentYearTerms = Terms.slice(0, Terms.indexOf(term));
+      currentYearTerms.forEach(t => {
+        completedCourses.push(...studentSchedule[selectedYear][t]);
+      });
+      
+      // Also add courses from the current term (for concurrent enrollment)
+      completedCourses.push(...studentSchedule[selectedYear][term]);
+      
+      console.log("=== PREREQUISITE CHECK ===");
+      console.log("Checking prerequisites for:", course.gold_id);
+      console.log("Prerequisites structure:", course.prerequisites);
+      console.log("Completed courses:", completedCourses.map(c => ({ id: c.id, gold_id: c.gold_id })));
+      
+      const prerequisitesMet = checkPrerequisitesMet(course.prerequisites, completedCourses);
+      console.log("Final result - Prerequisites met:", prerequisitesMet);
+      console.log("=========================");
+      
+      if (!prerequisitesMet) {
+        setPrerequisiteWarning({ course, term, originTerm });
+        return;
+      }
+    }
+
     if (originTerm && originTerm !== term) {
       removeCourse(course, originTerm);
       addCourse(course, term as Term);
@@ -252,9 +370,9 @@ export default function FourYearPlan({
       addCourse(course, term as Term);
       DBAddCourses(course.id, term);
     }
-  }
+  }, [addCourse, DBAddCourses, DBMoveCourse, removeCourse, selectedYear, studentSchedule, setPrerequisiteWarning]);
 
-  function handleCourseReorder(e: React.DragEvent<HTMLDivElement>, term: Term, targetIndex: number) {
+  const handleCourseReorder = useCallback((e: React.DragEvent<HTMLDivElement>, term: Term, targetIndex: number) => {
     e.preventDefault();
     e.stopPropagation();
     const data = e.dataTransfer.getData("application/json");
@@ -269,7 +387,7 @@ export default function FourYearPlan({
     if (typeof reorderCourse === "function") {
       reorderCourse(selectedYear, term, coursesArr);
     }
-  }
+  }, [reorderCourse, selectedYear, studentSchedule]);
 
   const displayTerms = Terms.filter(term => term !== 'Summer' || showSummer);
   const yearDisplay = getYearDisplay(selectedYear);
@@ -312,6 +430,65 @@ export default function FourYearPlan({
             await DBUpdateGrade(selectedCourse.course.id, selectedCourse.term, grade);
           }}
         />
+      )}
+
+      {prerequisiteWarning && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" onClick={() => setPrerequisiteWarning(null)}>
+          <div className="bg-white p-6 rounded-lg shadow-xl max-w-md w-full m-4 relative" onClick={e => e.stopPropagation()}>
+            <button 
+              onClick={() => setPrerequisiteWarning(null)}
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
+              aria-label="Close warning"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            <div className="mb-4 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-yellow-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+              <h3 className="text-xl font-bold text-yellow-700">Prerequisite Warning</h3>
+            </div>
+            
+            <div className="space-y-3">
+              <p className="text-gray-700">
+                You haven&apos;t completed the prerequisites for <span className="font-bold">{prerequisiteWarning.course.gold_id}: {prerequisiteWarning.course.title}</span>.
+              </p>
+              <p className="text-gray-600">
+                Please make sure you&apos;ve added the prerequisite courses to earlier quarters in your schedule.
+              </p>
+            </div>
+            
+            <div className="mt-6 flex justify-between">
+              <button
+                onClick={() => setPrerequisiteWarning(null)}
+                className="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition-colors"
+              >
+                Cancel
+              </button>
+              
+              <button
+                onClick={() => {
+                  const { course, term, originTerm } = prerequisiteWarning;
+                  if (originTerm && originTerm !== term) {
+                    removeCourse(course, originTerm);
+                    addCourse(course, term);
+                    DBMoveCourse(course.id, originTerm, term);
+                  } else {
+                    addCourse(course, term);
+                    DBAddCourses(course.id, term);
+                  }
+                  setPrerequisiteWarning(null);
+                }}
+                className="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors"
+              >
+                Add Anyway
+              </button>
+            </div>
+          </div>
+        </div>
       )}
 
       {isDataLoading && (

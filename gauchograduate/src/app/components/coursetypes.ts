@@ -9,22 +9,24 @@ export type GeneralEd = {
 };
 
 // Types for the complex prerequisites structure
-export type PrerequisiteClass = {
-  goldId: string;
-  Required_Grade: string;
-  Taken_Concurrently: string; // "True" or "False" as strings
-};
-
-export type PrerequisiteCondition = {
-  class?: PrerequisiteClass[];
-  and?: PrerequisiteCondition[];
-  or?: PrerequisiteCondition[];
-};
-
-export type Prerequisites = {
-  and?: PrerequisiteCondition[];
-  or?: PrerequisiteCondition[];
-};
+export type PrerequisiteNode =
+  | {
+      // A single course requirement
+      type: "course";
+      id: string;                // Now represents the internal ID as a string
+      minGrade: string | null;   // e.g. "C-", or null
+      canTakeConcurrently: boolean;
+    }
+  | {
+      // A special requirement (like AP exam scores)
+      type: "specialRequirement";
+      requirement: string;       // e.g. "Taken Exam: AP 85 with a score of 3"
+    }
+  | {
+      // A logical operator node, either AND or OR
+      type: "and" | "or";
+      requirements: PrerequisiteNode[];
+    };
 
 // Interface for course data as it comes from the database
 export interface CourseInfo {
@@ -34,7 +36,7 @@ export interface CourseInfo {
   subject_area: string;
   units: number | null;
   general_ed: GeneralEd[];
-  prerequisites: Prerequisites;
+  prerequisites: PrerequisiteNode | null;
   unlocks: number[];
   id: number;
 }
@@ -48,7 +50,7 @@ export interface Course {
   subjectArea: string;
   units: number;
   generalEd: GeneralEd[];
-  prerequisites: Prerequisites;
+  prerequisites: PrerequisiteNode | null;
   unlocks: string[];
   term: Term[];
   grade?: string | null;
