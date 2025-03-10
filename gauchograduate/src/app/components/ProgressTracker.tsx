@@ -662,6 +662,12 @@ const ProgressTracker = ({
         </div>
       </CollapsibleCard>
 
+      <CollapsibleCard title="Extra Courses">
+        <div role="region" aria-label="Extra Courses">
+          {renderExtraCoursesList()}
+        </div>
+      </CollapsibleCard>
+
       {/* External Units Card */}
       <CollapsibleCard title="External Units">
         <div role="region" aria-label="External Units">
