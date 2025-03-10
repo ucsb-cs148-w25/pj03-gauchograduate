@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { SessionProvider } from 'next-auth/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Inter } from 'next/font/google';
+import ErrorBoundary from '../app/components/ErrorBoundary';
 import '../app/globals.css';
 
 const inter = Inter({
@@ -19,9 +20,11 @@ export default function App({ Component, pageProps: { session, ...pageProps } }:
         <Head>
             <title>GauchoGraduate</title>
         </Head>
-        <div className={inter.className}>
-          <Component {...pageProps} />
-        </div>
+        <ErrorBoundary>
+          <div className={inter.className}>
+            <Component {...pageProps} />
+          </div>
+        </ErrorBoundary>
       </QueryClientProvider>
     </SessionProvider>
   );

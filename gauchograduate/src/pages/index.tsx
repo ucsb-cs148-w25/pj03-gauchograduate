@@ -260,7 +260,7 @@ export default function HomePage() {
     <div className="h-screen flex flex-col">
       <Navbar />
       <div className="flex flex-1 flex-col md:flex-row overflow-hidden">
-        <div className="w-full md:w-1/5 bg-[var(--off-white)] p-4 overflow-y-scroll">
+        <div className="w-full md:w-1/5 bg-[var(--off-white)] p-4 overflow-y-auto max-h-[50vh] md:max-h-none md:overflow-y-scroll">
           <CourseCatalog
             courses={courses}
             selectedTerm={selectedTerm}
@@ -268,7 +268,7 @@ export default function HomePage() {
             studentSchedule={studentSchedule}
           />
         </div>
-        <div className="w-full md:w-3/5 bg-white p-4 rounded-md shadow overflow-y-scroll">
+        <div className="w-full md:w-3/5 bg-white p-4 rounded-md shadow overflow-y-auto max-h-[50vh] md:max-h-none md:overflow-y-scroll">
           <FourYearPlan
             selectedYear={selectedYear}
             setSelectedYear={setSelectedYear}
@@ -279,7 +279,7 @@ export default function HomePage() {
             isDataLoading={isLoading}
           />
         </div>
-        <div className="w-full md:w-1/5 bg-[var(--off-white)] p-4 overflow-y-scroll">
+        <div className="w-full md:w-1/5 bg-[var(--off-white)] p-4 overflow-y-auto max-h-[50vh] md:max-h-none md:overflow-y-scroll">
           <ProgressTracker
             studentSchedule={studentSchedule}
             college={majorData?.major?.college}

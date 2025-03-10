@@ -101,15 +101,20 @@ export default function UpdateMajor() {
   };
 
   if (status === "loading") {
-    return <div>Loading...</div>
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center">
+        <div className="animate-spin h-10 w-10 border-4 border-blue-500 rounded-full border-t-transparent"></div>
+        <p className="mt-4 text-gray-600">Loading...</p>
+      </div>
+    );
   }
 
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       
-      <div className="flex-1 flex items-center justify-center">
-        <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md mx-4">
+      <div className="flex-1 flex items-center justify-center p-4">
+        <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
           <h1 className="text-2xl font-bold text-center mb-6">Update Your Profile</h1>
           
           <form onSubmit={handleSubmit} className="space-y-4">

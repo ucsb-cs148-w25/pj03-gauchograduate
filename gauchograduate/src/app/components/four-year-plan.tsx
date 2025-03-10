@@ -279,7 +279,7 @@ export default function FourYearPlan({
         </div>
       )}
 
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between items-center mb-4 flex-wrap gap-2">
         <div className="flex items-center">
           <h2 className="text-xl font-semibold">Four-Year Plan</h2>
           <div className="ml-3 flex items-center">
@@ -310,10 +310,10 @@ export default function FourYearPlan({
         </select>
       </div>
 
-      <div className="flex gap-2 flex-1 min-h-0">
+      <div className="flex gap-2 flex-1 min-h-0 flex-col sm:flex-row">
         <div 
           ref={gridRef}
-          className={`grid grid-cols-1 ${showSummer ? 'md:grid-cols-4' : 'md:grid-cols-3'} gap-2 flex-grow border border-gray-300 rounded-md p-2 bg-gray-50 min-h-0 overflow-y-auto`}
+          className={`grid grid-cols-1 sm:grid-cols-2 ${showSummer ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} gap-2 flex-grow border border-gray-300 rounded-md p-2 bg-gray-50 min-h-0 overflow-y-auto`}
         >
           {displayTerms.map((term) => {
             const isPast = isQuarterInPast(yearDisplay, term);
@@ -387,7 +387,7 @@ export default function FourYearPlan({
         </div>
         <button
           onClick={() => setShowSummer(!showSummer)}
-          className="writing-mode-vertical px-2 py-4 bg-[var(--pale-blue)] text-black rounded-lg transition-colors whitespace-nowrap h-auto"
+          className="writing-mode-vertical px-2 py-4 bg-[var(--pale-blue)] text-black rounded-lg transition-colors whitespace-nowrap h-auto sm:h-auto"
         >
           {showSummer ? 'Hide Summer Quarter' : 'Show Summer Quarter'}
         </button>

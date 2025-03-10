@@ -68,13 +68,13 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, 
           onChange={(e) => setSearchQuery(e.target.value)}
         />
         <div className="flex flex-col gap-2 w-full">
-          <div className="flex items-center border border-gray-300 rounded-lg overflow-hidden w-full">
-            <label htmlFor="department-select" className="bg-gray-100 px-3 py-2 text-sm font-medium text-gray-700 w-1/2">
+          <div className="flex flex-col sm:flex-row items-center border border-gray-300 rounded-lg overflow-hidden w-full">
+            <label htmlFor="department-select" className="bg-gray-100 px-3 py-2 text-sm font-medium text-gray-700 w-full sm:w-1/2">
               Department
             </label>
             <select
               id="department-select"
-              className="p-2 border-0 focus:ring-0 focus:outline-none w-1/2"
+              className="p-2 border-0 focus:ring-0 focus:outline-none w-full sm:w-1/2"
               value={selectedDepartment}
               onChange={(e) => setSelectedDepartment(e.target.value)}
             >
@@ -87,13 +87,13 @@ export default function CourseCatalog({ courses, selectedTerm, setSelectedTerm, 
             </select>
           </div>
 
-          <div className="flex items-center border border-gray-300 rounded-lg overflow-hidden w-full">
-            <label htmlFor="term-select" className="bg-gray-100 px-3 py-2 text-sm font-medium text-gray-700 w-2/5">
+          <div className="flex flex-col sm:flex-row items-center border border-gray-300 rounded-lg overflow-hidden w-full">
+            <label htmlFor="term-select" className="bg-gray-100 px-3 py-2 text-sm font-medium text-gray-700 w-full sm:w-2/5">
               Quarter
             </label>
             <select
               id="term-select"
-              className="p-2 border-0 focus:ring-0 focus:outline-none w-3/5"
+              className="p-2 border-0 focus:ring-0 focus:outline-none w-full sm:w-3/5"
               value={selectedTerm}
               onChange={handleTermChange}
             >
@@ -168,7 +168,7 @@ const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div className="absolute inset-0 bg-black opacity-50" onClick={onClose} />
-      <div className="bg-white rounded-xl p-6 z-10 max-w-lg w-full shadow-lg">
+      <div className="bg-white rounded-xl p-6 z-10 max-w-lg w-full mx-4 shadow-lg">
         <button 
           className="float-right text-gray-700 hover:text-gray-900"
           onClick={onClose}

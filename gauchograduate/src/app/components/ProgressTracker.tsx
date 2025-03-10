@@ -200,15 +200,15 @@ const ProgressTracker = ({ studentSchedule, college = "CoE" }: ProgressTrackerPr
   return (
     <div className="h-full p-1 overflow-auto">
       <h2 className="text-xl font-semibold mb-4">Courses Taken</h2>
-      <div className="w-5/6 mx-auto mb-6">
-      <div className="flex justify-center">
-        <SegmentedProgressBar
-          geUnits={geUnits}
-          majorUnits={majorUnits}
-          extraUnits={extraUnits}
-          total={180}
-        />
-      </div>
+      <div className="w-full sm:w-5/6 mx-auto mb-6">
+        <div className="flex justify-center">
+          <SegmentedProgressBar
+            geUnits={geUnits}
+            majorUnits={majorUnits}
+            extraUnits={extraUnits}
+            total={180}
+          />
+        </div>
         <p className="text-center text-sm mt-2">{`${totalUnits} / 180 Units Completed`}</p>
       </div>
 
@@ -337,7 +337,6 @@ const ProgressTracker = ({ studentSchedule, college = "CoE" }: ProgressTrackerPr
           </div>
         </div>
       </CollapsibleCard>
-
 
       {/* Extra Courses Card */}
       <CollapsibleCard title="Extra Courses">

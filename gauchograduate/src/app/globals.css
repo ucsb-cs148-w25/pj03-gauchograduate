@@ -23,6 +23,13 @@ body {
   transform: rotate(360deg);
 }
 
+@media (max-width: 768px) {
+  .writing-mode-vertical {
+    writing-mode: horizontal-tb;
+    transform: none;
+  }
+}
+
 @keyframes pulse {
   0%, 100% {
     opacity: 1;
@@ -81,6 +88,14 @@ body {
 
 .animate-border-pulse {
   animation: border-pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .h-screen {
+    height: auto;
+    min-height: 100vh;
+  }
 }
 
 /* @media (prefers-color-scheme: dark) {
