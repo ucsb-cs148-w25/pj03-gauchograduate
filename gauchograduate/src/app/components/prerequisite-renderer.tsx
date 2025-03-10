@@ -1,9 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { PrerequisiteNode, CourseInfo, Course } from './coursetypes';
 
-// Create a global cache for course ID mappings
-const globalCourseIdCache: Record<string, string> = {};
-
 interface Props {
   node: PrerequisiteNode;
   depth?: number; // used to indent nested requirements
@@ -41,24 +38,11 @@ export const PrerequisiteRenderer: React.FC<Props> = ({ node, depth = 0, complet
       
       if (courseIds.length === 0) return;
       
-      // Check which IDs we need to fetch (not in cache)
-      const idsToFetch = courseIds.filter(id => !globalCourseIdCache[id]);
-      
-      // If all IDs are already in the cache, use the cache
-      if (idsToFetch.length === 0) {
-        const cachedMap: Record<string, string> = {};
-        courseIds.forEach(id => {
-          cachedMap[id] = globalCourseIdCache[id];
-        });
-        setCourseIdMap(cachedMap);
-        return;
-      }
-      
-      // Otherwise, fetch the missing IDs
+      // Always fetch all IDs (no caching)
       setIsLoading(true);
       try {
         // Convert string IDs to numbers
-        const numericIds = idsToFetch.map(id => parseInt(id, 10)).filter(id => !isNaN(id));
+        const numericIds = courseIds.map(id => parseInt(id, 10)).filter(id => !isNaN(id));
         
         // Fetch course information for these IDs
         const response = await fetch('/api/course/query/batch', {
@@ -78,21 +62,10 @@ export const PrerequisiteRenderer: React.FC<Props> = ({ node, depth = 0, complet
               const id = course.id.toString();
               const goldId = course.gold_id;
               newIdMap[id] = goldId;
-              
-              // Update the global cache
-              globalCourseIdCache[id] = goldId;
             });
           }
           
-          // Combine new mappings with cached mappings
-          const combinedMap: Record<string, string> = { ...newIdMap };
-          courseIds.forEach(id => {
-            if (globalCourseIdCache[id] && !combinedMap[id]) {
-              combinedMap[id] = globalCourseIdCache[id];
-            }
-          });
-          
-          setCourseIdMap(combinedMap);
+          setCourseIdMap(newIdMap);
         }
       } catch (error) {
         console.error('Error fetching course information:', error);
@@ -107,7 +80,6 @@ export const PrerequisiteRenderer: React.FC<Props> = ({ node, depth = 0, complet
   // Debug logging for completed courses
   console.log(`PrerequisiteRenderer at depth ${depth}:`, node);
   console.log('Course ID map:', courseIdMap);
-  console.log('Global cache size:', Object.keys(globalCourseIdCache).length);
   console.log('Completed course IDs:', Array.from(completedCourseIds));
   console.log('Completed courses:', completedCourses.map(c => ({ id: c.id, gold_id: c.gold_id })));
 
@@ -123,7 +95,7 @@ export const PrerequisiteRenderer: React.FC<Props> = ({ node, depth = 0, complet
     case 'course': {
       // Render a single course requirement
       // Display the gold_id if available, otherwise show the internal ID
-      const displayId = courseIdMap[node.id] || globalCourseIdCache[node.id] || `Course ID: ${node.id}`;
+      const displayId = courseIdMap[node.id] || `Course ID: ${node.id}`;
       
       // Check if this course is in the completed courses list
       const isCourseCompleted = completedCourseIds.has(String(node.id));

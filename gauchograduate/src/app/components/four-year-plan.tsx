@@ -322,17 +322,20 @@ export default function FourYearPlan({
     if (course.prerequisites && course.prerequisites !== null && course.prerequisites !== -1) {
       const completedCourses: Course[] = [];
       
+      // Add courses from previous years
       Years.slice(0, Years.indexOf(selectedYear)).forEach(year => {
         Object.values(studentSchedule[year]).forEach(termCourses => {
           completedCourses.push(...termCourses);
         });
       });
       
+      // Add courses from previous terms in the current year
       const currentYearTerms = Terms.slice(0, Terms.indexOf(term));
       currentYearTerms.forEach(t => {
         completedCourses.push(...studentSchedule[selectedYear][t]);
       });
       
+      // Also add courses from the current term (for concurrent enrollment)
       completedCourses.push(...studentSchedule[selectedYear][term]);
       
       console.log("=== PREREQUISITE CHECK ===");
@@ -345,11 +348,12 @@ export default function FourYearPlan({
       console.log("=========================");
       
       if (!prerequisitesMet) {
+        // Pass the completed courses to the warning popup
         setPrerequisiteWarning({ 
           course, 
           term, 
           originTerm,
-          completedCourses
+          completedCourses // Add completed courses to the warning state
         });
         return;
       }
@@ -381,6 +385,46 @@ export default function FourYearPlan({
       reorderCourse(selectedYear, term, coursesArr);
     }
   }, [reorderCourse, selectedYear, studentSchedule]);
+
+  useEffect(() => {
+    // If there's a warning showing, recalculate if prerequisites are met
+    if (prerequisiteWarning) {
+      const { course, term } = prerequisiteWarning;
+      
+      // Recollect completed courses
+      const completedCourses: Course[] = [];
+      
+      // Add courses from previous years
+      Years.slice(0, Years.indexOf(selectedYear)).forEach(year => {
+        Object.values(studentSchedule[year]).forEach(termCourses => {
+          completedCourses.push(...termCourses);
+        });
+      });
+      
+      // Add courses from previous terms in the current year
+      const currentYearTerms = Terms.slice(0, Terms.indexOf(term));
+      currentYearTerms.forEach(t => {
+        completedCourses.push(...studentSchedule[selectedYear][t]);
+      });
+      
+      // Also add courses from the current term (for concurrent enrollment)
+      completedCourses.push(...studentSchedule[selectedYear][term]);
+      
+      // Check if prerequisites are now met
+      const prerequisitesMet = checkPrerequisitesMet(course.prerequisites, completedCourses);
+      
+      if (prerequisitesMet) {
+        // If prerequisites are now met, close the warning
+        setPrerequisiteWarning(null);
+      } else {
+        // Otherwise, update the completed courses in the warning
+        setPrerequisiteWarning({
+          ...prerequisiteWarning,
+          completedCourses
+        });
+      }
+    }
+  }, [studentSchedule, prerequisiteWarning, selectedYear]);
 
   const displayTerms = Terms.filter(term => term !== 'Summer' || showSummer);
   const yearDisplay = getYearDisplay(selectedYear);
@@ -685,4 +729,3 @@ export default function FourYearPlan({
     </div>
   );
 }
-

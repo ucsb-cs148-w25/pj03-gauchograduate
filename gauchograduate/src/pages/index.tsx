@@ -157,7 +157,8 @@ export default function HomePage() {
   const { 
     data: userCoursesData,
     isLoading: isUserCoursesLoading,
-    isError: isUserCoursesError
+    isError: isUserCoursesError,
+    refetch: refetchUserCourses
   } = useQuery({
     queryKey: ['userCourses', session?.user?.id],
     queryFn: async () => {
@@ -179,7 +180,7 @@ export default function HomePage() {
   const { 
     data: savedSchedule, 
     isLoading: isSavedScheduleLoading,
-    isError: isSavedScheduleError  
+    isError: isSavedScheduleError
   } = useQuery({
     queryKey: ['savedSchedule', userCoursesData],
     queryFn: async () => {
@@ -220,6 +221,16 @@ export default function HomePage() {
     refetchOnMount: true,
     refetchOnWindowFocus: false,
   });
+
+  useEffect(() => {
+    if (saveStatus === 'saved') {
+      const timeoutId = setTimeout(() => {
+        refetchUserCourses();
+      }, 500);
+      
+      return () => clearTimeout(timeoutId);
+    }
+  }, [saveStatus, refetchUserCourses]);
 
   useEffect(() => {
     if (savedSchedule) {
@@ -363,6 +374,7 @@ export default function HomePage() {
                   selectedTerm={selectedTerm}
                   setSelectedTerm={setSelectedTerm}
                   studentSchedule={studentSchedule}
+                  saveStatus={saveStatus}
                 />
               </div>
             </>

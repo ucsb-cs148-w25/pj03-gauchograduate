@@ -1,15 +1,15 @@
 import { CoursePopupProps } from './coursetypes';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { PrerequisiteRenderer } from './prerequisite-renderer';
 import { PrerequisiteNode } from './coursetypes';
-import { useSession } from 'next-auth/react';
-import { Terms, Years, Course } from './coursetypes';
+import { Course } from './coursetypes';
 
 export default function CoursePopup({ course, term, onClose, onDelete, onGradeChange }: CoursePopupProps) {
   const [currentGrade, setCurrentGrade] = useState<string | null>(course.grade || null);
-  const { data: session } = useSession();
   const [completedCourses, setCompletedCourses] = useState<Course[]>([]);
   const [prerequisitesNode, setPrerequisitesNode] = useState<PrerequisiteNode | null>(null);
+  const hasLoadedPrerequisites = useRef(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Update local state if course prop changes
   useEffect(() => {
@@ -39,90 +39,102 @@ export default function CoursePopup({ course, term, onClose, onDelete, onGradeCh
     return null;
   }, []);
 
-  // Extract prerequisite node when course changes
+  // Fetch course prerequisites only once when the popup is opened
   useEffect(() => {
-    setPrerequisitesNode(getPrerequisitesNode(course.prerequisites));
-  }, [course.prerequisites, getPrerequisitesNode]);
+    const fetchCoursePrerequisites = async () => {
+      setIsLoading(true);
+      // Only fetch if we haven't loaded prerequisites yet
+      if (!hasLoadedPrerequisites.current && course.id) {
+        try {
+          console.log("Fetching prerequisites for course:", course.id);
+          const response = await fetch(`/api/course/${course.id}`);
+          if (response.ok) {
+            const data = await response.json();
+            if (data.course && data.course.prerequisites) {
+              console.log("Received prerequisites:", data.course.prerequisites);
+              // Update the course object with prerequisites
+              course.prerequisites = data.course.prerequisites;
+              setPrerequisitesNode(getPrerequisitesNode(data.course.prerequisites));
+            } else {
+              console.log("No prerequisites found in API response");
+              setPrerequisitesNode(null);
+            }
+          } else {
+            console.error("Failed to fetch course data:", response.status);
+          }
+          // Mark as loaded so we don't fetch again
+          hasLoadedPrerequisites.current = true;
+        } catch (error) {
+          console.error('Error fetching course prerequisites:', error);
+        } finally {
+          setIsLoading(false);
+        }
+      } else if (course.prerequisites) {
+        // If prerequisites are already available, just set them
+        setPrerequisitesNode(getPrerequisitesNode(course.prerequisites));
+        hasLoadedPrerequisites.current = true;
+        setIsLoading(false);
+      } else {
+        setIsLoading(false);
+      }
+    };
 
-  // Collect completed courses from previous terms and current term
+    fetchCoursePrerequisites();
+  }, [course, getPrerequisitesNode]);
+
+  // Fetch the latest completed courses directly from the API
   useEffect(() => {
-    if (session?.user?.courses) {
-      const allCourses: Course[] = [];
-      const studentSchedule = session.user.courses;
-      const firstQuarter = studentSchedule.firstQuarter || '20224';
-      
-      // Helper function to get year and term from quarter code
-      const getYearAndTerm = (quarterCode: string) => {
-        const year = parseInt(quarterCode.substring(0, 4));
-        const quarter = quarterCode.substring(4);
-        const firstYear = parseInt(firstQuarter.substring(0, 4));
-        const yearDiff = year - firstYear;
-        
-        const yearMap: { [key: number]: string } = {
-          0: "Year 1",
-          1: "Year 2",
-          2: "Year 3",
-          3: "Year 4"
-        };
-        
-        const termMap: { [key: string]: string } = {
-          "1": "Winter",
-          "2": "Spring",
-          "3": "Summer",
-          "4": "Fall"
-        };
-        
-        return {
-          year: yearMap[yearDiff] || "Year 1",
-          term: termMap[quarter] || "Fall"
-        };
-      };
-      
-      // Get current course's quarter code
-      const currentQuarterCode = studentSchedule.courses.find(
-        (c: Record<string, unknown>) => c.id === course.id && c.quarter
-      )?.quarter;
-      
-      if (currentQuarterCode) {
-        const currentPosition = getYearAndTerm(currentQuarterCode as string);
-        
-        // Add all courses from previous terms and years
-        studentSchedule.courses.forEach((savedCourse: Record<string, unknown>) => {
-          if (savedCourse.quarter && savedCourse.id) {
-            const position = getYearAndTerm(savedCourse.quarter as string);
+    const fetchCompletedCourses = async () => {
+      try {
+        const response = await fetch('/api/user/courses');
+        if (response.ok) {
+          const data = await response.json();
+          if (data && data.courses && Array.isArray(data.courses)) {
+            // Get all course IDs
+            const courseIds = data.courses.map((c: Record<string, unknown>) => c.id);
             
-            // Check if this course is from a previous term or concurrent
-            const yearIndex = Years.indexOf(position.year);
-            const currentYearIndex = Years.indexOf(currentPosition.year);
-            const termIndex = Terms.indexOf(position.term);
-            const currentTermIndex = Terms.indexOf(currentPosition.term);
+            // Fetch full course details
+            const coursesResponse = await fetch('/api/course/query/batch', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ courseIds }),
+            });
             
-            const isPreviousYear = yearIndex < currentYearIndex;
-            const isSameYearPreviousTerm = yearIndex === currentYearIndex && termIndex <= currentTermIndex;
-            
-            if (isPreviousYear || isSameYearPreviousTerm) {
-              // Convert the saved course to a Course object
-              const courseObj: Course = {
-                id: Number(savedCourse.id),
-                gold_id: String(savedCourse.gold_id || ''),
-                title: String(savedCourse.title || ''),
-                description: String(savedCourse.description || ''),
-                subjectArea: String(savedCourse.subjectArea || ''),
-                units: Number(savedCourse.units || 0),
-                generalEd: Array.isArray(savedCourse.generalEd) ? savedCourse.generalEd : [],
-                prerequisites: savedCourse.prerequisites ? (savedCourse.prerequisites as unknown as PrerequisiteNode | null) : null,
-                unlocks: Array.isArray(savedCourse.unlocks) ? savedCourse.unlocks.map(String) : [],
-                term: []
-              };
-              allCourses.push(courseObj);
+            if (coursesResponse.ok) {
+              const coursesData = await coursesResponse.json();
+              if (coursesData.courses && Array.isArray(coursesData.courses)) {
+                const allCourses: Course[] = coursesData.courses.map((c: Record<string, unknown>) => ({
+                  id: Number(c.id),
+                  gold_id: String(c.gold_id),
+                  title: String(c.title),
+                  description: String(c.description),
+                  subjectArea: String(c.subject_area),
+                  units: Number(c.units) || 0,
+                  generalEd: Array.isArray(c.general_ed) ? c.general_ed : [],
+                  prerequisites: c.prerequisites ? (c.prerequisites as unknown as PrerequisiteNode | null) : null,
+                  unlocks: Array.isArray(c.unlocks) ? c.unlocks.map(String) : [],
+                  term: []
+                }));
+                
+                console.log("Fetched completed courses:", allCourses.length);
+                setCompletedCourses(allCourses);
+              }
             }
           }
-        });
-        
-        setCompletedCourses(allCourses);
+        }
+      } catch (error) {
+        console.error('Error fetching completed courses:', error);
       }
-    }
-  }, [session, course.id]);
+    };
+    
+    fetchCompletedCourses();
+    
+    // Set up an interval to periodically refresh completed courses
+    const intervalId = setInterval(fetchCompletedCourses, 5000); // Refresh every 5 seconds
+    return () => clearInterval(intervalId);
+  }, []);
 
   const handleGradeChange = (grade: string | null) => {
     setCurrentGrade(grade);
@@ -167,7 +179,12 @@ export default function CoursePopup({ course, term, onClose, onDelete, onGradeCh
           
           <div className="mb-3">
             <strong>Prerequisites:</strong>
-            {hasPrerequisites && prerequisitesNode ? (
+            {isLoading ? (
+              <div className="mt-2 p-4 flex items-center justify-center">
+                <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500 mr-2"></div>
+                <span>Loading prerequisites...</span>
+              </div>
+            ) : hasPrerequisites && prerequisitesNode ? (
               <div className="mt-2 bg-gray-50 p-3 rounded-lg">
                 <div className="mb-3 text-xs bg-gray-100 p-2 rounded border border-gray-200">
                   <div className="font-semibold mb-1">Key:</div>

@@ -1,18 +1,20 @@
 "use client";
-import React, { useEffect, useState, useCallback } from "react";
-import { Course, PrerequisiteNode } from "./coursetypes"; 
+import React, { useEffect, useState, useCallback, useRef } from "react";
+import { Course, PrerequisiteNode, ScheduleType } from "./coursetypes"; 
 import { PrerequisiteRenderer } from "./prerequisite-renderer"; 
-import { useSession } from "next-auth/react";
 
 interface CoursePreviewProps {
   course: Course;
   onClose: () => void;
+  studentSchedule?: ScheduleType;
+  saveStatus?: 'idle' | 'saving' | 'saved';
 }
 
-const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose }) => {
-  const { data: session } = useSession();
+const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose, studentSchedule, saveStatus }) => {
   const [completedCourses, setCompletedCourses] = useState<Course[]>([]);
   const [prerequisitesNode, setPrerequisitesNode] = useState<PrerequisiteNode | null>(null);
+  const hasLoadedPrerequisites = useRef(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getPrerequisitesNode = useCallback((): PrerequisiteNode | null => {
     if (!course.prerequisites) return null;
@@ -32,84 +34,63 @@ const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose }) => {
   }, [course.prerequisites]);
 
   useEffect(() => {
-    setPrerequisitesNode(getPrerequisitesNode());
-  }, [getPrerequisitesNode]);
+    const fetchCoursePrerequisites = async () => {
+      setIsLoading(true);
+      if (!hasLoadedPrerequisites.current && course.id) {
+        try {
+          console.log("CoursePreview - Fetching prerequisites for course:", course.id);
+          const response = await fetch(`/api/course/${course.id}`);
+          if (response.ok) {
+            const data = await response.json();
+            if (data.course && data.course.prerequisites) {
+              console.log("CoursePreview - Received prerequisites:", data.course.prerequisites);
+              course.prerequisites = data.course.prerequisites;
+              setPrerequisitesNode(getPrerequisitesNode());
+            } else {
+              console.log("CoursePreview - No prerequisites found in API response");
+              setPrerequisitesNode(null);
+            }
+          } else {
+            console.error("CoursePreview - Failed to fetch course data:", response.status);
+          }
+          hasLoadedPrerequisites.current = true;
+        } catch (error) {
+          console.error('CoursePreview - Error fetching course prerequisites:', error);
+        } finally {
+          setIsLoading(false);
+        }
+      } else if (course.prerequisites) {
+        setPrerequisitesNode(getPrerequisitesNode());
+        hasLoadedPrerequisites.current = true;
+        setIsLoading(false);
+      } else {
+        setIsLoading(false);
+      }
+    };
+
+    fetchCoursePrerequisites();
+  }, [course, getPrerequisitesNode]);
 
   useEffect(() => {
     console.log("CoursePreview - Course ID:", course.id);
     console.log("CoursePreview - Course Gold ID:", course.gold_id);
-    console.log("CoursePreview - Prerequisites:", course.prerequisites);
-    
-    const isNestedFormat = course.prerequisites && 
-      typeof course.prerequisites === 'object' && 
-      'course' in (course.prerequisites as Record<string, unknown>) && 
-      'prerequisites' in (course.prerequisites as Record<string, unknown>);
-    
-    console.log("CoursePreview - Is nested format:", isNestedFormat);
-    
-    if (isNestedFormat) {
-      const innerPrereqs = (course.prerequisites as Record<string, unknown>).prerequisites;
-      console.log("CoursePreview - Inner prerequisites:", innerPrereqs);
-      
-      const hasTypeAndRequirements = innerPrereqs && 
-        typeof innerPrereqs === 'object' && 
-        'type' in (innerPrereqs as Record<string, unknown>) && 
-        'requirements' in (innerPrereqs as Record<string, unknown>);
-      
-      console.log("CoursePreview - Inner prerequisites have type and requirements:", hasTypeAndRequirements);
-      
-      if (hasTypeAndRequirements) {
-        const requirements = (innerPrereqs as Record<string, unknown>).requirements || [];
-        const hasNestedRequirements = Array.isArray(requirements) && requirements.some((req: unknown) => 
-          req && typeof req === 'object' && 
-          ('type' in (req as Record<string, unknown>)) && 
-          ((req as Record<string, unknown>).type === 'and' || (req as Record<string, unknown>).type === 'or') && 
-          'requirements' in (req as Record<string, unknown>)
-        );
-        
-        console.log("CoursePreview - Has nested requirements:", hasNestedRequirements);
-        
-        if (hasNestedRequirements) {
-          console.log("CoursePreview - Nested requirements structure:", 
-            Array.isArray(requirements) && requirements.map((req: unknown) => ({
-              type: (req as Record<string, unknown>).type,
-              requirementsCount: Array.isArray((req as Record<string, unknown>).requirements) 
-                ? ((req as Record<string, unknown>).requirements as unknown[]).length 
-                : 0
-            }))
-          );
-        }
-      }
-    }
   }, [course]);
 
   useEffect(() => {
-    if (session?.user?.courses) {
+    if (studentSchedule) {
       const allCourses: Course[] = [];
-      const studentSchedule = session.user.courses;
       
-      studentSchedule.courses.forEach((savedCourse: Record<string, unknown>) => {
-        if (savedCourse.id) {
-          const courseObj: Course = {
-            id: Number(savedCourse.id),
-            gold_id: String(savedCourse.gold_id || ''),
-            title: String(savedCourse.title || ''),
-            description: String(savedCourse.description || ''),
-            subjectArea: String(savedCourse.subjectArea || ''),
-            units: Number(savedCourse.units || 0),
-            generalEd: Array.isArray(savedCourse.generalEd) ? savedCourse.generalEd : [],
-            prerequisites: savedCourse.prerequisites ? (savedCourse.prerequisites as unknown as PrerequisiteNode | null) : null,
-            unlocks: Array.isArray(savedCourse.unlocks) ? savedCourse.unlocks.map(String) : [],
-            term: []
-          };
-          allCourses.push(courseObj);
-        }
+      Object.values(studentSchedule).forEach(yearSchedule => {
+        Object.values(yearSchedule).forEach(termCourses => {
+          allCourses.push(...termCourses);
+        });
       });
       
+      console.log("CoursePreview - Updated completed courses from studentSchedule:", allCourses.length);
       setCompletedCourses(allCourses);
     }
-  }, [session]);
-  
+  }, [studentSchedule, saveStatus]);
+
   const hasPrerequisites = prerequisitesNode !== null;
 
   return (
@@ -161,7 +142,12 @@ const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose }) => {
 
         <div className="mb-3">
           <strong>Prerequisites:</strong>
-          {hasPrerequisites && prerequisitesNode ? (
+          {isLoading ? (
+            <div className="mt-2 p-4 flex items-center justify-center">
+              <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500 mr-2"></div>
+              <span>Loading prerequisites...</span>
+            </div>
+          ) : hasPrerequisites && prerequisitesNode ? (
             <div className="mt-2 bg-gray-50 p-3 rounded-lg">
               <div className="mb-3 text-xs bg-gray-100 p-2 rounded border border-gray-200">
                 <div className="font-semibold mb-1">Key:</div>
