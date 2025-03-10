@@ -1,7 +1,8 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Course, PrerequisiteNode } from "./coursetypes"; 
 import { PrerequisiteRenderer } from "./prerequisite-renderer"; 
+import { useSession } from "next-auth/react";
 
 interface CoursePreviewProps {
   course: Course;
@@ -9,6 +10,31 @@ interface CoursePreviewProps {
 }
 
 const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose }) => {
+  const { data: session } = useSession();
+  const [completedCourses, setCompletedCourses] = useState<Course[]>([]);
+  const [prerequisitesNode, setPrerequisitesNode] = useState<PrerequisiteNode | null>(null);
+
+  const getPrerequisitesNode = useCallback((): PrerequisiteNode | null => {
+    if (!course.prerequisites) return null;
+    
+    if (typeof course.prerequisites === 'object' && 
+        'course' in (course.prerequisites as Record<string, unknown>) && 
+        'prerequisites' in (course.prerequisites as Record<string, unknown>)) {
+      return ((course.prerequisites as Record<string, unknown>).prerequisites as PrerequisiteNode);
+    }
+    
+    if (typeof course.prerequisites === 'object' && 
+        ('type' in (course.prerequisites as Record<string, unknown>))) {
+      return course.prerequisites as PrerequisiteNode;
+    }
+    
+    return null;
+  }, [course.prerequisites]);
+
+  useEffect(() => {
+    setPrerequisitesNode(getPrerequisitesNode());
+  }, [getPrerequisitesNode]);
+
   useEffect(() => {
     console.log("CoursePreview - Course ID:", course.id);
     console.log("CoursePreview - Course Gold ID:", course.gold_id);
@@ -57,24 +83,33 @@ const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose }) => {
     }
   }, [course]);
 
-  const getPrerequisitesNode = (): PrerequisiteNode | null => {
-    if (!course.prerequisites) return null;
-    
-    if (typeof course.prerequisites === 'object' && 
-        'course' in (course.prerequisites as Record<string, unknown>) && 
-        'prerequisites' in (course.prerequisites as Record<string, unknown>)) {
-      return ((course.prerequisites as Record<string, unknown>).prerequisites as PrerequisiteNode);
+  useEffect(() => {
+    if (session?.user?.courses) {
+      const allCourses: Course[] = [];
+      const studentSchedule = session.user.courses;
+      
+      studentSchedule.courses.forEach((savedCourse: Record<string, unknown>) => {
+        if (savedCourse.id) {
+          const courseObj: Course = {
+            id: Number(savedCourse.id),
+            gold_id: String(savedCourse.gold_id || ''),
+            title: String(savedCourse.title || ''),
+            description: String(savedCourse.description || ''),
+            subjectArea: String(savedCourse.subjectArea || ''),
+            units: Number(savedCourse.units || 0),
+            generalEd: Array.isArray(savedCourse.generalEd) ? savedCourse.generalEd : [],
+            prerequisites: savedCourse.prerequisites || null,
+            unlocks: Array.isArray(savedCourse.unlocks) ? savedCourse.unlocks.map(String) : [],
+            term: []
+          };
+          allCourses.push(courseObj);
+        }
+      });
+      
+      setCompletedCourses(allCourses);
     }
-    
-    if (typeof course.prerequisites === 'object' && 
-        ('type' in (course.prerequisites as Record<string, unknown>))) {
-      return course.prerequisites as PrerequisiteNode;
-    }
-    
-    return null;
-  };
+  }, [session]);
   
-  const prerequisitesNode = getPrerequisitesNode();
   const hasPrerequisites = prerequisitesNode !== null;
 
   return (
@@ -138,13 +173,20 @@ const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose }) => {
                   <div className="w-3 h-3 bg-orange-300 mr-2" />
                   <span>OR - Any one condition must be met</span>
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-center mb-1">
                   <div className="w-3 h-3 bg-purple-300 mr-2" />
                   <span>Special requirements (AP scores, etc.)</span>
                 </div>
+                <div className="flex items-center">
+                  <div className="w-3 h-3 bg-green-200 mr-2" />
+                  <span>Completed prerequisites</span>
+                </div>
               </div>
 
-              <PrerequisiteRenderer node={prerequisitesNode} />
+              <PrerequisiteRenderer 
+                node={prerequisitesNode} 
+                completedCourses={completedCourses}
+              />
             </div>
           ) : (
             <span> None</span>
