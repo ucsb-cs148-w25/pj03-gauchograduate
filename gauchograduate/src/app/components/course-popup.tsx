@@ -9,6 +9,7 @@ export default function CoursePopup({ course, term, onClose, onDelete, onGradeCh
   const [completedCourses, setCompletedCourses] = useState<Course[]>([]);
   const [prerequisitesNode, setPrerequisitesNode] = useState<PrerequisiteNode | null>(null);
   const hasLoadedPrerequisites = useRef(false);
+  const hasLoadedCompletedCourses = useRef(false);
   const [isLoading, setIsLoading] = useState(true);
 
   // Update local state if course prop changes
@@ -82,58 +83,67 @@ export default function CoursePopup({ course, term, onClose, onDelete, onGradeCh
     fetchCoursePrerequisites();
   }, [course, getPrerequisitesNode]);
 
-  // Fetch the latest completed courses directly from the API
+  // Fetch the completed courses only once when the popup is opened
   useEffect(() => {
     const fetchCompletedCourses = async () => {
-      try {
-        const response = await fetch('/api/user/courses');
-        if (response.ok) {
-          const data = await response.json();
-          if (data && data.courses && Array.isArray(data.courses)) {
-            // Get all course IDs
-            const courseIds = data.courses.map((c: Record<string, unknown>) => c.id);
-            
-            // Fetch full course details
-            const coursesResponse = await fetch('/api/course/query/batch', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ courseIds }),
-            });
-            
-            if (coursesResponse.ok) {
-              const coursesData = await coursesResponse.json();
-              if (coursesData.courses && Array.isArray(coursesData.courses)) {
-                const allCourses: Course[] = coursesData.courses.map((c: Record<string, unknown>) => ({
-                  id: Number(c.id),
-                  gold_id: String(c.gold_id),
-                  title: String(c.title),
-                  description: String(c.description),
-                  subjectArea: String(c.subject_area),
-                  units: Number(c.units) || 0,
-                  generalEd: Array.isArray(c.general_ed) ? c.general_ed : [],
-                  prerequisites: c.prerequisites ? (c.prerequisites as unknown as PrerequisiteNode | null) : null,
-                  unlocks: Array.isArray(c.unlocks) ? c.unlocks.map(String) : [],
-                  term: []
-                }));
-                
-                console.log("Fetched completed courses:", allCourses.length);
-                setCompletedCourses(allCourses);
+      // Only fetch if we haven't loaded completed courses yet
+      if (!hasLoadedCompletedCourses.current) {
+        try {
+          console.log("Fetching completed courses");
+          const response = await fetch('/api/user/courses');
+          if (response.ok) {
+            const data = await response.json();
+            if (data && data.courses && Array.isArray(data.courses)) {
+              // Get all course IDs
+              const courseIds = data.courses.map((c: Record<string, unknown>) => c.id);
+              
+              // Fetch full course details
+              const coursesResponse = await fetch('/api/course/query/batch', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ courseIds }),
+              });
+              
+              if (coursesResponse.ok) {
+                const coursesData = await coursesResponse.json();
+                if (coursesData.courses && Array.isArray(coursesData.courses)) {
+                  const allCourses: Course[] = coursesData.courses.map((c: Record<string, unknown>) => ({
+                    id: Number(c.id),
+                    gold_id: String(c.gold_id),
+                    title: String(c.title),
+                    description: String(c.description),
+                    subjectArea: String(c.subject_area),
+                    units: Number(c.units) || 0,
+                    generalEd: Array.isArray(c.general_ed) ? c.general_ed : [],
+                    prerequisites: c.prerequisites ? (c.prerequisites as unknown as PrerequisiteNode | null) : null,
+                    unlocks: Array.isArray(c.unlocks) ? c.unlocks.map(String) : [],
+                    term: []
+                  }));
+                  
+                  console.log("Fetched completed courses:", allCourses.length);
+                  setCompletedCourses(allCourses);
+                }
               }
             }
           }
+          // Mark as loaded so we don't fetch again
+          hasLoadedCompletedCourses.current = true;
+        } catch (error) {
+          console.error('Error fetching completed courses:', error);
         }
-      } catch (error) {
-        console.error('Error fetching completed courses:', error);
       }
     };
     
     fetchCompletedCourses();
     
-    // Set up an interval to periodically refresh completed courses
-    const intervalId = setInterval(fetchCompletedCourses, 5000); // Refresh every 5 seconds
-    return () => clearInterval(intervalId);
+    // Clean up function
+    return () => {
+      // Reset the ref when the component unmounts
+      hasLoadedCompletedCourses.current = false;
+      hasLoadedPrerequisites.current = false;
+    };
   }, []);
 
   const handleGradeChange = (grade: string | null) => {
@@ -177,12 +187,17 @@ export default function CoursePopup({ course, term, onClose, onDelete, onGradeCh
             </div>
           )}
           
-          <div className="mb-3">
+          <div className="mb-3 relative">
             <strong>Prerequisites:</strong>
             {isLoading ? (
-              <div className="mt-2 p-4 flex items-center justify-center">
-                <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500 mr-2"></div>
-                <span>Loading prerequisites...</span>
+              <div className="mt-2 bg-white bg-opacity-70 p-4 flex items-center justify-center">
+                <div className="text-lg font-medium text-gray-600 animate-pulse flex items-center">
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Loading prerequisites...
+                </div>
               </div>
             ) : hasPrerequisites && prerequisitesNode ? (
               <div className="mt-2 bg-gray-50 p-3 rounded-lg">

@@ -140,12 +140,17 @@ const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose, studentS
           )}
         </div>
 
-        <div className="mb-3">
+        <div className="mb-3 relative">
           <strong>Prerequisites:</strong>
           {isLoading ? (
-            <div className="mt-2 p-4 flex items-center justify-center">
-              <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500 mr-2"></div>
-              <span>Loading prerequisites...</span>
+            <div className="mt-2 bg-white bg-opacity-70 p-4 flex items-center justify-center">
+              <div className="text-lg font-medium text-gray-600 animate-pulse flex items-center">
+                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Loading prerequisites...
+              </div>
             </div>
           ) : hasPrerequisites && prerequisitesNode ? (
             <div className="mt-2 bg-gray-50 p-3 rounded-lg">
@@ -189,3 +194,5 @@ const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose, studentS
 };
 
 export default CoursePreview;
+
+
