@@ -35,6 +35,15 @@ const ProgressTracker = ({
   const [majorData, setMajorData] = useState<MajorData | null>(null);
   const [majorStatus, setMajorStatus] = useState<{ [key: string]: GERequirement }>({});
   const [expandedMajorAreas, setExpandedMajorAreas] = useState<{ [area: string]: boolean }>({});
+  const [majorCourses, setMajorCourses] = useState<{
+    preparation: Course[];
+    upperRequired: Course[];
+    upperElectives: Course[];
+  }>({
+    preparation: [],
+    upperRequired: [],
+    upperElectives: []
+  });
 
   // Extra courses state
   const [extraCourses, setExtraCourses] = useState<Course[]>([]);
@@ -142,6 +151,73 @@ const ProgressTracker = ({
     setMajorStatus(newMajorStatus);
   }, [studentSchedule, majorData]);
 
+  // getting course details for major requirements
+  useEffect(() => {
+    if (!majorData) return;
+  
+    const courseIds = [
+      ...majorData.requirements.preparation.and,
+      ...majorData.requirements.upper_division.required.and,
+      ...majorData.requirements.upper_division.electives.or.classes,
+    ];
+  
+    // Filter to include only numeric course IDs
+    const numericCourseIds = courseIds
+      .filter((id) => /^\d+$/.test(id)) // Keep only numeric IDs
+      .map(Number); // Convert to numbers
+  
+    if (numericCourseIds.length === 0) {
+      console.log("No numeric course IDs found for batch request.");
+      return;
+    }
+  
+    console.log("Sending batch request with courseIds:", numericCourseIds);
+  
+    fetch("/api/course/query/batch", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ courseIds: numericCourseIds }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Batch request response data:", data);
+  
+        if (!data || !Array.isArray(data.courses)) {
+          console.warn("Batch request did not return an expected array of courses.");
+          return;
+        }
+  
+        const coursesByCategory = {
+          preparation: [] as Course[],
+          upperRequired: [] as Course[],
+          upperElectives: [] as Course[],
+        };
+  
+        data.courses.forEach((course: Course) => {
+          const courseId = String(course.id); // Ensure it's a string for comparison
+  
+          if (majorData.requirements.preparation.and.includes(courseId)) {
+            coursesByCategory.preparation.push(course);
+          }
+          if (majorData.requirements.upper_division.required.and.includes(courseId)) {
+            coursesByCategory.upperRequired.push(course);
+          }
+          if (majorData.requirements.upper_division.electives.or.classes.includes(courseId)) {
+            coursesByCategory.upperElectives.push(course);
+          }
+        });
+  
+        // ✅ Sort each category alphabetically by gold_id
+        coursesByCategory.preparation.sort((a, b) => a.gold_id.localeCompare(b.gold_id));
+        coursesByCategory.upperRequired.sort((a, b) => a.gold_id.localeCompare(b.gold_id));
+        coursesByCategory.upperElectives.sort((a, b) => a.gold_id.localeCompare(b.gold_id));
+  
+        setMajorCourses(coursesByCategory);
+      })
+      .catch((err) => console.error("Error fetching major requirement courses:", err));
+  }, [majorData]);  
+  
+  
   // Compute extra courses: core courses not used for major requirements.
   useEffect(() => {
     // Core courses: courses with no GE info.
@@ -348,25 +424,32 @@ const ProgressTracker = ({
 
   const renderMajorCourseList = (area: string, courses: Course[] = []) => {
     const isExpanded = expandedMajorAreas[area] || false;
-    const itemsToShow = isExpanded ? courses : courses.slice(0, 1);
-    if (courses.length === 0) return null;
+    const itemsToShow = isExpanded ? courses : courses.slice(0, 3);
+    
+    if (courses.length === 0) return <p className="text-sm text-gray-500">No courses found.</p>;
+  
     return (
       <div className="ml-8 mt-1">
         <ul className="list-disc space-y-1 break-words text-sm text-gray-600">
           {itemsToShow.map((course) => (
-            <li key={course.gold_id}>
-              {course.gold_id} ({course.units} units)
+            <li key={course.id} className="flex items-center">
+              <input
+                type="checkbox"
+                readOnly
+                checked={majorStatus[area]?.courses.some((c) => c.id === course.id)}
+                className="mr-2"
+              />
+              <span>{course.gold_id} ({course.units} units)</span>
             </li>
           ))}
         </ul>
-        {courses.length > 1 && (
+        {courses.length > 3 && (
           <button
             className="text-blue-500 text-xs mt-1 focus:outline-none"
             onClick={() =>
               setExpandedMajorAreas((prev) => ({ ...prev, [area]: !prev[area] }))
             }
             aria-expanded={isExpanded}
-            aria-label={isExpanded ? `Show fewer ${area} courses` : `Show more ${area} courses`}
           >
             {isExpanded ? "Show Less" : "Show More"}
           </button>
@@ -374,6 +457,7 @@ const ProgressTracker = ({
       </div>
     );
   };
+  
 
   const renderExtraCoursesList = () => {
     const itemsToShow = showAllExtra ? extraCourses : extraCourses.slice(0, 3);
@@ -550,82 +634,31 @@ const ProgressTracker = ({
       </CollapsibleCard>
 
       {/* Major Requirements Card */}
-      <CollapsibleCard title={`Major Courses`}>
+      <CollapsibleCard title="Major Courses">
         <div role="region" aria-label="Major Courses">
           {/* Lower Division Section */}
           <div>
-            <h4 className="text-md font-semibold">Lower Division</h4>
-            <ul className="list-none space-y-2 ml-4">
-              <li>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center">
-                    <input
-                      type="checkbox"
-                      readOnly
-                      checked={!!majorStatus.preparation?.fulfilled}
-                      className="mr-2"
-                      aria-label="Lower Division (Preparation) requirement fulfilled"
-                    />
-                    <span>Preparation</span>
-                  </div>
-                  <span className="text-sm text-gray-600">
-                    {majorStatus.preparation?.count || 0}/{majorStatus.preparation?.required || 0}
-                  </span>
-                </div>
-                {renderMajorCourseList("preparation", majorStatus.preparation?.courses || [])}
-              </li>
-            </ul>
+          <h4 className="text-md font-semibold">
+            Preparation {majorStatus.preparation?.count || 0}/{majorStatus.preparation?.required || 0}
+          </h4>
+          {renderMajorCourseList("preparation", majorCourses.preparation)}
           </div>
 
           {/* Upper Division Section */}
           <div className="mt-4">
-            <h4 className="text-md font-semibold">Upper Division</h4>
-            <ul className="list-none space-y-2 ml-4">
-              <li>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center">
-                    <input
-                      type="checkbox"
-                      readOnly
-                      checked={!!majorStatus.upperRequired?.fulfilled}
-                      className="mr-2"
-                      aria-label="Upper Division (Required) requirement fulfilled"
-                    />
-                    <span>Required</span>
-                  </div>
-                  <span className="text-sm text-gray-600">
-                    {majorStatus.upperRequired?.count || 0}/{majorStatus.upperRequired?.required || 0}
-                  </span>
-                </div>
-                {renderMajorCourseList("upperRequired", majorStatus.upperRequired?.courses || [])}
-              </li>
-              <li>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center">
-                    <input
-                      type="checkbox"
-                      readOnly
-                      checked={!!majorStatus.upperElectives?.fulfilled}
-                      className="mr-2"
-                      aria-label="Upper Division (Electives) requirement fulfilled"
-                    />
-                    <span>Electives</span>
-                  </div>
-                  <span className="text-sm text-gray-600">
-                    {majorStatus.upperElectives?.count || 0}/{majorStatus.upperElectives?.required || 0}
-                  </span>
-                </div>
-                {renderMajorCourseList("upperElectives", majorStatus.upperElectives?.courses || [])}
-              </li>
-            </ul>
+          <h4 className="text-md font-semibold">
+            Required {majorStatus.upperRequired?.count || 0}/{majorStatus.upperRequired?.required || 0}
+          </h4>
+          {renderMajorCourseList("upperRequired", majorCourses.upperRequired)}
           </div>
-        </div>
-      </CollapsibleCard>
 
-      {/* Extra Courses Card */}
-      <CollapsibleCard title="Extra Courses">
-        <div role="region" aria-label="Extra Courses">
-          {renderExtraCoursesList()}
+          {/* Electives Section */}
+          <div className="mt-4">
+          <h4 className="text-md font-semibold">
+            Electives {majorStatus.upperElectives?.count || 0}/{majorStatus.upperElectives?.required || 0}
+          </h4>
+          {renderMajorCourseList("upperElectives", majorCourses.upperElectives)}
+          </div>
         </div>
       </CollapsibleCard>
 
