@@ -110,7 +110,7 @@ export default function CoursePopup({ course, term, onClose, onDelete, onGradeCh
                 subjectArea: String(savedCourse.subjectArea || ''),
                 units: Number(savedCourse.units || 0),
                 generalEd: Array.isArray(savedCourse.generalEd) ? savedCourse.generalEd : [],
-                prerequisites: savedCourse.prerequisites || null,
+                prerequisites: savedCourse.prerequisites ? (savedCourse.prerequisites as unknown as PrerequisiteNode | null) : null,
                 unlocks: Array.isArray(savedCourse.unlocks) ? savedCourse.unlocks.map(String) : [],
                 term: []
               };
