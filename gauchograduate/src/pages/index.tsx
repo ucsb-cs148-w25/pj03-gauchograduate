@@ -2,7 +2,7 @@
 
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import CourseCatalog from "../app/components/CourseCatalog";
 import FourYearPlan from "../app/components/four-year-plan";
 import Navbar from "../app/components/Navbar";
@@ -135,6 +135,25 @@ export default function HomePage() {
   
   const [hasEverLoaded, setHasEverLoaded] = useState(false);
 
+  const saveSelectedYear = useCallback(async (year: YearType) => {
+    try {
+      await fetch('/api/user/save-selected-year', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ selectedYear: year }),
+      });
+    } catch (error) {
+      console.error('Error saving selected year:', error);
+    }
+  }, []);
+
+  const handleSetSelectedYear = useCallback((year: YearType) => {
+    setSelectedYear(year);
+    saveSelectedYear(year);
+  }, [saveSelectedYear]);
+
   const { 
     data: userCoursesData,
     isLoading: isUserCoursesLoading,
@@ -184,7 +203,6 @@ export default function HomePage() {
         const position = getYearAndTerm(savedCourse.quarter, userCoursesData.firstQuarter);
         if (!position) return;
         
-        // Include the grade from the saved course data
         const courseWithGrade = {
           ...course,
           grade: savedCourse.grade || null
@@ -214,12 +232,17 @@ export default function HomePage() {
     if (status === "unauthenticated") {
       router.push("/signin");
     } else if (status === "authenticated" && session?.user) {
-      // Check if user has a major selected
       if (!session.user.majorId) {
         router.push("/update-profile");
       }
     }
   }, [status, router, session]);
+
+  useEffect(() => {
+    if (session?.user?.courses?.selectedYear) {
+      setSelectedYear(session.user.courses.selectedYear as YearType);
+    }
+  }, [session]);
 
   const isLoading = isUserCoursesLoading || isSavedScheduleLoading || (!hasEverLoaded && !isUserCoursesError && !isSavedScheduleError);
 
@@ -285,7 +308,6 @@ export default function HomePage() {
     }));
   };
 
-  // Calculate the width classes based on collapse state
   const catalogWidthClass = isCatalogCollapsed ? "w-12" : "w-full md:w-1/5";
   const planWidthClass = `w-full ${isCatalogCollapsed && isTrackerCollapsed ? "md:w-full" : isCatalogCollapsed || isTrackerCollapsed ? "md:w-4/5" : "md:w-3/5"}`;
   const trackerWidthClass = isTrackerCollapsed ? "w-12" : "w-full md:w-1/5";
@@ -350,7 +372,7 @@ export default function HomePage() {
         <div className={`${planWidthClass} bg-white p-4 rounded-md shadow overflow-y-scroll transition-all duration-300`}>
           <FourYearPlan
             selectedYear={selectedYear}
-            setSelectedYear={setSelectedYear}
+            setSelectedYear={handleSetSelectedYear}
             studentSchedule={studentSchedule}
             addCourse={addCourse}
             removeCourse={removeCourse}
