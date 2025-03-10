@@ -38,5 +38,5 @@ Measurements:
   
 ## Experiment/Change
 - experiment: Communicating with Mentor to clarify lab requirements and meet outside of class.
-- Result: 
-- Decision: 
+- Result: We scored well on Lab 6, and we hope that this change will keep us from missing random points on future labs.
+- Decision: We want to keep this change so that we get credit for the work we put in.

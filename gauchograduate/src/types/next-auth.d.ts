@@ -6,9 +6,18 @@ export interface UserCourse {
   grade?: string;
 }
 
+export interface MajorOverride {
+  type: string;
+  requirement: string;
+  courseId?: number;
+  creditSource?: string;
+  units?: number;
+}
+
 export interface UserCourses {
   firstQuarter: string;
   courses: UserCourse[];
+  overrides?: MajorOverride[];
 }
 
 declare module "next-auth" {

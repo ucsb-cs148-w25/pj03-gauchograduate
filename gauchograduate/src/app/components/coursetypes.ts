@@ -8,6 +8,26 @@ export type GeneralEd = {
   geCollege: string;
 };
 
+// Types for the complex prerequisites structure
+export type PrerequisiteNode =
+  | {
+      // A single course requirement
+      type: "course";
+      id: string;                // Now represents the internal ID as a string
+      minGrade: string | null;   // e.g. "C-", or null
+      canTakeConcurrently: boolean;
+    }
+  | {
+      // A special requirement (like AP exam scores)
+      type: "specialRequirement";
+      requirement: string;       // e.g. "Taken Exam: AP 85 with a score of 3"
+    }
+  | {
+      // A logical operator node, either AND or OR
+      type: "and" | "or";
+      requirements: PrerequisiteNode[];
+    };
+
 // Interface for course data as it comes from the database
 export interface CourseInfo {
   gold_id: string;
@@ -16,7 +36,7 @@ export interface CourseInfo {
   subject_area: string;
   units: number | null;
   general_ed: GeneralEd[];
-  prerequisites: number[];
+  prerequisites: PrerequisiteNode | null;
   unlocks: number[];
   id: number;
 }
@@ -30,9 +50,10 @@ export interface Course {
   subjectArea: string;
   units: number;
   generalEd: GeneralEd[];
-  prerequisites: string[];
+  prerequisites: PrerequisiteNode | null;
   unlocks: string[];
   term: Term[];
+  grade?: string | null;
 }
 
 // describing the student's entire 4-year schedule
@@ -48,6 +69,7 @@ export interface CoursePopupProps {
   term: Term;
   onClose: () => void;
   onDelete: () => void;
+  onGradeChange: (grade: string | null) => void;
 }
 
 export interface FourYearPlanProps {
@@ -58,6 +80,10 @@ export interface FourYearPlanProps {
   removeCourse: (course: Course, term: Term) => void;
   reorderCourse: (year: YearType, term: Term, newCourses: Course[]) => void;
   isDataLoading: boolean;
+  updateCourseGrade: (year: YearType, term: Term, courseId: string, grade: string | null) => void;
+  saveStatus: 'idle' | 'saving' | 'saved';
+  setSaveStatus: (status: 'idle' | 'saving' | 'saved') => void;
+  showSummerByDefault?: boolean;
 }
 
 export interface MajorRequirements {

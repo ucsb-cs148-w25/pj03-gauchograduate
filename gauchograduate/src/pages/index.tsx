@@ -40,7 +40,7 @@ async function fetchCourses(quarter: string): Promise<Course[]> {
     department: course.subject_area,
     units: course.units || 0,
     generalEd: Array.isArray(course.general_ed) ? course.general_ed : [],
-    prerequisites: Array.isArray(course.prerequisites) ? course.prerequisites.map(String) : [],
+    prerequisites: course.prerequisites,
     unlocks: Array.isArray(course.unlocks) ? course.unlocks.map(String) : [],
     term: []
   }));
@@ -80,9 +80,10 @@ async function fetchCoursesByIds(courseIds: number[]): Promise<Course[]> {
       department: course.subject_area || course.subject_area,
       units: course.units || 0,
       generalEd: Array.isArray(course.general_ed) ? course.general_ed : [],
-      prerequisites: Array.isArray(course.prerequisites) ? course.prerequisites.map(String) : [],
+      prerequisites: course.prerequisites,
       unlocks: Array.isArray(course.unlocks) ? course.unlocks.map(String) : [],
-      term: []
+      term: [],
+      grade: null // Add default grade
     }));
   } catch (error) {
     console.error('Error fetching courses by IDs:', error);
@@ -128,8 +129,42 @@ export default function HomePage() {
     "Year 4": { Fall: [], Winter: [], Spring: [], Summer: [] },
   });
   const [selectedYear, setSelectedYear] = useState<YearType>("Year 1");
+  const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved'>('idle');
+  const [isCatalogCollapsed, setIsCatalogCollapsed] = useState<boolean>(false);
+  const [isTrackerCollapsed, setIsTrackerCollapsed] = useState<boolean>(false);
   
+  const [mobileView, setMobileView] = useState<'catalog' | 'plan' | 'tracker'>('plan');
+  const [slideDirection, setSlideDirection] = useState<'left' | 'right' | null>(null);
   const [hasEverLoaded, setHasEverLoaded] = useState(false);
+
+  const changeMobileView = (newView: 'catalog' | 'plan' | 'tracker') => {
+    if (mobileView === 'catalog' && newView === 'plan') {
+      setSlideDirection('left');
+    } else if (mobileView === 'plan' && newView === 'catalog') {
+      setSlideDirection('right');
+    } else if (mobileView === 'plan' && newView === 'tracker') {
+      setSlideDirection('left');
+    } else if (mobileView === 'tracker' && newView === 'plan') {
+      setSlideDirection('right');
+    }
+    
+    setMobileView(newView);
+  };
+
+  useEffect(() => {
+    const checkIfMobile = () => {
+      const isMobile = window.innerWidth < 640;
+      if (isMobile) {
+        setMobileView('plan');
+      }
+    };
+    
+    checkIfMobile();
+    
+    window.addEventListener('resize', checkIfMobile);
+    
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
 
   const { 
     data: userCoursesData,
@@ -156,7 +191,7 @@ export default function HomePage() {
   const { 
     data: savedSchedule, 
     isLoading: isSavedScheduleLoading,
-    isError: isSavedScheduleError
+    isError: isSavedScheduleError  
   } = useQuery({
     queryKey: ['savedSchedule', userCoursesData],
     queryFn: async () => {
@@ -173,14 +208,19 @@ export default function HomePage() {
       
       const allCourses = await fetchCoursesByIds(courseIds);
       
-      userCoursesData.courses.forEach((savedCourse: { id: number, quarter: string }) => {
+      userCoursesData.courses.forEach((savedCourse: { id: number, quarter: string, grade?: string }) => {
         const course = allCourses.find(c => c.id === savedCourse.id);
         if (!course) return;
         
         const position = getYearAndTerm(savedCourse.quarter, userCoursesData.firstQuarter);
         if (!position) return;
         
-        newSchedule[position.year][position.term].push(course);
+        const courseWithGrade = {
+          ...course,
+          grade: savedCourse.grade || null
+        };
+        
+        newSchedule[position.year][position.term].push(courseWithGrade);
       });
 
       return newSchedule;
@@ -203,8 +243,12 @@ export default function HomePage() {
   useEffect(() => {
     if (status === "unauthenticated") {
       router.push("/signin");
+    } else if (status === "authenticated" && session?.user) {
+      if (!session.user.majorId) {
+        router.push("/update-profile");
+      }
     }
-  }, [status, router]);
+  }, [status, router, session]);
 
   const isLoading = isUserCoursesLoading || isSavedScheduleLoading || (!hasEverLoaded && !isUserCoursesError && !isSavedScheduleError);
 
@@ -256,19 +300,83 @@ export default function HomePage() {
     }));
   };
 
+  const updateCourseGrade = (year: YearType, term: Term, courseId: string, grade: string | null) => {
+    setStudentSchedule((prevSchedule) => ({
+      ...prevSchedule,
+      [year]: {
+        ...prevSchedule[year],
+        [term]: prevSchedule[year][term].map(course => 
+          course.gold_id === courseId 
+            ? { ...course, grade: grade }
+            : course
+        )
+      }
+    }));
+  };
+
+  const catalogWidthClass = isCatalogCollapsed ? "w-12" : "w-full md:w-1/5";
+  const planWidthClass = `w-full ${isCatalogCollapsed && isTrackerCollapsed ? "md:w-full" : isCatalogCollapsed || isTrackerCollapsed ? "md:w-4/5" : "md:w-3/5"}`;
+  const trackerWidthClass = isTrackerCollapsed ? "w-12" : "w-full md:w-1/5";
+
   return (
     <div className="h-screen flex flex-col">
       <Navbar />
-      <div className="flex flex-1 flex-col md:flex-row overflow-hidden">
-        <div className="w-full md:w-1/5 bg-[var(--off-white)] p-4 overflow-y-auto max-h-[50vh] md:max-h-none md:overflow-y-scroll">
-          <CourseCatalog
-            courses={courses}
-            selectedTerm={selectedTerm}
-            setSelectedTerm={setSelectedTerm}
-            studentSchedule={studentSchedule}
-          />
+      
+      <div className="hidden sm:flex flex-1 flex-row overflow-hidden">
+        <div className={`${catalogWidthClass} bg-[var(--off-white)] overflow-y-scroll transition-all duration-300 relative group`}>
+          {!isCatalogCollapsed ? (
+            <>
+              <button 
+                onClick={() => setIsCatalogCollapsed(true)}
+                className="absolute top-4 right-0 z-10 h-8 w-6 bg-white border-l border-t border-b border-gray-300 rounded-l-md flex items-center justify-center shadow-sm hover:bg-gray-50"
+                aria-label="Collapse course catalog"
+                style={{ right: '-6px' }}
+              >
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  className="h-4 w-4" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <div className="p-4">
+                <CourseCatalog
+                  courses={courses}
+                  selectedTerm={selectedTerm}
+                  setSelectedTerm={setSelectedTerm}
+                  studentSchedule={studentSchedule}
+                />
+              </div>
+            </>
+          ) : (
+            <button 
+              onClick={() => setIsCatalogCollapsed(false)}
+              className="w-full h-full flex flex-col items-center justify-center"
+              aria-label="Expand course catalog"
+            >
+              <div className="absolute top-4 right-0 z-10 h-auto py-3 w-10 ml-1 bg-white border-l border-t border-b border-gray-300 rounded-l-md flex flex-col items-center justify-center shadow-sm">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  className="h-4 w-4 mb-2" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+                <span className="text-xs writing-mode-vertical">Catalog</span>
+              </div>
+            </button>
+          )}
         </div>
-        <div className="w-full md:w-3/5 bg-white p-4 rounded-md shadow overflow-y-auto max-h-[50vh] md:max-h-none md:overflow-y-scroll">
+        
+        <div className={`${planWidthClass} bg-white p-4 rounded-md shadow overflow-y-scroll transition-all duration-300`}>
           <FourYearPlan
             selectedYear={selectedYear}
             setSelectedYear={setSelectedYear}
@@ -276,14 +384,216 @@ export default function HomePage() {
             addCourse={addCourse}
             removeCourse={removeCourse}
             reorderCourse={reorderCourse}
+            updateCourseGrade={updateCourseGrade}
             isDataLoading={isLoading}
+            saveStatus={saveStatus}
+            setSaveStatus={setSaveStatus}
+            showSummerByDefault={isCatalogCollapsed || isTrackerCollapsed}
           />
         </div>
-        <div className="w-full md:w-1/5 bg-[var(--off-white)] p-4 overflow-y-auto max-h-[50vh] md:max-h-none md:overflow-y-scroll">
-          <ProgressTracker
-            studentSchedule={studentSchedule}
-            college={majorData?.major?.college}
-          />
+        
+        <div className={`${trackerWidthClass} bg-[var(--off-white)] overflow-y-scroll transition-all duration-300 relative group`}>
+          {!isTrackerCollapsed ? (
+            <>
+              <button 
+                onClick={() => setIsTrackerCollapsed(true)}
+                className="absolute top-4 left-0 z-10 h-8 w-6 bg-white border-r border-t border-b border-gray-300 rounded-r-md flex items-center justify-center shadow-sm hover:bg-gray-50"
+                aria-label="Collapse progress tracker"
+                style={{ left: '-6px' }}
+              >
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  className="h-4 w-4" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+              <div className="p-4">
+                <ProgressTracker
+                  studentSchedule={studentSchedule}
+                  college={majorData?.major?.college}
+                  saveStatus={saveStatus}
+                  setSaveStatus={setSaveStatus}
+                />
+              </div>
+            </>
+          ) : (
+            <button 
+              onClick={() => setIsTrackerCollapsed(false)}
+              className="w-full h-full flex flex-col items-center justify-center"
+              aria-label="Expand progress tracker"
+            >
+              <div className="absolute top-4 left-0 z-10 h-auto py-3 w-10 mr-1 bg-white border-r border-t border-b border-gray-300 rounded-r-md flex flex-col items-center justify-center shadow-sm">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  className="h-4 w-4 mb-2" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <span className="text-xs writing-mode-vertical">Progress</span>
+              </div>
+            </button>
+          )}
+        </div>
+      </div>
+      
+      <div className="flex sm:hidden flex-1 flex-col overflow-hidden relative">
+        {mobileView === 'catalog' && (
+          <div className="fixed top-36 right-0 z-50">
+            <button 
+              onClick={() => changeMobileView('plan')}
+              className="h-8 w-6 bg-white border-l border-t border-b border-gray-300 rounded-l-md flex items-center justify-center shadow-sm"
+              aria-label="Go to Four Year Plan"
+            >
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                className="h-4 w-4" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+          </div>
+        )}
+
+        {mobileView === 'plan' && (
+          <>
+            <div className="fixed top-36 left-0 z-50">
+              <button 
+                onClick={() => changeMobileView('catalog')}
+                className="h-8 w-6 bg-white border-r border-t border-b border-gray-300 rounded-r-md flex items-center justify-center shadow-sm"
+                aria-label="Go to Course Catalog"
+              >
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  className="h-4 w-4" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+            <div className="fixed top-36 right-0 z-50">
+              <button 
+                onClick={() => changeMobileView('tracker')}
+                className="h-8 w-6 bg-white border-l border-t border-b border-gray-300 rounded-l-md flex items-center justify-center shadow-sm"
+                aria-label="Go to Progress Tracker"
+              >
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  className="h-4 w-4" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+            </div>
+          </>
+        )}
+        
+        {mobileView === 'tracker' && (
+          <div className="fixed top-36 left-0 z-50">
+            <button 
+              onClick={() => changeMobileView('plan')}
+              className="h-8 w-6 bg-white border-r border-t border-b border-gray-300 rounded-r-md flex items-center justify-center shadow-sm"
+              aria-label="Go to Four Year Plan"
+            >
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                className="h-4 w-4" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        )}
+        
+        <div className="relative w-full h-full overflow-hidden">
+          <div 
+            className={`absolute w-full h-full transition-transform duration-300 ease-in-out ${
+              mobileView === 'catalog' 
+                ? 'translate-x-0' 
+                : mobileView === 'plan' && slideDirection === 'right'
+                ? 'translate-x-[-100%]'
+                : 'translate-x-[-200%]'
+            }`}
+          >
+            <div className="p-4 h-full overflow-y-auto">
+              <CourseCatalog
+                courses={courses}
+                selectedTerm={selectedTerm}
+                setSelectedTerm={setSelectedTerm}
+                studentSchedule={studentSchedule}
+              />
+            </div>
+          </div>
+          
+          <div 
+            className={`absolute w-full h-full transition-transform duration-300 ease-in-out ${
+              mobileView === 'plan' 
+                ? 'translate-x-0' 
+                : mobileView === 'catalog' && slideDirection === 'left'
+                ? 'translate-x-[100%]'
+                : mobileView === 'tracker' && slideDirection === 'right'
+                ? 'translate-x-[-100%]'
+                : mobileView === 'catalog'
+                ? 'translate-x-[100%]'
+                : 'translate-x-[-100%]'
+            }`}
+          >
+            <div className="p-4 h-full overflow-y-auto">
+              <FourYearPlan
+                selectedYear={selectedYear}
+                setSelectedYear={setSelectedYear}
+                studentSchedule={studentSchedule}
+                addCourse={addCourse}
+                removeCourse={removeCourse}
+                reorderCourse={reorderCourse}
+                updateCourseGrade={updateCourseGrade}
+                isDataLoading={isLoading}
+                saveStatus={saveStatus}
+                setSaveStatus={setSaveStatus}
+                showSummerByDefault={false}
+              />
+            </div>
+          </div>
+          
+          <div 
+            className={`absolute w-full h-full transition-transform duration-300 ease-in-out ${
+              mobileView === 'tracker' 
+                ? 'translate-x-0' 
+                : mobileView === 'plan' && slideDirection === 'left'
+                ? 'translate-x-[100%]'
+                : 'translate-x-[200%]'
+            }`}
+          >
+            <div className="p-4 h-full overflow-y-auto">
+              <ProgressTracker
+                studentSchedule={studentSchedule}
+                college={majorData?.major?.college}
+                saveStatus={saveStatus}
+                setSaveStatus={setSaveStatus}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

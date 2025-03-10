@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { prisma } from '@/lib/prisma'
+import { PrerequisiteNode } from '@/app/components/coursetypes'
 
 type ResponseData = {
   error?: string
@@ -11,7 +12,7 @@ type ResponseData = {
     subject_area: string
     units: number | null
     general_ed: string[]
-    prerequisites: number[]
+    prerequisites: PrerequisiteNode
     unlocks: number[]
   }[]
 }
@@ -62,7 +63,7 @@ export default async function handler(
       const courses = data.map(course => ({
         ...course,
         general_ed: Array.isArray(course.general_ed) ? course.general_ed as string[] : [],
-        prerequisites: Array.isArray(course.prerequisites) ? course.prerequisites as number[] : [],
+        prerequisites: course.prerequisites as unknown as PrerequisiteNode,
         unlocks: Array.isArray(course.unlocks) ? course.unlocks as number[] : [],
       }));
       res.json({ courses });
@@ -87,7 +88,7 @@ export default async function handler(
     const courses = data.map(course => ({
       ...course,
       general_ed: Array.isArray(course.general_ed) ? course.general_ed as string[] : [],
-      prerequisites: Array.isArray(course.prerequisites) ? course.prerequisites as number[] : [],
+      prerequisites: course.prerequisites as unknown as PrerequisiteNode,
       unlocks: Array.isArray(course.unlocks) ? course.unlocks as number[] : [],
     }));
 

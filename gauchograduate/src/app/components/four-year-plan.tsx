@@ -1,30 +1,130 @@
 import { useSession } from 'next-auth/react';
-import { Terms, Years, Course, Term, FourYearPlanProps, YearType } from "./coursetypes";
+import { Terms, Years, Course, Term, FourYearPlanProps, YearType, PrerequisiteNode } from "./coursetypes";
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { getAcademicYear, isQuarterInPast, isCurrentQuarter } from './utils/quarterUtils';
 import CourseModal from './course-popup';
+import { useReactToPrint } from 'react-to-print';
+import PrintableSchedule from './PrintableSchedule';
 
-export default function FourYearPlan({ 
-  selectedYear, 
-  setSelectedYear, 
-  studentSchedule, 
-  addCourse, 
+function getPrerequisiteNode(prerequisites: unknown): PrerequisiteNode | null {
+  if (!prerequisites) return null;
+  
+  if (typeof prerequisites === 'object' && prerequisites !== null) {
+    const prereqObj = prerequisites as Record<string, unknown>;
+    
+    if (prereqObj.type && 
+        (prereqObj.type === 'course' || 
+         prereqObj.type === 'and' || 
+         prereqObj.type === 'or' || 
+         prereqObj.type === 'specialRequirement')) {
+      return prerequisites as PrerequisiteNode;
+    }
+    
+    if (prereqObj.course && prereqObj.prerequisites) {
+      return prereqObj.prerequisites as PrerequisiteNode;
+    }
+  }
+  
+  console.error("Unknown prerequisite format:", prerequisites);
+  return null;
+}
+
+function checkPrerequisitesMet(
+  prerequisiteNode: unknown,
+  completedCourses: Course[]
+): boolean {
+  const node = getPrerequisiteNode(prerequisiteNode);
+  
+  if (!node) return true;
+
+  const completedCourseIds = new Set(
+    completedCourses.map(course => String(course.id))
+  );
+
+  console.log("Checking prerequisite node:", node);
+  
+  switch (node.type) {
+    case 'course': {
+      const courseId = String(node.id);
+      
+      console.log("All completed course IDs:", Array.from(completedCourseIds));
+      console.log(`Looking for ID: ${courseId} (type: ${typeof courseId})`);
+      
+      const match = completedCourseIds.has(courseId);
+      
+      console.log(`Checking course prerequisite: ${courseId}`);
+      console.log(`Match: ${match}`);
+      
+      return match;
+    }
+    case 'specialRequirement': {
+      return false;
+    }
+    case 'and': {
+      return node.requirements.every(req => {
+        const result = checkPrerequisitesMet(req, completedCourses);
+        console.log(`AND requirement result for ${req.type}: ${result}`);
+        return result;
+      });
+    }
+    case 'or': {
+      return node.requirements.some(req => {
+        const result = checkPrerequisitesMet(req, completedCourses);
+        console.log(`OR requirement result for ${req.type}: ${result}`);
+        return result;
+      });
+    }
+    default:
+      console.log("Unknown prerequisite type:", node);
+      return false;
+  }
+}
+
+export default function FourYearPlan({
+  selectedYear,
+  setSelectedYear,
+  studentSchedule,
+  addCourse,
   removeCourse,
   reorderCourse,
-  isDataLoading
+  isDataLoading,
+  updateCourseGrade,
+  saveStatus,
+  setSaveStatus,
+  showSummerByDefault = false
 }: FourYearPlanProps) {
   const { data: session } = useSession();
   const firstQuarter = session?.user?.courses?.firstQuarter || '20224';
-  const [showSummer, setShowSummer] = useState(false);
+  const [showSummer, setShowSummer] = useState(showSummerByDefault);
   const [selectedCourse, setSelectedCourse] = useState<{ course: Course, term: Term } | null>(null);
-  const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved'>('idle');
   const [isActive, setIsActive] = useState(false);
   const [poofingCourse, setPoofingCourse] = useState<{ id: string, x: number, y: number } | null>(null);
   const planRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
+  const printableRef = useRef<HTMLDivElement>(null);
   const [validDropTargets, setValidDropTargets] = useState<Set<HTMLElement>>(new Set());
   const [draggedOverTerm, setDraggedOverTerm] = useState<string | null>(null);
   const [isDraggingCourse, setIsDraggingCourse] = useState(false);
+  const [prerequisiteWarning, setPrerequisiteWarning] = useState<{ course: Course, term: Term, originTerm?: Term } | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIfMobile = () => {
+      const mobile = window.innerWidth < 640;
+      setIsMobile(mobile);
+      
+      if (mobile) {
+        setShowSummer(true);
+      } else {
+        setShowSummer(showSummerByDefault);
+      }
+    };
+    
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+    
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, [showSummerByDefault]);
 
   useEffect(() => {
     if (saveStatus === 'saved') {
@@ -88,7 +188,7 @@ export default function FourYearPlan({
       console.error("Error removing courses:", error);
       setSaveStatus('idle');
     }
-  }, [selectedYear, getQuarterCode]);
+  }, [selectedYear, getQuarterCode, setSaveStatus]);
 
   useEffect(() => {
     const handleDocumentDragOver = (e: DragEvent) => { e.preventDefault(); };
@@ -140,16 +240,46 @@ export default function FourYearPlan({
       console.error("Error adding courses:", error);
       setSaveStatus('idle');
     }
-  }, [selectedYear, getQuarterCode]);
+  }, [selectedYear, getQuarterCode, setSaveStatus]);
+
+  const DBUpdateGrade = useCallback(async (courseID: number, term: Term, grade: string | null) => {
+    try {
+      setSaveStatus('saving');
+      const quarterCode = getQuarterCode(selectedYear, term);
+      const response = await fetch("/api/user/courses/set-grade", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: courseID, quarter: quarterCode, grade }),
+      });
+      const data = await response.json();
+      console.log("Grade Update Response:", data);
+      setSaveStatus('saved');
+      return true;
+    } catch (error) {
+      console.error("Error updating grade:", error);
+      setSaveStatus('idle');
+      return false;
+    }
+  }, [selectedYear, getQuarterCode, setSaveStatus]);
 
   const DBMoveCourse = useCallback(async (courseID: number, originTerm: Term, term: Term) => {
     setSaveStatus('saving');
+
+    const course = studentSchedule[selectedYear][originTerm].find(c => c.id === courseID);
+    const grade = course?.grade || null;
+
     await DBRemoveCourses(courseID, originTerm);
     await DBAddCourses(courseID, term);
-  }, [DBRemoveCourses, DBAddCourses]);
+
+    if (grade) {
+      await DBUpdateGrade(courseID, term, grade);
+    }
+
+    setSaveStatus('saved');
+  }, [DBRemoveCourses, DBAddCourses, DBUpdateGrade, studentSchedule, selectedYear, setSaveStatus]);
 
   const handlePlanDrop = useCallback((e: React.DragEvent<HTMLDivElement>) => {
-    const isValidTarget = Array.from(validDropTargets).some(target => 
+    const isValidTarget = Array.from(validDropTargets).some(target =>
       target === e.target || target.contains(e.target as Node)
     );
     if (!isValidTarget) {
@@ -185,7 +315,7 @@ export default function FourYearPlan({
     }
   }, []);
 
-  function handleDrop(e: React.DragEvent<HTMLDivElement>, term: Term) {
+  const handleDrop = useCallback((e: React.DragEvent<HTMLDivElement>, term: Term) => {
     e.preventDefault();
     e.stopPropagation();
     setDraggedOverTerm(null);
@@ -197,6 +327,38 @@ export default function FourYearPlan({
       existingCourse => existingCourse.gold_id === course.gold_id
     );
     if (courseExists) return;
+
+    if (course.prerequisites && course.prerequisites !== null && course.prerequisites !== -1) {
+      const completedCourses: Course[] = [];
+      
+      Years.slice(0, Years.indexOf(selectedYear)).forEach(year => {
+        Object.values(studentSchedule[year]).forEach(termCourses => {
+          completedCourses.push(...termCourses);
+        });
+      });
+      
+      const currentYearTerms = Terms.slice(0, Terms.indexOf(term));
+      currentYearTerms.forEach(t => {
+        completedCourses.push(...studentSchedule[selectedYear][t]);
+      });
+      
+      completedCourses.push(...studentSchedule[selectedYear][term]);
+      
+      console.log("=== PREREQUISITE CHECK ===");
+      console.log("Checking prerequisites for:", course.gold_id);
+      console.log("Prerequisites structure:", course.prerequisites);
+      console.log("Completed courses:", completedCourses.map(c => ({ id: c.id, gold_id: c.gold_id })));
+      
+      const prerequisitesMet = checkPrerequisitesMet(course.prerequisites, completedCourses);
+      console.log("Final result - Prerequisites met:", prerequisitesMet);
+      console.log("=========================");
+      
+      if (!prerequisitesMet) {
+        setPrerequisiteWarning({ course, term, originTerm });
+        return;
+      }
+    }
+
     if (originTerm && originTerm !== term) {
       removeCourse(course, originTerm);
       addCourse(course, term as Term);
@@ -205,9 +367,9 @@ export default function FourYearPlan({
       addCourse(course, term as Term);
       DBAddCourses(course.id, term);
     }
-  }
+  }, [addCourse, DBAddCourses, DBMoveCourse, removeCourse, selectedYear, studentSchedule, setPrerequisiteWarning]);
 
-  function handleCourseReorder(e: React.DragEvent<HTMLDivElement>, term: Term, targetIndex: number) {
+  const handleCourseReorder = useCallback((e: React.DragEvent<HTMLDivElement>, term: Term, targetIndex: number) => {
     e.preventDefault();
     e.stopPropagation();
     const data = e.dataTransfer.getData("application/json");
@@ -222,18 +384,33 @@ export default function FourYearPlan({
     if (typeof reorderCourse === "function") {
       reorderCourse(selectedYear, term, coursesArr);
     }
-  }
+  }, [reorderCourse, selectedYear, studentSchedule]);
 
   const displayTerms = Terms.filter(term => term !== 'Summer' || showSummer);
   const yearDisplay = getYearDisplay(selectedYear);
 
+  const handlePrint = useReactToPrint({
+    documentTitle: `Academic Plan - ${session?.user?.name || 'Student'}`,
+    onAfterPrint: () => {
+      console.log('Print completed');
+    },
+    contentRef: printableRef,
+  });
+
   return (
-    <div 
-      className="h-full w-full p-4 bg-white rounded-lg shadow-lg flex flex-col overflow-auto max-h-screen relative" 
+    <div
+      className="h-full w-full p-4 bg-white rounded-lg shadow-lg flex flex-col overflow-auto max-h-screen relative"
       ref={planRef}
       onDragOver={(e) => e.preventDefault()}
       onDrop={handlePlanDrop}
     >
+      <div style={{ display: 'none' }}>
+        <PrintableSchedule
+          ref={printableRef}
+          studentSchedule={studentSchedule}
+          showSummer={showSummer}
+        />
+      </div>
       {selectedCourse && (
         <CourseModal
           course={selectedCourse.course}
@@ -244,13 +421,76 @@ export default function FourYearPlan({
             DBRemoveCourses(selectedCourse.course.id, selectedCourse.term);
             setSelectedCourse(null);
           }}
+          onGradeChange={async (grade) => {
+            updateCourseGrade(selectedYear, selectedCourse.term, selectedCourse.course.gold_id, grade);
+            await DBUpdateGrade(selectedCourse.course.id, selectedCourse.term, grade);
+          }}
         />
+      )}
+
+      {prerequisiteWarning && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" onClick={() => setPrerequisiteWarning(null)}>
+          <div className="bg-white p-6 rounded-lg shadow-xl max-w-md w-full m-4 relative" onClick={e => e.stopPropagation()}>
+            <button 
+              onClick={() => setPrerequisiteWarning(null)}
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
+              aria-label="Close warning"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            <div className="mb-4 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-yellow-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+              <h3 className="text-xl font-bold text-yellow-700">Prerequisite Warning</h3>
+            </div>
+            
+            <div className="space-y-3">
+              <p className="text-gray-700">
+                You haven&apos;t completed the prerequisites for <span className="font-bold">{prerequisiteWarning.course.gold_id}: {prerequisiteWarning.course.title}</span>.
+              </p>
+              <p className="text-gray-600">
+                Please make sure you&apos;ve added the prerequisite courses to earlier quarters in your schedule.
+              </p>
+            </div>
+            
+            <div className="mt-6 flex justify-between">
+              <button
+                onClick={() => setPrerequisiteWarning(null)}
+                className="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition-colors"
+              >
+                Cancel
+              </button>
+              
+              <button
+                onClick={() => {
+                  const { course, term, originTerm } = prerequisiteWarning;
+                  if (originTerm && originTerm !== term) {
+                    removeCourse(course, originTerm);
+                    addCourse(course, term);
+                    DBMoveCourse(course.id, originTerm, term);
+                  } else {
+                    addCourse(course, term);
+                    DBAddCourses(course.id, term);
+                  }
+                  setPrerequisiteWarning(null);
+                }}
+                className="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors"
+              >
+                Add Anyway
+              </button>
+            </div>
+          </div>
+        </div>
       )}
 
       {isDataLoading && (
         <div className="absolute inset-0 bg-white bg-opacity-70 flex items-center justify-center z-10">
           <div className="text-lg font-medium text-gray-600 animate-pulse flex items-center">
-            <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
@@ -260,10 +500,10 @@ export default function FourYearPlan({
       )}
 
       {poofingCourse && (
-        <div 
+        <div
           className="fixed z-50 animate-poof"
-          style={{ 
-            left: poofingCourse.x - 50, 
+          style={{
+            left: poofingCourse.x - 50,
             top: poofingCourse.y - 50,
             width: '100px',
             height: '100px',
@@ -291,29 +531,40 @@ export default function FourYearPlan({
               <span className={`flex items-center text-xs ${isActive ? 'text-green-600' : 'text-gray-400 opacity-50'} transition-opacity duration-300`}>
                 Saved
                 <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"></path>
                 </svg>
               </span>
             )}
           </div>
         </div>
-        <select
-          className="p-2 border border-gray-300 rounded-lg"
-          value={selectedYear}
-          onChange={(e) => setSelectedYear(e.target.value as YearType)}
-        >
-          {Years.map((year, index) => (
-            <option key={index} value={year}>
-              {getYearDisplay(year)}
-            </option>
-          ))}
-        </select>
+        <div className="flex items-center gap-5">
+          <button
+            onClick={() => handlePrint()}
+            className="flex items-center gap-1 px-3 py-1.5 bg-[var(--pale-blue)] text-black rounded-lg hover:bg-blue-200 transition-colors"
+            title="Print or save your schedule as PDF"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+            </svg>
+            <span className="text-sm">Print</span>
+          </button>
+          <select
+            className="p-2 border border-gray-300 rounded-lg"
+            value={selectedYear}
+            onChange={(e) => setSelectedYear(e.target.value as YearType)}
+          >
+            {Years.map((year, index) => (
+              <option key={index} value={year}>
+                {getYearDisplay(year)}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
-
-      <div className="flex gap-2 flex-1 min-h-0 flex-col sm:flex-row">
-        <div 
+      <div className="flex gap-2 flex-1 min-h-0">
+        <div
           ref={gridRef}
-          className={`grid grid-cols-1 sm:grid-cols-2 ${showSummer ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} gap-2 flex-grow border border-gray-300 rounded-md p-2 bg-gray-50 min-h-0 overflow-y-auto`}
+          className={`grid grid-cols-1 xs:grid-cols-2 ${showSummer ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} gap-2 flex-grow border border-gray-300 rounded-md p-2 bg-gray-50 min-h-0 overflow-y-auto`}
         >
           {displayTerms.map((term) => {
             const isPast = isQuarterInPast(yearDisplay, term);
@@ -354,9 +605,18 @@ export default function FourYearPlan({
                             onClick={() => setSelectedCourse({ course, term })}
                             className={`relative p-4 ${bgColorClass} rounded-lg group whitespace-normal break-words cursor-pointer hover:shadow-md transition-shadow`}
                           >
-                            <p className="font-bold text-sm">{course.gold_id}</p>
-                            <p className="text-xs">{course.title}</p>
-                            <p className="text-xs text-gray-500">{course.units} units</p>
+                            <div className="flex justify-between items-start">
+                              <div>
+                                <p className="font-bold text-sm">{course.gold_id}</p>
+                                <p className="text-xs">{course.title}</p>
+                                <p className="text-xs text-gray-500">{course.units} units</p>
+                              </div>
+                              {course.grade && (
+                                <span className="absolute top-4 right-4 text-xs text-gray-500">
+                                  {course.grade}
+                                </span>
+                              )}
+                            </div>
                             <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
                               ···
                             </div>
@@ -385,13 +645,17 @@ export default function FourYearPlan({
             );
           })}
         </div>
-        <button
-          onClick={() => setShowSummer(!showSummer)}
-          className="writing-mode-vertical px-2 py-4 bg-[var(--pale-blue)] text-black rounded-lg transition-colors whitespace-nowrap h-auto sm:h-auto"
-        >
-          {showSummer ? 'Hide Summer Quarter' : 'Show Summer Quarter'}
-        </button>
+        {!isMobile && !showSummerByDefault && (
+          <button
+            onClick={() => setShowSummer(!showSummer)}
+            className="writing-mode-vertical px-2 py-4 bg-[var(--pale-blue)] text-black rounded-lg transition-colors whitespace-nowrap h-auto"
+          >
+            {showSummer ? 'Hide Summer Quarter' : 'Show Summer Quarter'}
+          </button>
+        )}
       </div>
     </div>
   );
 }
+
+
