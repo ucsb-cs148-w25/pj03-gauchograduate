@@ -5,12 +5,11 @@ import { getAcademicYear, isQuarterInPast, isCurrentQuarter } from './utils/quar
 import CourseModal from './course-popup';
 import { useReactToPrint } from 'react-to-print';
 import PrintableSchedule from './PrintableSchedule';
+import { PrerequisiteRenderer } from "./prerequisite-renderer";
 
-// Helper function to extract the actual prerequisite node from potentially nested structures
 function getPrerequisiteNode(prerequisites: unknown): PrerequisiteNode | null {
   if (!prerequisites) return null;
   
-  // If it's already in the correct format with a type property
   if (typeof prerequisites === 'object' && prerequisites !== null) {
     const prereqObj = prerequisites as Record<string, unknown>;
     
@@ -22,13 +21,11 @@ function getPrerequisiteNode(prerequisites: unknown): PrerequisiteNode | null {
       return prerequisites as PrerequisiteNode;
     }
     
-    // If it's in the nested format with course and prerequisites properties
     if (prereqObj.course && prereqObj.prerequisites) {
       return prereqObj.prerequisites as PrerequisiteNode;
     }
   }
   
-  // Unknown format
   console.error("Unknown prerequisite format:", prerequisites);
   return null;
 }
@@ -37,27 +34,20 @@ function checkPrerequisitesMet(
   prerequisiteNode: unknown,
   completedCourses: Course[]
 ): boolean {
-  // Extract the actual prerequisite node from potentially nested structures
   const node = getPrerequisiteNode(prerequisiteNode);
   
   if (!node) return true;
 
-  // Create a set of completed course IDs for faster lookups
-  // Using internal IDs as strings for comparison
   const completedCourseIds = new Set(
     completedCourses.map(course => String(course.id))
   );
 
-  // Debug logging
   console.log("Checking prerequisite node:", node);
   
   switch (node.type) {
     case 'course': {
-      // Check if the course ID exists in our completed courses
-      // Ensure the node.id is converted to a string for proper comparison
       const courseId = String(node.id);
       
-      // Log all completed course IDs for debugging
       console.log("All completed course IDs:", Array.from(completedCourseIds));
       console.log(`Looking for ID: ${courseId} (type: ${typeof courseId})`);
       
@@ -69,11 +59,9 @@ function checkPrerequisitesMet(
       return match;
     }
     case 'specialRequirement': {
-      // For now, we'll assume special requirements are not met
       return false;
     }
     case 'and': {
-      // All requirements must be met
       return node.requirements.every(req => {
         const result = checkPrerequisitesMet(req, completedCourses);
         console.log(`AND requirement result for ${req.type}: ${result}`);
@@ -81,7 +69,6 @@ function checkPrerequisitesMet(
       });
     }
     case 'or': {
-      // Any one of the requirements is enough
       return node.requirements.some(req => {
         const result = checkPrerequisitesMet(req, completedCourses);
         console.log(`OR requirement result for ${req.type}: ${result}`);
@@ -119,7 +106,12 @@ export default function FourYearPlan({
   const [validDropTargets, setValidDropTargets] = useState<Set<HTMLElement>>(new Set());
   const [draggedOverTerm, setDraggedOverTerm] = useState<string | null>(null);
   const [isDraggingCourse, setIsDraggingCourse] = useState(false);
-  const [prerequisiteWarning, setPrerequisiteWarning] = useState<{ course: Course, term: Term, originTerm?: Term } | null>(null);
+  const [prerequisiteWarning, setPrerequisiteWarning] = useState<{ 
+    course: Course, 
+    term: Term, 
+    originTerm?: Term,
+    completedCourses?: Course[] 
+  } | null>(null);
 
   useEffect(() => {
     setShowSummer(showSummerByDefault);
@@ -328,7 +320,6 @@ export default function FourYearPlan({
     if (courseExists) return;
 
     if (course.prerequisites && course.prerequisites !== null && course.prerequisites !== -1) {
-      // Collect all courses from previous terms and years
       const completedCourses: Course[] = [];
       
       // Add courses from previous years
@@ -357,7 +348,13 @@ export default function FourYearPlan({
       console.log("=========================");
       
       if (!prerequisitesMet) {
-        setPrerequisiteWarning({ course, term, originTerm });
+        // Pass the completed courses to the warning popup
+        setPrerequisiteWarning({ 
+          course, 
+          term, 
+          originTerm,
+          completedCourses // Add completed courses to the warning state
+        });
         return;
       }
     }
@@ -389,6 +386,46 @@ export default function FourYearPlan({
     }
   }, [reorderCourse, selectedYear, studentSchedule]);
 
+  useEffect(() => {
+    // If there's a warning showing, recalculate if prerequisites are met
+    if (prerequisiteWarning) {
+      const { course, term } = prerequisiteWarning;
+      
+      // Recollect completed courses
+      const completedCourses: Course[] = [];
+      
+      // Add courses from previous years
+      Years.slice(0, Years.indexOf(selectedYear)).forEach(year => {
+        Object.values(studentSchedule[year]).forEach(termCourses => {
+          completedCourses.push(...termCourses);
+        });
+      });
+      
+      // Add courses from previous terms in the current year
+      const currentYearTerms = Terms.slice(0, Terms.indexOf(term));
+      currentYearTerms.forEach(t => {
+        completedCourses.push(...studentSchedule[selectedYear][t]);
+      });
+      
+      // Also add courses from the current term (for concurrent enrollment)
+      completedCourses.push(...studentSchedule[selectedYear][term]);
+      
+      // Check if prerequisites are now met
+      const prerequisitesMet = checkPrerequisitesMet(course.prerequisites, completedCourses);
+      
+      if (prerequisitesMet) {
+        // If prerequisites are now met, close the warning
+        setPrerequisiteWarning(null);
+      } else {
+        // Otherwise, update the completed courses in the warning
+        setPrerequisiteWarning({
+          ...prerequisiteWarning,
+          completedCourses
+        });
+      }
+    }
+  }, [studentSchedule, prerequisiteWarning, selectedYear]);
+
   const displayTerms = Terms.filter(term => term !== 'Summer' || showSummer);
   const yearDisplay = getYearDisplay(selectedYear);
 
@@ -407,7 +444,6 @@ export default function FourYearPlan({
       onDragOver={(e) => e.preventDefault()}
       onDrop={handlePlanDrop}
     >
-      {/* Hidden printable component that will only be used for printing */}
       <div style={{ display: 'none' }}>
         <PrintableSchedule
           ref={printableRef}
@@ -460,6 +496,48 @@ export default function FourYearPlan({
                 Please make sure you&apos;ve added the prerequisite courses to earlier quarters in your schedule.
               </p>
             </div>
+            
+            {prerequisiteWarning.course.prerequisites && (
+              <div className="mt-4 bg-gray-50 p-3 rounded-lg relative">
+                <h4 className="font-semibold mb-2">Prerequisites:</h4>
+                <div className="text-xs bg-gray-100 p-2 rounded border border-gray-200 mb-3">
+                  <div className="font-semibold mb-1">Key:</div>
+                  <div className="flex items-center mb-1">
+                    <div className="w-3 h-3 bg-blue-300 mr-2" />
+                    <span>AND - All conditions must be met</span>
+                  </div>
+                  <div className="flex items-center mb-1">
+                    <div className="w-3 h-3 bg-orange-300 mr-2" />
+                    <span>OR - Any one condition must be met</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 bg-purple-300 mr-2" />
+                    <span>Special requirements (AP scores, etc.)</span>
+                  </div>
+                  <div className="flex items-center mt-1">
+                    <div className="w-3 h-3 bg-green-200 mr-2" />
+                    <span>Completed prerequisites</span>
+                  </div>
+                </div>
+                
+                {isDataLoading ? (
+                  <div className="bg-white bg-opacity-70 p-4 flex items-center justify-center">
+                    <div className="text-lg font-medium text-gray-600 animate-pulse flex items-center">
+                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Loading prerequisites...
+                    </div>
+                  </div>
+                ) : getPrerequisiteNode(prerequisiteWarning.course.prerequisites) && (
+                  <PrerequisiteRenderer 
+                    node={getPrerequisiteNode(prerequisiteWarning.course.prerequisites)!} 
+                    completedCourses={prerequisiteWarning.completedCourses || []}
+                  />
+                )}
+              </div>
+            )}
             
             <div className="mt-6 flex justify-between">
               <button
