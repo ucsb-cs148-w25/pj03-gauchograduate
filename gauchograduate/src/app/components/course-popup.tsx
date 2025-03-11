@@ -1,16 +1,13 @@
 import { CoursePopupProps } from './coursetypes';
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { PrerequisiteRenderer } from './prerequisite-renderer';
-import { PrerequisiteNode } from './coursetypes';
-import { Course } from './coursetypes';
+import { PrerequisiteNode, Course, CourseInfo } from './coursetypes';
 
 export default function CoursePopup({ course, term, onClose, onDelete, onGradeChange }: CoursePopupProps) {
   const [currentGrade, setCurrentGrade] = useState<string | null>(course.grade || null);
   const [completedCourses, setCompletedCourses] = useState<Course[]>([]);
   const [prerequisitesNode, setPrerequisitesNode] = useState<PrerequisiteNode | null>(null);
-  const hasLoadedPrerequisites = useRef(false);
-  const hasLoadedCompletedCourses = useRef(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Update local state if course prop changes
   useEffect(() => {
@@ -40,64 +37,58 @@ export default function CoursePopup({ course, term, onClose, onDelete, onGradeCh
     return null;
   }, []);
 
-  // Fetch course prerequisites only once when the popup is opened
+  // Set prerequisites from course data if available, or fetch if needed
   useEffect(() => {
-    const fetchCoursePrerequisites = async () => {
-      setIsLoading(true);
-      // Only fetch if we haven't loaded prerequisites yet
-      if (!hasLoadedPrerequisites.current && course.id) {
+    const setupPrerequisites = async () => {
+      // If course already has prerequisites, use them directly
+      if (course.prerequisites) {
+        const node = getPrerequisitesNode(course.prerequisites);
+        if (node) {
+          setPrerequisitesNode(node);
+          return;
+        }
+      }
+      
+      // Only fetch if we need to
+      if (course.id) {
+        setIsLoading(true);
         try {
-          console.log("Fetching prerequisites for course:", course.id);
           const response = await fetch(`/api/course/${course.id}`);
           if (response.ok) {
             const data = await response.json();
             if (data.course && data.course.prerequisites) {
-              console.log("Received prerequisites:", data.course.prerequisites);
               // Update the course object with prerequisites
               course.prerequisites = data.course.prerequisites;
               setPrerequisitesNode(getPrerequisitesNode(data.course.prerequisites));
             } else {
-              console.log("No prerequisites found in API response");
               setPrerequisitesNode(null);
             }
-          } else {
-            console.error("Failed to fetch course data:", response.status);
           }
-          // Mark as loaded so we don't fetch again
-          hasLoadedPrerequisites.current = true;
         } catch (error) {
           console.error('Error fetching course prerequisites:', error);
         } finally {
           setIsLoading(false);
         }
-      } else if (course.prerequisites) {
-        // If prerequisites are already available, just set them
-        setPrerequisitesNode(getPrerequisitesNode(course.prerequisites));
-        hasLoadedPrerequisites.current = true;
-        setIsLoading(false);
       } else {
         setIsLoading(false);
       }
     };
 
-    fetchCoursePrerequisites();
+    setupPrerequisites();
   }, [course, getPrerequisitesNode]);
 
-  // Fetch the completed courses only once when the popup is opened
+  // Extract completed courses from the student schedule
   useEffect(() => {
     const fetchCompletedCourses = async () => {
-      // Only fetch if we haven't loaded completed courses yet
-      if (!hasLoadedCompletedCourses.current) {
-        try {
-          console.log("Fetching completed courses");
-          const response = await fetch('/api/user/courses');
-          if (response.ok) {
-            const data = await response.json();
-            if (data && data.courses && Array.isArray(data.courses)) {
-              // Get all course IDs
-              const courseIds = data.courses.map((c: Record<string, unknown>) => c.id);
-              
-              // Fetch full course details
+      try {
+        const response = await fetch('/api/user/courses');
+        if (response.ok) {
+          const data = await response.json();
+          if (data.courses && Array.isArray(data.courses)) {
+            // Fetch all course details in a batch
+            const courseIds = data.courses.map((c: { id: number }) => c.id);
+            
+            if (courseIds.length > 0) {
               const coursesResponse = await fetch('/api/course/query/batch', {
                 method: 'POST',
                 headers: {
@@ -109,41 +100,40 @@ export default function CoursePopup({ course, term, onClose, onDelete, onGradeCh
               if (coursesResponse.ok) {
                 const coursesData = await coursesResponse.json();
                 if (coursesData.courses && Array.isArray(coursesData.courses)) {
-                  const allCourses: Course[] = coursesData.courses.map((c: Record<string, unknown>) => ({
-                    id: Number(c.id),
-                    gold_id: String(c.gold_id),
-                    title: String(c.title),
-                    description: String(c.description),
-                    subjectArea: String(c.subject_area),
-                    units: Number(c.units) || 0,
+                  const formattedCourses = coursesData.courses.map((c: CourseInfo) => ({
+                    id: c.id,
+                    gold_id: c.gold_id,
+                    title: c.title,
+                    description: c.description,
+                    subjectArea: c.subject_area,
+                    units: c.units || 0,
                     generalEd: Array.isArray(c.general_ed) ? c.general_ed : [],
-                    prerequisites: c.prerequisites ? (c.prerequisites as unknown as PrerequisiteNode | null) : null,
+                    prerequisites: c.prerequisites,
                     unlocks: Array.isArray(c.unlocks) ? c.unlocks.map(String) : [],
-                    term: []
+                    term: [],
+                    grade: null
                   }));
                   
-                  console.log("Fetched completed courses:", allCourses.length);
-                  setCompletedCourses(allCourses);
+                  // Map grades from user courses to the formatted courses
+                  data.courses.forEach((userCourse: { id: number, grade?: string }) => {
+                    const matchingCourse = formattedCourses.find((c: Course) => c.id === userCourse.id);
+                    if (matchingCourse && userCourse.grade) {
+                      matchingCourse.grade = userCourse.grade;
+                    }
+                  });
+                  
+                  setCompletedCourses(formattedCourses);
                 }
               }
             }
           }
-          // Mark as loaded so we don't fetch again
-          hasLoadedCompletedCourses.current = true;
-        } catch (error) {
-          console.error('Error fetching completed courses:', error);
         }
+      } catch (error) {
+        console.error('Error fetching completed courses:', error);
       }
     };
     
     fetchCompletedCourses();
-    
-    // Clean up function
-    return () => {
-      // Reset the ref when the component unmounts
-      hasLoadedCompletedCourses.current = false;
-      hasLoadedPrerequisites.current = false;
-    };
   }, []);
 
   const handleGradeChange = (grade: string | null) => {
@@ -155,7 +145,7 @@ export default function CoursePopup({ course, term, onClose, onDelete, onGradeCh
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" onClick={onClose}>
-      <div className="bg-white p-6 rounded-lg shadow-xl max-w-md w-full m-4 relative" onClick={e => e.stopPropagation()}>
+      <div className="bg-white p-6 rounded-lg shadow-xl max-w-md w-full m-4 relative max-h-[90vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
         {/* Close button in top right */}
         <button 
           onClick={onClose}
@@ -280,3 +270,5 @@ export default function CoursePopup({ course, term, onClose, onDelete, onGradeCh
     </div>
   );
 }
+
+

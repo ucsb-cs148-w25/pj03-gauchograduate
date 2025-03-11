@@ -17,6 +17,9 @@ const termToQuarter: { [key in Term]: string } = {
   Summer: "20243",
 };
 
+// Create a cache for courses by ID
+const courseCache = new Map<number, Course>();
+
 async function fetchCourses(quarter: string): Promise<Course[]> {
   const url = `/api/course/query?quarter=${quarter}`;
   
@@ -31,19 +34,26 @@ async function fetchCourses(quarter: string): Promise<Course[]> {
     return [];
   }
 
-  const formattedCourses: Course[] = data.courses.map((course: CourseInfo) => ({
-    gold_id: course.gold_id,
-    id: course.id,
-    title: course.title,
-    description: course.description,
-    subjectArea: course.subject_area,
-    department: course.subject_area,
-    units: course.units || 0,
-    generalEd: Array.isArray(course.general_ed) ? course.general_ed : [],
-    prerequisites: course.prerequisites,
-    unlocks: Array.isArray(course.unlocks) ? course.unlocks.map(String) : [],
-    term: []
-  }));
+  const formattedCourses: Course[] = data.courses.map((course: CourseInfo) => {
+    const formattedCourse = {
+      gold_id: course.gold_id,
+      id: course.id,
+      title: course.title,
+      description: course.description,
+      subjectArea: course.subject_area,
+      department: course.subject_area,
+      units: course.units || 0,
+      generalEd: Array.isArray(course.general_ed) ? course.general_ed : [],
+      prerequisites: course.prerequisites,
+      unlocks: Array.isArray(course.unlocks) ? course.unlocks.map(String) : [],
+      term: []
+    };
+    
+    // Add to cache
+    courseCache.set(course.id, formattedCourse);
+    
+    return formattedCourse;
+  });
 
   return formattedCourses.sort((a, b) => a.gold_id.localeCompare(b.gold_id));
 }
@@ -51,13 +61,30 @@ async function fetchCourses(quarter: string): Promise<Course[]> {
 async function fetchCoursesByIds(courseIds: number[]): Promise<Course[]> {
   if (!courseIds.length) return [];
   
+  // Filter out IDs that are already in the cache
+  const cachedCourses: Course[] = [];
+  const idsToFetch: number[] = [];
+  
+  courseIds.forEach(id => {
+    if (courseCache.has(id)) {
+      cachedCourses.push(courseCache.get(id)!);
+    } else {
+      idsToFetch.push(id);
+    }
+  });
+  
+  // If all courses are in cache, return them immediately
+  if (idsToFetch.length === 0) {
+    return cachedCourses;
+  }
+  
   try {
     const response = await fetch('/api/course/query/batch', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ courseIds }),
+      body: JSON.stringify({ courseIds: idsToFetch }),
     });
     
     if (!response.ok) {
@@ -68,26 +95,35 @@ async function fetchCoursesByIds(courseIds: number[]): Promise<Course[]> {
     
     if (!data || !data.courses || !Array.isArray(data.courses)) {
       console.error("Unexpected API structure", data);
-      return [];
+      return cachedCourses; // Return what we have from cache
     }
     
-    return data.courses.map((course: CourseInfo) => ({
-      gold_id: course.gold_id,
-      id: course.id,
-      title: course.title,
-      description: course.description,
-      subjectArea: course.subject_area,
-      department: course.subject_area || course.subject_area,
-      units: course.units || 0,
-      generalEd: Array.isArray(course.general_ed) ? course.general_ed : [],
-      prerequisites: course.prerequisites,
-      unlocks: Array.isArray(course.unlocks) ? course.unlocks.map(String) : [],
-      term: [],
-      grade: null // Add default grade
-    }));
+    const fetchedCourses = data.courses.map((course: CourseInfo) => {
+      const formattedCourse = {
+        gold_id: course.gold_id,
+        id: course.id,
+        title: course.title,
+        description: course.description,
+        subjectArea: course.subject_area,
+        department: course.subject_area || course.subject_area,
+        units: course.units || 0,
+        generalEd: Array.isArray(course.general_ed) ? course.general_ed : [],
+        prerequisites: course.prerequisites,
+        unlocks: Array.isArray(course.unlocks) ? course.unlocks.map(String) : [],
+        term: [],
+        grade: null // Add default grade
+      };
+      
+      // Add to cache
+      courseCache.set(course.id, formattedCourse);
+      
+      return formattedCourse;
+    });
+    
+    return [...cachedCourses, ...fetchedCourses];
   } catch (error) {
     console.error('Error fetching courses by IDs:', error);
-    return [];
+    return cachedCourses; // Return what we have from cache
   }
 }
 
@@ -170,9 +206,8 @@ export default function HomePage() {
       return response.json();
     },
     enabled: !!session?.user?.id,
-    staleTime: 5 * 60 * 1000,
-    gcTime: 30 * 60 * 1000,
-    initialData: undefined,
+    staleTime: 5 * 60 * 1000, // 5 minutes
+    gcTime: 30 * 60 * 1000,   // 30 minutes
     refetchOnMount: true,
     refetchOnWindowFocus: false,
   });
@@ -217,7 +252,6 @@ export default function HomePage() {
     enabled: !!userCoursesData,
     staleTime: 5 * 60 * 1000,
     gcTime: 30 * 60 * 1000,
-    initialData: undefined,
     refetchOnMount: true,
     refetchOnWindowFocus: false,
   });

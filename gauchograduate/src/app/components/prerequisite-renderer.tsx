@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import { PrerequisiteNode, CourseInfo, Course } from './coursetypes';
 
 interface Props {
@@ -9,17 +9,20 @@ interface Props {
 
 const INDENT_PER_LEVEL = 12;
 
+// Cache for course ID to gold_id mapping
+const courseIdMapCache: Record<string, string> = {};
+
 export const PrerequisiteRenderer: React.FC<Props> = ({ node, depth = 0, completedCourses = [] }) => {
   const [courseIdMap, setCourseIdMap] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(false);
   
   // Create a set of completed course IDs for faster lookups
-  const completedCourseIds = new Set(
-    completedCourses.map(course => String(course.id))
-  );
+  const completedCourseIds = useMemo(() => {
+    return new Set(completedCourses.map(course => String(course.id)));
+  }, [completedCourses]);
   
   // Function to collect all course IDs from the prerequisite tree
-  const collectCourseIds = useCallback((n: PrerequisiteNode, ids: string[] = []) => {
+  const collectCourseIds = useCallback((n: PrerequisiteNode, ids: string[] = []): string[] => {
     if (n.type === 'course') {
       ids.push(n.id);
     } else if (n.type === 'and' || n.type === 'or') {
@@ -38,11 +41,19 @@ export const PrerequisiteRenderer: React.FC<Props> = ({ node, depth = 0, complet
       
       if (courseIds.length === 0) return;
       
-      // Always fetch all IDs (no caching)
+      // Filter out IDs that are already in the cache
+      const idsToFetch = courseIds.filter(id => !courseIdMapCache[id]);
+      
+      if (idsToFetch.length === 0) {
+        // All IDs are already in the cache
+        setCourseIdMap({...courseIdMapCache});
+        return;
+      }
+      
       setIsLoading(true);
       try {
         // Convert string IDs to numbers
-        const numericIds = courseIds.map(id => parseInt(id, 10)).filter(id => !isNaN(id));
+        const numericIds = idsToFetch.map(id => parseInt(id, 10)).filter(id => !isNaN(id));
         
         // Fetch course information for these IDs
         const response = await fetch('/api/course/query/batch', {
@@ -55,17 +66,16 @@ export const PrerequisiteRenderer: React.FC<Props> = ({ node, depth = 0, complet
         
         if (response.ok) {
           const data = await response.json();
-          const newIdMap: Record<string, string> = {};
           
           if (data.courses && Array.isArray(data.courses)) {
             data.courses.forEach((course: CourseInfo) => {
               const id = course.id.toString();
               const goldId = course.gold_id;
-              newIdMap[id] = goldId;
+              courseIdMapCache[id] = goldId;
             });
           }
           
-          setCourseIdMap(newIdMap);
+          setCourseIdMap({...courseIdMapCache});
         }
       } catch (error) {
         console.error('Error fetching course information:', error);
@@ -77,17 +87,10 @@ export const PrerequisiteRenderer: React.FC<Props> = ({ node, depth = 0, complet
     fetchCourseInfo();
   }, [node, collectCourseIds]);
 
-  // Debug logging for completed courses
-  console.log(`PrerequisiteRenderer at depth ${depth}:`, node);
-  console.log('Course ID map:', courseIdMap);
-  console.log('Completed course IDs:', Array.from(completedCourseIds));
-  console.log('Completed courses:', completedCourses.map(c => ({ id: c.id, gold_id: c.gold_id })));
-
   // helper style for nested indentation
   const style = { marginLeft: depth * INDENT_PER_LEVEL };
 
   if (!node || typeof node !== 'object') {
-    console.log("Invalid node:", node);
     return null;
   }
 
@@ -99,8 +102,6 @@ export const PrerequisiteRenderer: React.FC<Props> = ({ node, depth = 0, complet
       
       // Check if this course is in the completed courses list
       const isCourseCompleted = completedCourseIds.has(String(node.id));
-      
-      console.log(`Checking if course ${node.id} is completed:`, isCourseCompleted);
       
       return (
         <li style={style}>
@@ -172,7 +173,6 @@ export const PrerequisiteRenderer: React.FC<Props> = ({ node, depth = 0, complet
     }
 
     default:
-      console.log("Unknown node type:", node);
       return (
         <div className="text-red-500">
           Unknown prerequisite type: {String((node as Record<string, unknown>).type || 'undefined')}
