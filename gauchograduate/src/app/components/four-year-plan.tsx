@@ -7,6 +7,9 @@ import { useReactToPrint } from 'react-to-print';
 import PrintableSchedule from './PrintableSchedule';
 import { PrerequisiteRenderer } from "./prerequisite-renderer";
 
+// Cache for prerequisite check results
+const prerequisiteCheckCache = new Map<string, boolean>();
+
 function getPrerequisiteNode(prerequisites: unknown): PrerequisiteNode | null {
   if (!prerequisites) return null;
   
@@ -26,7 +29,6 @@ function getPrerequisiteNode(prerequisites: unknown): PrerequisiteNode | null {
     }
   }
   
-  console.error("Unknown prerequisite format:", prerequisites);
   return null;
 }
 
@@ -38,47 +40,51 @@ function checkPrerequisitesMet(
   
   if (!node) return true;
 
-  const completedCourseIds = new Set(
+  // Create a cache key based on the node and completed courses
+  const completedCourseIds = completedCourses.map(c => c.id).sort().join(',');
+  const cacheKey = `${JSON.stringify(node)}-${completedCourseIds}`;
+  
+  // Check if we have a cached result
+  
+  if (prerequisiteCheckCache.has(cacheKey)) {
+    return prerequisiteCheckCache.get(cacheKey)!;
+  }
+
+  const completedCourseIdSet = new Set(
     completedCourses.map(course => String(course.id))
   );
-
-  console.log("Checking prerequisite node:", node);
+  
+  let result: boolean;
   
   switch (node.type) {
     case 'course': {
       const courseId = String(node.id);
-      
-      console.log("All completed course IDs:", Array.from(completedCourseIds));
-      console.log(`Looking for ID: ${courseId} (type: ${typeof courseId})`);
-      
-      const match = completedCourseIds.has(courseId);
-      
-      console.log(`Checking course prerequisite: ${courseId}`);
-      console.log(`Match: ${match}`);
-      
-      return match;
+      result = completedCourseIdSet.has(courseId);
+      break;
     }
     case 'specialRequirement': {
-      return false;
+      result = false;
+      break;
     }
     case 'and': {
-      return node.requirements.every(req => {
-        const result = checkPrerequisitesMet(req, completedCourses);
-        console.log(`AND requirement result for ${req.type}: ${result}`);
-        return result;
-      });
+      result = node.requirements.every(req => 
+        checkPrerequisitesMet(req, completedCourses)
+      );
+      break;
     }
     case 'or': {
-      return node.requirements.some(req => {
-        const result = checkPrerequisitesMet(req, completedCourses);
-        console.log(`OR requirement result for ${req.type}: ${result}`);
-        return result;
-      });
+      result = node.requirements.some(req => 
+        checkPrerequisitesMet(req, completedCourses)
+      );
+      break;
     }
     default:
-      console.log("Unknown prerequisite type:", node);
-      return false;
+      result = false;
   }
+  
+  prerequisiteCheckCache.set(cacheKey, result);
+  
+  return result;
 }
 
 export default function FourYearPlan({
@@ -112,6 +118,7 @@ export default function FourYearPlan({
     originTerm?: Term,
     completedCourses?: Course[] 
   } | null>(null);
+
 
   useEffect(() => {
     setShowSummer(showSummerByDefault);
@@ -167,13 +174,11 @@ export default function FourYearPlan({
     try {
       setSaveStatus('saving');
       const quarterCode = getQuarterCode(selectedYear, term);
-      const response = await fetch("/api/user/remove-course", {
+      await fetch("/api/user/remove-course", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: courseID, quarter: quarterCode }),
       });
-      const data = await response.json();
-      console.log("Removal Response:", data);
       setSaveStatus('saved');
     } catch (error) {
       console.error("Error removing courses:", error);
@@ -219,13 +224,11 @@ export default function FourYearPlan({
     try {
       setSaveStatus('saving');
       const quarterCode = getQuarterCode(selectedYear, term);
-      const response = await fetch("/api/user/add-course", {
+      await fetch("/api/user/add-course", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: courseID, quarter: quarterCode }),
       });
-      const data = await response.json();
-      console.log("Add Response:", data);
       setSaveStatus('saved');
     } catch (error) {
       console.error("Error adding courses:", error);
@@ -237,13 +240,11 @@ export default function FourYearPlan({
     try {
       setSaveStatus('saving');
       const quarterCode = getQuarterCode(selectedYear, term);
-      const response = await fetch("/api/user/courses/set-grade", {
+      await fetch("/api/user/courses/set-grade", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: courseID, quarter: quarterCode, grade }),
       });
-      const data = await response.json();
-      console.log("Grade Update Response:", data);
       setSaveStatus('saved');
       return true;
     } catch (error) {
@@ -298,15 +299,36 @@ export default function FourYearPlan({
     if (draggedOverTerm !== term) {
       setDraggedOverTerm(term);
     }
-  }, [draggedOverTerm]);
-
-  const handleDragLeave = useCallback((e: React.DragEvent<HTMLDivElement>) => {
+  }, [draggedOverTerm]);  const handleDragLeave = useCallback((e: React.DragEvent<HTMLDivElement>) => {
     if (!e.currentTarget.contains(e.relatedTarget as Node)) {
       setDraggedOverTerm(null);
     }
   }, []);
-
+  
+  const getCompletedCoursesForTerm = useCallback((targetTerm: Term) => {
+    const completedCourses: Course[] = [];
+    
+    // Add courses from previous years
+    Years.slice(0, Years.indexOf(selectedYear)).forEach(year => {
+      Object.values(studentSchedule[year]).forEach(termCourses => {
+        completedCourses.push(...termCourses);
+      });
+    });
+    
+    // Add courses from previous terms in the current year
+    const currentYearTerms = Terms.slice(0, Terms.indexOf(targetTerm));
+    currentYearTerms.forEach(t => {
+      completedCourses.push(...studentSchedule[selectedYear][t]);
+    });
+    
+    // Also add courses from the current term (for concurrent enrollment)
+    completedCourses.push(...studentSchedule[selectedYear][targetTerm]);
+    
+    return completedCourses;
+  }, [selectedYear, studentSchedule]);
+  
   const handleDrop = useCallback((e: React.DragEvent<HTMLDivElement>, term: Term) => {
+
     e.preventDefault();
     e.stopPropagation();
     setDraggedOverTerm(null);
@@ -320,32 +342,9 @@ export default function FourYearPlan({
     if (courseExists) return;
 
     if (course.prerequisites && course.prerequisites !== null && course.prerequisites !== -1) {
-      const completedCourses: Course[] = [];
-      
-      // Add courses from previous years
-      Years.slice(0, Years.indexOf(selectedYear)).forEach(year => {
-        Object.values(studentSchedule[year]).forEach(termCourses => {
-          completedCourses.push(...termCourses);
-        });
-      });
-      
-      // Add courses from previous terms in the current year
-      const currentYearTerms = Terms.slice(0, Terms.indexOf(term));
-      currentYearTerms.forEach(t => {
-        completedCourses.push(...studentSchedule[selectedYear][t]);
-      });
-      
-      // Also add courses from the current term (for concurrent enrollment)
-      completedCourses.push(...studentSchedule[selectedYear][term]);
-      
-      console.log("=== PREREQUISITE CHECK ===");
-      console.log("Checking prerequisites for:", course.gold_id);
-      console.log("Prerequisites structure:", course.prerequisites);
-      console.log("Completed courses:", completedCourses.map(c => ({ id: c.id, gold_id: c.gold_id })));
+      const completedCourses = getCompletedCoursesForTerm(term);
       
       const prerequisitesMet = checkPrerequisitesMet(course.prerequisites, completedCourses);
-      console.log("Final result - Prerequisites met:", prerequisitesMet);
-      console.log("=========================");
       
       if (!prerequisitesMet) {
         // Pass the completed courses to the warning popup
@@ -353,7 +352,7 @@ export default function FourYearPlan({
           course, 
           term, 
           originTerm,
-          completedCourses // Add completed courses to the warning state
+          completedCourses
         });
         return;
       }
@@ -367,7 +366,7 @@ export default function FourYearPlan({
       addCourse(course, term as Term);
       DBAddCourses(course.id, term);
     }
-  }, [addCourse, DBAddCourses, DBMoveCourse, removeCourse, selectedYear, studentSchedule, setPrerequisiteWarning]);
+  }, [addCourse, DBAddCourses, DBMoveCourse, removeCourse, selectedYear, studentSchedule, getCompletedCoursesForTerm, setPrerequisiteWarning]);
 
   const handleCourseReorder = useCallback((e: React.DragEvent<HTMLDivElement>, term: Term, targetIndex: number) => {
     e.preventDefault();
@@ -387,28 +386,11 @@ export default function FourYearPlan({
   }, [reorderCourse, selectedYear, studentSchedule]);
 
   useEffect(() => {
-    // If there's a warning showing, recalculate if prerequisites are met
     if (prerequisiteWarning) {
       const { course, term } = prerequisiteWarning;
       
       // Recollect completed courses
-      const completedCourses: Course[] = [];
-      
-      // Add courses from previous years
-      Years.slice(0, Years.indexOf(selectedYear)).forEach(year => {
-        Object.values(studentSchedule[year]).forEach(termCourses => {
-          completedCourses.push(...termCourses);
-        });
-      });
-      
-      // Add courses from previous terms in the current year
-      const currentYearTerms = Terms.slice(0, Terms.indexOf(term));
-      currentYearTerms.forEach(t => {
-        completedCourses.push(...studentSchedule[selectedYear][t]);
-      });
-      
-      // Also add courses from the current term (for concurrent enrollment)
-      completedCourses.push(...studentSchedule[selectedYear][term]);
+      const completedCourses = getCompletedCoursesForTerm(term);
       
       // Check if prerequisites are now met
       const prerequisitesMet = checkPrerequisitesMet(course.prerequisites, completedCourses);
@@ -424,7 +406,7 @@ export default function FourYearPlan({
         });
       }
     }
-  }, [studentSchedule, prerequisiteWarning, selectedYear]);
+  }, [studentSchedule, prerequisiteWarning, selectedYear, getCompletedCoursesForTerm]);
 
   const displayTerms = Terms.filter(term => term !== 'Summer' || showSummer);
   const yearDisplay = getYearDisplay(selectedYear);
@@ -739,3 +721,5 @@ export default function FourYearPlan({
     </div>
   );
 }
+
+

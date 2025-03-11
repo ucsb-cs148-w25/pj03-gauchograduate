@@ -48,10 +48,15 @@ export default async function handler(
       return res.status(404).json({ error: 'Course not found' })
     }
 
+    let prerequisites = data.prerequisites;
+    if (prerequisites === null) {
+      prerequisites = null;
+    }
+
     const course = {
       ...data,
       general_ed: Array.isArray(data.general_ed) ? data.general_ed as string[] : [],
-      prerequisites: data.prerequisites as unknown as PrerequisiteNode,
+      prerequisites: prerequisites as unknown as PrerequisiteNode,
       unlocks: Array.isArray(data.unlocks) ? data.unlocks as number[] : [],
       offerings: data.offerings
     }

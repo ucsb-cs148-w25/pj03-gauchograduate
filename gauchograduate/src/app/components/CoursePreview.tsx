@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState, useCallback, useRef } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Course, PrerequisiteNode, ScheduleType } from "./coursetypes"; 
 import { PrerequisiteRenderer } from "./prerequisite-renderer"; 
 
@@ -13,8 +13,7 @@ interface CoursePreviewProps {
 const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose, studentSchedule, saveStatus }) => {
   const [completedCourses, setCompletedCourses] = useState<Course[]>([]);
   const [prerequisitesNode, setPrerequisitesNode] = useState<PrerequisiteNode | null>(null);
-  const hasLoadedPrerequisites = useRef(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const getPrerequisitesNode = useCallback((): PrerequisiteNode | null => {
     if (!course.prerequisites) return null;
@@ -34,47 +33,40 @@ const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose, studentS
   }, [course.prerequisites]);
 
   useEffect(() => {
-    const fetchCoursePrerequisites = async () => {
-      setIsLoading(true);
-      if (!hasLoadedPrerequisites.current && course.id) {
+    const setupPrerequisites = async () => {
+      if (course.prerequisites) {
+        const node = getPrerequisitesNode();
+        if (node) {
+          setPrerequisitesNode(node);
+          return;
+        }
+      }
+      
+      if (course.id) {
+        setIsLoading(true);
         try {
-          console.log("CoursePreview - Fetching prerequisites for course:", course.id);
           const response = await fetch(`/api/course/${course.id}`);
           if (response.ok) {
             const data = await response.json();
             if (data.course && data.course.prerequisites) {
-              console.log("CoursePreview - Received prerequisites:", data.course.prerequisites);
               course.prerequisites = data.course.prerequisites;
               setPrerequisitesNode(getPrerequisitesNode());
             } else {
-              console.log("CoursePreview - No prerequisites found in API response");
               setPrerequisitesNode(null);
             }
-          } else {
-            console.error("CoursePreview - Failed to fetch course data:", response.status);
           }
-          hasLoadedPrerequisites.current = true;
         } catch (error) {
-          console.error('CoursePreview - Error fetching course prerequisites:', error);
+          console.error('Error fetching course prerequisites:', error);
         } finally {
           setIsLoading(false);
         }
-      } else if (course.prerequisites) {
-        setPrerequisitesNode(getPrerequisitesNode());
-        hasLoadedPrerequisites.current = true;
-        setIsLoading(false);
       } else {
         setIsLoading(false);
       }
     };
 
-    fetchCoursePrerequisites();
+    setupPrerequisites();
   }, [course, getPrerequisitesNode]);
-
-  useEffect(() => {
-    console.log("CoursePreview - Course ID:", course.id);
-    console.log("CoursePreview - Course Gold ID:", course.gold_id);
-  }, [course]);
 
   useEffect(() => {
     if (studentSchedule) {
@@ -86,7 +78,6 @@ const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose, studentS
         });
       });
       
-      console.log("CoursePreview - Updated completed courses from studentSchedule:", allCourses.length);
       setCompletedCourses(allCourses);
     }
   }, [studentSchedule, saveStatus]);
@@ -194,5 +185,3 @@ const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose, studentS
 };
 
 export default CoursePreview;
-
-
