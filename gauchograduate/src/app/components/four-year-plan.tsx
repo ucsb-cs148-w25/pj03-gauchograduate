@@ -119,6 +119,8 @@ export default function FourYearPlan({
     completedCourses?: Course[] 
   } | null>(null);
   const [isMobile, setIsMobile] = useState(false);
+  
+  const [showClearYearConfirm, setShowClearYearConfirm] = useState(false);
 
   useEffect(() => {
     const checkIfMobile = () => {
@@ -183,6 +185,46 @@ export default function FourYearPlan({
     const quarterSuffix = { Fall: "4", Winter: "1", Spring: "2", Summer: "3" }[term];
     return `${yearNum}${quarterSuffix}`;
   }, [firstQuarter]);
+
+  // Function to clear all courses for the selected year
+  const clearYear = useCallback(async () => {
+    try {
+      setSaveStatus('saving');
+      
+      // Get the year prefix for the selected year
+      const yearIndex = Years.indexOf(selectedYear);
+      const baseYear = parseInt(firstQuarter.substring(0, 4));
+      const yearNum = baseYear + yearIndex;
+      const yearPrefix = `${yearNum}`;
+      
+      const response = await fetch("/api/user/clear-year", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ yearPrefix }),
+      });
+      
+      const data = await response.json();
+      console.log("Clear Year Response:", data);
+      
+      // Clear all courses from the selected year in the local state
+      const updatedSchedule = { ...studentSchedule };
+      Terms.forEach(term => {
+        updatedSchedule[selectedYear][term] = [];
+      });
+      
+      // Update the schedule through the reorderCourse function
+      // This ensures the UI is updated properly
+      Terms.forEach(term => {
+        reorderCourse(selectedYear, term, []);
+      });
+      
+      setSaveStatus('saved');
+      setShowClearYearConfirm(false);
+    } catch (error) {
+      console.error("Error clearing year:", error);
+      setSaveStatus('idle');
+    }
+  }, [selectedYear, firstQuarter, studentSchedule, reorderCourse, setSaveStatus]);
 
   const DBRemoveCourses = useCallback(async (courseID: number, term: Term) => {
     try {
@@ -615,6 +657,16 @@ export default function FourYearPlan({
         </div>
         <div className="flex items-center gap-5">
           <button
+            onClick={() => setShowClearYearConfirm(true)}
+            className="flex items-center gap-1 px-3 py-1.5 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition-colors"
+            title="Clear all courses for the selected year"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+            </svg>
+            <span className="text-sm">Clear Year</span>
+          </button>
+          <button
             onClick={() => handlePrint()}
             className="flex items-center gap-1 px-3 py-1.5 bg-[var(--pale-blue)] text-black rounded-lg hover:bg-blue-200 transition-colors"
             title="Print or save your schedule as PDF"
@@ -730,6 +782,54 @@ export default function FourYearPlan({
           </button>
         )}
       </div>
+      {/* Clear Year Confirmation Modal */}
+      {showClearYearConfirm && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-xl max-w-md w-full m-4 relative">
+            <button 
+              onClick={() => setShowClearYearConfirm(false)}
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
+              aria-label="Close confirmation"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            <div className="mb-4 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-red-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+              <h3 className="text-xl font-bold text-red-700">Clear Year Confirmation</h3>
+            </div>
+            
+            <div className="space-y-3">
+              <p className="text-gray-700">
+                Are you sure you want to clear <span className="font-bold">all courses</span> for {selectedYear} ({getYearDisplay(selectedYear)})?
+              </p>
+              <p className="text-gray-600">
+                This action cannot be undone.
+              </p>
+            </div>
+            
+            <div className="mt-6 flex justify-between">
+              <button
+                onClick={() => setShowClearYearConfirm(false)}
+                className="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition-colors"
+              >
+                Cancel
+              </button>
+              
+              <button
+                onClick={clearYear}
+                className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors"
+              >
+                Clear All Courses
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
