@@ -15,7 +15,7 @@ Vala
 ## User Manual Coordinator
 Kade
 ## Final presentation leader
-Tadeon
+Taedon
 
 ## Rotating Leadership roles
 ```
