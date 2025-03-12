@@ -3482,157 +3482,42 @@
             "requirements": [
                 {
                     "type": "course",
-                    "id": "EARTH 2",
+                    "id": "CHEM 1C",
                     "minGrade": null,
                     "canTakeConcurrently": false
                 },
                 {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "or",
-                            "requirements": [
-                                {
-                                    "type": "and",
-                                    "requirements": [
-                                        {
-                                            "type": "course",
-                                            "id": "MATH 3A",
-                                            "minGrade": null,
-                                            "canTakeConcurrently": false
-                                        },
-                                        {
-                                            "type": "course",
-                                            "id": "MATH 3B",
-                                            "minGrade": null,
-                                            "canTakeConcurrently": false
-                                        },
-                                        {
-                                            "type": "course",
-                                            "id": "MATH 3C",
-                                            "minGrade": null,
-                                            "canTakeConcurrently": false
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "and",
-                                    "requirements": [
-                                        {
-                                            "type": "course",
-                                            "id": "MATH 3A",
-                                            "minGrade": null,
-                                            "canTakeConcurrently": false
-                                        },
-                                        {
-                                            "type": "course",
-                                            "id": "MATH 3B",
-                                            "minGrade": null,
-                                            "canTakeConcurrently": false
-                                        },
-                                        {
-                                            "type": "course",
-                                            "id": "MATH 4A",
-                                            "minGrade": null,
-                                            "canTakeConcurrently": false
-                                        },
-                                        {
-                                            "type": "course",
-                                            "id": "MATH 4B",
-                                            "minGrade": null,
-                                            "canTakeConcurrently": false
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "or",
-                            "requirements": [
-                                {
-                                    "type": "and",
-                                    "requirements": [
-                                        {
-                                            "type": "course",
-                                            "id": "MATH 5A",
-                                            "minGrade": null,
-                                            "canTakeConcurrently": true
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "and",
-                                    "requirements": [
-                                        {
-                                            "type": "course",
-                                            "id": "MATH 5C",
-                                            "minGrade": null,
-                                            "canTakeConcurrently": true
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "and",
-                                    "requirements": [
-                                        {
-                                            "type": "course",
-                                            "id": "MATH 6A",
-                                            "minGrade": null,
-                                            "canTakeConcurrently": true
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
+                    "type": "course",
+                    "id": "MATH 3A",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
                 },
                 {
-                    "type": "and",
+                    "type": "or",
                     "requirements": [
                         {
-                            "type": "or",
-                            "requirements": [
-                                {
-                                    "type": "and",
-                                    "requirements": [
-                                        {
-                                            "type": "course",
-                                            "id": "PHYS 1",
-                                            "minGrade": null,
-                                            "canTakeConcurrently": false
-                                        },
-                                        {
-                                            "type": "course",
-                                            "id": "PHYS 2",
-                                            "minGrade": null,
-                                            "canTakeConcurrently": false
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "and",
-                                    "requirements": [
-                                        {
-                                            "type": "course",
-                                            "id": "PHYS 6A",
-                                            "minGrade": null,
-                                            "canTakeConcurrently": false
-                                        },
-                                        {
-                                            "type": "course",
-                                            "id": "PHYS 6B",
-                                            "minGrade": null,
-                                            "canTakeConcurrently": false
-                                        },
-                                        {
-                                            "type": "course",
-                                            "id": "PHYS 6C",
-                                            "minGrade": null,
-                                            "canTakeConcurrently": false
-                                        }
-                                    ]
-                                }
-                            ]
+                            "type": "course",
+                            "id": "EARTH 2",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "EARTH 3",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "EARTH 4",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "EARTH 4S",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
                         }
                     ]
                 }
@@ -3644,29 +3529,6 @@
         "prerequisites": {
             "type": "and",
             "requirements": [
-                {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "MATH 3A",
-                            "minGrade": null,
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "MATH 3B",
-                            "minGrade": null,
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "MATH 3C",
-                            "minGrade": null,
-                            "canTakeConcurrently": false
-                        }
-                    ]
-                },
                 {
                     "type": "or",
                     "requirements": [
@@ -3700,51 +3562,29 @@
                             ]
                         },
                         {
-                            "type": "or",
+                            "type": "and",
                             "requirements": [
                                 {
                                     "type": "course",
-                                    "id": "MATH 5A",
+                                    "id": "MATH 3A",
                                     "minGrade": null,
-                                    "canTakeConcurrently": true
+                                    "canTakeConcurrently": false
                                 },
                                 {
                                     "type": "course",
-                                    "id": "MATH 5C",
+                                    "id": "MATH 3B",
                                     "minGrade": null,
-                                    "canTakeConcurrently": true
+                                    "canTakeConcurrently": false
                                 },
                                 {
                                     "type": "course",
-                                    "id": "MATH 6A",
+                                    "id": "MATH 3C",
                                     "minGrade": null,
-                                    "canTakeConcurrently": true
+                                    "canTakeConcurrently": false
                                 }
                             ]
                         }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "PHYS 6A",
-                            "minGrade": null,
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "PHYS 6B",
-                            "minGrade": null,
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "PHYS 6C",
-                            "minGrade": null,
-                            "canTakeConcurrently": false
-                        }
+
                     ]
                 },
                 {
@@ -3752,15 +3592,66 @@
                     "requirements": [
                         {
                             "type": "course",
-                            "id": "PHYS 1",
+                            "id": "MATH 5A",
                             "minGrade": null,
-                            "canTakeConcurrently": false
+                            "canTakeConcurrently": true
                         },
                         {
                             "type": "course",
-                            "id": "PHYS 2",
+                            "id": "MATH 5C",
                             "minGrade": null,
-                            "canTakeConcurrently": false
+                            "canTakeConcurrently": true
+                        },
+                        {
+                            "type": "course",
+                            "id": "MATH 6A",
+                            "minGrade": null,
+                            "canTakeConcurrently": true
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "requirements": [
+                        {
+                            "type": "and",
+                            "requirements": [
+                                {
+                                    "type": "course",
+                                    "id": "PHYS 6A",
+                                    "minGrade": null,
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "PHYS 6B",
+                                    "minGrade": null,
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "PHYS 6C",
+                                    "minGrade": null,
+                                    "canTakeConcurrently": false
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "requirements": [
+                                {
+                                    "type": "course",
+                                    "id": "PHYS 1",
+                                    "minGrade": null,
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "PHYS 2",
+                                    "minGrade": null,
+                                    "canTakeConcurrently": false
+                                }
+                            ]
                         }
                     ]
                 }
@@ -3796,48 +3687,10 @@
     "EARTH 163": {
         "course": "EARTH 163",
         "prerequisites": {
-            "type": "or",
-            "requirements": [
-                {
-                    "type": "course",
-                    "id": "MATH 2B",
-                    "minGrade": null,
-                    "canTakeConcurrently": false
-                },
-                {
-                    "type": "course",
-                    "id": "MATH 3B",
-                    "minGrade": null,
-                    "canTakeConcurrently": false
-                },
-                {
-                    "type": "specialRequirement",
-                    "requirement": "Taken Exam: AP 68 with a score of 3"
-                }
-            ]
-        },
-        "additionalRequirements": {
-            "type": "and",
-            "requirements": [
-                {
-                    "type": "course",
-                    "id": "CHEM 1A",
-                    "minGrade": null,
-                    "canTakeConcurrently": false
-                },
-                {
-                    "type": "course",
-                    "id": "CHEM 1B",
-                    "minGrade": null,
-                    "canTakeConcurrently": false
-                },
-                {
-                    "type": "course",
-                    "id": "CHEM 1C",
-                    "minGrade": null,
-                    "canTakeConcurrently": false
-                }
-            ]
+            "type": "course",
+            "id": "CHEM 1C",
+            "minGrade": null,
+            "canTakeConcurrently": false
         }
     },
     "EARTH 18": {
@@ -4276,23 +4129,7 @@
     },
     "ECE 6": {
         "course": "ECE 6",
-        "prerequisites": {
-            "type": "or",
-            "requirements": [
-                {
-                    "type": "course",
-                    "id": "ECON 100B",
-                    "minGrade": null,
-                    "canTakeConcurrently": false
-                },
-                {
-                    "type": "course",
-                    "id": "ECON 104B",
-                    "minGrade": null,
-                    "canTakeConcurrently": false
-                }
-            ]
-        }
+        "prerequisites": null
     },
     "ECON 107B": {
         "course": "ECON 107B",
@@ -4359,12 +4196,7 @@
                             "id": "ECON 104B",
                             "minGrade": null,
                             "canTakeConcurrently": false
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "requirements": [
+                        },
                         {
                             "type": "course",
                             "id": "ECON 101",
@@ -4381,12 +4213,7 @@
                             "id": "ECON 104B",
                             "minGrade": null,
                             "canTakeConcurrently": false
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "requirements": [
+                        },
                         {
                             "type": "course",
                             "id": "ECON 105",
@@ -4546,171 +4373,181 @@
     "EEMB 128": {
         "course": "EEMB 128",
         "prerequisites": {
-            "type": "or",
+            "type": "and",
             "requirements": [
                 {
-                    "type": "and",
+                    "type": "or",
                     "requirements": [
                         {
-                            "type": "course",
-                            "id": "MCDB 1A",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
+                            "type": "and",
+                            "requirements": [
+                                {
+                                    "type": "course",
+                                    "id": "MCDB 1A",
+                                    "minGrade": "C-",
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "MCDB 1B",
+                                    "minGrade": "C-",
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "EEMB 2",
+                                    "minGrade": "C-",
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "EEMB 3",
+                                    "minGrade": "C-",
+                                    "canTakeConcurrently": false
+                                }
+                            ]
                         },
                         {
-                            "type": "course",
-                            "id": "MCDB 1B",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
+                            "type": "and",
+                            "requirements": [
+                                {
+                                    "type": "course",
+                                    "id": "ENV S 1",
+                                    "minGrade": "C-",
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "ENV S 2",
+                                    "minGrade": "C-",
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "ENV S 3",
+                                    "minGrade": "C-",
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "ENV S 60",
+                                    "minGrade": "C-",
+                                    "canTakeConcurrently": false
+                                }
+                            ]
                         },
                         {
-                            "type": "course",
-                            "id": "EEMB 2",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "EEMB 3",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
+                            "type": "and",
+                            "requirements": [
+                                {
+                                    "type": "course",
+                                    "id": "ENV S 1",
+                                    "minGrade": "C-",
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "ENV S 2",
+                                    "minGrade": "C-",
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "ENV S 3",
+                                    "minGrade": "C-",
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "ENV S 100",
+                                    "minGrade": "C-",
+                                    "canTakeConcurrently": false
+                                }
+                            ]
                         }
                     ]
                 },
                 {
-                    "type": "and",
+                    "type": "or",
                     "requirements": [
                         {
-                            "type": "course",
-                            "id": "ENV S 1",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
+                            "type": "and",
+                            "requirements": [
+                                {
+                                    "type": "course",
+                                    "id": "MCDB 1A",
+                                    "minGrade": "C-",
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "MCDB 1B",
+                                    "minGrade": "C-",
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "EEMB 2",
+                                    "minGrade": "C-",
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "EEMB 3",
+                                    "minGrade": "C-",
+                                    "canTakeConcurrently": false
+                                }
+                            ]
                         },
                         {
-                            "type": "course",
-                            "id": "ENV S 2",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
+                            "type": "and",
+                            "requirements": [
+                                {
+                                    "type": "course",
+                                    "id": "CHEM 1A",
+                                    "minGrade": "C-",
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "CHEM 1AL",
+                                    "minGrade": "C-",
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "CHEM 1B",
+                                    "minGrade": "C-",
+                                    "canTakeConcurrently": false
+                                }
+                            ]
                         },
                         {
-                            "type": "course",
-                            "id": "ENV S 3",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "ENV S 60",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "ENV S 1",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "ENV S 2",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "ENV S 3",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "ENV S 100",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "MCDB 1A",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "MCDB 1B",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "EEMB 2",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "EEMB 3",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "CHEM 1A",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "CHEM 1AL",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "CHEM 1B",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "ENV S 15A",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "ENV S 15B",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "ENV S 15BL",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
+                            "type": "and",
+                            "requirements": [
+                                {
+                                    "type": "course",
+                                    "id": "ENV S 15A",
+                                    "minGrade": "C-",
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "ENV S 15B",
+                                    "minGrade": "C-",
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "ENV S 15BL",
+                                    "minGrade": "C-",
+                                    "canTakeConcurrently": false
+                                }
+                            ]
                         }
                     ]
                 }
-            ]
+            ]   
         }
     },
     "EEMB 138": {
@@ -5541,72 +5378,34 @@
             "type": "or",
             "requirements": [
                 {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "MATH 2B",
-                            "minGrade": null,
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "ENV S 25",
-                            "minGrade": null,
-                            "canTakeConcurrently": false
-                        }
-                    ]
+                    "type": "course",
+                    "id": "MATH 2B",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
                 },
                 {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "MATH 3B",
-                            "minGrade": null,
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "ENV S 25",
-                            "minGrade": null,
-                            "canTakeConcurrently": false
-                        }
-                    ]
+                    "type": "course",
+                    "id": "MATH 3B",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
                 },
                 {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "MATH 34B",
-                            "minGrade": null,
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "ENV S 25",
-                            "minGrade": null,
-                            "canTakeConcurrently": false
-                        }
-                    ]
+                    "type": "course",
+                    "id": "MATH 34B",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
                 },
                 {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "MATH 34A",
-                            "minGrade": null,
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "ENV S 25",
-                            "minGrade": null,
-                            "canTakeConcurrently": false
-                        }
-                    ]
+                    "type": "course",
+                    "id": "ENV S 25",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MATH 34A",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
                 }
             ]
         }
@@ -5634,166 +5433,19 @@
     "ENV S 117": {
         "course": "ENV S 117",
         "prerequisites": {
-            "type": "and",
-            "requirements": [
-                {
-                    "type": "course",
-                    "id": "ENV S 40",
-                    "minGrade": null,
-                    "canTakeConcurrently": false
-                }
-            ]
+            "type": "course",
+            "id": "ENV S 40",
+            "minGrade": null,
+            "canTakeConcurrently": false
         }
     },
     "ENV S 127B": {
         "course": "ENV S 127B",
         "prerequisites": {
-            "type": "or",
-            "requirements": [
-                {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "MCDB 1A",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "MCDB 1B",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "EEMB 2",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "EEMB 3",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "ENV S 1",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "ENV S 2",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "ENV S 3",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "ENV S 60",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "MCDB 1A",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "MCDB 1B",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "EEMB 2",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "EEMB 3",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        }
-                    ]
-                },
-                {
-                    "type": "or",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "CHEM 1A",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "and",
-                            "requirements": [
-                                {
-                                    "type": "course",
-                                    "id": "CHEM 1AL",
-                                    "minGrade": "C-",
-                                    "canTakeConcurrently": false
-                                },
-                                {
-                                    "type": "course",
-                                    "id": "CHEM 1B",
-                                    "minGrade": "C-",
-                                    "canTakeConcurrently": false
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "type": "or",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "ENV S 15A",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "and",
-                            "requirements": [
-                                {
-                                    "type": "course",
-                                    "id": "ENV S 15B",
-                                    "minGrade": "C-",
-                                    "canTakeConcurrently": false
-                                },
-                                {
-                                    "type": "course",
-                                    "id": "ENV S 15BL",
-                                    "minGrade": "C-",
-                                    "canTakeConcurrently": false
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
+            "type": "course",
+            "id": "ENV S 127A",
+            "minGrade": null,
+            "canTakeConcurrently": false
         }
     },
     "ENV S 135B": {
@@ -6482,65 +6134,33 @@
                             "requirement": "a class level of SR"
                         },
                         {
-                            "type": "course",
-                            "id": "FR 1*",
-                            "minGrade": null,
-                            "canTakeConcurrently": false
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "FR 1*",
-                            "minGrade": null,
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "FR 1*",
-                            "minGrade": null,
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "FR 1*",
-                            "minGrade": null,
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "FR 1*",
-                            "minGrade": null,
-                            "canTakeConcurrently": false
-                        }
-                    ]
-                },
-                {
-                    "type": "or",
-                    "requirements": [
-                        {
-                            "type": "specialRequirement",
-                            "requirement": "a class level of SR"
-                        },
-                        {
-                            "type": "course",
-                            "id": "FR 1*",
-                            "minGrade": null,
-                            "canTakeConcurrently": false
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "FR 1*",
-                            "minGrade": null,
-                            "canTakeConcurrently": false
+                            "type": "and",
+                            "requirements": [
+                                {
+                                    "type": "course",
+                                    "id": "FR 1*",
+                                    "minGrade": null,
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "FR 1*",
+                                    "minGrade": null,
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "FR 1*",
+                                    "minGrade": null,
+                                    "canTakeConcurrently": false
+                                },
+                                {
+                                    "type": "course",
+                                    "id": "FR 1*",
+                                    "minGrade": null,
+                                    "canTakeConcurrently": false
+                                }
+                            ]
                         }
                     ]
                 }
@@ -6632,10 +6252,21 @@
                     ]
                 },
                 {
-                    "type": "course",
-                    "id": "GEOG 4",
-                    "minGrade": null,
-                    "canTakeConcurrently": false
+                    "type": "and",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "GEOG 5",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "GEOG 4",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        }
+                    ]
                 }
             ]
         }
@@ -6878,21 +6509,16 @@
             "type": "or",
             "requirements": [
                 {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "GER 5",
-                            "minGrade": "P",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "GER 5",
-                            "minGrade": "C",
-                            "canTakeConcurrently": false
-                        }
-                    ]
+                    "type": "course",
+                    "id": "GER 5",
+                    "minGrade": "P",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "GER 5",
+                    "minGrade": "C",
+                    "canTakeConcurrently": false
                 },
                 {
                     "type": "specialRequirement",
@@ -6997,30 +6623,20 @@
             "type": "or",
             "requirements": [
                 {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "GREEK 2",
-                            "minGrade": "C",
-                            "canTakeConcurrently": false
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "GREEK 2",
-                            "minGrade": "P",
-                            "canTakeConcurrently": false
-                        }
-                    ]
-                },
-                {
                     "type": "specialRequirement",
                     "requirement": "Taken Exam: UCSB GR with a score of 2"
+                },
+                {
+                    "type": "course",
+                    "id": "GREEK 2",
+                    "minGrade": "C",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "GREEK 2",
+                    "minGrade": "P",
+                    "canTakeConcurrently": false
                 }
             ]
         }
@@ -7905,45 +7521,52 @@
     "MATH 124B": {
         "course": "MATH 124B",
         "prerequisites": {
-            "type": "or",
-            "requirements": [
-                {
-                    "type": "course",
-                    "id": "MATH 4B",
-                    "minGrade": "C",
-                    "canTakeConcurrently": false
-                },
-                {
-                    "type": "course",
-                    "id": "MATH 4BI",
-                    "minGrade": "C",
-                    "canTakeConcurrently": false
-                }
-            ]
-        },
-        "additionalRequirements": {
             "type": "and",
             "requirements": [
                 {
-                    "type": "course",
-                    "id": "MATH 6A",
-                    "minGrade": "C",
-                    "canTakeConcurrently": false
+                    "type": "or",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "MATH 4B",
+                            "minGrade": "C",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "MATH 4BI",
+                            "minGrade": "C",
+                            "canTakeConcurrently": false
+                        }
+                    ]
                 },
                 {
-                    "type": "course",
-                    "id": "MATH 6B",
-                    "minGrade": "C",
-                    "canTakeConcurrently": false
-                },
-                {
-                    "type": "course",
-                    "id": "MATH 124A",
-                    "minGrade": "C",
-                    "canTakeConcurrently": false
+                    "type": "and",
+                    "requirements": [
+                        {
+                            "type": "course",
+                            "id": "MATH 6A",
+                            "minGrade": "C",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "MATH 6B",
+                            "minGrade": "C",
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "course",
+                            "id": "MATH 124A",
+                            "minGrade": "C",
+                            "canTakeConcurrently": false
+                        }
+                    ]
                 }
+
             ]
-        }
+        }  
+
     },
     "MATH 137A": {
         "course": "MATH 137A",
@@ -8233,81 +7856,31 @@
     "MCDB 139": {
         "course": "MCDB 139",
         "prerequisites": {
-            "type": "or",
+            "type": "and",
             "requirements": [
                 {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "MCDB 101B",
-                            "minGrade": "P",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "MCDB 110",
-                            "minGrade": "P",
-                            "canTakeConcurrently": false
-                        }
-                    ]
+                    "type": "course",
+                    "id": "MCDB 1A",
+                    "minGrade": "C",
+                    "canTakeConcurrently": true
                 },
                 {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "MCDB 101B",
-                            "minGrade": "P",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "MCDB 108A",
-                            "minGrade": "P",
-                            "canTakeConcurrently": false
-                        }
-                    ]
+                    "type": "course",
+                    "id": "EEMB 2",
+                    "minGrade": "C",
+                    "canTakeConcurrently": true
                 },
                 {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "MCDB 101B",
-                            "minGrade": "P",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "MCDB W 108A",
-                            "minGrade": "P",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "MCDB 108B",
-                            "minGrade": "P",
-                            "canTakeConcurrently": false
-                        }
-                    ]
+                    "type": "course",
+                    "id": "MCDB 1B",
+                    "minGrade": "C",
+                    "canTakeConcurrently": true
                 },
                 {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "MCDB 108A",
-                            "minGrade": "P",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "MCDB 108B",
-                            "minGrade": "P",
-                            "canTakeConcurrently": false
-                        }
-                    ]
+                    "type": "course",
+                    "id": "EEMB 3",
+                    "minGrade": "C",
+                    "canTakeConcurrently": true
                 }
             ]
         }
@@ -8384,23 +7957,17 @@
                     ]
                 },
                 {
-                    "type": "course",
-                    "id": "EEMB 129",
-                    "minGrade": "C",
-                    "canTakeConcurrently": false
-                },
-                {
                     "type": "and",
                     "requirements": [
                         {
                             "type": "course",
-                            "id": "MCDB 103",
+                            "id": "EEMB 129",
                             "minGrade": "C",
                             "canTakeConcurrently": false
                         },
                         {
                             "type": "course",
-                            "id": "EEMB 129",
+                            "id": "MCDB 103",
                             "minGrade": "C",
                             "canTakeConcurrently": false
                         }
@@ -8417,7 +7984,7 @@
                         },
                         {
                             "type": "course",
-                            "id": "MCDB 103",
+                            "id": "EEMB 129",
                             "minGrade": "C",
                             "canTakeConcurrently": false
                         }
@@ -8745,31 +8312,16 @@
                     "canTakeConcurrently": false
                 },
                 {
-                    "type": "or",
-                    "requirements": [
-                        {
-                            "type": "and",
-                            "requirements": [
-                                {
-                                    "type": "course",
-                                    "id": "ME 17",
-                                    "minGrade": "C-",
-                                    "canTakeConcurrently": false
-                                }
-                            ]
-                        },
-                        {
-                            "type": "and",
-                            "requirements": [
-                                {
-                                    "type": "course",
-                                    "id": "ME 103",
-                                    "minGrade": null,
-                                    "canTakeConcurrently": false
-                                }
-                            ]
-                        }
-                    ]
+                    "type": "course",
+                    "id": "ME 17",
+                    "minGrade": "C-",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "ME 103",
+                    "minGrade": null,
+                    "canTakeConcurrently": false
                 }
             ]
         }
@@ -8795,21 +8347,10 @@
                     "canTakeConcurrently": false
                 },
                 {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "ME 14",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "MATH 5C",
-                            "minGrade": null,
-                            "canTakeConcurrently": true
-                        }
-                    ]
+                    "type": "course",
+                    "id": "ME 14",
+                    "minGrade": "C-",
+                    "canTakeConcurrently": false
                 },
                 {
                     "type": "or",
@@ -8817,6 +8358,12 @@
                         {
                             "type": "course",
                             "id": "MATH 6B",
+                            "minGrade": null,
+                            "canTakeConcurrently": true
+                        },
+                        {
+                            "type": "course",
+                            "id": "MATH 5C",
                             "minGrade": null,
                             "canTakeConcurrently": true
                         }
@@ -8903,51 +8450,7 @@
     },
     "MUS 129": {
         "course": "MUS 129",
-        "prerequisites": {
-            "type": "or",
-            "requirements": [
-                {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "MUS 133",
-                            "minGrade": null,
-                            "canTakeConcurrently": true
-                        },
-                        {
-                            "type": "and",
-                            "requirements": [
-                                {
-                                    "type": "course",
-                                    "id": "MUS 35A",
-                                    "minGrade": null,
-                                    "canTakeConcurrently": false
-                                },
-                                {
-                                    "type": "course",
-                                    "id": "MUS 35B",
-                                    "minGrade": null,
-                                    "canTakeConcurrently": false
-                                },
-                                {
-                                    "type": "course",
-                                    "id": "MUS 35C",
-                                    "minGrade": null,
-                                    "canTakeConcurrently": false
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "type": "course",
-                    "id": "MUS 135*",
-                    "minGrade": null,
-                    "canTakeConcurrently": false
-                }
-            ]
-        }
+        "prerequisites": null
     },
     "MUS 16": {
         "course": "MUS 16",
@@ -8991,26 +8494,16 @@
             "type": "or",
             "requirements": [
                 {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "MUS 31B",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        }
-                    ]
+                    "type": "course",
+                    "id": "MUS 31B",
+                    "minGrade": "C-",
+                    "canTakeConcurrently": false
                 },
                 {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "MUS 31B",
-                            "minGrade": "P",
-                            "canTakeConcurrently": false
-                        }
-                    ]
+                    "type": "course",
+                    "id": "MUS 31B",
+                    "minGrade": "P",
+                    "canTakeConcurrently": false
                 },
                 {
                     "type": "specialRequirement",
@@ -9091,26 +8584,16 @@
             "type": "or",
             "requirements": [
                 {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "MUS 4B",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        }
-                    ]
+                    "type": "course",
+                    "id": "MUS 4B",
+                    "minGrade": "C-",
+                    "canTakeConcurrently": false
                 },
                 {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "MUS 4B",
-                            "minGrade": "P",
-                            "canTakeConcurrently": false
-                        }
-                    ]
+                    "type": "course",
+                    "id": "MUS 4B",
+                    "minGrade": "P",
+                    "canTakeConcurrently": false
                 },
                 {
                     "type": "specialRequirement",
@@ -9125,21 +8608,16 @@
             "type": "or",
             "requirements": [
                 {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "MUS 4E",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "MUS 4E",
-                            "minGrade": "P",
-                            "canTakeConcurrently": false
-                        }
-                    ]
+                    "type": "course",
+                    "id": "MUS 4E",
+                    "minGrade": "C-",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "MUS 4E",
+                    "minGrade": "P",
+                    "canTakeConcurrently": false
                 },
                 {
                     "type": "specialRequirement",
@@ -9154,26 +8632,16 @@
             "type": "or",
             "requirements": [
                 {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "MUS 5B",
-                            "minGrade": "C-",
-                            "canTakeConcurrently": false
-                        }
-                    ]
+                    "type": "course",
+                    "id": "MUS 5B",
+                    "minGrade": "C-",
+                    "canTakeConcurrently": false
                 },
                 {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "MUS 5B",
-                            "minGrade": "P",
-                            "canTakeConcurrently": false
-                        }
-                    ]
+                    "type": "course",
+                    "id": "MUS 5B",
+                    "minGrade": "P",
+                    "canTakeConcurrently": false
                 },
                 {
                     "type": "specialRequirement",
@@ -9224,37 +8692,22 @@
             "type": "or",
             "requirements": [
                 {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "PHIL *",
-                            "minGrade": "P",
-                            "canTakeConcurrently": true
-                        }
-                    ]
+                    "type": "course",
+                    "id": "PHIL *",
+                    "minGrade": "P",
+                    "canTakeConcurrently": true
                 },
                 {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "PHIL *",
-                            "minGrade": "D-",
-                            "canTakeConcurrently": true
-                        }
-                    ]
+                    "type": "course",
+                    "id": "PHIL *",
+                    "minGrade": "D-",
+                    "canTakeConcurrently": true
                 },
                 {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "PHIL 3",
-                            "minGrade": null,
-                            "canTakeConcurrently": true
-                        }
-                    ]
+                    "type": "course",
+                    "id": "PHIL 3",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
                 }
             ]
         }
@@ -9731,26 +9184,10 @@
     "PHYS 5": {
         "course": "PHYS 5",
         "prerequisites": {
-            "type": "and",
-            "requirements": [
-                {
-                    "type": "course",
-                    "id": "PHYS 4",
-                    "minGrade": null,
-                    "canTakeConcurrently": false
-                },
-                {
-                    "type": "or",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "PHYS 24",
-                            "minGrade": null,
-                            "canTakeConcurrently": false
-                        }
-                    ]
-                }
-            ]
+                "type": "course",
+                "id": "PHYS 4",
+                "minGrade": null,
+                "canTakeConcurrently": false
         }
     },
     "PHYS 6C": {
@@ -9806,31 +9243,26 @@
                             "canTakeConcurrently": false
                         },
                         {
-                            "type": "or",
-                            "requirements": [
-                                {
-                                    "type": "course",
-                                    "id": "MATH 3A",
-                                    "minGrade": null,
-                                    "canTakeConcurrently": false
-                                },
-                                {
-                                    "type": "specialRequirement",
-                                    "requirement": "Taken Exam: AP 66 with a score of 3"
-                                },
-                                {
-                                    "type": "specialRequirement",
-                                    "requirement": "Taken Exam: AP 69 with a score of 3"
-                                },
-                                {
-                                    "type": "specialRequirement",
-                                    "requirement": "Taken Exam: AP 68 with a score of 3"
-                                },
-                                {
-                                    "type": "specialRequirement",
-                                    "requirement": "Taken Exam: IB M4 with a score of 5"
-                                }
-                            ]
+                            "type": "course",
+                            "id": "MATH 3A",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "specialRequirement",
+                            "requirement": "Taken Exam: AP 66 with a score of 3"
+                        },
+                        {
+                            "type": "specialRequirement",
+                            "requirement": "Taken Exam: AP 69 with a score of 3"
+                        },
+                        {
+                            "type": "specialRequirement",
+                            "requirement": "Taken Exam: AP 68 with a score of 3"
+                        },
+                        {
+                            "type": "specialRequirement",
+                            "requirement": "Taken Exam: IB M4 with a score of 5"
                         }
                     ]
                 },
@@ -9844,23 +9276,18 @@
                             "canTakeConcurrently": false
                         },
                         {
-                            "type": "or",
-                            "requirements": [
-                                {
-                                    "type": "course",
-                                    "id": "MATH 3B",
-                                    "minGrade": null,
-                                    "canTakeConcurrently": false
-                                },
-                                {
-                                    "type": "specialRequirement",
-                                    "requirement": "Taken Exam: AP 68 with a score of 3"
-                                },
-                                {
-                                    "type": "specialRequirement",
-                                    "requirement": "Taken Exam: IB M4 with a score of 5"
-                                }
-                            ]
+                            "type": "course",
+                            "id": "MATH 3B",
+                            "minGrade": null,
+                            "canTakeConcurrently": false
+                        },
+                        {
+                            "type": "specialRequirement",
+                            "requirement": "Taken Exam: AP 68 with a score of 3"
+                        },
+                        {
+                            "type": "specialRequirement",
+                            "requirement": "Taken Exam: IB M4 with a score of 5"
                         }
                     ]
                 }
