@@ -32,6 +32,6 @@ Taedon
 | Fri 01/31 | Chiran Arumugam   | Ensured daily stand up on 1/31 went smoothly.          |
 | Fri 01/31 | Taedon Reth       | Will lead second retro                                 |
 | Mon 02/03 | Vala Bahrami      | Led 2/3 Stand-up. Checked-in and reviewed tasks.       |
-| Wed 02/19 | Tadeon Reth       | Led second team retro.                                 |
+| Wed 02/19 | Taedon Reth       | Led second team retro.                                 |
 | Fri 03/07 | Chiran Arumugam   | Led third team retro.                                  |
 ```
