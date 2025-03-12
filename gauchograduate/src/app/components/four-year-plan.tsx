@@ -118,10 +118,24 @@ export default function FourYearPlan({
     originTerm?: Term,
     completedCourses?: Course[] 
   } | null>(null);
-
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    setShowSummer(showSummerByDefault);
+    const checkIfMobile = () => {
+      const mobile = window.innerWidth < 640;
+      setIsMobile(mobile);
+      
+      if (mobile) {
+        setShowSummer(true);
+      } else {
+        setShowSummer(showSummerByDefault);
+      }
+    };
+    
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+    
+    return () => window.removeEventListener('resize', checkIfMobile);
   }, [showSummerByDefault]);
 
   useEffect(() => {
@@ -299,12 +313,14 @@ export default function FourYearPlan({
     if (draggedOverTerm !== term) {
       setDraggedOverTerm(term);
     }
-  }, [draggedOverTerm]);  const handleDragLeave = useCallback((e: React.DragEvent<HTMLDivElement>) => {
+  }, [draggedOverTerm]);
+
+  const handleDragLeave = useCallback((e: React.DragEvent<HTMLDivElement>) => {
     if (!e.currentTarget.contains(e.relatedTarget as Node)) {
       setDraggedOverTerm(null);
     }
   }, []);
-  
+
   const getCompletedCoursesForTerm = useCallback((targetTerm: Term) => {
     const completedCourses: Course[] = [];
     
@@ -326,9 +342,8 @@ export default function FourYearPlan({
     
     return completedCourses;
   }, [selectedYear, studentSchedule]);
-  
-  const handleDrop = useCallback((e: React.DragEvent<HTMLDivElement>, term: Term) => {
 
+  const handleDrop = useCallback((e: React.DragEvent<HTMLDivElement>, term: Term) => {
     e.preventDefault();
     e.stopPropagation();
     setDraggedOverTerm(null);
@@ -347,7 +362,6 @@ export default function FourYearPlan({
       const prerequisitesMet = checkPrerequisitesMet(course.prerequisites, completedCourses);
       
       if (!prerequisitesMet) {
-        // Pass the completed courses to the warning popup
         setPrerequisiteWarning({ 
           course, 
           term, 
@@ -396,10 +410,8 @@ export default function FourYearPlan({
       const prerequisitesMet = checkPrerequisitesMet(course.prerequisites, completedCourses);
       
       if (prerequisitesMet) {
-        // If prerequisites are now met, close the warning
         setPrerequisiteWarning(null);
       } else {
-        // Otherwise, update the completed courses in the warning
         setPrerequisiteWarning({
           ...prerequisiteWarning,
           completedCourses
@@ -583,7 +595,7 @@ export default function FourYearPlan({
         </div>
       )}
 
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between items-center mb-4 flex-wrap gap-2">
         <div className="flex items-center">
           <h2 className="text-xl font-semibold">Four-Year Plan</h2>
           <div className="ml-3 flex items-center">
@@ -595,7 +607,7 @@ export default function FourYearPlan({
               <span className={`flex items-center text-xs ${isActive ? 'text-green-600' : 'text-gray-400 opacity-50'} transition-opacity duration-300`}>
                 Saved
                 <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"></path>
                 </svg>
               </span>
             )}
@@ -628,7 +640,7 @@ export default function FourYearPlan({
       <div className="flex gap-2 flex-1 min-h-0">
         <div
           ref={gridRef}
-          className={`grid grid-cols-1 ${showSummer ? 'md:grid-cols-4' : 'md:grid-cols-3'} gap-2 flex-grow border border-gray-300 rounded-md p-2 bg-gray-50 min-h-0 overflow-y-auto`}
+          className={`grid grid-cols-1 xs:grid-cols-2 ${showSummer ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} gap-2 flex-grow border border-gray-300 rounded-md p-2 bg-gray-50 min-h-0 overflow-y-auto`}
         >
           {displayTerms.map((term) => {
             const isPast = isQuarterInPast(yearDisplay, term);
@@ -709,7 +721,7 @@ export default function FourYearPlan({
             );
           })}
         </div>
-        {!showSummerByDefault && (
+        {!isMobile && !showSummerByDefault && (
           <button
             onClick={() => setShowSummer(!showSummer)}
             className="writing-mode-vertical px-2 py-4 bg-[var(--pale-blue)] text-black rounded-lg transition-colors whitespace-nowrap h-auto"

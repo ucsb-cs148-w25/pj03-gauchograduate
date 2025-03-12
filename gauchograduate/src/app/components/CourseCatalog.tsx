@@ -10,6 +10,10 @@ interface CourseCatalogProps {
   setSelectedTerm: (term: Term) => void;
   studentSchedule: ScheduleType;
   saveStatus?: 'idle' | 'saving' | 'saved';
+  searchQuery?: string;
+  setSearchQuery?: (query: string) => void;
+  selectedDepartment?: string;
+  setSelectedDepartment?: (department: string) => void;
 }
 
 export default function CourseCatalog({
@@ -18,9 +22,19 @@ export default function CourseCatalog({
   setSelectedTerm,
   studentSchedule,
   saveStatus,
+  searchQuery: externalSearchQuery,
+  setSearchQuery: externalSetSearchQuery,
+  selectedDepartment: externalSelectedDepartment,
+  setSelectedDepartment: externalSetSelectedDepartment,
 }: CourseCatalogProps) {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedDepartment, setSelectedDepartment] = useState("");
+  const [localSearchQuery, setLocalSearchQuery] = useState("");
+  const [localSelectedDepartment, setLocalSelectedDepartment] = useState("");
+  
+  const searchQuery = externalSearchQuery !== undefined ? externalSearchQuery : localSearchQuery;
+  const setSearchQuery = externalSetSearchQuery || setLocalSearchQuery;
+  const selectedDepartment = externalSelectedDepartment !== undefined ? externalSelectedDepartment : localSelectedDepartment;
+  const setSelectedDepartment = externalSetSelectedDepartment || setLocalSelectedDepartment;
+  
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [filteredCourses, setFilteredCourses] = useState<Course[]>([]);
@@ -83,7 +97,7 @@ export default function CourseCatalog({
             </label>
             <select
               id="department-select"
-              className="p-2 border-0 focus:ring-0 focus:outline-none w-1/2"
+              className="p-2 border-0 focus:ring-0 focus:outline-none w-full sm:w-1/2"
               value={selectedDepartment}
               onChange={(e) => setSelectedDepartment(e.target.value)}
             >
@@ -105,7 +119,7 @@ export default function CourseCatalog({
             </label>
             <select
               id="term-select"
-              className="p-2 border-0 focus:ring-0 focus:outline-none w-3/5"
+              className="p-2 border-0 focus:ring-0 focus:outline-none w-full sm:w-3/5"
               value={selectedTerm}
               onChange={handleTermChange}
             >

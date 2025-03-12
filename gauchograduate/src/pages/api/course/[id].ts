@@ -14,7 +14,16 @@ type ResponseData = {
     general_ed: string[]
     prerequisites: PrerequisiteNode
     unlocks: number[]
+    offerings: CourseOffering[]
   }
+}
+
+type CourseOffering = {
+  id: number
+  courseId: number
+  quarter: string
+  year: string
+  professor?: string | null
 }
 
 export default async function handler(
@@ -54,11 +63,16 @@ export default async function handler(
     }
 
     const course = {
-      ...data,
+      id: courseId,
+      gold_id: data.gold_id,
+      title: data.title,
+      description: data.description,
+      subject_area: data.subject_area,
+      units: data.units,
       general_ed: Array.isArray(data.general_ed) ? data.general_ed as string[] : [],
       prerequisites: prerequisites as unknown as PrerequisiteNode,
       unlocks: Array.isArray(data.unlocks) ? data.unlocks as number[] : [],
-      offerings: data.offerings
+      offerings: data.offerings || []
     }
 
     res.json({ course })
