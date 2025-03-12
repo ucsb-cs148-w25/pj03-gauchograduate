@@ -18,6 +18,7 @@ export interface UserCourses {
   firstQuarter: string;
   courses: UserCourse[];
   overrides?: MajorOverride[];
+  selectedYear?: string;
 }
 
 declare module "next-auth" {

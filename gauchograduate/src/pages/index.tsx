@@ -2,7 +2,7 @@
 
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import CourseCatalog from "../app/components/CourseCatalog";
 import FourYearPlan from "../app/components/four-year-plan";
 import Navbar from "../app/components/Navbar";
@@ -16,6 +16,9 @@ const termToQuarter: { [key in Term]: string } = {
   Spring: "20242",
   Summer: "20243",
 };
+
+// Create a cache for courses by ID
+const courseCache = new Map<number, Course>();
 
 async function fetchCourses(quarter: string): Promise<Course[]> {
   const url = `/api/course/query?quarter=${quarter}`;
@@ -31,19 +34,26 @@ async function fetchCourses(quarter: string): Promise<Course[]> {
     return [];
   }
 
-  const formattedCourses: Course[] = data.courses.map((course: CourseInfo) => ({
-    gold_id: course.gold_id,
-    id: course.id,
-    title: course.title,
-    description: course.description,
-    subjectArea: course.subject_area,
-    department: course.subject_area,
-    units: course.units || 0,
-    generalEd: Array.isArray(course.general_ed) ? course.general_ed : [],
-    prerequisites: course.prerequisites,
-    unlocks: Array.isArray(course.unlocks) ? course.unlocks.map(String) : [],
-    term: []
-  }));
+  const formattedCourses: Course[] = data.courses.map((course: CourseInfo) => {
+    const formattedCourse = {
+      gold_id: course.gold_id,
+      id: course.id,
+      title: course.title,
+      description: course.description,
+      subjectArea: course.subject_area,
+      department: course.subject_area,
+      units: course.units || 0,
+      generalEd: Array.isArray(course.general_ed) ? course.general_ed : [],
+      prerequisites: course.prerequisites,
+      unlocks: Array.isArray(course.unlocks) ? course.unlocks.map(String) : [],
+      term: []
+    };
+    
+    // Add to cache
+    courseCache.set(course.id, formattedCourse);
+    
+    return formattedCourse;
+  });
 
   return formattedCourses.sort((a, b) => a.gold_id.localeCompare(b.gold_id));
 }
@@ -51,13 +61,30 @@ async function fetchCourses(quarter: string): Promise<Course[]> {
 async function fetchCoursesByIds(courseIds: number[]): Promise<Course[]> {
   if (!courseIds.length) return [];
   
+  // Filter out IDs that are already in the cache
+  const cachedCourses: Course[] = [];
+  const idsToFetch: number[] = [];
+  
+  courseIds.forEach(id => {
+    if (courseCache.has(id)) {
+      cachedCourses.push(courseCache.get(id)!);
+    } else {
+      idsToFetch.push(id);
+    }
+  });
+  
+  // If all courses are in cache, return them immediately
+  if (idsToFetch.length === 0) {
+    return cachedCourses;
+  }
+  
   try {
     const response = await fetch('/api/course/query/batch', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ courseIds }),
+      body: JSON.stringify({ courseIds: idsToFetch }),
     });
     
     if (!response.ok) {
@@ -68,26 +95,35 @@ async function fetchCoursesByIds(courseIds: number[]): Promise<Course[]> {
     
     if (!data || !data.courses || !Array.isArray(data.courses)) {
       console.error("Unexpected API structure", data);
-      return [];
+      return cachedCourses; // Return what we have from cache
     }
     
-    return data.courses.map((course: CourseInfo) => ({
-      gold_id: course.gold_id,
-      id: course.id,
-      title: course.title,
-      description: course.description,
-      subjectArea: course.subject_area,
-      department: course.subject_area || course.subject_area,
-      units: course.units || 0,
-      generalEd: Array.isArray(course.general_ed) ? course.general_ed : [],
-      prerequisites: course.prerequisites,
-      unlocks: Array.isArray(course.unlocks) ? course.unlocks.map(String) : [],
-      term: [],
-      grade: null // Add default grade
-    }));
+    const fetchedCourses = data.courses.map((course: CourseInfo) => {
+      const formattedCourse = {
+        gold_id: course.gold_id,
+        id: course.id,
+        title: course.title,
+        description: course.description,
+        subjectArea: course.subject_area,
+        department: course.subject_area || course.subject_area,
+        units: course.units || 0,
+        generalEd: Array.isArray(course.general_ed) ? course.general_ed : [],
+        prerequisites: course.prerequisites,
+        unlocks: Array.isArray(course.unlocks) ? course.unlocks.map(String) : [],
+        term: [],
+        grade: null // Add default grade
+      };
+      
+      // Add to cache
+      courseCache.set(course.id, formattedCourse);
+      
+      return formattedCourse;
+    });
+    
+    return [...cachedCourses, ...fetchedCourses];
   } catch (error) {
     console.error('Error fetching courses by IDs:', error);
-    return [];
+    return cachedCourses; // Return what we have from cache
   }
 }
 
@@ -135,10 +171,30 @@ export default function HomePage() {
   
   const [hasEverLoaded, setHasEverLoaded] = useState(false);
 
+  const saveSelectedYear = useCallback(async (year: YearType) => {
+    try {
+      await fetch('/api/user/save-selected-year', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ selectedYear: year }),
+      });
+    } catch (error) {
+      console.error('Error saving selected year:', error);
+    }
+  }, []);
+
+  const handleSetSelectedYear = useCallback((year: YearType) => {
+    setSelectedYear(year);
+    saveSelectedYear(year);
+  }, [saveSelectedYear]);
+
   const { 
     data: userCoursesData,
     isLoading: isUserCoursesLoading,
-    isError: isUserCoursesError
+    isError: isUserCoursesError,
+    refetch: refetchUserCourses
   } = useQuery({
     queryKey: ['userCourses', session?.user?.id],
     queryFn: async () => {
@@ -150,9 +206,8 @@ export default function HomePage() {
       return response.json();
     },
     enabled: !!session?.user?.id,
-    staleTime: 5 * 60 * 1000,
-    gcTime: 30 * 60 * 1000,
-    initialData: undefined,
+    staleTime: 5 * 60 * 1000, // 5 minutes
+    gcTime: 30 * 60 * 1000,   // 30 minutes
     refetchOnMount: true,
     refetchOnWindowFocus: false,
   });
@@ -160,7 +215,7 @@ export default function HomePage() {
   const { 
     data: savedSchedule, 
     isLoading: isSavedScheduleLoading,
-    isError: isSavedScheduleError  
+    isError: isSavedScheduleError
   } = useQuery({
     queryKey: ['savedSchedule', userCoursesData],
     queryFn: async () => {
@@ -184,7 +239,6 @@ export default function HomePage() {
         const position = getYearAndTerm(savedCourse.quarter, userCoursesData.firstQuarter);
         if (!position) return;
         
-        // Include the grade from the saved course data
         const courseWithGrade = {
           ...course,
           grade: savedCourse.grade || null
@@ -198,10 +252,19 @@ export default function HomePage() {
     enabled: !!userCoursesData,
     staleTime: 5 * 60 * 1000,
     gcTime: 30 * 60 * 1000,
-    initialData: undefined,
     refetchOnMount: true,
     refetchOnWindowFocus: false,
   });
+
+  useEffect(() => {
+    if (saveStatus === 'saved') {
+      const timeoutId = setTimeout(() => {
+        refetchUserCourses();
+      }, 500);
+      
+      return () => clearTimeout(timeoutId);
+    }
+  }, [saveStatus, refetchUserCourses]);
 
   useEffect(() => {
     if (savedSchedule) {
@@ -214,12 +277,17 @@ export default function HomePage() {
     if (status === "unauthenticated") {
       router.push("/signin");
     } else if (status === "authenticated" && session?.user) {
-      // Check if user has a major selected
       if (!session.user.majorId) {
         router.push("/update-profile");
       }
     }
   }, [status, router, session]);
+
+  useEffect(() => {
+    if (session?.user?.courses?.selectedYear) {
+      setSelectedYear(session.user.courses.selectedYear as YearType);
+    }
+  }, [session]);
 
   const isLoading = isUserCoursesLoading || isSavedScheduleLoading || (!hasEverLoaded && !isUserCoursesError && !isSavedScheduleError);
 
@@ -285,7 +353,6 @@ export default function HomePage() {
     }));
   };
 
-  // Calculate the width classes based on collapse state
   const catalogWidthClass = isCatalogCollapsed ? "w-12" : "w-full md:w-1/5";
   const planWidthClass = `w-full ${isCatalogCollapsed && isTrackerCollapsed ? "md:w-full" : isCatalogCollapsed || isTrackerCollapsed ? "md:w-4/5" : "md:w-3/5"}`;
   const trackerWidthClass = isTrackerCollapsed ? "w-12" : "w-full md:w-1/5";
@@ -341,6 +408,7 @@ export default function HomePage() {
                   selectedTerm={selectedTerm}
                   setSelectedTerm={setSelectedTerm}
                   studentSchedule={studentSchedule}
+                  saveStatus={saveStatus}
                 />
               </div>
             </>
@@ -350,7 +418,7 @@ export default function HomePage() {
         <div className={`${planWidthClass} bg-white p-4 rounded-md shadow overflow-y-scroll transition-all duration-300`}>
           <FourYearPlan
             selectedYear={selectedYear}
-            setSelectedYear={setSelectedYear}
+            setSelectedYear={handleSetSelectedYear}
             studentSchedule={studentSchedule}
             addCourse={addCourse}
             removeCourse={removeCourse}
