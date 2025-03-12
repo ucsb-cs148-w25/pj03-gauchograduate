@@ -9724,21 +9724,16 @@
             "type": "and",
             "requirements": [
                 {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "PSTAT 160A",
-                            "minGrade": "B-",
-                            "canTakeConcurrently": false
-                        },
-                        {
-                            "type": "course",
-                            "id": "PSTAT 170",
-                            "minGrade": "B-",
-                            "canTakeConcurrently": false
-                        }
-                    ]
+                    "type": "course",
+                    "id": "PSTAT 160A",
+                    "minGrade": "B-",
+                    "canTakeConcurrently": false
+                },
+                {
+                    "type": "course",
+                    "id": "PSTAT 170",
+                    "minGrade": "B-",
+                    "canTakeConcurrently": false
                 },
                 {
                     "type": "course",
@@ -10530,15 +10525,11 @@
     "SPAN 171": {
         "course": "SPAN 171",
         "prerequisites": {
-            "type": "and",
-            "requirements": [
-                {
-                    "type": "course",
-                    "id": "SPAN 30",
-                    "minGrade": null,
-                    "canTakeConcurrently": true
-                }
-            ]
+                "type": "course",
+                "id": "SPAN 30",
+                "minGrade": null,
+                "canTakeConcurrently": true
+
         }
     },
     "SPAN 183E": {
@@ -10705,21 +10696,16 @@
                     "canTakeConcurrently": false
                 },
                 {
-                    "type": "and",
-                    "requirements": [
-                        {
-                            "type": "course",
-                            "id": "THTR 110C",
-                            "minGrade": null,
-                            "canTakeConcurrently": true
-                        },
-                        {
-                            "type": "course",
-                            "id": "THTR 111C",
-                            "minGrade": null,
-                            "canTakeConcurrently": true
-                        }
-                    ]
+                    "type": "course",
+                    "id": "THTR 110C",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
+                },
+                {
+                    "type": "course",
+                    "id": "THTR 111C",
+                    "minGrade": null,
+                    "canTakeConcurrently": true
                 }
             ]
         }
