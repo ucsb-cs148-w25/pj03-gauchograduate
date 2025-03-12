@@ -14,8 +14,16 @@ type ResponseData = {
     general_ed: string[]
     prerequisites: PrerequisiteNode
     unlocks: number[]
-    offerings: any[]
+    offerings: CourseOffering[]
   }
+}
+
+type CourseOffering = {
+  id: number
+  courseId: number
+  quarter: string
+  year: string
+  professor?: string | null
 }
 
 export default async function handler(
