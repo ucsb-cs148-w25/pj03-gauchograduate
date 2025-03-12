@@ -5,6 +5,10 @@ import { getAcademicYear, isQuarterInPast, isCurrentQuarter } from './utils/quar
 import CourseModal from './course-popup';
 import { useReactToPrint } from 'react-to-print';
 import PrintableSchedule from './PrintableSchedule';
+import { PrerequisiteRenderer } from "./prerequisite-renderer";
+
+// Cache for prerequisite check results
+const prerequisiteCheckCache = new Map<string, boolean>();
 
 function getPrerequisiteNode(prerequisites: unknown): PrerequisiteNode | null {
   if (!prerequisites) return null;
@@ -25,7 +29,6 @@ function getPrerequisiteNode(prerequisites: unknown): PrerequisiteNode | null {
     }
   }
   
-  console.error("Unknown prerequisite format:", prerequisites);
   return null;
 }
 
@@ -37,47 +40,51 @@ function checkPrerequisitesMet(
   
   if (!node) return true;
 
-  const completedCourseIds = new Set(
+  // Create a cache key based on the node and completed courses
+  const completedCourseIds = completedCourses.map(c => c.id).sort().join(',');
+  const cacheKey = `${JSON.stringify(node)}-${completedCourseIds}`;
+  
+  // Check if we have a cached result
+  
+  if (prerequisiteCheckCache.has(cacheKey)) {
+    return prerequisiteCheckCache.get(cacheKey)!;
+  }
+
+  const completedCourseIdSet = new Set(
     completedCourses.map(course => String(course.id))
   );
-
-  console.log("Checking prerequisite node:", node);
+  
+  let result: boolean;
   
   switch (node.type) {
     case 'course': {
       const courseId = String(node.id);
-      
-      console.log("All completed course IDs:", Array.from(completedCourseIds));
-      console.log(`Looking for ID: ${courseId} (type: ${typeof courseId})`);
-      
-      const match = completedCourseIds.has(courseId);
-      
-      console.log(`Checking course prerequisite: ${courseId}`);
-      console.log(`Match: ${match}`);
-      
-      return match;
+      result = completedCourseIdSet.has(courseId);
+      break;
     }
     case 'specialRequirement': {
-      return false;
+      result = false;
+      break;
     }
     case 'and': {
-      return node.requirements.every(req => {
-        const result = checkPrerequisitesMet(req, completedCourses);
-        console.log(`AND requirement result for ${req.type}: ${result}`);
-        return result;
-      });
+      result = node.requirements.every(req => 
+        checkPrerequisitesMet(req, completedCourses)
+      );
+      break;
     }
     case 'or': {
-      return node.requirements.some(req => {
-        const result = checkPrerequisitesMet(req, completedCourses);
-        console.log(`OR requirement result for ${req.type}: ${result}`);
-        return result;
-      });
+      result = node.requirements.some(req => 
+        checkPrerequisitesMet(req, completedCourses)
+      );
+      break;
     }
     default:
-      console.log("Unknown prerequisite type:", node);
-      return false;
+      result = false;
   }
+  
+  prerequisiteCheckCache.set(cacheKey, result);
+  
+  return result;
 }
 
 export default function FourYearPlan({
@@ -105,7 +112,12 @@ export default function FourYearPlan({
   const [validDropTargets, setValidDropTargets] = useState<Set<HTMLElement>>(new Set());
   const [draggedOverTerm, setDraggedOverTerm] = useState<string | null>(null);
   const [isDraggingCourse, setIsDraggingCourse] = useState(false);
-  const [prerequisiteWarning, setPrerequisiteWarning] = useState<{ course: Course, term: Term, originTerm?: Term } | null>(null);
+  const [prerequisiteWarning, setPrerequisiteWarning] = useState<{ 
+    course: Course, 
+    term: Term, 
+    originTerm?: Term,
+    completedCourses?: Course[] 
+  } | null>(null);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -176,13 +188,11 @@ export default function FourYearPlan({
     try {
       setSaveStatus('saving');
       const quarterCode = getQuarterCode(selectedYear, term);
-      const response = await fetch("/api/user/remove-course", {
+      await fetch("/api/user/remove-course", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: courseID, quarter: quarterCode }),
       });
-      const data = await response.json();
-      console.log("Removal Response:", data);
       setSaveStatus('saved');
     } catch (error) {
       console.error("Error removing courses:", error);
@@ -228,13 +238,11 @@ export default function FourYearPlan({
     try {
       setSaveStatus('saving');
       const quarterCode = getQuarterCode(selectedYear, term);
-      const response = await fetch("/api/user/add-course", {
+      await fetch("/api/user/add-course", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: courseID, quarter: quarterCode }),
       });
-      const data = await response.json();
-      console.log("Add Response:", data);
       setSaveStatus('saved');
     } catch (error) {
       console.error("Error adding courses:", error);
@@ -246,13 +254,11 @@ export default function FourYearPlan({
     try {
       setSaveStatus('saving');
       const quarterCode = getQuarterCode(selectedYear, term);
-      const response = await fetch("/api/user/courses/set-grade", {
+      await fetch("/api/user/courses/set-grade", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: courseID, quarter: quarterCode, grade }),
       });
-      const data = await response.json();
-      console.log("Grade Update Response:", data);
       setSaveStatus('saved');
       return true;
     } catch (error) {
@@ -315,6 +321,28 @@ export default function FourYearPlan({
     }
   }, []);
 
+  const getCompletedCoursesForTerm = useCallback((targetTerm: Term) => {
+    const completedCourses: Course[] = [];
+    
+    // Add courses from previous years
+    Years.slice(0, Years.indexOf(selectedYear)).forEach(year => {
+      Object.values(studentSchedule[year]).forEach(termCourses => {
+        completedCourses.push(...termCourses);
+      });
+    });
+    
+    // Add courses from previous terms in the current year
+    const currentYearTerms = Terms.slice(0, Terms.indexOf(targetTerm));
+    currentYearTerms.forEach(t => {
+      completedCourses.push(...studentSchedule[selectedYear][t]);
+    });
+    
+    // Also add courses from the current term (for concurrent enrollment)
+    completedCourses.push(...studentSchedule[selectedYear][targetTerm]);
+    
+    return completedCourses;
+  }, [selectedYear, studentSchedule]);
+
   const handleDrop = useCallback((e: React.DragEvent<HTMLDivElement>, term: Term) => {
     e.preventDefault();
     e.stopPropagation();
@@ -329,32 +357,17 @@ export default function FourYearPlan({
     if (courseExists) return;
 
     if (course.prerequisites && course.prerequisites !== null && course.prerequisites !== -1) {
-      const completedCourses: Course[] = [];
-      
-      Years.slice(0, Years.indexOf(selectedYear)).forEach(year => {
-        Object.values(studentSchedule[year]).forEach(termCourses => {
-          completedCourses.push(...termCourses);
-        });
-      });
-      
-      const currentYearTerms = Terms.slice(0, Terms.indexOf(term));
-      currentYearTerms.forEach(t => {
-        completedCourses.push(...studentSchedule[selectedYear][t]);
-      });
-      
-      completedCourses.push(...studentSchedule[selectedYear][term]);
-      
-      console.log("=== PREREQUISITE CHECK ===");
-      console.log("Checking prerequisites for:", course.gold_id);
-      console.log("Prerequisites structure:", course.prerequisites);
-      console.log("Completed courses:", completedCourses.map(c => ({ id: c.id, gold_id: c.gold_id })));
+      const completedCourses = getCompletedCoursesForTerm(term);
       
       const prerequisitesMet = checkPrerequisitesMet(course.prerequisites, completedCourses);
-      console.log("Final result - Prerequisites met:", prerequisitesMet);
-      console.log("=========================");
       
       if (!prerequisitesMet) {
-        setPrerequisiteWarning({ course, term, originTerm });
+        setPrerequisiteWarning({ 
+          course, 
+          term, 
+          originTerm,
+          completedCourses
+        });
         return;
       }
     }
@@ -367,7 +380,7 @@ export default function FourYearPlan({
       addCourse(course, term as Term);
       DBAddCourses(course.id, term);
     }
-  }, [addCourse, DBAddCourses, DBMoveCourse, removeCourse, selectedYear, studentSchedule, setPrerequisiteWarning]);
+  }, [addCourse, DBAddCourses, DBMoveCourse, removeCourse, selectedYear, studentSchedule, getCompletedCoursesForTerm, setPrerequisiteWarning]);
 
   const handleCourseReorder = useCallback((e: React.DragEvent<HTMLDivElement>, term: Term, targetIndex: number) => {
     e.preventDefault();
@@ -385,6 +398,27 @@ export default function FourYearPlan({
       reorderCourse(selectedYear, term, coursesArr);
     }
   }, [reorderCourse, selectedYear, studentSchedule]);
+
+  useEffect(() => {
+    if (prerequisiteWarning) {
+      const { course, term } = prerequisiteWarning;
+      
+      // Recollect completed courses
+      const completedCourses = getCompletedCoursesForTerm(term);
+      
+      // Check if prerequisites are now met
+      const prerequisitesMet = checkPrerequisitesMet(course.prerequisites, completedCourses);
+      
+      if (prerequisitesMet) {
+        setPrerequisiteWarning(null);
+      } else {
+        setPrerequisiteWarning({
+          ...prerequisiteWarning,
+          completedCourses
+        });
+      }
+    }
+  }, [studentSchedule, prerequisiteWarning, selectedYear, getCompletedCoursesForTerm]);
 
   const displayTerms = Terms.filter(term => term !== 'Summer' || showSummer);
   const yearDisplay = getYearDisplay(selectedYear);
@@ -456,6 +490,48 @@ export default function FourYearPlan({
                 Please make sure you&apos;ve added the prerequisite courses to earlier quarters in your schedule.
               </p>
             </div>
+            
+            {prerequisiteWarning.course.prerequisites && (
+              <div className="mt-4 bg-gray-50 p-3 rounded-lg relative">
+                <h4 className="font-semibold mb-2">Prerequisites:</h4>
+                <div className="text-xs bg-gray-100 p-2 rounded border border-gray-200 mb-3">
+                  <div className="font-semibold mb-1">Key:</div>
+                  <div className="flex items-center mb-1">
+                    <div className="w-3 h-3 bg-blue-300 mr-2" />
+                    <span>AND - All conditions must be met</span>
+                  </div>
+                  <div className="flex items-center mb-1">
+                    <div className="w-3 h-3 bg-orange-300 mr-2" />
+                    <span>OR - Any one condition must be met</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 bg-purple-300 mr-2" />
+                    <span>Special requirements (AP scores, etc.)</span>
+                  </div>
+                  <div className="flex items-center mt-1">
+                    <div className="w-3 h-3 bg-green-200 mr-2" />
+                    <span>Completed prerequisites</span>
+                  </div>
+                </div>
+                
+                {isDataLoading ? (
+                  <div className="bg-white bg-opacity-70 p-4 flex items-center justify-center">
+                    <div className="text-lg font-medium text-gray-600 animate-pulse flex items-center">
+                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Loading prerequisites...
+                    </div>
+                  </div>
+                ) : getPrerequisiteNode(prerequisiteWarning.course.prerequisites) && (
+                  <PrerequisiteRenderer 
+                    node={getPrerequisiteNode(prerequisiteWarning.course.prerequisites)!} 
+                    completedCourses={prerequisiteWarning.completedCourses || []}
+                  />
+                )}
+              </div>
+            )}
             
             <div className="mt-6 flex justify-between">
               <button

@@ -2,7 +2,7 @@
 
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import CourseCatalog from "../app/components/CourseCatalog";
 import FourYearPlan from "../app/components/four-year-plan";
 import Navbar from "../app/components/Navbar";
@@ -16,6 +16,8 @@ const termToQuarter: { [key in Term]: string } = {
   Spring: "20242",
   Summer: "20243",
 };
+
+const courseCache = new Map<number, Course>();
 
 async function fetchCourses(quarter: string): Promise<Course[]> {
   const url = `/api/course/query?quarter=${quarter}`;
@@ -31,19 +33,25 @@ async function fetchCourses(quarter: string): Promise<Course[]> {
     return [];
   }
 
-  const formattedCourses: Course[] = data.courses.map((course: CourseInfo) => ({
-    gold_id: course.gold_id,
-    id: course.id,
-    title: course.title,
-    description: course.description,
-    subjectArea: course.subject_area,
-    department: course.subject_area,
-    units: course.units || 0,
-    generalEd: Array.isArray(course.general_ed) ? course.general_ed : [],
-    prerequisites: course.prerequisites,
-    unlocks: Array.isArray(course.unlocks) ? course.unlocks.map(String) : [],
-    term: []
-  }));
+  const formattedCourses: Course[] = data.courses.map((course: CourseInfo) => {
+    const formattedCourse = {
+      gold_id: course.gold_id,
+      id: course.id,
+      title: course.title,
+      description: course.description,
+      subjectArea: course.subject_area,
+      department: course.subject_area,
+      units: course.units || 0,
+      generalEd: Array.isArray(course.general_ed) ? course.general_ed : [],
+      prerequisites: course.prerequisites,
+      unlocks: Array.isArray(course.unlocks) ? course.unlocks.map(String) : [],
+      term: []
+    };
+    
+    courseCache.set(course.id, formattedCourse);
+    
+    return formattedCourse;
+  });
 
   return formattedCourses.sort((a, b) => a.gold_id.localeCompare(b.gold_id));
 }
@@ -51,13 +59,28 @@ async function fetchCourses(quarter: string): Promise<Course[]> {
 async function fetchCoursesByIds(courseIds: number[]): Promise<Course[]> {
   if (!courseIds.length) return [];
   
+  const cachedCourses: Course[] = [];
+  const idsToFetch: number[] = [];
+  
+  courseIds.forEach(id => {
+    if (courseCache.has(id)) {
+      cachedCourses.push(courseCache.get(id)!);
+    } else {
+      idsToFetch.push(id);
+    }
+  });
+  
+  if (idsToFetch.length === 0) {
+    return cachedCourses;
+  }
+  
   try {
     const response = await fetch('/api/course/query/batch', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ courseIds }),
+      body: JSON.stringify({ courseIds: idsToFetch }),
     });
     
     if (!response.ok) {
@@ -68,26 +91,34 @@ async function fetchCoursesByIds(courseIds: number[]): Promise<Course[]> {
     
     if (!data || !data.courses || !Array.isArray(data.courses)) {
       console.error("Unexpected API structure", data);
-      return [];
+      return cachedCourses;
     }
     
-    return data.courses.map((course: CourseInfo) => ({
-      gold_id: course.gold_id,
-      id: course.id,
-      title: course.title,
-      description: course.description,
-      subjectArea: course.subject_area,
-      department: course.subject_area || course.subject_area,
-      units: course.units || 0,
-      generalEd: Array.isArray(course.general_ed) ? course.general_ed : [],
-      prerequisites: course.prerequisites,
-      unlocks: Array.isArray(course.unlocks) ? course.unlocks.map(String) : [],
-      term: [],
-      grade: null // Add default grade
-    }));
+    const fetchedCourses = data.courses.map((course: CourseInfo) => {
+      const formattedCourse = {
+        gold_id: course.gold_id,
+        id: course.id,
+        title: course.title,
+        description: course.description,
+        subjectArea: course.subject_area,
+        department: course.subject_area || course.subject_area,
+        units: course.units || 0,
+        generalEd: Array.isArray(course.general_ed) ? course.general_ed : [],
+        prerequisites: course.prerequisites,
+        unlocks: Array.isArray(course.unlocks) ? course.unlocks.map(String) : [],
+        term: [],
+        grade: null
+      };
+      
+      courseCache.set(course.id, formattedCourse);
+      
+      return formattedCourse;
+    });
+    
+    return [...cachedCourses, ...fetchedCourses];
   } catch (error) {
     console.error('Error fetching courses by IDs:', error);
-    return [];
+    return cachedCourses;
   }
 }
 
@@ -136,6 +167,28 @@ export default function HomePage() {
   const [mobileView, setMobileView] = useState<'catalog' | 'plan' | 'tracker'>('plan');
   const [slideDirection, setSlideDirection] = useState<'left' | 'right' | null>(null);
   const [hasEverLoaded, setHasEverLoaded] = useState(false);
+  
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [selectedDepartment, setSelectedDepartment] = useState<string>("");
+
+  const saveSelectedYear = useCallback(async (year: YearType) => {
+    try {
+      await fetch('/api/user/save-selected-year', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ selectedYear: year }),
+      });
+    } catch (error) {
+      console.error('Error saving selected year:', error);
+    }
+  }, []);
+
+  const handleSetSelectedYear = useCallback((year: YearType) => {
+    setSelectedYear(year);
+    saveSelectedYear(year);
+  }, [saveSelectedYear]);
 
   const changeMobileView = (newView: 'catalog' | 'plan' | 'tracker') => {
     if (mobileView === 'catalog' && newView === 'plan') {
@@ -169,7 +222,8 @@ export default function HomePage() {
   const { 
     data: userCoursesData,
     isLoading: isUserCoursesLoading,
-    isError: isUserCoursesError
+    isError: isUserCoursesError,
+    refetch: refetchUserCourses
   } = useQuery({
     queryKey: ['userCourses', session?.user?.id],
     queryFn: async () => {
@@ -183,7 +237,6 @@ export default function HomePage() {
     enabled: !!session?.user?.id,
     staleTime: 5 * 60 * 1000,
     gcTime: 30 * 60 * 1000,
-    initialData: undefined,
     refetchOnMount: true,
     refetchOnWindowFocus: false,
   });
@@ -191,7 +244,7 @@ export default function HomePage() {
   const { 
     data: savedSchedule, 
     isLoading: isSavedScheduleLoading,
-    isError: isSavedScheduleError  
+    isError: isSavedScheduleError
   } = useQuery({
     queryKey: ['savedSchedule', userCoursesData],
     queryFn: async () => {
@@ -228,10 +281,19 @@ export default function HomePage() {
     enabled: !!userCoursesData,
     staleTime: 5 * 60 * 1000,
     gcTime: 30 * 60 * 1000,
-    initialData: undefined,
     refetchOnMount: true,
     refetchOnWindowFocus: false,
   });
+
+  useEffect(() => {
+    if (saveStatus === 'saved') {
+      const timeoutId = setTimeout(() => {
+        refetchUserCourses();
+      }, 500);
+      
+      return () => clearTimeout(timeoutId);
+    }
+  }, [saveStatus, refetchUserCourses]);
 
   useEffect(() => {
     if (savedSchedule) {
@@ -249,6 +311,12 @@ export default function HomePage() {
       }
     }
   }, [status, router, session]);
+
+  useEffect(() => {
+    if (session?.user?.courses?.selectedYear) {
+      setSelectedYear(session.user.courses.selectedYear as YearType);
+    }
+  }, [session]);
 
   const isLoading = isUserCoursesLoading || isSavedScheduleLoading || (!hasEverLoaded && !isUserCoursesError && !isSavedScheduleError);
 
@@ -348,6 +416,11 @@ export default function HomePage() {
                   selectedTerm={selectedTerm}
                   setSelectedTerm={setSelectedTerm}
                   studentSchedule={studentSchedule}
+                  saveStatus={saveStatus}
+                  searchQuery={searchQuery}
+                  setSearchQuery={setSearchQuery}
+                  selectedDepartment={selectedDepartment}
+                  setSelectedDepartment={setSelectedDepartment}
                 />
               </div>
             </>
@@ -379,7 +452,7 @@ export default function HomePage() {
         <div className={`${planWidthClass} bg-white p-4 rounded-md shadow overflow-y-scroll transition-all duration-300`}>
           <FourYearPlan
             selectedYear={selectedYear}
-            setSelectedYear={setSelectedYear}
+            setSelectedYear={handleSetSelectedYear}
             studentSchedule={studentSchedule}
             addCourse={addCourse}
             removeCourse={removeCourse}
@@ -542,6 +615,11 @@ export default function HomePage() {
                 selectedTerm={selectedTerm}
                 setSelectedTerm={setSelectedTerm}
                 studentSchedule={studentSchedule}
+                saveStatus={saveStatus}
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+                selectedDepartment={selectedDepartment}
+                setSelectedDepartment={setSelectedDepartment}
               />
             </div>
           </div>
