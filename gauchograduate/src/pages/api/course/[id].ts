@@ -14,6 +14,7 @@ type ResponseData = {
     general_ed: string[]
     prerequisites: PrerequisiteNode
     unlocks: number[]
+    offerings: any[]
   }
 }
 
@@ -58,6 +59,7 @@ export default async function handler(
       general_ed: Array.isArray(data.general_ed) ? data.general_ed as string[] : [],
       prerequisites: data.prerequisites as unknown as PrerequisiteNode,
       unlocks: Array.isArray(data.unlocks) ? data.unlocks as number[] : [],
+      offerings: data.offerings || []
     }
 
     res.json({ course })
