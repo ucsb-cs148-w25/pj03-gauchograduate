@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScheduleType, YearType, Term, Course } from './coursetypes';
 import { useSession } from 'next-auth/react';
-import { getAcademicYear } from './utils/quarterUtils';
+import { getAcademicYear, isQuarterInPast, isCurrentQuarter } from './utils/quarterUtils';
 
 interface PrintableScheduleProps {
   studentSchedule: ScheduleType;
@@ -18,6 +18,28 @@ const PrintableSchedule = React.forwardRef<HTMLDivElement, PrintableScheduleProp
     const getYearDisplay = (year: YearType): string => {
       const yearIndex = ['Year 1', 'Year 2', 'Year 3', 'Year 4'].indexOf(year);
       return getAcademicYear(firstQuarter, yearIndex);
+    };
+
+    // Function to determine quarter status
+    const getQuarterStatus = (yearDisplay: string, term: Term): string => {
+      if (isQuarterInPast(yearDisplay, term)) {
+        return "(Completed)";
+      } else if (isCurrentQuarter(yearDisplay, term)) {
+        return "(In Progress)";
+      } else {
+        return "(Prospective)";
+      }
+    };
+
+    // Function to get status color class
+    const getStatusColorClass = (yearDisplay: string, term: Term): string => {
+      if (isQuarterInPast(yearDisplay, term)) {
+        return "text-green-600"; // Completed - green
+      } else if (isCurrentQuarter(yearDisplay, term)) {
+        return "text-blue-600"; // In Progress - blue
+      } else {
+        return "text-gray-600"; // Prospective - gray
+      }
     };
 
     const displayTerms = ['Fall', 'Winter', 'Spring', ...(showSummer ? ['Summer'] : [])] as Term[];
@@ -90,6 +112,9 @@ const PrintableSchedule = React.forwardRef<HTMLDivElement, PrintableScheduleProp
                 {displayTerms.map((term) => {
                   const courses = studentSchedule[year as YearType][term];
                   const quarterUnits = courses.reduce((sum, course) => sum + course.units, 0);
+                  const yearDisplay = getYearDisplay(year as YearType);
+                  const quarterStatus = getQuarterStatus(yearDisplay, term);
+                  const statusColorClass = getStatusColorClass(yearDisplay, term);
 
                   // Update total cumulative units (including non-graded)
                   totalCumulativeUnits += quarterUnits;
@@ -108,7 +133,9 @@ const PrintableSchedule = React.forwardRef<HTMLDivElement, PrintableScheduleProp
 
                   return (
                     <div key={term} className="mb-4">
-                      <h3 className="text-lg font-medium mb-2">{term}</h3>
+                      <h3 className="text-lg font-medium mb-2">
+                        {term} <span className={statusColorClass}>{quarterStatus}</span>
+                      </h3>
 
                       {courses.length > 0 ? (
                         <div>
