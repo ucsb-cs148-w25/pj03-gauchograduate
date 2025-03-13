@@ -477,7 +477,7 @@ const ProgressTracker = ({
 
     return (
       <div className="ml-4 mt-1">
-        <ul className="list space-y-1 break-words text-sm text-gray-600">
+        <ul className="list-none space-y-1 break-words text-md">
           {itemsToShow.map((course) => {
             // Check if this course is in the schedule
             const isCompletedInSchedule = majorStatus[area]?.courses.some((c) => c.id === course.id);
