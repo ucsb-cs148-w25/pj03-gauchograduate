@@ -11,8 +11,8 @@ openai_api_key = os.getenv("OPENAI_API_KEY")
 client = OpenAI(api_key=openai_api_key)
 
 # File paths
-file_path = "../W24_course_prerequisites.txt"
-json_file = "prereq-data-formatted.json"
+file_path = "../course_prerequisites_cut.txt"
+json_file = "prereq-data-formatted-2.json"
 
 # OpenAI model settings
 MODEL = "gpt-4o-mini"
