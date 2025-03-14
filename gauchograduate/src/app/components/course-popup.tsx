@@ -1,7 +1,7 @@
 import { CoursePopupProps } from './coursetypes';
 import { useState, useEffect, useCallback } from 'react';
 import { PrerequisiteRenderer } from './prerequisite-renderer';
-import { PrerequisiteNode, Course, CourseInfo } from './coursetypes';
+import { PrerequisiteNode, Course } from './coursetypes';
 
 export default function CoursePopup({ course, term, onClose, onDelete, onGradeChange, studentSchedule }: CoursePopupProps) {
   const [currentGrade, setCurrentGrade] = useState<string | null>(course.grade || null);
