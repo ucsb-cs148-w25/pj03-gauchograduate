@@ -635,7 +635,7 @@ const ProgressTracker = ({
   };
 
   // Add this function before the return statement in your component
-  const countMajorOverridesForCategory = (category: string) => {
+  const countMajorOverridesForCategory = (category: 'preparation' | 'upperRequired' | 'upperElectives') => {
     const relevantCourses = majorCourses[category] || [];
     return relevantCourses.reduce((count, course) => {
       const hasOverride = overrides.some(
