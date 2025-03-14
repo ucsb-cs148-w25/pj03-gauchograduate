@@ -634,6 +634,19 @@ const ProgressTracker = ({
     );
   };
 
+  // Add this function before the return statement in your component
+  const countMajorOverridesForCategory = (category) => {
+    const relevantCourses = majorCourses[category] || [];
+    return relevantCourses.reduce((count, course) => {
+      const hasOverride = overrides.some(
+        o => o.type === 'major' && 
+             o.requirement === 'specific-course' && 
+             o.courseId === course.id
+      );
+      return count + (hasOverride ? 1 : 0);
+    }, 0);
+  };
+
   return (
     <div className="h-full p-1 overflow-auto">
       <h2 className="text-xl font-semibold mb-4">Courses Taken</h2>
@@ -715,7 +728,7 @@ const ProgressTracker = ({
           {/* Lower Division Section */}
           <div>
             <h4 className="text-md font-semibold">
-              Preparation {majorStatus.preparation?.count || 0}/{majorStatus.preparation?.required || 0}
+              Preparation {majorStatus.preparation?.count + countMajorOverridesForCategory('preparation') || 0}/{majorStatus.preparation?.required || 0}
             </h4>
             {renderMajorCourseList("preparation", majorCourses.preparation)}
           </div>
