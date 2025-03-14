@@ -736,7 +736,7 @@ const ProgressTracker = ({
           {/* Upper Division Section */}
           <div className="mt-4">
             <h4 className="text-md font-semibold">
-              Required {majorStatus.upperRequired?.count || 0}/{majorStatus.upperRequired?.required || 0}
+              Required {majorStatus.upperRequired?.count + countMajorOverridesForCategory('upperRequired') || 0}/{majorStatus.upperRequired?.required || 0}
             </h4>
             {renderMajorCourseList("upperRequired", majorCourses.upperRequired)}
           </div>
@@ -744,7 +744,7 @@ const ProgressTracker = ({
           {/* Electives Section */}
           <div className="mt-4">
             <h4 className="text-md font-semibold">
-              Electives {majorStatus.upperElectives?.count || 0}/{majorStatus.upperElectives?.required || 0}
+              Electives {majorStatus.upperElectives?.count + countMajorOverridesForCategory('upperElectives') || 0}/{majorStatus.upperElectives?.required || 0}
             </h4>
             {renderMajorCourseList("upperElectives", majorCourses.upperElectives)}
           </div>
