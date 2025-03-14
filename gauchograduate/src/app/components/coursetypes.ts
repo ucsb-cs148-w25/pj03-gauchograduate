@@ -70,6 +70,7 @@ export interface CoursePopupProps {
   onClose: () => void;
   onDelete: () => void;
   onGradeChange: (grade: string | null) => void;
+  studentSchedule: ScheduleType;
 }
 
 export interface FourYearPlanProps {

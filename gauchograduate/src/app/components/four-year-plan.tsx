@@ -501,6 +501,7 @@ export default function FourYearPlan({
             updateCourseGrade(selectedYear, selectedCourse.term, selectedCourse.course.gold_id, grade);
             await DBUpdateGrade(selectedCourse.course.id, selectedCourse.term, grade);
           }}
+          studentSchedule={studentSchedule}
         />
       )}
 

@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { PrerequisiteRenderer } from './prerequisite-renderer';
 import { PrerequisiteNode, Course, CourseInfo } from './coursetypes';
 
-export default function CoursePopup({ course, term, onClose, onDelete, onGradeChange }: CoursePopupProps) {
+export default function CoursePopup({ course, term, onClose, onDelete, onGradeChange, studentSchedule }: CoursePopupProps) {
   const [currentGrade, setCurrentGrade] = useState<string | null>(course.grade || null);
   const [completedCourses, setCompletedCourses] = useState<Course[]>([]);
   const [prerequisitesNode, setPrerequisitesNode] = useState<PrerequisiteNode | null>(null);
@@ -79,62 +79,18 @@ export default function CoursePopup({ course, term, onClose, onDelete, onGradeCh
 
   // Extract completed courses from the student schedule
   useEffect(() => {
-    const fetchCompletedCourses = async () => {
-      try {
-        const response = await fetch('/api/user/courses');
-        if (response.ok) {
-          const data = await response.json();
-          if (data.courses && Array.isArray(data.courses)) {
-            // Fetch all course details in a batch
-            const courseIds = data.courses.map((c: { id: number }) => c.id);
-            
-            if (courseIds.length > 0) {
-              const coursesResponse = await fetch('/api/course/query/batch', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ courseIds }),
-              });
-              
-              if (coursesResponse.ok) {
-                const coursesData = await coursesResponse.json();
-                if (coursesData.courses && Array.isArray(coursesData.courses)) {
-                  const formattedCourses = coursesData.courses.map((c: CourseInfo) => ({
-                    id: c.id,
-                    gold_id: c.gold_id,
-                    title: c.title,
-                    description: c.description,
-                    subjectArea: c.subject_area,
-                    units: c.units || 0,
-                    generalEd: Array.isArray(c.general_ed) ? c.general_ed : [],
-                    prerequisites: c.prerequisites,
-                    unlocks: Array.isArray(c.unlocks) ? c.unlocks.map(String) : [],
-                    term: [],
-                    grade: null
-                  }));
-                  
-                  // Map grades from user courses to the formatted courses
-                  data.courses.forEach((userCourse: { id: number, grade?: string }) => {
-                    const matchingCourse = formattedCourses.find((c: Course) => c.id === userCourse.id);
-                    if (matchingCourse && userCourse.grade) {
-                      matchingCourse.grade = userCourse.grade;
-                    }
-                  });
-                  
-                  setCompletedCourses(formattedCourses);
-                }
-              }
-            }
-          }
-        }
-      } catch (error) {
-        console.error('Error fetching completed courses:', error);
-      }
-    };
-    
-    fetchCompletedCourses();
-  }, []);
+    if (studentSchedule) {
+      const allCourses: Course[] = [];
+      
+      Object.values(studentSchedule).forEach(yearSchedule => {
+        Object.values(yearSchedule).forEach(termCourses => {
+          allCourses.push(...termCourses);
+        });
+      });
+      
+      setCompletedCourses(allCourses);
+    }
+  }, [studentSchedule]);
 
   const handleGradeChange = (grade: string | null) => {
     setCurrentGrade(grade);

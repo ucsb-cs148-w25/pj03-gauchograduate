@@ -36,6 +36,15 @@ const ProgressTracker = ({
   const [majorData, setMajorData] = useState<MajorData | null>(null);
   const [majorStatus, setMajorStatus] = useState<{ [key: string]: GERequirement }>({});
   const [expandedMajorAreas, setExpandedMajorAreas] = useState<{ [area: string]: boolean }>({});
+  const [majorCourses, setMajorCourses] = useState<{
+    preparation: Course[];
+    upperRequired: Course[];
+    upperElectives: Course[];
+  }>({
+    preparation: [],
+    upperRequired: [],
+    upperElectives: []
+  });
 
   // MAJOR OVERRIDE POPUP state
   const [overridePopupCourse, setOverridePopupCourse] = useState<Course | null>(null);
