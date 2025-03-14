@@ -427,7 +427,7 @@ const ProgressTracker = ({
       <div className="ml-8 mt-1">
         {hasOverride && (
           <div className="flex items-center text-sm text-blue-600 mb-1">
-            <span>{overrideCount} {overrideCount === 1 ? 'Course' : 'Courses'} Taken outside UCSB</span>
+            <span>{overrideCount} course override applied</span>
             <button
               onClick={() => handleRemoveOverride(area)}
               className="ml-2 text-red-500 text-xs hover:underline"
@@ -513,7 +513,7 @@ const ProgressTracker = ({
                 {/* If overridden, show a small message (blue) + remove link */}
                 {isOverridden && (
                   <div className="ml-6 text-sm text-blue-600">
-                    <span> Course Taken Outside UCSB </span>
+                    <span> Overriden ({overrideForThisCourse.creditSource}) </span>
                     <button
                       onClick={() => handleRemoveMajorOverride(course)}
                       className="ml-2 text-red-500 text-xs hover:underline"
