@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useCallback, useMemo } from 'react';
-import { PrerequisiteNode, CourseInfo, Course } from './coursetypes';
+import { PrerequisiteNode, CourseInfo, Course, MajorOverride } from './coursetypes';
 
 interface Props {
   node: PrerequisiteNode;
-  depth?: number; // used to indent nested requirements
-  completedCourses?: Course[]; // Add this prop to highlight completed courses
+  depth?: number;
+  completedCourses?: Course[];
+  overrides?: MajorOverride[];
 }
 
 const INDENT_PER_LEVEL = 12;
@@ -12,14 +13,21 @@ const INDENT_PER_LEVEL = 12;
 // Cache for course ID to gold_id mapping
 const courseIdMapCache: Record<string, string> = {};
 
-export const PrerequisiteRenderer: React.FC<Props> = ({ node, depth = 0, completedCourses = [] }) => {
+export const PrerequisiteRenderer: React.FC<Props> = ({ node, depth = 0, completedCourses = [], overrides = [] }) => {
   const [courseIdMap, setCourseIdMap] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(false);
   
-  // Create a set of completed course IDs for faster lookups
+  // Create a set of completed course IDs for faster lookups, including overrides
   const completedCourseIds = useMemo(() => {
-    return new Set(completedCourses.map(course => String(course.id)));
-  }, [completedCourses]);
+    const ids = new Set(completedCourses.map(course => String(course.id)));
+    // Add overridden courses to completed set
+    overrides.forEach(override => {
+      if (override.type === 'major' && override.requirement === 'specific-course' && override.courseId) {
+        ids.add(String(override.courseId));
+      }
+    });
+    return ids;
+  }, [completedCourses, overrides]);
   
   // Function to collect all course IDs from the prerequisite tree
   const collectCourseIds = useCallback((n: PrerequisiteNode, ids: string[] = []): string[] => {
@@ -147,6 +155,7 @@ export const PrerequisiteRenderer: React.FC<Props> = ({ node, depth = 0, complet
                 node={req} 
                 depth={depth + 1} 
                 completedCourses={completedCourses}
+                overrides={overrides}
               />
             ))}
           </ul>
@@ -166,6 +175,7 @@ export const PrerequisiteRenderer: React.FC<Props> = ({ node, depth = 0, complet
                 node={req} 
                 depth={depth + 1}
                 completedCourses={completedCourses}
+                overrides={overrides}
               />
             ))}
           </ul>

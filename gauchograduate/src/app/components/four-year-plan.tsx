@@ -7,7 +7,6 @@ import { useReactToPrint } from 'react-to-print';
 import PrintableSchedule from './PrintableSchedule';
 import { PrerequisiteRenderer } from "./prerequisite-renderer";
 
-// Cache for prerequisite check results
 const prerequisiteCheckCache = new Map<string, boolean>();
 
 function getPrerequisiteNode(prerequisites: unknown): PrerequisiteNode | null {
@@ -40,11 +39,8 @@ function checkPrerequisitesMet(
   
   if (!node) return true;
 
-  // Create a cache key based on the node and completed courses
   const completedCourseIds = completedCourses.map(c => c.id).sort().join(',');
   const cacheKey = `${JSON.stringify(node)}-${completedCourseIds}`;
-  
-  // Check if we have a cached result
   
   if (prerequisiteCheckCache.has(cacheKey)) {
     return prerequisiteCheckCache.get(cacheKey)!;
@@ -98,7 +94,8 @@ export default function FourYearPlan({
   updateCourseGrade,
   saveStatus,
   setSaveStatus,
-  showSummerByDefault = false
+  showSummerByDefault = false,
+  overrides,
 }: FourYearPlanProps) {
   const { data: session } = useSession();
   const firstQuarter = session?.user?.courses?.firstQuarter || '20224';
@@ -186,12 +183,10 @@ export default function FourYearPlan({
     return `${yearNum}${quarterSuffix}`;
   }, [firstQuarter]);
 
-  // Function to clear all courses for the selected year
   const clearYear = useCallback(async () => {
     try {
       setSaveStatus('saving');
       
-      // Get the year prefix for the selected year
       const yearIndex = Years.indexOf(selectedYear);
       const baseYear = parseInt(firstQuarter.substring(0, 4));
       const yearNum = baseYear + yearIndex;
@@ -206,14 +201,11 @@ export default function FourYearPlan({
       const data = await response.json();
       console.log("Clear Year Response:", data);
       
-      // Clear all courses from the selected year in the local state
       const updatedSchedule = { ...studentSchedule };
       Terms.forEach(term => {
         updatedSchedule[selectedYear][term] = [];
       });
       
-      // Update the schedule through the reorderCourse function
-      // This ensures the UI is updated properly
       Terms.forEach(term => {
         reorderCourse(selectedYear, term, []);
       });
@@ -366,20 +358,17 @@ export default function FourYearPlan({
   const getCompletedCoursesForTerm = useCallback((targetTerm: Term) => {
     const completedCourses: Course[] = [];
     
-    // Add courses from previous years
     Years.slice(0, Years.indexOf(selectedYear)).forEach(year => {
       Object.values(studentSchedule[year]).forEach(termCourses => {
         completedCourses.push(...termCourses);
       });
     });
     
-    // Add courses from previous terms in the current year
     const currentYearTerms = Terms.slice(0, Terms.indexOf(targetTerm));
     currentYearTerms.forEach(t => {
       completedCourses.push(...studentSchedule[selectedYear][t]);
     });
     
-    // Also add courses from the current term (for concurrent enrollment)
     completedCourses.push(...studentSchedule[selectedYear][targetTerm]);
     
     return completedCourses;
@@ -445,10 +434,8 @@ export default function FourYearPlan({
     if (prerequisiteWarning) {
       const { course, term } = prerequisiteWarning;
       
-      // Recollect completed courses
       const completedCourses = getCompletedCoursesForTerm(term);
       
-      // Check if prerequisites are now met
       const prerequisitesMet = checkPrerequisitesMet(course.prerequisites, completedCourses);
       
       if (prerequisitesMet) {
@@ -502,6 +489,7 @@ export default function FourYearPlan({
             await DBUpdateGrade(selectedCourse.course.id, selectedCourse.term, grade);
           }}
           studentSchedule={studentSchedule}
+          overrides={overrides}
         />
       )}
 
@@ -783,7 +771,6 @@ export default function FourYearPlan({
           </button>
         )}
       </div>
-      {/* Clear Year Confirmation Modal */}
       {showClearYearConfirm && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded-lg shadow-xl max-w-md w-full m-4 relative">
@@ -834,5 +821,3 @@ export default function FourYearPlan({
     </div>
   );
 }
-
-

@@ -1,6 +1,6 @@
 "use client";
-import React, { useEffect, useState, useCallback } from "react";
-import { Course, PrerequisiteNode, ScheduleType } from "./coursetypes"; 
+import React, { useEffect, useState } from "react";
+import { Course, PrerequisiteNode, ScheduleType, MajorOverride } from "./coursetypes"; 
 import { PrerequisiteRenderer } from "./prerequisite-renderer"; 
 
 interface CoursePreviewProps {
@@ -8,29 +8,13 @@ interface CoursePreviewProps {
   onClose: () => void;
   studentSchedule?: ScheduleType;
   saveStatus?: 'idle' | 'saving' | 'saved';
+  overrides: MajorOverride[];
 }
 
-const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose, studentSchedule, saveStatus }) => {
+const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose, studentSchedule, saveStatus, overrides }) => {
   const [completedCourses, setCompletedCourses] = useState<Course[]>([]);
   const [prerequisitesNode, setPrerequisitesNode] = useState<PrerequisiteNode | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-
-  const getPrerequisitesNode = useCallback((): PrerequisiteNode | null => {
-    if (!course.prerequisites) return null;
-    
-    if (typeof course.prerequisites === 'object' && 
-        'course' in (course.prerequisites as Record<string, unknown>) && 
-        'prerequisites' in (course.prerequisites as Record<string, unknown>)) {
-      return ((course.prerequisites as Record<string, unknown>).prerequisites as PrerequisiteNode);
-    }
-    
-    if (typeof course.prerequisites === 'object' && 
-        ('type' in (course.prerequisites as Record<string, unknown>))) {
-      return course.prerequisites as PrerequisiteNode;
-    }
-    
-    return null;
-  }, [course.prerequisites]);
 
   useEffect(() => {
     const setupPrerequisites = async () => {
@@ -66,7 +50,7 @@ const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose, studentS
     };
 
     setupPrerequisites();
-  }, [course, getPrerequisitesNode]);
+  }, [course]);
 
   useEffect(() => {
     if (studentSchedule) {
@@ -168,6 +152,7 @@ const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose, studentS
               <PrerequisiteRenderer 
                 node={prerequisitesNode} 
                 completedCourses={completedCourses}
+                overrides={overrides}
               />
             </div>
           ) : (

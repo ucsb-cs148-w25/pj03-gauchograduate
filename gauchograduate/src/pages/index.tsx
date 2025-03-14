@@ -241,6 +241,8 @@ export default function HomePage() {
     refetchOnWindowFocus: false,
   });
 
+  const overrides = userCoursesData?.overrides || [];
+
   const { 
     data: savedSchedule, 
     isLoading: isSavedScheduleLoading,
@@ -421,6 +423,7 @@ export default function HomePage() {
                   setSearchQuery={setSearchQuery}
                   selectedDepartment={selectedDepartment}
                   setSelectedDepartment={setSelectedDepartment}
+                  overrides={overrides}
                 />
               </div>
             </>
@@ -462,6 +465,8 @@ export default function HomePage() {
             saveStatus={saveStatus}
             setSaveStatus={setSaveStatus}
             showSummerByDefault={isCatalogCollapsed || isTrackerCollapsed}
+            overrides={overrides}
+            refetchUserCourses={refetchUserCourses}
           />
         </div>
         
@@ -490,6 +495,8 @@ export default function HomePage() {
                   college={majorData?.major?.college}
                   saveStatus={saveStatus}
                   setSaveStatus={setSaveStatus}
+                  overrides={overrides}
+                  refetchUserCourses={refetchUserCourses}
                 />
               </div>
             </>
@@ -620,6 +627,7 @@ export default function HomePage() {
                 setSearchQuery={setSearchQuery}
                 selectedDepartment={selectedDepartment}
                 setSelectedDepartment={setSelectedDepartment}
+                overrides={overrides}
               />
             </div>
           </div>
@@ -650,6 +658,8 @@ export default function HomePage() {
                 saveStatus={saveStatus}
                 setSaveStatus={setSaveStatus}
                 showSummerByDefault={false}
+                overrides={overrides}
+                refetchUserCourses={refetchUserCourses}
               />
             </div>
           </div>
@@ -669,6 +679,8 @@ export default function HomePage() {
                 college={majorData?.major?.college}
                 saveStatus={saveStatus}
                 setSaveStatus={setSaveStatus}
+                overrides={overrides}
+                refetchUserCourses={refetchUserCourses}
               />
             </div>
           </div>

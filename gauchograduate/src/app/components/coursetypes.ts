@@ -71,6 +71,7 @@ export interface CoursePopupProps {
   onDelete: () => void;
   onGradeChange: (grade: string | null) => void;
   studentSchedule: ScheduleType;
+  overrides?: MajorOverride[];  // Add overrides prop
 }
 
 export interface FourYearPlanProps {
@@ -85,6 +86,16 @@ export interface FourYearPlanProps {
   saveStatus: 'idle' | 'saving' | 'saved';
   setSaveStatus: (status: 'idle' | 'saving' | 'saved') => void;
   showSummerByDefault?: boolean;
+  overrides?: MajorOverride[];  // Add overrides prop
+  refetchUserCourses?: () => void;  // Add refetch function
+}
+
+export interface CoursePreviewProps {
+  course: Course;
+  onClose: () => void;
+  studentSchedule?: ScheduleType;
+  saveStatus?: 'idle' | 'saving' | 'saved';
+  overrides: MajorOverride[];  // Add overrides prop
 }
 
 export interface MajorRequirements {
