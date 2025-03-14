@@ -1,5 +1,5 @@
 // SegmentedProgressBar.tsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export interface SegmentedProgressBarProps {
   geUnits: number;
@@ -18,6 +18,18 @@ const SegmentedProgressBar: React.FC<SegmentedProgressBarProps> = ({
 }) => {
   const radius = 50;
   const circumference = 2 * Math.PI * radius;
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+    
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
 
   const fraction = (units: number) => Math.min(units / total, 1);
   const p_ge = fraction(geUnits);
@@ -36,15 +48,18 @@ const SegmentedProgressBar: React.FC<SegmentedProgressBarProps> = ({
   const offset_extra = offset_major - L_major;
   const offset_external = offset_extra - L_extra;
 
+  // Background color is white for laptop, light grey for mobile
+  const bgColor = isMobile ? "#f0f0f0" : "#ffffff";
+
   return (
     <svg width="100%" height="100%" viewBox="0 0 120 120">
-      {/* Background circle now white */}
+      {/* Background circle - white for laptop, light grey for mobile */}
       <circle
         cx="60"
         cy="60"
         r={radius}
         fill="none"
-        stroke="#ffffff"
+        stroke={bgColor}
         strokeWidth="10"
       />
       {/* GE segment (pale pink) */}

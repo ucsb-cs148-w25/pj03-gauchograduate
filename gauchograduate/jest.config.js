@@ -6,7 +6,11 @@ module.exports = {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
-  testPathIgnorePatterns: ['<rootDir>/src/pages/test.tsx', '<rootDir>/e2e'], // Ignore the React component test file
+  testPathIgnorePatterns: [
+    '<rootDir>/src/pages/test.tsx', 
+    '<rootDir>/e2e',
+    '<rootDir>/.next/'
+  ], // Ignore the React component test file and .next directory
   transform: {
     '^.+\\.(ts|tsx)$': ['ts-jest', {
       tsconfig: 'tsconfig.json',

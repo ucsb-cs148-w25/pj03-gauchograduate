@@ -1,63 +1,21 @@
 "use client";
-import React, { useEffect } from "react";
-import { Course, PrerequisiteNode } from "./coursetypes"; 
+import React, { useEffect, useState, useCallback } from "react";
+import { Course, PrerequisiteNode, ScheduleType } from "./coursetypes"; 
 import { PrerequisiteRenderer } from "./prerequisite-renderer"; 
 
 interface CoursePreviewProps {
   course: Course;
   onClose: () => void;
+  studentSchedule?: ScheduleType;
+  saveStatus?: 'idle' | 'saving' | 'saved';
 }
 
-const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose }) => {
-  useEffect(() => {
-    console.log("CoursePreview - Course ID:", course.id);
-    console.log("CoursePreview - Course Gold ID:", course.gold_id);
-    console.log("CoursePreview - Prerequisites:", course.prerequisites);
-    
-    const isNestedFormat = course.prerequisites && 
-      typeof course.prerequisites === 'object' && 
-      'course' in (course.prerequisites as Record<string, unknown>) && 
-      'prerequisites' in (course.prerequisites as Record<string, unknown>);
-    
-    console.log("CoursePreview - Is nested format:", isNestedFormat);
-    
-    if (isNestedFormat) {
-      const innerPrereqs = (course.prerequisites as Record<string, unknown>).prerequisites;
-      console.log("CoursePreview - Inner prerequisites:", innerPrereqs);
-      
-      const hasTypeAndRequirements = innerPrereqs && 
-        typeof innerPrereqs === 'object' && 
-        'type' in (innerPrereqs as Record<string, unknown>) && 
-        'requirements' in (innerPrereqs as Record<string, unknown>);
-      
-      console.log("CoursePreview - Inner prerequisites have type and requirements:", hasTypeAndRequirements);
-      
-      if (hasTypeAndRequirements) {
-        const requirements = (innerPrereqs as Record<string, unknown>).requirements || [];
-        const hasNestedRequirements = Array.isArray(requirements) && requirements.some((req: unknown) => 
-          req && typeof req === 'object' && 
-          ('type' in (req as Record<string, unknown>)) && 
-          ((req as Record<string, unknown>).type === 'and' || (req as Record<string, unknown>).type === 'or') && 
-          'requirements' in (req as Record<string, unknown>)
-        );
-        
-        console.log("CoursePreview - Has nested requirements:", hasNestedRequirements);
-        
-        if (hasNestedRequirements) {
-          console.log("CoursePreview - Nested requirements structure:", 
-            Array.isArray(requirements) && requirements.map((req: unknown) => ({
-              type: (req as Record<string, unknown>).type,
-              requirementsCount: Array.isArray((req as Record<string, unknown>).requirements) 
-                ? ((req as Record<string, unknown>).requirements as unknown[]).length 
-                : 0
-            }))
-          );
-        }
-      }
-    }
-  }, [course]);
+const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose, studentSchedule, saveStatus }) => {
+  const [completedCourses, setCompletedCourses] = useState<Course[]>([]);
+  const [prerequisitesNode, setPrerequisitesNode] = useState<PrerequisiteNode | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const getPrerequisitesNode = (): PrerequisiteNode | null => {
+  const getPrerequisitesNode = useCallback((): PrerequisiteNode | null => {
     if (!course.prerequisites) return null;
     
     if (typeof course.prerequisites === 'object' && 
@@ -72,9 +30,58 @@ const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose }) => {
     }
     
     return null;
-  };
-  
-  const prerequisitesNode = getPrerequisitesNode();
+  }, [course.prerequisites]);
+
+  useEffect(() => {
+    const setupPrerequisites = async () => {
+      if (course.prerequisites) {
+        const node = getPrerequisitesNode();
+        if (node) {
+          setPrerequisitesNode(node);
+          return;
+        }
+      }
+      
+      if (course.id) {
+        setIsLoading(true);
+        try {
+          const response = await fetch(`/api/course/${course.id}`);
+          if (response.ok) {
+            const data = await response.json();
+            if (data.course && data.course.prerequisites) {
+              course.prerequisites = data.course.prerequisites;
+              setPrerequisitesNode(getPrerequisitesNode());
+            } else {
+              setPrerequisitesNode(null);
+            }
+          }
+        } catch (error) {
+          console.error('Error fetching course prerequisites:', error);
+        } finally {
+          setIsLoading(false);
+        }
+      } else {
+        setIsLoading(false);
+      }
+    };
+
+    setupPrerequisites();
+  }, [course, getPrerequisitesNode]);
+
+  useEffect(() => {
+    if (studentSchedule) {
+      const allCourses: Course[] = [];
+      
+      Object.values(studentSchedule).forEach(yearSchedule => {
+        Object.values(yearSchedule).forEach(termCourses => {
+          allCourses.push(...termCourses);
+        });
+      });
+      
+      setCompletedCourses(allCourses);
+    }
+  }, [studentSchedule, saveStatus]);
+
   const hasPrerequisites = prerequisitesNode !== null;
 
   return (
@@ -124,9 +131,19 @@ const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose }) => {
           )}
         </div>
 
-        <div className="mb-3">
+        <div className="mb-3 relative">
           <strong>Prerequisites:</strong>
-          {hasPrerequisites && prerequisitesNode ? (
+          {isLoading ? (
+            <div className="mt-2 bg-white bg-opacity-70 p-4 flex items-center justify-center">
+              <div className="text-lg font-medium text-gray-600 animate-pulse flex items-center">
+                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Loading prerequisites...
+              </div>
+            </div>
+          ) : hasPrerequisites && prerequisitesNode ? (
             <div className="mt-2 bg-gray-50 p-3 rounded-lg">
               <div className="mb-3 text-xs bg-gray-100 p-2 rounded border border-gray-200">
                 <div className="font-semibold mb-1">Key:</div>
@@ -138,13 +155,20 @@ const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose }) => {
                   <div className="w-3 h-3 bg-orange-300 mr-2" />
                   <span>OR - Any one condition must be met</span>
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-center mb-1">
                   <div className="w-3 h-3 bg-purple-300 mr-2" />
                   <span>Special requirements (AP scores, etc.)</span>
                 </div>
+                <div className="flex items-center">
+                  <div className="w-3 h-3 bg-green-200 mr-2" />
+                  <span>Completed prerequisites</span>
+                </div>
               </div>
 
-              <PrerequisiteRenderer node={prerequisitesNode} />
+              <PrerequisiteRenderer 
+                node={prerequisitesNode} 
+                completedCourses={completedCourses}
+              />
             </div>
           ) : (
             <span> None</span>

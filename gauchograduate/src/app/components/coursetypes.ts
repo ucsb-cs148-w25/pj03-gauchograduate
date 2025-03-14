@@ -74,7 +74,7 @@ export interface CoursePopupProps {
 
 export interface FourYearPlanProps {
   selectedYear: YearType;
-  setSelectedYear: React.Dispatch<React.SetStateAction<YearType>>;
+  setSelectedYear: (year: YearType) => void;
   studentSchedule: ScheduleType;
   addCourse: (course: Course, term: Term) => void;
   removeCourse: (course: Course, term: Term) => void;

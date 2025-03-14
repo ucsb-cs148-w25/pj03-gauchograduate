@@ -5,12 +5,14 @@ import { getAcademicYear, isQuarterInPast, isCurrentQuarter } from './utils/quar
 import CourseModal from './course-popup';
 import { useReactToPrint } from 'react-to-print';
 import PrintableSchedule from './PrintableSchedule';
+import { PrerequisiteRenderer } from "./prerequisite-renderer";
 
-// Helper function to extract the actual prerequisite node from potentially nested structures
+// Cache for prerequisite check results
+const prerequisiteCheckCache = new Map<string, boolean>();
+
 function getPrerequisiteNode(prerequisites: unknown): PrerequisiteNode | null {
   if (!prerequisites) return null;
   
-  // If it's already in the correct format with a type property
   if (typeof prerequisites === 'object' && prerequisites !== null) {
     const prereqObj = prerequisites as Record<string, unknown>;
     
@@ -22,14 +24,11 @@ function getPrerequisiteNode(prerequisites: unknown): PrerequisiteNode | null {
       return prerequisites as PrerequisiteNode;
     }
     
-    // If it's in the nested format with course and prerequisites properties
     if (prereqObj.course && prereqObj.prerequisites) {
       return prereqObj.prerequisites as PrerequisiteNode;
     }
   }
   
-  // Unknown format
-  console.error("Unknown prerequisite format:", prerequisites);
   return null;
 }
 
@@ -37,61 +36,55 @@ function checkPrerequisitesMet(
   prerequisiteNode: unknown,
   completedCourses: Course[]
 ): boolean {
-  // Extract the actual prerequisite node from potentially nested structures
   const node = getPrerequisiteNode(prerequisiteNode);
   
   if (!node) return true;
 
-  // Create a set of completed course IDs for faster lookups
-  // Using internal IDs as strings for comparison
-  const completedCourseIds = new Set(
+  // Create a cache key based on the node and completed courses
+  const completedCourseIds = completedCourses.map(c => c.id).sort().join(',');
+  const cacheKey = `${JSON.stringify(node)}-${completedCourseIds}`;
+  
+  // Check if we have a cached result
+  
+  if (prerequisiteCheckCache.has(cacheKey)) {
+    return prerequisiteCheckCache.get(cacheKey)!;
+  }
+
+  const completedCourseIdSet = new Set(
     completedCourses.map(course => String(course.id))
   );
-
-  // Debug logging
-  console.log("Checking prerequisite node:", node);
+  
+  let result: boolean;
   
   switch (node.type) {
     case 'course': {
-      // Check if the course ID exists in our completed courses
-      // Ensure the node.id is converted to a string for proper comparison
       const courseId = String(node.id);
-      
-      // Log all completed course IDs for debugging
-      console.log("All completed course IDs:", Array.from(completedCourseIds));
-      console.log(`Looking for ID: ${courseId} (type: ${typeof courseId})`);
-      
-      const match = completedCourseIds.has(courseId);
-      
-      console.log(`Checking course prerequisite: ${courseId}`);
-      console.log(`Match: ${match}`);
-      
-      return match;
+      result = completedCourseIdSet.has(courseId);
+      break;
     }
     case 'specialRequirement': {
-      // For now, we'll assume special requirements are not met
-      return false;
+      result = false;
+      break;
     }
     case 'and': {
-      // All requirements must be met
-      return node.requirements.every(req => {
-        const result = checkPrerequisitesMet(req, completedCourses);
-        console.log(`AND requirement result for ${req.type}: ${result}`);
-        return result;
-      });
+      result = node.requirements.every(req => 
+        checkPrerequisitesMet(req, completedCourses)
+      );
+      break;
     }
     case 'or': {
-      // Any one of the requirements is enough
-      return node.requirements.some(req => {
-        const result = checkPrerequisitesMet(req, completedCourses);
-        console.log(`OR requirement result for ${req.type}: ${result}`);
-        return result;
-      });
+      result = node.requirements.some(req => 
+        checkPrerequisitesMet(req, completedCourses)
+      );
+      break;
     }
     default:
-      console.log("Unknown prerequisite type:", node);
-      return false;
+      result = false;
   }
+  
+  prerequisiteCheckCache.set(cacheKey, result);
+  
+  return result;
 }
 
 export default function FourYearPlan({
@@ -119,10 +112,32 @@ export default function FourYearPlan({
   const [validDropTargets, setValidDropTargets] = useState<Set<HTMLElement>>(new Set());
   const [draggedOverTerm, setDraggedOverTerm] = useState<string | null>(null);
   const [isDraggingCourse, setIsDraggingCourse] = useState(false);
-  const [prerequisiteWarning, setPrerequisiteWarning] = useState<{ course: Course, term: Term, originTerm?: Term } | null>(null);
+  const [prerequisiteWarning, setPrerequisiteWarning] = useState<{ 
+    course: Course, 
+    term: Term, 
+    originTerm?: Term,
+    completedCourses?: Course[] 
+  } | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  const [showClearYearConfirm, setShowClearYearConfirm] = useState(false);
 
   useEffect(() => {
-    setShowSummer(showSummerByDefault);
+    const checkIfMobile = () => {
+      const mobile = window.innerWidth < 640;
+      setIsMobile(mobile);
+      
+      if (mobile) {
+        setShowSummer(true);
+      } else {
+        setShowSummer(showSummerByDefault);
+      }
+    };
+    
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+    
+    return () => window.removeEventListener('resize', checkIfMobile);
   }, [showSummerByDefault]);
 
   useEffect(() => {
@@ -171,17 +186,55 @@ export default function FourYearPlan({
     return `${yearNum}${quarterSuffix}`;
   }, [firstQuarter]);
 
+  // Function to clear all courses for the selected year
+  const clearYear = useCallback(async () => {
+    try {
+      setSaveStatus('saving');
+      
+      // Get the year prefix for the selected year
+      const yearIndex = Years.indexOf(selectedYear);
+      const baseYear = parseInt(firstQuarter.substring(0, 4));
+      const yearNum = baseYear + yearIndex;
+      const yearPrefix = `${yearNum}`;
+      
+      const response = await fetch("/api/user/clear-year", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ yearPrefix }),
+      });
+      
+      const data = await response.json();
+      console.log("Clear Year Response:", data);
+      
+      // Clear all courses from the selected year in the local state
+      const updatedSchedule = { ...studentSchedule };
+      Terms.forEach(term => {
+        updatedSchedule[selectedYear][term] = [];
+      });
+      
+      // Update the schedule through the reorderCourse function
+      // This ensures the UI is updated properly
+      Terms.forEach(term => {
+        reorderCourse(selectedYear, term, []);
+      });
+      
+      setSaveStatus('saved');
+      setShowClearYearConfirm(false);
+    } catch (error) {
+      console.error("Error clearing year:", error);
+      setSaveStatus('idle');
+    }
+  }, [selectedYear, firstQuarter, studentSchedule, reorderCourse, setSaveStatus]);
+
   const DBRemoveCourses = useCallback(async (courseID: number, term: Term) => {
     try {
       setSaveStatus('saving');
       const quarterCode = getQuarterCode(selectedYear, term);
-      const response = await fetch("/api/user/remove-course", {
+      await fetch("/api/user/remove-course", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: courseID, quarter: quarterCode }),
       });
-      const data = await response.json();
-      console.log("Removal Response:", data);
       setSaveStatus('saved');
     } catch (error) {
       console.error("Error removing courses:", error);
@@ -227,13 +280,11 @@ export default function FourYearPlan({
     try {
       setSaveStatus('saving');
       const quarterCode = getQuarterCode(selectedYear, term);
-      const response = await fetch("/api/user/add-course", {
+      await fetch("/api/user/add-course", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: courseID, quarter: quarterCode }),
       });
-      const data = await response.json();
-      console.log("Add Response:", data);
       setSaveStatus('saved');
     } catch (error) {
       console.error("Error adding courses:", error);
@@ -245,13 +296,11 @@ export default function FourYearPlan({
     try {
       setSaveStatus('saving');
       const quarterCode = getQuarterCode(selectedYear, term);
-      const response = await fetch("/api/user/courses/set-grade", {
+      await fetch("/api/user/courses/set-grade", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: courseID, quarter: quarterCode, grade }),
       });
-      const data = await response.json();
-      console.log("Grade Update Response:", data);
       setSaveStatus('saved');
       return true;
     } catch (error) {
@@ -314,6 +363,28 @@ export default function FourYearPlan({
     }
   }, []);
 
+  const getCompletedCoursesForTerm = useCallback((targetTerm: Term) => {
+    const completedCourses: Course[] = [];
+    
+    // Add courses from previous years
+    Years.slice(0, Years.indexOf(selectedYear)).forEach(year => {
+      Object.values(studentSchedule[year]).forEach(termCourses => {
+        completedCourses.push(...termCourses);
+      });
+    });
+    
+    // Add courses from previous terms in the current year
+    const currentYearTerms = Terms.slice(0, Terms.indexOf(targetTerm));
+    currentYearTerms.forEach(t => {
+      completedCourses.push(...studentSchedule[selectedYear][t]);
+    });
+    
+    // Also add courses from the current term (for concurrent enrollment)
+    completedCourses.push(...studentSchedule[selectedYear][targetTerm]);
+    
+    return completedCourses;
+  }, [selectedYear, studentSchedule]);
+
   const handleDrop = useCallback((e: React.DragEvent<HTMLDivElement>, term: Term) => {
     e.preventDefault();
     e.stopPropagation();
@@ -328,36 +399,17 @@ export default function FourYearPlan({
     if (courseExists) return;
 
     if (course.prerequisites && course.prerequisites !== null && course.prerequisites !== -1) {
-      // Collect all courses from previous terms and years
-      const completedCourses: Course[] = [];
-      
-      // Add courses from previous years
-      Years.slice(0, Years.indexOf(selectedYear)).forEach(year => {
-        Object.values(studentSchedule[year]).forEach(termCourses => {
-          completedCourses.push(...termCourses);
-        });
-      });
-      
-      // Add courses from previous terms in the current year
-      const currentYearTerms = Terms.slice(0, Terms.indexOf(term));
-      currentYearTerms.forEach(t => {
-        completedCourses.push(...studentSchedule[selectedYear][t]);
-      });
-      
-      // Also add courses from the current term (for concurrent enrollment)
-      completedCourses.push(...studentSchedule[selectedYear][term]);
-      
-      console.log("=== PREREQUISITE CHECK ===");
-      console.log("Checking prerequisites for:", course.gold_id);
-      console.log("Prerequisites structure:", course.prerequisites);
-      console.log("Completed courses:", completedCourses.map(c => ({ id: c.id, gold_id: c.gold_id })));
+      const completedCourses = getCompletedCoursesForTerm(term);
       
       const prerequisitesMet = checkPrerequisitesMet(course.prerequisites, completedCourses);
-      console.log("Final result - Prerequisites met:", prerequisitesMet);
-      console.log("=========================");
       
       if (!prerequisitesMet) {
-        setPrerequisiteWarning({ course, term, originTerm });
+        setPrerequisiteWarning({ 
+          course, 
+          term, 
+          originTerm,
+          completedCourses
+        });
         return;
       }
     }
@@ -370,7 +422,7 @@ export default function FourYearPlan({
       addCourse(course, term as Term);
       DBAddCourses(course.id, term);
     }
-  }, [addCourse, DBAddCourses, DBMoveCourse, removeCourse, selectedYear, studentSchedule, setPrerequisiteWarning]);
+  }, [addCourse, DBAddCourses, DBMoveCourse, removeCourse, selectedYear, studentSchedule, getCompletedCoursesForTerm, setPrerequisiteWarning]);
 
   const handleCourseReorder = useCallback((e: React.DragEvent<HTMLDivElement>, term: Term, targetIndex: number) => {
     e.preventDefault();
@@ -388,6 +440,27 @@ export default function FourYearPlan({
       reorderCourse(selectedYear, term, coursesArr);
     }
   }, [reorderCourse, selectedYear, studentSchedule]);
+
+  useEffect(() => {
+    if (prerequisiteWarning) {
+      const { course, term } = prerequisiteWarning;
+      
+      // Recollect completed courses
+      const completedCourses = getCompletedCoursesForTerm(term);
+      
+      // Check if prerequisites are now met
+      const prerequisitesMet = checkPrerequisitesMet(course.prerequisites, completedCourses);
+      
+      if (prerequisitesMet) {
+        setPrerequisiteWarning(null);
+      } else {
+        setPrerequisiteWarning({
+          ...prerequisiteWarning,
+          completedCourses
+        });
+      }
+    }
+  }, [studentSchedule, prerequisiteWarning, selectedYear, getCompletedCoursesForTerm]);
 
   const displayTerms = Terms.filter(term => term !== 'Summer' || showSummer);
   const yearDisplay = getYearDisplay(selectedYear);
@@ -407,7 +480,6 @@ export default function FourYearPlan({
       onDragOver={(e) => e.preventDefault()}
       onDrop={handlePlanDrop}
     >
-      {/* Hidden printable component that will only be used for printing */}
       <div style={{ display: 'none' }}>
         <PrintableSchedule
           ref={printableRef}
@@ -460,6 +532,48 @@ export default function FourYearPlan({
                 Please make sure you&apos;ve added the prerequisite courses to earlier quarters in your schedule.
               </p>
             </div>
+            
+            {prerequisiteWarning.course.prerequisites && (
+              <div className="mt-4 bg-gray-50 p-3 rounded-lg relative">
+                <h4 className="font-semibold mb-2">Prerequisites:</h4>
+                <div className="text-xs bg-gray-100 p-2 rounded border border-gray-200 mb-3">
+                  <div className="font-semibold mb-1">Key:</div>
+                  <div className="flex items-center mb-1">
+                    <div className="w-3 h-3 bg-blue-300 mr-2" />
+                    <span>AND - All conditions must be met</span>
+                  </div>
+                  <div className="flex items-center mb-1">
+                    <div className="w-3 h-3 bg-orange-300 mr-2" />
+                    <span>OR - Any one condition must be met</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 bg-purple-300 mr-2" />
+                    <span>Special requirements (AP scores, etc.)</span>
+                  </div>
+                  <div className="flex items-center mt-1">
+                    <div className="w-3 h-3 bg-green-200 mr-2" />
+                    <span>Completed prerequisites</span>
+                  </div>
+                </div>
+                
+                {isDataLoading ? (
+                  <div className="bg-white bg-opacity-70 p-4 flex items-center justify-center">
+                    <div className="text-lg font-medium text-gray-600 animate-pulse flex items-center">
+                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Loading prerequisites...
+                    </div>
+                  </div>
+                ) : getPrerequisiteNode(prerequisiteWarning.course.prerequisites) && (
+                  <PrerequisiteRenderer 
+                    node={getPrerequisiteNode(prerequisiteWarning.course.prerequisites)!} 
+                    completedCourses={prerequisiteWarning.completedCourses || []}
+                  />
+                )}
+              </div>
+            )}
             
             <div className="mt-6 flex justify-between">
               <button
@@ -523,7 +637,7 @@ export default function FourYearPlan({
         </div>
       )}
 
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between items-center mb-4 flex-wrap gap-2">
         <div className="flex items-center">
           <h2 className="text-xl font-semibold">Four-Year Plan</h2>
           <div className="ml-3 flex items-center">
@@ -535,13 +649,23 @@ export default function FourYearPlan({
               <span className={`flex items-center text-xs ${isActive ? 'text-green-600' : 'text-gray-400 opacity-50'} transition-opacity duration-300`}>
                 Saved
                 <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"></path>
                 </svg>
               </span>
             )}
           </div>
         </div>
         <div className="flex items-center gap-5">
+          <button
+            onClick={() => setShowClearYearConfirm(true)}
+            className="flex items-center gap-1 px-3 py-1.5 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition-colors"
+            title="Clear all courses for the selected year"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+            </svg>
+            <span className="text-sm">Clear Year</span>
+          </button>
           <button
             onClick={() => handlePrint()}
             className="flex items-center gap-1 px-3 py-1.5 bg-[var(--pale-blue)] text-black rounded-lg hover:bg-blue-200 transition-colors"
@@ -568,7 +692,7 @@ export default function FourYearPlan({
       <div className="flex gap-2 flex-1 min-h-0">
         <div
           ref={gridRef}
-          className={`grid grid-cols-1 ${showSummer ? 'md:grid-cols-4' : 'md:grid-cols-3'} gap-2 flex-grow border border-gray-300 rounded-md p-2 bg-gray-50 min-h-0 overflow-y-auto`}
+          className={`grid grid-cols-1 xs:grid-cols-2 ${showSummer ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} gap-2 flex-grow border border-gray-300 rounded-md p-2 bg-gray-50 min-h-0 overflow-y-auto`}
         >
           {displayTerms.map((term) => {
             const isPast = isQuarterInPast(yearDisplay, term);
@@ -649,7 +773,7 @@ export default function FourYearPlan({
             );
           })}
         </div>
-        {!showSummerByDefault && (
+        {!isMobile && !showSummerByDefault && (
           <button
             onClick={() => setShowSummer(!showSummer)}
             className="writing-mode-vertical px-2 py-4 bg-[var(--pale-blue)] text-black rounded-lg transition-colors whitespace-nowrap h-auto"
@@ -658,6 +782,56 @@ export default function FourYearPlan({
           </button>
         )}
       </div>
+      {/* Clear Year Confirmation Modal */}
+      {showClearYearConfirm && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-xl max-w-md w-full m-4 relative">
+            <button 
+              onClick={() => setShowClearYearConfirm(false)}
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
+              aria-label="Close confirmation"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            <div className="mb-4 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-red-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+              <h3 className="text-xl font-bold text-red-700">Clear Year Confirmation</h3>
+            </div>
+            
+            <div className="space-y-3">
+              <p className="text-gray-700">
+                Are you sure you want to clear <span className="font-bold">all courses</span> for {selectedYear} ({getYearDisplay(selectedYear)})?
+              </p>
+              <p className="text-gray-600">
+                This action cannot be undone.
+              </p>
+            </div>
+            
+            <div className="mt-6 flex justify-between">
+              <button
+                onClick={() => setShowClearYearConfirm(false)}
+                className="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition-colors"
+              >
+                Cancel
+              </button>
+              
+              <button
+                onClick={clearYear}
+                className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors"
+              >
+                Clear All Courses
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
+
+

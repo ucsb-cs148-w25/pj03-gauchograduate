@@ -2,13 +2,18 @@
 
 import React, { useState, useEffect } from "react";
 import { Course, Term, ScheduleType } from "./coursetypes";
-import CoursePreview from "./CoursePreview";  // <-- We'll create this soon
+import CoursePreview from "./CoursePreview";
 
 interface CourseCatalogProps {
   courses: Course[];
   selectedTerm: string;
   setSelectedTerm: (term: Term) => void;
   studentSchedule: ScheduleType;
+  saveStatus?: 'idle' | 'saving' | 'saved';
+  searchQuery?: string;
+  setSearchQuery?: (query: string) => void;
+  selectedDepartment?: string;
+  setSelectedDepartment?: (department: string) => void;
 }
 
 export default function CourseCatalog({
@@ -16,21 +21,30 @@ export default function CourseCatalog({
   selectedTerm,
   setSelectedTerm,
   studentSchedule,
+  saveStatus,
+  searchQuery: externalSearchQuery,
+  setSearchQuery: externalSetSearchQuery,
+  selectedDepartment: externalSelectedDepartment,
+  setSelectedDepartment: externalSetSelectedDepartment,
 }: CourseCatalogProps) {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedDepartment, setSelectedDepartment] = useState("");
+  const [localSearchQuery, setLocalSearchQuery] = useState("");
+  const [localSelectedDepartment, setLocalSelectedDepartment] = useState("");
+  
+  const searchQuery = externalSearchQuery !== undefined ? externalSearchQuery : localSearchQuery;
+  const setSearchQuery = externalSetSearchQuery || setLocalSearchQuery;
+  const selectedDepartment = externalSelectedDepartment !== undefined ? externalSelectedDepartment : localSelectedDepartment;
+  const setSelectedDepartment = externalSetSelectedDepartment || setLocalSelectedDepartment;
+  
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [filteredCourses, setFilteredCourses] = useState<Course[]>([]);
 
-  // 1) Set the loading state
   useEffect(() => {
     if (courses.length > 0) {
       setIsLoading(false);
     }
   }, [courses]);
 
-  // 2) Filter courses based on search, department, and whether the student already took them
   useEffect(() => {
     const takenCourseIds = new Set(
       Object.values(studentSchedule).flatMap((yearSchedule) =>
@@ -51,7 +65,6 @@ export default function CourseCatalog({
     setFilteredCourses(filtered);
   }, [courses, searchQuery, selectedDepartment, studentSchedule]);
 
-  // 3) Department list, term list, handlers
   const departments = [...new Set(courses.map((course) => course.subjectArea))];
   const termsOptions: Term[] = ["Fall", "Winter", "Spring", "Summer"];
 
@@ -75,7 +88,6 @@ export default function CourseCatalog({
         />
 
         <div className="flex flex-col gap-2 w-full">
-          {/* Department selector */}
           <div className="flex items-center border border-gray-300 rounded-lg overflow-hidden w-full">
             <label
               htmlFor="department-select"
@@ -85,7 +97,7 @@ export default function CourseCatalog({
             </label>
             <select
               id="department-select"
-              className="p-2 border-0 focus:ring-0 focus:outline-none w-1/2"
+              className="p-2 border-0 focus:ring-0 focus:outline-none w-full sm:w-1/2"
               value={selectedDepartment}
               onChange={(e) => setSelectedDepartment(e.target.value)}
             >
@@ -98,7 +110,6 @@ export default function CourseCatalog({
             </select>
           </div>
 
-          {/* Quarter selector */}
           <div className="flex items-center border border-gray-300 rounded-lg overflow-hidden w-full">
             <label
               htmlFor="term-select"
@@ -108,7 +119,7 @@ export default function CourseCatalog({
             </label>
             <select
               id="term-select"
-              className="p-2 border-0 focus:ring-0 focus:outline-none w-3/5"
+              className="p-2 border-0 focus:ring-0 focus:outline-none w-full sm:w-3/5"
               value={selectedTerm}
               onChange={handleTermChange}
             >
@@ -192,9 +203,13 @@ export default function CourseCatalog({
         )}
       </div>
 
-      {/* MODAL POPUP for selected course */}
       {selectedCourse && (
-        <CoursePreview course={selectedCourse} onClose={() => setSelectedCourse(null)} />
+        <CoursePreview 
+          course={selectedCourse} 
+          onClose={() => setSelectedCourse(null)} 
+          studentSchedule={studentSchedule}
+          saveStatus={saveStatus}
+        />
       )}
     </div>
   );

@@ -36,15 +36,6 @@ const ProgressTracker = ({
   const [majorData, setMajorData] = useState<MajorData | null>(null);
   const [majorStatus, setMajorStatus] = useState<{ [key: string]: GERequirement }>({});
   const [expandedMajorAreas, setExpandedMajorAreas] = useState<{ [area: string]: boolean }>({});
-  const [majorCourses, setMajorCourses] = useState<{
-    preparation: Course[];
-    upperRequired: Course[];
-    upperElectives: Course[];
-  }>({
-    preparation: [],
-    upperRequired: [],
-    upperElectives: []
-  });
 
   // MAJOR OVERRIDE POPUP state
   const [overridePopupCourse, setOverridePopupCourse] = useState<Course | null>(null);
@@ -527,13 +518,14 @@ const ProgressTracker = ({
             );
           })}
         </ul>
-        {courses.length > 3 && (
+        {courses.length > 1 && (
           <button
             className="text-blue-500 text-xs mt-1 focus:outline-none"
             onClick={() =>
               setExpandedMajorAreas((prev) => ({ ...prev, [area]: !prev[area] }))
             }
             aria-expanded={isExpanded}
+            aria-label={isExpanded ? `Show fewer ${area} courses` : `Show more ${area} courses`}
           >
             {isExpanded ? "Show Less" : "Show More"}
           </button>
@@ -709,7 +701,7 @@ const ProgressTracker = ({
       </CollapsibleCard>
 
       {/* Major Requirements Card */}
-      <CollapsibleCard title="Major Courses">
+      <CollapsibleCard title={`Major Courses`}>
         <div role="region" aria-label="Major Courses">
           {/* Lower Division Section */}
           <div>
@@ -737,6 +729,7 @@ const ProgressTracker = ({
         </div>
       </CollapsibleCard>
 
+      {/* Extra Courses Card */}
       <CollapsibleCard title="Extra Courses">
         <div role="region" aria-label="Extra Courses">
           {renderExtraCoursesList()}
