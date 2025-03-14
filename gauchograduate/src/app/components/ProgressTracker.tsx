@@ -6,6 +6,7 @@ import { computeMajorRequirements } from "./requirements/COREReqs";
 import SegmentedProgressBar from "./progress_components/SegmentedProgressBar";
 import CollapsibleCard from "./progress_components/CollapsibleCard";
 import GEOverridePopup from "./progress_components/GEOverridePopup";
+import MajorOverridePopup from "./progress_components/MajorOverridePopups"; // <-- NEW POPUP
 import { MajorOverride } from "@/types/next-auth";
 
 interface ProgressTrackerProps {
@@ -35,6 +36,18 @@ const ProgressTracker = ({
   const [majorData, setMajorData] = useState<MajorData | null>(null);
   const [majorStatus, setMajorStatus] = useState<{ [key: string]: GERequirement }>({});
   const [expandedMajorAreas, setExpandedMajorAreas] = useState<{ [area: string]: boolean }>({});
+  const [majorCourses, setMajorCourses] = useState<{
+    preparation: Course[];
+    upperRequired: Course[];
+    upperElectives: Course[];
+  }>({
+    preparation: [],
+    upperRequired: [],
+    upperElectives: []
+  });
+
+  // MAJOR OVERRIDE POPUP state
+  const [overridePopupCourse, setOverridePopupCourse] = useState<Course | null>(null);
 
   // Extra courses state
   const [extraCourses, setExtraCourses] = useState<Course[]>([]);
@@ -56,8 +69,10 @@ const ProgressTracker = ({
   const calculateExternalUnits = (overridesList: MajorOverride[]) => {
     return overridesList.reduce((sum: number, override: MajorOverride) => {
       if (override.type === 'unit') {
+        // This is the old 'unit' override type (e.g. "12 units from ???")
         return sum + (parseInt(override.requirement) || 0);
       } else if (override.units) {
+        // For both 'ge' and 'major' overrides that include .units
         return sum + override.units;
       }
       return sum;
@@ -96,7 +111,6 @@ const ProgressTracker = ({
         if (!overrideCountByArea[override.requirement]) {
           overrideCountByArea[override.requirement] = 0;
         }
-
         overrideCountByArea[override.requirement]++;
       }
     });
@@ -104,11 +118,8 @@ const ProgressTracker = ({
     // Second pass: update requirements with the total count of overrides
     Object.entries(overrideCountByArea).forEach(([area, count]) => {
       if (area in updatedGeStatus) {
-        // Get the original count from GE status before adding overrides
         const baseCount = updatedGeStatus[area].count;
         const requiredCount = updatedGeStatus[area].required;
-
-        // Update with the total including all overrides for this area
         updatedGeStatus[area] = {
           ...updatedGeStatus[area],
           count: baseCount + count,
@@ -142,18 +153,79 @@ const ProgressTracker = ({
     setMajorStatus(newMajorStatus);
   }, [studentSchedule, majorData]);
 
+  // getting course details for major requirements
+  useEffect(() => {
+    if (!majorData) return;
+  
+    const courseIds = [
+      ...majorData.requirements.preparation.and,
+      ...majorData.requirements.upper_division.required.and,
+      ...majorData.requirements.upper_division.electives.or.classes,
+    ];
+  
+    // Filter to include only numeric course IDs
+    const numericCourseIds = courseIds
+      .filter((id) => /^\d+$/.test(id)) // Keep only numeric IDs
+      .map(Number); // Convert to numbers
+  
+    if (numericCourseIds.length === 0) {
+      console.log("No numeric course IDs found for batch request.");
+      return;
+    }
+  
+    console.log("Sending batch request with courseIds:", numericCourseIds);
+  
+    fetch("/api/course/query/batch", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ courseIds: numericCourseIds }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Batch request response data:", data);
+  
+        if (!data || !Array.isArray(data.courses)) {
+          console.warn("Batch request did not return an expected array of courses.");
+          return;
+        }
+  
+        const coursesByCategory = {
+          preparation: [] as Course[],
+          upperRequired: [] as Course[],
+          upperElectives: [] as Course[],
+        };
+  
+        data.courses.forEach((course: Course) => {
+          const courseId = String(course.id);
+  
+          if (majorData.requirements.preparation.and.includes(courseId)) {
+            coursesByCategory.preparation.push(course);
+          }
+          if (majorData.requirements.upper_division.required.and.includes(courseId)) {
+            coursesByCategory.upperRequired.push(course);
+          }
+          if (majorData.requirements.upper_division.electives.or.classes.includes(courseId)) {
+            coursesByCategory.upperElectives.push(course);
+          }
+        });
+  
+        // Sort each category alphabetically by gold_id
+        coursesByCategory.preparation.sort((a, b) => a.gold_id.localeCompare(b.gold_id));
+        coursesByCategory.upperRequired.sort((a, b) => a.gold_id.localeCompare(b.gold_id));
+        coursesByCategory.upperElectives.sort((a, b) => a.gold_id.localeCompare(b.gold_id));
+  
+        setMajorCourses(coursesByCategory);
+      })
+      .catch((err) => console.error("Error fetching major requirement courses:", err));
+  }, [majorData]);  
+  
   // Compute extra courses: core courses not used for major requirements.
   useEffect(() => {
-    // Core courses: courses with no GE info.
     const coreCourses = scheduledCourses.filter((course) => course.generalEd.length === 0);
-
-    // Gather internal IDs of courses used in major requirements.
     const usedCourseIds = new Set<string>();
     Object.values(majorStatus).forEach((category) => {
       category.courses.forEach((course) => usedCourseIds.add(String(course.id)));
     });
-
-    // Extra courses are core courses that are not used in major requirements.
     const extras = coreCourses.filter((course) => !usedCourseIds.has(String(course.id)));
     setExtraCourses(extras);
   }, [scheduledCourses, majorStatus]);
@@ -171,6 +243,7 @@ const ProgressTracker = ({
     "NWC": "World Cultures"
   };
 
+  // ========== GE OVERRIDE HANDLERS (unchanged) ==========
   const handleCheckboxClick = (area: string, fulfilled: boolean) => {
     if (!fulfilled) {
       setOverridePopupArea(area);
@@ -178,60 +251,41 @@ const ProgressTracker = ({
   };
 
   const handleOverrideConfirm = async (area: string, creditType: string, units: number) => {
-    if (isAddingOverride) return; // Prevent multiple submissions
+    if (isAddingOverride) return;
 
     setIsAddingOverride(true);
 
-    // Create the GE override object with units included
-    const geOverride = {
+    const geOverride: MajorOverride = {
       type: 'ge',
       requirement: area,
       creditSource: creditType,
-      units: units
+      units
     };
 
-    // Update frontend state immediately
     const updatedOverrides = [...overrides, geOverride];
     setOverrides(updatedOverrides);
-
-    // Recalculate external units
-    const newExternalUnits = calculateExternalUnits(updatedOverrides);
-    setExternalUnits(newExternalUnits);
-
-    // Close the popup
+    setExternalUnits(calculateExternalUnits(updatedOverrides));
     setOverridePopupArea(null);
 
-    // Now update the database and show saving status
     setSaveStatus('saving');
 
     try {
-      // Add the GE override to the database
       const response = await fetch('/api/user/add-override', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ override: geOverride }),
       });
-
       if (!response.ok) {
         throw new Error('Failed to add GE override');
       }
-
       const data = await response.json();
-
-      // Update with the server response (which should match our local state)
       setOverrides(data.overrides);
-
       setSaveStatus('saved');
     } catch (error) {
       console.error('Error in override process:', error);
       alert('Failed to add override. Please try again.');
-
-      // Revert the local state change on error
       setOverrides(overrides);
       setExternalUnits(calculateExternalUnits(overrides));
-
       setSaveStatus('idle');
     } finally {
       setIsAddingOverride(false);
@@ -239,56 +293,125 @@ const ProgressTracker = ({
   };
 
   const handleRemoveOverride = async (area: string) => {
-    // Find the most recently added override for this area
-    const overridesToRemove = overrides
-      .filter(o => o.type === 'ge' && o.requirement === area);
-
+    const overridesToRemove = overrides.filter(o => o.type === 'ge' && o.requirement === area);
     if (!overridesToRemove.length) return;
 
-    // Remove the most recent override
     const overrideToRemove = overridesToRemove[overridesToRemove.length - 1];
-
-    // Update frontend state immediately
     const updatedOverrides = overrides.filter(o => o !== overrideToRemove);
     setOverrides(updatedOverrides);
-
-    // Recalculate external units
-    const newExternalUnits = calculateExternalUnits(updatedOverrides);
-    setExternalUnits(newExternalUnits);
-
-    // Now update the database and show saving status
+    setExternalUnits(calculateExternalUnits(updatedOverrides));
     setSaveStatus('saving');
 
     try {
       const response = await fetch('/api/user/remove-override', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ override: overrideToRemove }),
       });
-
       if (!response.ok) {
         throw new Error('Failed to remove override');
       }
-
       const data = await response.json();
-
-      // Update with the server response (which should match our local state)
       setOverrides(data.overrides);
-
       setSaveStatus('saved');
     } catch (error) {
       console.error('Error removing override:', error);
       alert('Failed to remove override. Please try again.');
-
-      // Revert the local state change on error
       setOverrides(overrides);
       setExternalUnits(calculateExternalUnits(overrides));
-
       setSaveStatus('idle');
     }
   };
+  // =======================================================
+
+  // ========== MAJOR OVERRIDE HANDLERS (NEW) ==========
+  const handleMajorCourseCheckboxClick = (course: Course, isFulfilled: boolean) => {
+    // If it's NOT fulfilled (no schedule completion & no override),
+    // then show popup to add a major override.
+    if (!isFulfilled) {
+      setOverridePopupCourse(course);
+    }
+    // If it IS fulfilled (by schedule or override), do nothing.
+    // Removing the override is done via the "blue text remove" link.
+  };
+
+  // Called after user hits "Confirm" in the major override popup
+  const handleMajorOverrideConfirm = async (course: Course, creditType: string, units: number) => {
+    if (isAddingOverride) return;
+    setIsAddingOverride(true);
+
+    const newOverride: MajorOverride = {
+      type: 'major',
+      requirement: 'specific-course',
+      courseId: course.id,
+      // courseName: course.gold_id,
+      creditSource: creditType,
+      units
+    };
+
+    const updatedOverrides = [...overrides, newOverride];
+    setOverrides(updatedOverrides);
+    setExternalUnits(calculateExternalUnits(updatedOverrides));
+    setOverridePopupCourse(null);
+    setSaveStatus('saving');
+
+    try {
+      const response = await fetch('/api/user/add-override', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ override: newOverride }),
+      });
+      if (!response.ok) {
+        throw new Error('Failed to add major override');
+      }
+      const data = await response.json();
+      setOverrides(data.overrides);
+      setSaveStatus('saved');
+    } catch (error) {
+      console.error('Error adding major override:', error);
+      alert('Failed to add override. Please try again.');
+      setOverrides(overrides);
+      setExternalUnits(calculateExternalUnits(overrides));
+      setSaveStatus('idle');
+    } finally {
+      setIsAddingOverride(false);
+    }
+  };
+
+  // "Remove" link next to the override message
+  const handleRemoveMajorOverride = async (course: Course) => {
+    // We only expect 1 override per course, but just in case:
+    const overrideToRemove = overrides.find(
+      (o) => o.type === 'major' && o.requirement === 'specific-course' && o.courseId === course.id
+    );
+    if (!overrideToRemove) return;
+
+    const updatedOverrides = overrides.filter(o => o !== overrideToRemove);
+    setOverrides(updatedOverrides);
+    setExternalUnits(calculateExternalUnits(updatedOverrides));
+    setSaveStatus('saving');
+
+    try {
+      const response = await fetch('/api/user/remove-override', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ override: overrideToRemove }),
+      });
+      if (!response.ok) {
+        throw new Error('Failed to remove major override');
+      }
+      const data = await response.json();
+      setOverrides(data.overrides);
+      setSaveStatus('saved');
+    } catch (error) {
+      console.error('Error removing major override:', error);
+      alert('Failed to remove override. Please try again.');
+      setOverrides(overrides);
+      setExternalUnits(calculateExternalUnits(overrides));
+      setSaveStatus('idle');
+    }
+  };
+  // ====================================================
 
   const renderGECourseList = (area: string) => {
     const courses = genEdFulfilled[area]?.courses || [];
@@ -304,7 +427,7 @@ const ProgressTracker = ({
       <div className="ml-8 mt-1">
         {hasOverride && (
           <div className="flex items-center text-sm text-blue-600 mb-1">
-            <span>{overrideCount} {overrideCount === 1 ? 'Course' : 'Courses'} Taken outside UCSB</span>
+            <span>{overrideCount} course override applied</span>
             <button
               onClick={() => handleRemoveOverride(area)}
               className="ml-2 text-red-500 text-xs hover:underline"
@@ -316,7 +439,7 @@ const ProgressTracker = ({
           </div>
         )}
 
-        {courses.length > 0 ? (
+        {courses.length > 0 && (
           <>
             <ul className="list-disc space-y-1 break-words text-sm text-gray-600">
               {itemsToShow.map((course) => (
@@ -338,26 +461,71 @@ const ProgressTracker = ({
               </button>
             )}
           </>
-        ) : (
-          // Only show "No courses" message if there are no courses AND no overrides
-          hasOverride ? null : null
         )}
       </div>
     );
   };
 
+  // Render list of major courses in each category
   const renderMajorCourseList = (area: string, courses: Course[] = []) => {
     const isExpanded = expandedMajorAreas[area] || false;
-    const itemsToShow = isExpanded ? courses : courses.slice(0, 1);
-    if (courses.length === 0) return null;
+    const itemsToShow = isExpanded ? courses : courses.slice(0, 3);
+
+    if (courses.length === 0) {
+      return <p className="text-sm text-gray-500">No courses found.</p>;
+    }
+
     return (
-      <div className="ml-8 mt-1">
-        <ul className="list-disc space-y-1 break-words text-sm text-gray-600">
-          {itemsToShow.map((course) => (
-            <li key={course.gold_id}>
-              {course.gold_id} ({course.units} units)
-            </li>
-          ))}
+      <div className="ml-4 mt-1">
+        <ul className="list-none space-y-1 break-words text-md">
+          {itemsToShow.map((course) => {
+            // Check if this course is in the schedule
+            const isCompletedInSchedule = majorStatus[area]?.courses.some((c) => c.id === course.id);
+
+            // Check if overridden
+            const overrideForThisCourse = overrides.find(
+              (o) =>
+                o.type === 'major' &&
+                o.requirement === 'specific-course' &&
+                o.courseId === course.id
+            );
+            const isOverridden = !!overrideForThisCourse;
+
+            // If either isOverridden or isCompletedInSchedule => "fulfilled"
+            const isFulfilled = isCompletedInSchedule || isOverridden;
+
+            return (
+              <li key={course.id} className="mb-2">
+                <div className="flex items-center">
+                  {/* SINGLE CHECKBOX for both schedule or override. */}
+                  <input
+                    type="checkbox"
+                    readOnly
+                    checked={isFulfilled}
+                    className="mr-2 cursor-pointer"
+                    onClick={() => handleMajorCourseCheckboxClick(course, isFulfilled)}
+                    title="Click if you have external credit for this course"
+                  />
+                  <span>
+                    {course.gold_id} ({course.units} units)
+                  </span>
+                </div>
+                {/* If overridden, show a small message (blue) + remove link */}
+                {isOverridden && (
+                  <div className="ml-6 text-sm text-blue-600">
+                    <span> Overriden ({overrideForThisCourse.creditSource}) </span>
+                    <button
+                      onClick={() => handleRemoveMajorOverride(course)}
+                      className="ml-2 text-red-500 text-xs hover:underline"
+                      disabled={isAddingOverride}
+                    >
+                      (Remove)
+                    </button>
+                  </div>
+                )}
+              </li>
+            );
+          })}
         </ul>
         {courses.length > 1 && (
           <button
@@ -377,7 +545,9 @@ const ProgressTracker = ({
 
   const renderExtraCoursesList = () => {
     const itemsToShow = showAllExtra ? extraCourses : extraCourses.slice(0, 3);
-    if (extraCourses.length === 0) return <p className="ml-5 text-sm text-gray-500">No extra courses taken.</p>;
+    if (extraCourses.length === 0) {
+      return <p className="ml-5 text-sm text-gray-500">No extra courses taken.</p>;
+    }
     return (
       <div className="ml-5">
         <ul className="list-disc space-y-1 break-words">
@@ -401,24 +571,21 @@ const ProgressTracker = ({
     );
   };
 
-  // Compute GE units (courses that have GE info).
+  // Compute GE units
   const geUnits = scheduledCourses
     .filter((course) => course.generalEd && course.generalEd.length > 0)
     .reduce((sum, course) => sum + course.units, 0);
 
-  // Compute major units from courses used in majorStatus.
+  // Compute major units
   const majorUnits = Object.values(majorStatus).reduce((sum, category) => {
     return sum + category.courses.reduce((s, course) => s + course.units, 0);
   }, 0);
 
-  // Extra units: sum from extraCourses.
+  // Extra units
   const extraUnits = extraCourses.reduce((sum, course) => sum + course.units, 0);
 
-  // External units are calculated from unit-type overrides
-
-  // Calculate GPA based on courses with grades
+  // Calculate GPA
   const calculateGPA = () => {
-    // Grade point mapping
     const gradePoints: { [key: string]: number } = {
       'A+': 4.0, 'A': 4.0, 'A-': 3.7,
       'B+': 3.3, 'B': 3.0, 'B-': 2.7,
@@ -426,31 +593,24 @@ const ProgressTracker = ({
       'D+': 1.3, 'D': 1.0, 'D-': 0.7,
       'F': 0.0
     };
-
-    // Filter courses that have letter grades (not P/NP)
-    const gradedCourses = scheduledCourses.filter(course =>
-      course.grade && course.grade in gradePoints
+    const gradedCourses = scheduledCourses.filter(
+      (course) => course.grade && course.grade in gradePoints
     );
-
     if (gradedCourses.length === 0) return null;
 
-    // Calculate total grade points and total units
     let totalGradePoints = 0;
     let totalGradedUnits = 0;
-
-    gradedCourses.forEach(course => {
+    gradedCourses.forEach((course) => {
       if (course.grade && course.grade in gradePoints) {
         totalGradePoints += gradePoints[course.grade] * course.units;
         totalGradedUnits += course.units;
       }
     });
-
     return totalGradedUnits > 0 ? (totalGradePoints / totalGradedUnits).toFixed(2) : null;
   };
-
   const gpa = calculateGPA();
 
-  // Render a legend for the progress bar
+  // Render a legend
   const renderProgressLegend = () => {
     return (
       <div className="flex flex-wrap justify-center mt-2 text-xs gap-2">
@@ -472,6 +632,19 @@ const ProgressTracker = ({
         </div>
       </div>
     );
+  };
+
+  // Add this function before the return statement in your component
+  const countMajorOverridesForCategory = (category: 'preparation' | 'upperRequired' | 'upperElectives') => {
+    const relevantCourses = majorCourses[category] || [];
+    return relevantCourses.reduce((count, course) => {
+      const hasOverride = overrides.some(
+        o => o.type === 'major' && 
+             o.requirement === 'specific-course' && 
+             o.courseId === course.id
+      );
+      return count + (hasOverride ? 1 : 0);
+    }, 0);
   };
 
   return (
@@ -554,70 +727,26 @@ const ProgressTracker = ({
         <div role="region" aria-label="Major Courses">
           {/* Lower Division Section */}
           <div>
-            <h4 className="text-md font-semibold">Lower Division</h4>
-            <ul className="list-none space-y-2 ml-4">
-              <li>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center">
-                    <input
-                      type="checkbox"
-                      readOnly
-                      checked={!!majorStatus.preparation?.fulfilled}
-                      className="mr-2"
-                      aria-label="Lower Division (Preparation) requirement fulfilled"
-                    />
-                    <span>Preparation</span>
-                  </div>
-                  <span className="text-sm text-gray-600">
-                    {majorStatus.preparation?.count || 0}/{majorStatus.preparation?.required || 0}
-                  </span>
-                </div>
-                {renderMajorCourseList("preparation", majorStatus.preparation?.courses || [])}
-              </li>
-            </ul>
+            <h4 className="text-md font-semibold">
+              Preparation {majorStatus.preparation?.count + countMajorOverridesForCategory('preparation') || 0}/{majorStatus.preparation?.required || 0}
+            </h4>
+            {renderMajorCourseList("preparation", majorCourses.preparation)}
           </div>
 
           {/* Upper Division Section */}
           <div className="mt-4">
-            <h4 className="text-md font-semibold">Upper Division</h4>
-            <ul className="list-none space-y-2 ml-4">
-              <li>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center">
-                    <input
-                      type="checkbox"
-                      readOnly
-                      checked={!!majorStatus.upperRequired?.fulfilled}
-                      className="mr-2"
-                      aria-label="Upper Division (Required) requirement fulfilled"
-                    />
-                    <span>Required</span>
-                  </div>
-                  <span className="text-sm text-gray-600">
-                    {majorStatus.upperRequired?.count || 0}/{majorStatus.upperRequired?.required || 0}
-                  </span>
-                </div>
-                {renderMajorCourseList("upperRequired", majorStatus.upperRequired?.courses || [])}
-              </li>
-              <li>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center">
-                    <input
-                      type="checkbox"
-                      readOnly
-                      checked={!!majorStatus.upperElectives?.fulfilled}
-                      className="mr-2"
-                      aria-label="Upper Division (Electives) requirement fulfilled"
-                    />
-                    <span>Electives</span>
-                  </div>
-                  <span className="text-sm text-gray-600">
-                    {majorStatus.upperElectives?.count || 0}/{majorStatus.upperElectives?.required || 0}
-                  </span>
-                </div>
-                {renderMajorCourseList("upperElectives", majorStatus.upperElectives?.courses || [])}
-              </li>
-            </ul>
+            <h4 className="text-md font-semibold">
+              Required {majorStatus.upperRequired?.count + countMajorOverridesForCategory('upperRequired') || 0}/{majorStatus.upperRequired?.required || 0}
+            </h4>
+            {renderMajorCourseList("upperRequired", majorCourses.upperRequired)}
+          </div>
+
+          {/* Electives Section */}
+          <div className="mt-4">
+            <h4 className="text-md font-semibold">
+              Electives {majorStatus.upperElectives?.count + countMajorOverridesForCategory('upperElectives') || 0}/{majorStatus.upperElectives?.required || 0}
+            </h4>
+            {renderMajorCourseList("upperElectives", majorCourses.upperElectives)}
           </div>
         </div>
       </CollapsibleCard>
@@ -640,12 +769,21 @@ const ProgressTracker = ({
         </div>
       </CollapsibleCard>
 
-      {/* Override Popup */}
+      {/* GE Override Popup (unchanged) */}
       {overridePopupArea && (
         <GEOverridePopup
           area={overridePopupArea}
           onClose={() => setOverridePopupArea(null)}
           onConfirm={handleOverrideConfirm}
+        />
+      )}
+
+      {/* MAJOR Override Popup (NEW) */}
+      {overridePopupCourse && (
+        <MajorOverridePopup
+          course={overridePopupCourse}
+          onClose={() => setOverridePopupCourse(null)}
+          onConfirm={handleMajorOverrideConfirm}
         />
       )}
     </div>

@@ -54,6 +54,7 @@ export const PrerequisiteRenderer: React.FC<Props> = ({ node, depth = 0, complet
       try {
         // Convert string IDs to numbers
         const numericIds = idsToFetch.map(id => parseInt(id, 10)).filter(id => !isNaN(id));
+        if(numericIds.length === 0) return;
         
         // Fetch course information for these IDs
         const response = await fetch('/api/course/query/batch', {
