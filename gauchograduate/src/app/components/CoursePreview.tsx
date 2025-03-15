@@ -110,9 +110,6 @@ const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose, studentS
           <strong>Description:</strong> {course.description}
         </p>
         <p className="mb-3">
-          <strong>Subject Area:</strong> {course.subjectArea}
-        </p>
-        <p className="mb-3">
           <strong>Units:</strong> {course.units}
         </p>
 
