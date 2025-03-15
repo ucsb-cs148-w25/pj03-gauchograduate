@@ -76,7 +76,7 @@ export default function CourseCatalog({
 
   return (
     <div className="h-full w-full flex flex-col rounded-xl overflow-hidden relative">
-      <div className="flex-none bg-[var(--off-white)] px-2 pt-2 pb-4">
+      <div className="sticky top-0 bg-[var(--off-white)] px-2 pt-2 pb-4">
         <h2 className="text-xl font-semibold mb-4">Course Catalog</h2>
 
         <input
@@ -134,8 +134,8 @@ export default function CourseCatalog({
       </div>
 
       <div className="flex-1 overflow-y-auto min-h-0 shadow-[inset_0_8px_6px_-6px_rgba(0,0,0,0.1)] relative">
-        {isLoading ? (
-          <div className="absolute inset-0 bg-white bg-opacity-70 flex items-center justify-center z-10">
+        {isLoading && (
+          <div className="absolute inset-0 bg-white bg-opacity-70 flex items-center justify-center z-50">
             <div className="text-lg font-medium text-gray-600 animate-pulse flex items-center">
               <svg
                 className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-600"
@@ -160,47 +160,46 @@ export default function CourseCatalog({
               Loading courses...
             </div>
           </div>
-        ) : (
-          <div className="space-y-4 p-2 pt-4">
-            {filteredCourses.map((course) => {
-              const bgColorClass =
-                course.generalEd.length === 0
-                  ? "bg-[var(--pale-orange)]"
-                  : "bg-[var(--pale-pink)]";
-              return (
-                <div
-                  key={course.gold_id}
-                  className="p-4 border border-gray-300 rounded-xl bg-white flex flex-col gap-5 cursor-pointer"
-                  draggable={true}
-                  onDragStart={(e) => {
-                    e.dataTransfer.setData("application/json", JSON.stringify(course));
-                  }}
-                  onClick={() => setSelectedCourse(course)}
-                >
-                  <div>
-                    <h3 className="text-lg font-bold">{course.gold_id}</h3>
-                    <p className="text-sm">{course.title}</p>
-                  </div>
-                  <div className="flex flex-wrap gap-2 justify-between items-center">
-                    <p className="text-sm text-gray-500">{course.units} units</p>
-                    <div
-                      className={`p-1.5 border border-[var(--pale-pink)] rounded-lg ${bgColorClass}`}
-                    >
-                      <p className="text-xs text-gray-500">
-                        {course.generalEd.length === 0 ? "Core" : "Gen Ed"}
-                      </p>
-                    </div>
+        )}
+        <div className="space-y-4 p-2 pt-4">
+          {filteredCourses.map((course) => {
+            const bgColorClass =
+              course.generalEd.length === 0
+                ? "bg-[var(--pale-orange)]"
+                : "bg-[var(--pale-pink)]";
+            return (
+              <div
+                key={course.gold_id}
+                className="p-4 border border-gray-300 rounded-xl bg-white flex flex-col gap-5 cursor-pointer"
+                draggable={true}
+                onDragStart={(e) => {
+                  e.dataTransfer.setData("application/json", JSON.stringify(course));
+                }}
+                onClick={() => setSelectedCourse(course)}
+              >
+                <div>
+                  <h3 className="text-lg font-bold">{course.gold_id}</h3>
+                  <p className="text-sm">{course.title}</p>
+                </div>
+                <div className="flex flex-wrap gap-2 justify-between items-center">
+                  <p className="text-sm text-gray-500">{course.units} units</p>
+                  <div
+                    className={`p-1.5 border border-[var(--pale-pink)] rounded-lg ${bgColorClass}`}
+                  >
+                    <p className="text-xs text-gray-500">
+                      {course.generalEd.length === 0 ? "Core" : "Gen Ed"}
+                    </p>
                   </div>
                 </div>
-              );
-            })}
-            {filteredCourses.length === 0 && !isLoading && (
-              <p className="text-sm text-gray-500">
-                No courses found. <br /> Are they already in your schedule?
-              </p>
-            )}
-          </div>
-        )}
+              </div>
+            );
+          })}
+          {filteredCourses.length === 0 && !isLoading && (
+            <p className="text-sm text-gray-500">
+              No courses found. <br /> Are they already in your schedule?
+            </p>
+          )}
+        </div>
       </div>
 
       {selectedCourse && (
