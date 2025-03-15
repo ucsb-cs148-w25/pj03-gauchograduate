@@ -176,8 +176,7 @@ const CoursePreview: React.FC<CoursePreviewProps> = ({ course, onClose, studentS
         </div>
 
         <p className="mb-1">
-          <strong>Unlocks:</strong>{" "}
-          {course.unlocks.length ? course.unlocks.join(", ") : "None"}
+          <small className="text-gray-400">This course is not yet in your schedule.</small>
         </p>
       </div>
     </div>
