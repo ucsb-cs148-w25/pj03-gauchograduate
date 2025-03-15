@@ -76,7 +76,7 @@ export default function CourseCatalog({
 
   return (
     <div className="h-full w-full flex flex-col rounded-xl overflow-hidden relative">
-      <div className="sticky top-0 z-10 bg-[var(--off-white)] px-2 pt-2 pb-4">
+      <div className="sticky top-0 bg-[var(--off-white)] px-2 pt-2 pb-4">
         <h2 className="text-xl font-semibold mb-4">Course Catalog</h2>
 
         <input
