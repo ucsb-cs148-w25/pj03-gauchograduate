@@ -43,6 +43,7 @@ Install Node (v23.6.0) and NPM (v10.9.2) first.
 ├── postcss@8.5.1 - Similar to Emotion, another CSS/JS integrated styling tool.
 ├── prisma@6.2.1 - Once again, Prisma is our ORM.
 ├── react-circular-progressbar@2.1.0 - A component we use for the stylish progress bar.
+├── react-to-print@3.0.5 - The library we use to generate printable planners.
 ├── react-dom@19.0.0 - React, our frontend framework.
 ├── react@19.0.0 - Ditto.
 ├── tailwindcss@3.4.17 - Tailwind, our styling framework.
@@ -57,9 +58,7 @@ Install all dependencies by running `npm ci` in the `gauchograduate/` directory.
 To use the app, navigate to https://gauchograduate.vercel.app , and sign in with your UCSB account. You can now drag and drop courses into the course planner and see your graduation progress. Select the year you would like to drop courses into in the planner section to see all four years of your University journey. You can also update your profile to edit personal details such as your major.
 
 ### Known Problems
-- The full list of courses has not been integrated into the frontend yet.
-- Course planner data is not yet saved to the user.
-- Major-based planning suggestions have not yet been implemented.
+- Specific major course overrides are not recognized as completed prerequisites.
 
 ### License
 Our license is in the LICENSE.md file, it is the GNU General Public License v3.0
