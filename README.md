@@ -57,8 +57,9 @@ Install all dependencies by running `npm ci` in the `gauchograduate/` directory.
 ### Functionality
 To use the app, navigate to https://gauchograduate.vercel.app , and sign in with your UCSB account. You can now drag and drop courses into the course planner and see your graduation progress. Select the year you would like to drop courses into in the planner section to see all four years of your University journey. You can also update your profile to edit personal details such as your major.
 
-### Known Problems
+### Known Problems/Limitations
 - Specific major course overrides are not recognized as completed prerequisites.
+- Currently, only CoE majors have their requirements fully loaded. This is because scraping individual L&S major requirements requires finding their major sheets individually from their independent websites, which is tedious and time consuming. However, the workflow we have built using OpenAI parsing techniques can support parsing all of these major sheets once they are located.
 
 ### License
 Our license is in the LICENSE.md file, it is the GNU General Public License v3.0
