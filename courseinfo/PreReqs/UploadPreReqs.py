@@ -16,36 +16,7 @@ def UploadFile():
 
         # classes = each row
         # indiv_class is dict_keys(['quarter', 'courseId', 'title', 'contactHours', 'description', 'college', 'objLevelCode', 'subjectArea', 'unitsFixed', 'unitsVariableHigh', 'unitsVariableLow', 'delayedSectioning', 'inProgressCourse', 'gradingOption', 'instructionType', 'instructionTypeSecondary', 'onLineCourse', 'deptCode', 'generalEducation', 'classSections'])
-        prereq = """{
-"and": [
-    {"class" : [{"goldId": "CHEM_1A",
-      "Required_Grade" : "Na",
-      "Taken_Concurrently" : "False"
-    }]},
-    {"and" : [{"class": [{"goldId": "U",
-      "Required_Grade" : "Na",
-      "Taken_Concurrently" : "False"
-    }, {"goldId": "CHEM_1B",
-      "Required_Grade" : "Na",
-      "Taken_Concurrently" : "True"
-    }]}]},
-    {"or" : [{"class": [{"goldId": "CMPCS_16",
-      "Required_Grade" : "C-",
-      "Taken_Concurrently" : "True"
-    }, {"goldId": "CMPCS_9",
-      "Required_Grade" : "Na",
-      "Taken_Concurrently" : "False"
-    }]}]},
-    {"and" : [{"class": [{"goldId": "MATH_4A",
-      "Required_Grade" : "B+",
-      "Taken_Concurrently" : "False"
-    }, {"goldId": "MATH_6A",
-      "Required_Grade" : "B",
-      "Taken_Concurrently" : "True"
-    }]}]}
-   ]
-}
-"""
+        prereq = """-1"""
 
         # course_values = "INSERT INTO " + table_name + "\nVALUES ( '"+goldId +"', '"+ title +"', '"+ description +"', '"+subjectArea +"', "+ units +", "+ json.dumps(genEd) +", '"+prereq +"', '"+ unlock+ "');\n"
         # course_values = "( '"+goldId +"', '"+ title +"', '"+ description +"', '"+subjectArea +"', "+ units +", '"+ genEd +"'::json, '"+prereq +"', '"+ unlock+ "')\n"

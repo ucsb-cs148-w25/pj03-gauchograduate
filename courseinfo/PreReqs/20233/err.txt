@@ -1,0 +1,47 @@
+(venv) kade@169-231-106-135 PreReqs % python ScrapePreReqs.py
+Course not found for id: ANTH 148
+
+dept code not found for subject with code : CHEM W 142A
+
+Failed to click PreRequisites button for course COMM 116 : Message: stale element reference: stale element not found in the current frame
+  (Session info: chrome=134.0.6998.89); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+0   chromedriver                        0x00000001030ed804 cxxbridge1$str$ptr + 2785964
+1   chromedriver                        0x00000001030e5ddc cxxbridge1$str$ptr + 2754692
+2   chromedriver                        0x0000000102c39ea8 cxxbridge1$string$len + 92928
+3   chromedriver                        0x0000000102c3fcd0 cxxbridge1$string$len + 117032
+4   chromedriver                        0x0000000102c41d74 cxxbridge1$string$len + 125388
+5   chromedriver                        0x0000000102c41e1c cxxbridge1$string$len + 125556
+6   chromedriver                        0x0000000102c7c678 cxxbridge1$string$len + 365264
+7   chromedriver                        0x0000000102c76878 cxxbridge1$string$len + 341200
+8   chromedriver                        0x0000000102cc2678 cxxbridge1$string$len + 651984
+9   chromedriver                        0x0000000102c7535c cxxbridge1$string$len + 335796
+10  chromedriver                        0x00000001030b2cd4 cxxbridge1$str$ptr + 2545532
+11  chromedriver                        0x00000001030b5fa0 cxxbridge1$str$ptr + 2558536
+12  chromedriver                        0x0000000103092d04 cxxbridge1$str$ptr + 2414508
+13  chromedriver                        0x00000001030b6800 cxxbridge1$str$ptr + 2560680
+14  chromedriver                        0x0000000103083ba0 cxxbridge1$str$ptr + 2352712
+15  chromedriver                        0x00000001030d645c cxxbridge1$str$ptr + 2690820
+16  chromedriver                        0x00000001030d65e4 cxxbridge1$str$ptr + 2691212
+17  chromedriver                        0x00000001030e5a50 cxxbridge1$str$ptr + 2753784
+18  libsystem_pthread.dylib             0x000000018f7cf2e4 _pthread_start + 136
+19  libsystem_pthread.dylib             0x000000018f7ca0fc thread_start + 8
+
+Course not found for id: ED 109M
+Course not found for id: ENV S 143
+
+dept code not found for subject with code : ENV SW 50
+
+Course not found for id: INT 35HD
+Course not found for id: INT 94GN
+Course not found for id: INT 94OR
+Course not found for id: INT 94UW
+
+dept code not found for subject with code : MCDB W 108A
+
+
+dept code not found for subject with code : MCDB W 138
+
+Course not found for id: MUS 109CA
+
+dept code not found for subject with code : PSTATW 182T

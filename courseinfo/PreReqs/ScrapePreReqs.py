@@ -160,6 +160,11 @@ for id in gold_ids :
     courses_data = []
     last_space_index = id.rfind(' ')
     dept = id[:last_space_index]
+    if dept not in subject_mapping_20241:
+        print()
+        print(f"dept code not found for subject with code : {id}")
+        print()
+        continue  # Skip this iteration and move to the next loop
     dept = subject_mapping_20241[dept]
     num = id[last_space_index + 1:]
 
