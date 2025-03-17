@@ -1,0 +1,3279 @@
+id: ANTH 109
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ANTH    109, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ANTH 111
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ANTH 117
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">ANTH      2    </td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ANTH 138TS
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ANTH    138TS, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ANTH 3SS
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ANTH      3SS, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ANTH 5
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ART 125
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ART 130
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ARTHI 136I
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ARTHI   136I, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ARTHI 5B
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ARTHI     5B, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ARTHI 6L
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ARTHI     6L, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl">A survey of global history or art history is recommended.                                                                                                                                                                                                                                                                                                                              </span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: AS AM 118
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: AS AM 2
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">AS AM     2, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: BL ST 1
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: BL ST 126
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">BL ST   126, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: CHEM 123
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">CHEM      1A   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">AND CHEM      1B   </td>
+	</tr>
+</tbody></table>
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl">Chemistry 1C.                                                                                                                                                                                                                                                                                                                                                                          </span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: CHEM 150
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: CHEM 173A
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: CHIN 103
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">CHIN    103, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: CHIN 40
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: CH ST 161
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">CH ST   161, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: CH ST 1A
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">CH ST     1A, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: CLASS 106
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">CLASS   106, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: CLASS 196
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: CLASS 36
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">CLASS    36, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: C LIT 128A
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: C LIT 190A
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">WRIT      2*   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: AP           36 with a score of 4</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: AP           37 with a score of 4</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: WAIV         AW with a score of 1</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: IB           BL with a score of 6</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: IB           E  with a score of 6</td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: C LIT 31
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: C LIT 32
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">C LIT    32, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: C LIT 33
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">C LIT    33, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: C LIT 34
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">C LIT    34, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: C LIT 99
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">CNCSP   110, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: CNCSP 114
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: COMM 123
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">COMM    123, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: COMM 128
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: COMM 133
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">COMM    133, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: COMM 151
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">COMM    151, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: COMM 154
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">COMM    154, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: COMM 160UC
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">COMM    160UC, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: COMM 170
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">COMM    170, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: DANCE 143A
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">DANCE   143A, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl">Good body awareness and fitness.                                                                                                                                                                                                                                                                                                                                                       </span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: DANCE 147S
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">DANCE   147S, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: DANCE 43B
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: DANCE 51
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">DANCE    56C   </td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: EARTH 123
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ECON 114B
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ECON 135
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">ECON    100B   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">AND ECON    101    </td>
+	</tr>
+</tbody></table>
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl">Economics 134A.                                                                                                                                                                                                                                                                                                                                                                        </span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: EEMB 159
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">EEMB     40, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ENGL 103B
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">a class level of JR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of LM             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SB             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SP             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SS             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">WRIT      2*   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">WRIT     50*   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">WRIT    109*   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">ENGL     10    </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: AP           36 with a score of 4</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: AP           37 with a score of 4</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: WAIV         AW with a score of 1</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: WAIV         RW with a score of 1</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: IB           BL with a score of 6</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: IB           E  with a score of 6</td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ENGL 104A
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">a class level of JR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of LM             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SB             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SP             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SS             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">WRIT      2*   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">WRIT     50*   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">WRIT    109*   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">ENGL     10    </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: AP           36 with a score of 4</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: AP           37 with a score of 4</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: WAIV         AW with a score of 1</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: WAIV         RW with a score of 1</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: IB           BL with a score of 6</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: IB           E  with a score of 6</td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ENGL 122UE
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">a class level of JR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of LM             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SB             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SP             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SS             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">WRIT      2*   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: AP           36 with a score of 4</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: AP           37 with a score of 4</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: WAIV         AW with a score of 1</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: IB           BL with a score of 6</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: IB           E  with a score of 6</td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ENGL 124
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">a class level of JR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of LM             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SB             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SP             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SS             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">WRIT      2*   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">WRIT     50*   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">WRIT    109*   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">ENGL     10    </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: AP           36 with a score of 4</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: AP           37 with a score of 4</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: WAIV         AW with a score of 1</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: WAIV         RW with a score of 1</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: IB           BL with a score of 6</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: IB           E  with a score of 6</td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ENGL 134AA
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">a class level of JR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of LM             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SB             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SP             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SS             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">WRIT      2*   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: AP           36 with a score of 4</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: AP           37 with a score of 4</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: WAIV         AW with a score of 1</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: IB           BL with a score of 6</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: IB           E  with a score of 6</td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ENGL 134AL
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">a class level of JR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of LM             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SB             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SP             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SS             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">WRIT      2*   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: AP           36 with a score of 4</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: AP           37 with a score of 4</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: WAIV         AW with a score of 1</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: IB           BL with a score of 6</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: IB           E  with a score of 6</td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ENGL 147AP
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">a class level of JR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of LM             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SB             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SP             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SS             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">WRIT      2*   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: AP           36 with a score of 4</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: AP           37 with a score of 4</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: WAIV         AW with a score of 1</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: IB           BL with a score of 6</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: IB           E  with a score of 6</td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ENGL 15
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ENGL 165IB
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">WRIT      2    </td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ENGL 184
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ENGL 192FE
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">a class level of JR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of LM             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SB             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SP             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SS             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">WRIT      2*   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">WRIT     50*   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">WRIT    109*   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">ENGL     10    </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: AP           36 with a score of 4</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: AP           37 with a score of 4</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: WAIV         AW with a score of 1</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: IB           BL with a score of 6</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: IB           E  with a score of 6</td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ENGL 193
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">a class level of JR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of LM             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SB             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SP             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SS             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">WRIT      2*   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">WRIT     50*   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">WRIT    109*   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">ENGL     10    </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: AP           36 with a score of 4</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: AP           37 with a score of 4</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: WAIV         AW with a score of 1</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: WAIV         RW with a score of 1</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: IB           BL with a score of 6</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: IB           E  with a score of 6</td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ENGL 22
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ENGL     22, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ENGL 65AL
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ENV S 1
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ENV S 108W
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">ENV S     1    </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">ENV S     2    </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">ENV S     3    </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: AP           40 with a score of 3</td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ENV S 159
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ENV S   159, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ESS W 9
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">CMPSC     8     with a minimum grade of C</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">CMPSCW    8     with a minimum grade of C</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">ENGR      3     with a minimum grade of C</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">ENGR W    3     with a minimum grade of C</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">ECE       3     with a minimum grade of C</td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: FAMST 101A
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">FLMST    46     with a minimum grade of C</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">FAMST    46     with a minimum grade of C</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;">As well as: </td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">FAMST    70     with a minimum grade of C</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">FLMST    70     with a minimum grade of C</td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: FAMST 109EM
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">FAMST   109EM, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: FAMST 109EP
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: FAMST 110
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">FAMST   110, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl">Open to upper-division FAMST majors only                                                                                                                                                                                                                                                                                                                                               </span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: FAMST 182
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: FAMST 188SS
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">FAMST   188SS, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: FAMST 188WS
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: FAMST 55CY
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">FEMST    60, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: FR 154F
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">FR      155C, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: GEOG 176A
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">GEOG    176A, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl">GEOG 12 or GEOG W 12                                                                                                                                                                                                                                                                                                                                                                   </span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: GEOG W 8
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">GER     116A, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: GER 187
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">GER     187, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: GLOBL 118
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: HIST 133D
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">HIST      2C   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">HIST      4C   </td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: HIST 179A
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">a class level of JR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of LM             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SB             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SP             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SS             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">HIST     17A   </td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: HIST 189M
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">HIST    189M, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: HIST 4A
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">HIST      4A, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: HIST 56
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">HIST     74, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: HIST 88
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: INT 35LT
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: INT 37UD
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">INT      37UD, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: INT 37VR
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: INT 86FV
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">INT      86NG, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: INT 86QV
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: INT 86SH
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">INT      86SH, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: INT 86TY
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: INT 86WA
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">INT      86WA, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: INT 86WF
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">INT      86WF, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: INT 86WG
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">INT      86WG, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: INT 86WH
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">INT      86WH, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: INT 90M
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">INT      90M, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: JAPAN 1
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">JAPAN     1, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: KOR 1
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">KOR       1, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: LAIS 101
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">LAIS    101, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: LING 106
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">LING    106, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: LING 132
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">LING    132, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: LING 147LD
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">a class level of JR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of LM             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SB             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SP             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SS             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">LING     20    </td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: MAT 10
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">MAT      10, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: MAT 110CF
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">MAT     111AU, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: MAT 111FS
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: MAT 111PF
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">MAT     111PF, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: MAT 111WN
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">MAT      10    </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">CMPSC     8    </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">CMPSCW    8    </td>
+	</tr>
+</tbody></table>
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl">Students taking this course should have already completed at least two     upper-division courses within the Creative Computing Minor.                                                                                                                                                                                                                                                 </span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: MATH 119A
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">MATH      4B    with a minimum grade of C</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">AND MATH      6A    with a minimum grade of C</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">AND MATH      8     with a minimum grade of C</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">MATH      4BI   with a minimum grade of C</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">AND MATH      6A    with a minimum grade of C</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">AND MATH      8     with a minimum grade of C</td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: MCDB 108A
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">MCDB      1A    with a minimum grade of C</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">AND EEMB      2     with a minimum grade of C</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">AND MCDB      1B    with a minimum grade of C</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;">As well as: </td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">CHEM      1A    with a minimum grade of C</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">AND CHEM      1B    with a minimum grade of C</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">AND CHEM      1C    with a minimum grade of C</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;">As well as: </td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">CHEM    109A    with a minimum grade of C</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">AND CHEM    109B    with a minimum grade of C</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;">As well as: </td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">CHEM    109C    with a minimum grade of C (can be taken concurrently)</td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: MCDB 1AZ
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">MCDB      1AZ, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ME 14
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">ME       14     with a minimum grade of C-</td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ME 17
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">ENGR      3    </td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: PHIL 100F
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">PHIL    *      </td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: PHIL 141
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">PHIL    100A   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">PHIL    *      </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">AND PHIL    *      </td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: PHIL 145
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: POL S 101
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">POL S   101, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: POL S 124
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">POL S     7    </td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: POL S 145
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">POL S     6    </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">POL S     7    </td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: POL S 186
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: PSTAT 194TR
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">PSY     116, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: PSY 160DW
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">PSY     160DW, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: PSY 183
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: RG ST 1
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">RG ST     1, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: RG ST 106
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">RG ST   110, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: RG ST 160A
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">RG ST   160A, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: RG ST 21
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: SLAV 187
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">SLAV    187, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: SOC 10
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: SOC 126
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">SOC     126, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: SOC 170
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: SOC 185E
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">SOC     185E, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: SOC W 155
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">SPAN    126, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: SPAN W 2
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">THTR    143, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: THTR 144A
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: THTR 144B
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">THTR    144B, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: THTR 43
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">THTR     43, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: WRIT 107G
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">WRIT      2*   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: AP           36 with a score of 4</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: AP           37 with a score of 4</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: WAIV         AW with a score of 1</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: IB           BL with a score of 6</td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">Taken Exam: IB           E  with a score of 6</td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: WRIT 199
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">WRIT    199, offered in Summer 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+

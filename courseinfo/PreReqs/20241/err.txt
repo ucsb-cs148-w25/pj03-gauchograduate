@@ -150,6 +150,4 @@ Failed to select 'Material - MATRL' from department dropdown: Message: Could not
 
 Failed to select 'Material - MATRL' from department dropdown: Message: Could not locate element with visible text: Material - MATRL; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
 
-Actually being used.
-ANTH 3, 100, 194
 

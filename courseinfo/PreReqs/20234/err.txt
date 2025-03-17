@@ -1,0 +1,284 @@
+(venv) kade@169-231-106-135 PreReqs % python ScrapePreReqs.py
+Course not found for id: ANTH 121T
+Failed to click PreRequisites button for course ANTH 124 : Message: stale element reference: stale element not found in the current frame
+  (Session info: chrome=134.0.6998.89); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+0   chromedriver                        0x00000001027d1804 cxxbridge1$str$ptr + 2785964
+1   chromedriver                        0x00000001027c9ddc cxxbridge1$str$ptr + 2754692
+2   chromedriver                        0x000000010231dea8 cxxbridge1$string$len + 92928
+3   chromedriver                        0x0000000102323cd0 cxxbridge1$string$len + 117032
+4   chromedriver                        0x0000000102325d74 cxxbridge1$string$len + 125388
+5   chromedriver                        0x0000000102325e1c cxxbridge1$string$len + 125556
+6   chromedriver                        0x0000000102366d3c cxxbridge1$string$len + 391572
+7   chromedriver                        0x0000000102366254 cxxbridge1$string$len + 388780
+8   chromedriver                        0x000000010235adec cxxbridge1$string$len + 342596
+9   chromedriver                        0x000000010235a878 cxxbridge1$string$len + 341200
+10  chromedriver                        0x00000001023a6678 cxxbridge1$string$len + 651984
+11  chromedriver                        0x000000010235935c cxxbridge1$string$len + 335796
+12  chromedriver                        0x0000000102796cd4 cxxbridge1$str$ptr + 2545532
+13  chromedriver                        0x0000000102799fa0 cxxbridge1$str$ptr + 2558536
+14  chromedriver                        0x0000000102776d04 cxxbridge1$str$ptr + 2414508
+15  chromedriver                        0x000000010279a800 cxxbridge1$str$ptr + 2560680
+16  chromedriver                        0x0000000102767ba0 cxxbridge1$str$ptr + 2352712
+17  chromedriver                        0x00000001027ba45c cxxbridge1$str$ptr + 2690820
+18  chromedriver                        0x00000001027ba5e4 cxxbridge1$str$ptr + 2691212
+19  chromedriver                        0x00000001027c9a50 cxxbridge1$str$ptr + 2753784
+20  libsystem_pthread.dylib             0x000000018f7cf2e4 _pthread_start + 136
+21  libsystem_pthread.dylib             0x000000018f7ca0fc thread_start + 8
+
+Course not found for id: ANTH 143F
+Course not found for id: ANTH 162
+Course not found for id: ART 19
+Course not found for id: AS AM 114
+Failed to click PreRequisites button for course CHEM 117A : Message: stale element reference: stale element not found in the current frame
+  (Session info: chrome=134.0.6998.89); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+0   chromedriver                        0x00000001027d1804 cxxbridge1$str$ptr + 2785964
+1   chromedriver                        0x00000001027c9ddc cxxbridge1$str$ptr + 2754692
+2   chromedriver                        0x000000010231dea8 cxxbridge1$string$len + 92928
+3   chromedriver                        0x0000000102323cd0 cxxbridge1$string$len + 117032
+4   chromedriver                        0x0000000102325d74 cxxbridge1$string$len + 125388
+5   chromedriver                        0x0000000102325e1c cxxbridge1$string$len + 125556
+6   chromedriver                        0x0000000102368bb4 cxxbridge1$string$len + 399372
+7   chromedriver                        0x0000000102366fec cxxbridge1$string$len + 392260
+8   chromedriver                        0x00000001023663e8 cxxbridge1$string$len + 389184
+9   chromedriver                        0x000000010235b180 cxxbridge1$string$len + 343512
+10  chromedriver                        0x000000010235a878 cxxbridge1$string$len + 341200
+11  chromedriver                        0x00000001023a6678 cxxbridge1$string$len + 651984
+12  chromedriver                        0x000000010235935c cxxbridge1$string$len + 335796
+13  chromedriver                        0x0000000102796cd4 cxxbridge1$str$ptr + 2545532
+14  chromedriver                        0x0000000102799fa0 cxxbridge1$str$ptr + 2558536
+15  chromedriver                        0x0000000102776d04 cxxbridge1$str$ptr + 2414508
+16  chromedriver                        0x000000010279a800 cxxbridge1$str$ptr + 2560680
+17  chromedriver                        0x0000000102767ba0 cxxbridge1$str$ptr + 2352712
+18  chromedriver                        0x00000001027ba45c cxxbridge1$str$ptr + 2690820
+19  chromedriver                        0x00000001027ba5e4 cxxbridge1$str$ptr + 2691212
+20  chromedriver                        0x00000001027c9a50 cxxbridge1$str$ptr + 2753784
+21  libsystem_pthread.dylib             0x000000018f7cf2e4 _pthread_start + 136
+22  libsystem_pthread.dylib             0x000000018f7ca0fc thread_start + 8
+
+Course not found for id: CHEM 2A
+Course not found for id: CH ST 115N
+Failed to click PreRequisites button for course CH ST 154 : Message: stale element reference: stale element not found in the current frame
+  (Session info: chrome=134.0.6998.89); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+0   chromedriver                        0x00000001027d1804 cxxbridge1$str$ptr + 2785964
+1   chromedriver                        0x00000001027c9ddc cxxbridge1$str$ptr + 2754692
+2   chromedriver                        0x000000010231dea8 cxxbridge1$string$len + 92928
+3   chromedriver                        0x0000000102323cd0 cxxbridge1$string$len + 117032
+4   chromedriver                        0x0000000102325d74 cxxbridge1$string$len + 125388
+5   chromedriver                        0x0000000102325e1c cxxbridge1$string$len + 125556
+6   chromedriver                        0x0000000102366d3c cxxbridge1$string$len + 391572
+7   chromedriver                        0x0000000102366254 cxxbridge1$string$len + 388780
+8   chromedriver                        0x000000010235b180 cxxbridge1$string$len + 343512
+9   chromedriver                        0x000000010235a878 cxxbridge1$string$len + 341200
+10  chromedriver                        0x00000001023a6678 cxxbridge1$string$len + 651984
+11  chromedriver                        0x000000010235935c cxxbridge1$string$len + 335796
+12  chromedriver                        0x0000000102796cd4 cxxbridge1$str$ptr + 2545532
+13  chromedriver                        0x0000000102799fa0 cxxbridge1$str$ptr + 2558536
+14  chromedriver                        0x0000000102776d04 cxxbridge1$str$ptr + 2414508
+15  chromedriver                        0x000000010279a800 cxxbridge1$str$ptr + 2560680
+16  chromedriver                        0x0000000102767ba0 cxxbridge1$str$ptr + 2352712
+17  chromedriver                        0x00000001027ba45c cxxbridge1$str$ptr + 2690820
+18  chromedriver                        0x00000001027ba5e4 cxxbridge1$str$ptr + 2691212
+19  chromedriver                        0x00000001027c9a50 cxxbridge1$str$ptr + 2753784
+20  libsystem_pthread.dylib             0x000000018f7cf2e4 _pthread_start + 136
+21  libsystem_pthread.dylib             0x000000018f7ca0fc thread_start + 8
+
+Course not found for id: COMM 160HC
+Course not found for id: EACS 141
+Course not found for id: ENGL 10LC
+Course not found for id: ENV S 176
+Course not found for id: FAMST 150RC
+Course not found for id: FAMST 150XX
+Course not found for id: FAMST 56FR
+Course not found for id: FEMST 185BB
+Course not found for id: GLOBL 195
+
+(venv) kade@169-231-106-135 PreReqs % python ScrapePreReqs.py
+Continue button not found or not needed
+Find Courses link not found
+Failed to click PreRequisites button for course HIST 115A : Message: stale element reference: stale element not found in the current frame
+  (Session info: chrome=134.0.6998.89); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+0   chromedriver                        0x0000000102529804 cxxbridge1$str$ptr + 2785964
+1   chromedriver                        0x0000000102521ddc cxxbridge1$str$ptr + 2754692
+2   chromedriver                        0x0000000102075ea8 cxxbridge1$string$len + 92928
+3   chromedriver                        0x000000010207bcd0 cxxbridge1$string$len + 117032
+4   chromedriver                        0x000000010207dd74 cxxbridge1$string$len + 125388
+5   chromedriver                        0x000000010207de1c cxxbridge1$string$len + 125556
+6   chromedriver                        0x00000001020b8678 cxxbridge1$string$len + 365264
+7   chromedriver                        0x00000001020b2878 cxxbridge1$string$len + 341200
+8   chromedriver                        0x00000001020fe678 cxxbridge1$string$len + 651984
+9   chromedriver                        0x00000001020b135c cxxbridge1$string$len + 335796
+10  chromedriver                        0x00000001024eecd4 cxxbridge1$str$ptr + 2545532
+11  chromedriver                        0x00000001024f1fa0 cxxbridge1$str$ptr + 2558536
+12  chromedriver                        0x00000001024ced04 cxxbridge1$str$ptr + 2414508
+13  chromedriver                        0x00000001024f2800 cxxbridge1$str$ptr + 2560680
+14  chromedriver                        0x00000001024bfba0 cxxbridge1$str$ptr + 2352712
+15  chromedriver                        0x000000010251245c cxxbridge1$str$ptr + 2690820
+16  chromedriver                        0x00000001025125e4 cxxbridge1$str$ptr + 2691212
+17  chromedriver                        0x0000000102521a50 cxxbridge1$str$ptr + 2753784
+18  libsystem_pthread.dylib             0x000000018f7cf2e4 _pthread_start + 136
+19  libsystem_pthread.dylib             0x000000018f7ca0fc thread_start + 8
+
+Failed to click PreRequisites button for course HIST 118B : Message: stale element reference: stale element not found in the current frame
+  (Session info: chrome=134.0.6998.89); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+0   chromedriver                        0x0000000102529804 cxxbridge1$str$ptr + 2785964
+1   chromedriver                        0x0000000102521ddc cxxbridge1$str$ptr + 2754692
+2   chromedriver                        0x0000000102075ea8 cxxbridge1$string$len + 92928
+3   chromedriver                        0x000000010207bcd0 cxxbridge1$string$len + 117032
+4   chromedriver                        0x000000010207e01c cxxbridge1$string$len + 126068
+5   chromedriver                        0x00000001020ff444 cxxbridge1$string$len + 655516
+6   chromedriver                        0x00000001020fe678 cxxbridge1$string$len + 651984
+7   chromedriver                        0x00000001020b135c cxxbridge1$string$len + 335796
+8   chromedriver                        0x00000001024eecd4 cxxbridge1$str$ptr + 2545532
+9   chromedriver                        0x00000001024f1fa0 cxxbridge1$str$ptr + 2558536
+10  chromedriver                        0x00000001024ced04 cxxbridge1$str$ptr + 2414508
+11  chromedriver                        0x00000001024f2800 cxxbridge1$str$ptr + 2560680
+12  chromedriver                        0x00000001024bfba0 cxxbridge1$str$ptr + 2352712
+13  chromedriver                        0x000000010251245c cxxbridge1$str$ptr + 2690820
+14  chromedriver                        0x00000001025125e4 cxxbridge1$str$ptr + 2691212
+15  chromedriver                        0x0000000102521a50 cxxbridge1$str$ptr + 2753784
+16  libsystem_pthread.dylib             0x000000018f7cf2e4 _pthread_start + 136
+17  libsystem_pthread.dylib             0x000000018f7ca0fc thread_start + 8
+
+Failed to click PreRequisites button for course HIST 127A : Message: stale element reference: stale element not found in the current frame
+  (Session info: chrome=134.0.6998.89); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+0   chromedriver                        0x0000000102529804 cxxbridge1$str$ptr + 2785964
+1   chromedriver                        0x0000000102521ddc cxxbridge1$str$ptr + 2754692
+2   chromedriver                        0x0000000102075ea8 cxxbridge1$string$len + 92928
+3   chromedriver                        0x000000010207bcd0 cxxbridge1$string$len + 117032
+4   chromedriver                        0x000000010207dd74 cxxbridge1$string$len + 125388
+5   chromedriver                        0x000000010207de1c cxxbridge1$string$len + 125556
+6   chromedriver                        0x00000001020bea84 cxxbridge1$string$len + 390876
+7   chromedriver                        0x00000001020bdee8 cxxbridge1$string$len + 387904
+8   chromedriver                        0x00000001020b2dec cxxbridge1$string$len + 342596
+9   chromedriver                        0x00000001020b2878 cxxbridge1$string$len + 341200
+10  chromedriver                        0x00000001020fe678 cxxbridge1$string$len + 651984
+11  chromedriver                        0x00000001020b135c cxxbridge1$string$len + 335796
+12  chromedriver                        0x00000001024eecd4 cxxbridge1$str$ptr + 2545532
+13  chromedriver                        0x00000001024f1fa0 cxxbridge1$str$ptr + 2558536
+14  chromedriver                        0x00000001024ced04 cxxbridge1$str$ptr + 2414508
+15  chromedriver                        0x00000001024f2800 cxxbridge1$str$ptr + 2560680
+16  chromedriver                        0x00000001024bfba0 cxxbridge1$str$ptr + 2352712
+17  chromedriver                        0x000000010251245c cxxbridge1$str$ptr + 2690820
+18  chromedriver                        0x00000001025125e4 cxxbridge1$str$ptr + 2691212
+19  chromedriver                        0x0000000102521a50 cxxbridge1$str$ptr + 2753784
+20  libsystem_pthread.dylib             0x000000018f7cf2e4 _pthread_start + 136
+21  libsystem_pthread.dylib             0x000000018f7ca0fc thread_start + 8
+
+Failed to click PreRequisites button for course HIST 192R : Message: stale element reference: stale element not found in the current frame
+  (Session info: chrome=134.0.6998.89); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+0   chromedriver                        0x0000000102529804 cxxbridge1$str$ptr + 2785964
+1   chromedriver                        0x0000000102521ddc cxxbridge1$str$ptr + 2754692
+2   chromedriver                        0x0000000102075ea8 cxxbridge1$string$len + 92928
+3   chromedriver                        0x000000010207bcd0 cxxbridge1$string$len + 117032
+4   chromedriver                        0x000000010207dd74 cxxbridge1$string$len + 125388
+5   chromedriver                        0x000000010207de1c cxxbridge1$string$len + 125556
+6   chromedriver                        0x00000001020bed3c cxxbridge1$string$len + 391572
+7   chromedriver                        0x00000001020be254 cxxbridge1$string$len + 388780
+8   chromedriver                        0x00000001020b3180 cxxbridge1$string$len + 343512
+9   chromedriver                        0x00000001020b2878 cxxbridge1$string$len + 341200
+10  chromedriver                        0x00000001020fe678 cxxbridge1$string$len + 651984
+11  chromedriver                        0x00000001020b135c cxxbridge1$string$len + 335796
+12  chromedriver                        0x00000001024eecd4 cxxbridge1$str$ptr + 2545532
+13  chromedriver                        0x00000001024f1fa0 cxxbridge1$str$ptr + 2558536
+14  chromedriver                        0x00000001024ced04 cxxbridge1$str$ptr + 2414508
+15  chromedriver                        0x00000001024f2800 cxxbridge1$str$ptr + 2560680
+16  chromedriver                        0x00000001024bfba0 cxxbridge1$str$ptr + 2352712
+17  chromedriver                        0x000000010251245c cxxbridge1$str$ptr + 2690820
+18  chromedriver                        0x00000001025125e4 cxxbridge1$str$ptr + 2691212
+19  chromedriver                        0x0000000102521a50 cxxbridge1$str$ptr + 2753784
+20  libsystem_pthread.dylib             0x000000018f7cf2e4 _pthread_start + 136
+21  libsystem_pthread.dylib             0x000000018f7ca0fc thread_start + 8
+
+Failed to click PreRequisites button for course HIST 4AH : Message: stale element reference: stale element not found in the current frame
+  (Session info: chrome=134.0.6998.89); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+0   chromedriver                        0x0000000102529804 cxxbridge1$str$ptr + 2785964
+1   chromedriver                        0x0000000102521ddc cxxbridge1$str$ptr + 2754692
+2   chromedriver                        0x0000000102075ea8 cxxbridge1$string$len + 92928
+3   chromedriver                        0x000000010207bcd0 cxxbridge1$string$len + 117032
+4   chromedriver                        0x000000010207e01c cxxbridge1$string$len + 126068
+5   chromedriver                        0x00000001020ff444 cxxbridge1$string$len + 655516
+6   chromedriver                        0x00000001020fe678 cxxbridge1$string$len + 651984
+7   chromedriver                        0x00000001020b135c cxxbridge1$string$len + 335796
+8   chromedriver                        0x00000001024eecd4 cxxbridge1$str$ptr + 2545532
+9   chromedriver                        0x00000001024f1fa0 cxxbridge1$str$ptr + 2558536
+10  chromedriver                        0x00000001024ced04 cxxbridge1$str$ptr + 2414508
+11  chromedriver                        0x00000001024f2800 cxxbridge1$str$ptr + 2560680
+12  chromedriver                        0x00000001024bfba0 cxxbridge1$str$ptr + 2352712
+13  chromedriver                        0x000000010251245c cxxbridge1$str$ptr + 2690820
+14  chromedriver                        0x00000001025125e4 cxxbridge1$str$ptr + 2691212
+15  chromedriver                        0x0000000102521a50 cxxbridge1$str$ptr + 2753784
+16  libsystem_pthread.dylib             0x000000018f7cf2e4 _pthread_start + 136
+17  libsystem_pthread.dylib             0x000000018f7ca0fc thread_start + 8
+
+Failed to click PreRequisites button for course INT 84AJ : Message: stale element reference: stale element not found in the current frame
+  (Session info: chrome=134.0.6998.89); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+0   chromedriver                        0x0000000102529804 cxxbridge1$str$ptr + 2785964
+1   chromedriver                        0x0000000102521ddc cxxbridge1$str$ptr + 2754692
+2   chromedriver                        0x0000000102075ea8 cxxbridge1$string$len + 92928
+3   chromedriver                        0x000000010207bcd0 cxxbridge1$string$len + 117032
+4   chromedriver                        0x000000010207e01c cxxbridge1$string$len + 126068
+5   chromedriver                        0x00000001020ff444 cxxbridge1$string$len + 655516
+6   chromedriver                        0x00000001020fe678 cxxbridge1$string$len + 651984
+7   chromedriver                        0x00000001020b135c cxxbridge1$string$len + 335796
+8   chromedriver                        0x00000001024eecd4 cxxbridge1$str$ptr + 2545532
+9   chromedriver                        0x00000001024f1fa0 cxxbridge1$str$ptr + 2558536
+10  chromedriver                        0x00000001024ced04 cxxbridge1$str$ptr + 2414508
+11  chromedriver                        0x00000001024f2800 cxxbridge1$str$ptr + 2560680
+12  chromedriver                        0x00000001024bfba0 cxxbridge1$str$ptr + 2352712
+13  chromedriver                        0x000000010251245c cxxbridge1$str$ptr + 2690820
+14  chromedriver                        0x00000001025125e4 cxxbridge1$str$ptr + 2691212
+15  chromedriver                        0x0000000102521a50 cxxbridge1$str$ptr + 2753784
+16  libsystem_pthread.dylib             0x000000018f7cf2e4 _pthread_start + 136
+17  libsystem_pthread.dylib             0x000000018f7ca0fc thread_start + 8
+
+Course not found for id: INT 87AE
+Course not found for id: JAPAN 136
+Course not found for id: JAPAN 149
+Course not found for id: JAPAN 164
+Course not found for id: MUS CS 105AC
+Course not found for id: POL S 176
+Course not found for id: RG ST 162J
+Failed to click PreRequisites button for course RG ST 167A : Message: stale element reference: stale element not found in the current frame
+  (Session info: chrome=134.0.6998.89); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+0   chromedriver                        0x0000000102529804 cxxbridge1$str$ptr + 2785964
+1   chromedriver                        0x0000000102521ddc cxxbridge1$str$ptr + 2754692
+2   chromedriver                        0x0000000102075ea8 cxxbridge1$string$len + 92928
+3   chromedriver                        0x000000010207bcd0 cxxbridge1$string$len + 117032
+4   chromedriver                        0x000000010207dd74 cxxbridge1$string$len + 125388
+5   chromedriver                        0x000000010207de1c cxxbridge1$string$len + 125556
+6   chromedriver                        0x00000001020bfc70 cxxbridge1$string$len + 395464
+7   chromedriver                        0x00000001020be044 cxxbridge1$string$len + 388252
+8   chromedriver                        0x00000001020b3180 cxxbridge1$string$len + 343512
+9   chromedriver                        0x00000001020b2878 cxxbridge1$string$len + 341200
+10  chromedriver                        0x00000001020fe678 cxxbridge1$string$len + 651984
+11  chromedriver                        0x00000001020b135c cxxbridge1$string$len + 335796
+12  chromedriver                        0x00000001024eecd4 cxxbridge1$str$ptr + 2545532
+13  chromedriver                        0x00000001024f1fa0 cxxbridge1$str$ptr + 2558536
+14  chromedriver                        0x00000001024ced04 cxxbridge1$str$ptr + 2414508
+15  chromedriver                        0x00000001024f2800 cxxbridge1$str$ptr + 2560680
+16  chromedriver                        0x00000001024bfba0 cxxbridge1$str$ptr + 2352712
+17  chromedriver                        0x000000010251245c cxxbridge1$str$ptr + 2690820
+18  chromedriver                        0x00000001025125e4 cxxbridge1$str$ptr + 2691212
+19  chromedriver                        0x0000000102521a50 cxxbridge1$str$ptr + 2753784
+20  libsystem_pthread.dylib             0x000000018f7cf2e4 _pthread_start + 136
+21  libsystem_pthread.dylib             0x000000018f7ca0fc thread_start + 8
+
+Course not found for id: RG ST 65D
+Course not found for id: SOC 118CI
+Course not found for id: SOC 130A
+Course not found for id: SOC 130EV
+Course not found for id: SOC 153
+Course not found for id: SOC 172
+Course not found for id: SOC 185D
+Course not found for id: THTR 180G
+Scraping complete.
