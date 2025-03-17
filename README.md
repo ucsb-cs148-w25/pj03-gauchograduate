@@ -5,7 +5,7 @@ GauchoGraduate
 View the current state of the app at https://gauchograduate.vercel.app
 
 ## Description
-UCSB course planner for graduation.
+UCSB course planner for graduation. View our demo video here: https://www.youtube.com/watch?v=j0q1VC1ovYU
 
 ### Group Members
 | Name            | GitHub ID       |
