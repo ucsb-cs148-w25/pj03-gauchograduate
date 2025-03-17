@@ -5,7 +5,20 @@ GauchoGraduate
 View the current state of the app at https://gauchograduate.vercel.app
 
 ## Description
-UCSB course planner for graduation. View our demo video here: https://www.youtube.com/watch?v=j0q1VC1ovYU
+UCSB course planner for graduation. 
+
+View our demo video here: https://www.youtube.com/watch?v=j0q1VC1ovYU
+
+## Repo Guide
+```
+.
+├── courseinfo - Scraped course info from the GOLD API, what we upload to our DB.
+├── docs - Links to our documentation (manual and design documents) and deployment info.
+├── gauchograduate - Our webapp's source code.
+├── majorinfo - Webscraped major info from UCSB, what we upload to our DB.
+├── team - CS148 Team Files.
+└── webscrape-scripts - Scripts we've used for webscraping prereqs from GOLD.
+```
 
 ### Group Members
 | Name            | GitHub ID       |
