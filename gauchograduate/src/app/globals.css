@@ -23,6 +23,53 @@ body {
   transform: rotate(360deg);
 }
 
+@media (max-width: 640px) {
+  .writing-mode-vertical {
+    writing-mode: horizontal-tb;
+    transform: none;
+  }
+  
+  /* Ensure mobile navigation buttons are always visible */
+  .fixed.top-36.left-0,
+  .fixed.top-36.right-0 {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 50 !important;
+  }
+}
+
+/* Responsive typography */
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  h2 {
+    font-size: 1.25rem;
+  }
+  h3 {
+    font-size: 1.125rem;
+  }
+  p, span, button, a {
+    font-size: 0.875rem;
+  }
+}
+
+/* Transitions */
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.ease-in-out {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.duration-300 {
+  transition-duration: 300ms;
+}
+
 @keyframes pulse {
   0%, 100% {
     opacity: 1;
@@ -81,6 +128,27 @@ body {
 
 .animate-border-pulse {
   animation: border-pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Collapsible panel transitions */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Collapse button hover effect */
+.group:hover .collapse-button {
+  opacity: 1;
+}
+
+.collapse-button {
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+
+.collapse-button:hover {
+  opacity: 1;
 }
 
 /* @media (prefers-color-scheme: dark) {

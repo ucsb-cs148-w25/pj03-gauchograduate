@@ -5,7 +5,20 @@ GauchoGraduate
 View the current state of the app at https://gauchograduate.vercel.app
 
 ## Description
-UCSB course planner for graduation.
+UCSB course planner for graduation. 
+
+View our demo video here: https://www.youtube.com/watch?v=j0q1VC1ovYU
+
+## Repo Guide
+```
+.
+├── courseinfo - Scraped course info from the GOLD API, what we upload to our DB.
+├── docs - Links to our documentation (manual and design documents) and deployment info.
+├── gauchograduate - Our webapp's source code.
+├── majorinfo - Webscraped major info from UCSB, what we upload to our DB.
+├── team - CS148 Team Files.
+└── webscrape-scripts - Scripts we've used for webscraping prereqs from GOLD.
+```
 
 ### Group Members
 | Name            | GitHub ID       |
@@ -43,6 +56,7 @@ Install Node (v23.6.0) and NPM (v10.9.2) first.
 ├── postcss@8.5.1 - Similar to Emotion, another CSS/JS integrated styling tool.
 ├── prisma@6.2.1 - Once again, Prisma is our ORM.
 ├── react-circular-progressbar@2.1.0 - A component we use for the stylish progress bar.
+├── react-to-print@3.0.5 - The library we use to generate printable planners.
 ├── react-dom@19.0.0 - React, our frontend framework.
 ├── react@19.0.0 - Ditto.
 ├── tailwindcss@3.4.17 - Tailwind, our styling framework.
@@ -56,10 +70,9 @@ Install all dependencies by running `npm ci` in the `gauchograduate/` directory.
 ### Functionality
 To use the app, navigate to https://gauchograduate.vercel.app , and sign in with your UCSB account. You can now drag and drop courses into the course planner and see your graduation progress. Select the year you would like to drop courses into in the planner section to see all four years of your University journey. You can also update your profile to edit personal details such as your major.
 
-### Known Problems
-- The full list of courses has not been integrated into the frontend yet.
-- Course planner data is not yet saved to the user.
-- Major-based planning suggestions have not yet been implemented.
+### Known Problems/Limitations
+- Specific major course overrides are not recognized as completed prerequisites.
+- Currently, only CoE majors have their requirements fully loaded. This is because scraping individual L&S major requirements requires finding their major sheets individually from their independent websites, which is tedious and time consuming. However, the workflow we have built using OpenAI parsing techniques can support parsing all of these major sheets once they are located.
 
 ### License
 Our license is in the LICENSE.md file, it is the GNU General Public License v3.0

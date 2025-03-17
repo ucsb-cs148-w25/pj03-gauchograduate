@@ -63,19 +63,19 @@ test.describe('Course catalog functionality', () => {
     // Verify user name is displayed in navbar
     await expect(page.getByText('Logged in as Test')).toBeVisible();
 
-    // Verify course catalog is visible
-    await expect(page.getByText('Course Catalog')).toBeVisible();
+    // Verify course catalog is visible - use a more specific selector
+    await expect(page.getByRole('heading', { name: 'Course Catalog' }).first()).toBeVisible();
 
-    // Verify courses are loaded and displayed
-    await expect(page.getByText('CMPSC 148')).toBeVisible();
-    await expect(page.getByText('CMPSC 156')).toBeVisible();
+    // Verify courses are loaded and displayed - use more specific selectors
+    await expect(page.getByRole('heading', { name: 'CMPSC 148' }).first()).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'CMPSC 156' }).first()).toBeVisible();
 
-    // Test search functionality
-    const searchInput = page.getByPlaceholder('Search courses...');
+    // Test search functionality - use a more specific selector for the search input
+    const searchInput = page.getByRole('textbox', { name: 'Search courses...' }).first();
     await searchInput.fill('148');
     
-    // Should show CMPSC 148 but not 156
-    await expect(page.getByText('CMPSC 148')).toBeVisible();
-    await expect(page.getByText('CMPSC 156')).not.toBeVisible();
+    // Should show CMPSC 148 but not 156 - use more specific selectors
+    await expect(page.getByRole('heading', { name: 'CMPSC 148' }).first()).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'CMPSC 156' }).first()).not.toBeVisible();
   });
 });

@@ -13,3 +13,14 @@ They see 4 columns in the planner, with a dropdown menu to select their year. Th
 ## College Codes
 - College of Engineering (CoE) is represented as "ENGR" in the API responses
 - This mapping is needed when checking GE requirements against course.generalEd[].geCollege
+
+## Testing
+- When running tests with `npm run test`, make sure the `.next` directory is excluded in the Jest configuration
+- The test configuration is in `jest.config.js` and should include `.next/` in the `testPathIgnorePatterns` array
+- This prevents Jest from trying to run tests on Next.js build output files
+
+## E2E Testing
+- When using Playwright selectors, use specific selectors like `getByRole()` instead of generic `getByText()` when elements might appear multiple times
+- Always use `.first()` or other specific qualifiers when there might be duplicate elements on the page
+- For text inputs, prefer `getByRole('textbox', { name: 'Label Text' })` over `getByPlaceholder()`
+- For headings, use `getByRole('heading', { name: 'Heading Text' })` instead of `getByText()`

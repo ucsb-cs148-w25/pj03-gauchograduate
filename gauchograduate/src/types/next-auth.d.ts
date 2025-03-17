@@ -10,12 +10,15 @@ export interface MajorOverride {
   type: string;
   requirement: string;
   courseId?: number;
+  creditSource?: string;
+  units?: number;
 }
 
 export interface UserCourses {
   firstQuarter: string;
   courses: UserCourse[];
   overrides?: MajorOverride[];
+  selectedYear?: string;
 }
 
 declare module "next-auth" {
