@@ -1,0 +1,1172 @@
+id: ANTH 178
+None
+
+id: ANTH 183
+None
+
+id: ANTH 190
+None
+
+id: ANTH 194
+None
+
+id: ANTH 194P
+None
+
+id: ANTH 195B
+None
+
+id: ANTH 195C
+None
+
+id: ANTH 198
+None
+
+id: ANTH 199
+None
+
+id: ANTH 199RA
+None
+
+id: ANTH 3
+None
+
+id: ANTH 99
+None
+
+id: ART 10
+None
+
+id: ART 100
+None
+
+id: ART 117
+None
+
+id: ART 18
+None
+
+id: ART 192ES
+None
+
+id: ART 192IA
+None
+
+id: ART 196
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ART     196, offered in Fall 2023, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ART 199
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ART     199, offered in Fall 2023, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ART 199RA
+None
+
+id: ART 1A
+None
+
+id: ART CS 101
+None
+
+id: ART CS 104
+None
+
+id: ART CS 112
+None
+
+id: ART CS 120
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ART  CS 120, offered in Fall 2023, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ART CS 199
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ART     199, offered in Fall 2023, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ANTH 100
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">ANTH      3    </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">ANTH      3SS  </td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ANTH 102
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">ANTH      2    </td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ANTH 116A
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">ANTH      2    </td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ANTH 123MG
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">ANTH      9    </td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ANTH 125
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">ANTH      2    </td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ANTH 129
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ANTH    129, offered in Winter 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ANTH 130
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ANTH    130, offered in Winter 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ANTH 133
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ANTH    133, offered in Winter 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ANTH 150
+None
+
+id: ANTH 151T
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">ANTH      5    </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">PSY       1    </td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ANTH 178
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ANTH    178, offered in Winter 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ANTH 183
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ANTH    183, offered in Winter 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl">Anthropology 181 or 191 depending on the nature of the internship.                                                                                                                                                                                                                                                                                                                     </span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ANTH 190
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ANTH    190, offered in Winter 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ANTH 193
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ANTH    193, offered in Winter 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ANTH 194
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">ANTH      3    </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">AND ANTH    100    </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">ANTH      3SS  </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">AND ANTH    100    </td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ANTH 194P
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">ANTH    100    </td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ANTH 195B
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">ANTH    195A   </td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ANTH 195C
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ANTH 197ES
+None
+
+id: ANTH 198
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">ANTH    1*     </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">AND ANTH    1*     </td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ANTH 199
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ANTH    199, offered in Winter 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ANTH 199RA
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">ANTH    1*     </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">AND ANTH    1*     </td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ANTH 2
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ANTH      2, offered in Winter 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ANTH 3
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ANTH      3, offered in Winter 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ANTH 99
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ANTH     99, offered in Winter 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ART 10
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ART      10, offered in Winter 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl">Art 7B or equivalent.                                                                                                                                                                                                                                                                                                                                                                  </span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ART 100
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">ART      10    </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;">As well as: </td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">a class level of JR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of LM             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SB             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SP             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SS             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">ART       1A   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">ART       7B   </td>
+	</tr>
+</tbody></table>
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl">Art 18                                                                                                                                                                                                                                                                                                                                                                                 </span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ART 102MM
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">ART      22    </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">AND ART       7D   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;">As well as: </td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">a class level of JR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of LM             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SB             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SP             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SS             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">ART       1A   </td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ART 106W
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ART     106W, offered in Winter 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ART 110
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">ART      14    </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">AND ART      18    </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;">As well as: </td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">a class level of JR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of LM             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SB             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SP             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SS             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">ART       1A   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">ART       7B   </td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ART 117
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">ART      18    </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;">As well as: </td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">a class level of JR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of LM             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SB             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SP             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SS             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">ART       1A   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">ART       7B   </td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ART 126
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ART     126, offered in Winter 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ART 132
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">ART      32    </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;">As well as: </td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">a class level of JR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of LM             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SB             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SP             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SS             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">ART       1A   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">ART       7A   </td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ART 133M
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ART     133M, offered in Winter 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ART 18
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ART      18, offered in Winter 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl">Art 7B or equivalent.                                                                                                                                                                                                                                                                                                                                                                  </span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ART 189B
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">ART       7D   </td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ART 192ES
+None
+
+id: ART 192IA
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ART     192IA, offered in Winter 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ART 196
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ART     196, offered in Winter 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ART 199
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ART     199, offered in Winter 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ART 199RA
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ART     199RA, offered in Winter 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ART 1A
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ART       1A, offered in Winter 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ART 7C
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ART       7C, offered in Winter 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ART 7D
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                                <table style="padding-left: 5px; padding-top: 5px;">
+                                    <tbody><tr>
+                                        <td valign="top" style="padding-left: 10px;">
+                                            <span id="pageContent_CourseInfo1_recPrepTaglbl" class="label">Recommended Preparation:</span></td>
+                                        <td valign="bottom">
+                                            <span id="pageContent_CourseInfo1_RecPreplbl"></span></td>
+                                    </tr>
+                                </tbody></table>
+
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ART CS 101
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ART  CS 101, offered in Winter 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ART CS 102
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        </td>
+                                </tr>
+                            </tbody></table>
+
+                            <table>
+	<tbody><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">ART      22    </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">AND ART       7D   </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;">As well as: </td><td style="text-align:left;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">a class level of JR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SR             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of LM             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SB             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SP             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">a class level of SS             </td>
+	</tr><tr>
+		<td style="text-align:right;vertical-align:top;color:#003366;font-weight:bold;padding-left:10px;width:100px;"></td><td style="text-align:right;vertical-align:bottom;"></td><td style="text-align:left;vertical-align:bottom;">OR</td><td style="text-align:left;vertical-align:bottom;">ART       1A   </td>
+	</tr>
+</tbody></table>
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ART CS 104
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ART  CS 104, offered in Winter 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ART CS 107
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ART  CS 107, offered in Winter 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
+id: ART CS 112
+<div class="course-tab-content active" id="prePageView">
+                        <div>
+
+                            <table style="padding-left: 5px; padding-top: 5px;">
+                                <tbody><tr>
+                                    <td valign="top" style="padding-left: 10px;">
+                                        <span id="pageContent_CourseInfo1_preReqMsglbl" class="largerLabel">ART  CS 112, offered in Winter 2024, does not have any PreRequisite.</span></td>
+                                </tr>
+                            </tbody></table>
+
+                            
+                            
+                            <br>
+                        </div>
+                    </div>
+
